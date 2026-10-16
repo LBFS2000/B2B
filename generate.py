@@ -12,6 +12,10 @@ import requests
 SITE_URL = "https://b2bcomparison.com"
 SITE_HOST = "b2bcomparison.com"
 BRAND_NAME = "B2BComparison"
+
+# ---> PASTE YOUR 11-DIGIT AUSTRALIAN BUSINESS NUMBER (ABN) BELOW <---
+ABN_NUMBER = "51 205 277 641"
+
 PUBLIC_DIR = "public"
 CACHE_DIR = os.path.join(PUBLIC_DIR, "_cache")
 
@@ -292,7 +296,6 @@ def clean_url(u: str) -> str:
 def format_pricing_summary(
     base_a: int, seat_a: int, base_b: int, seat_b: int
 ) -> str:
-  """Returns a crystal-clear human-readable pricing comparison for cards."""
   est_a = base_a + (25 * seat_a)
   est_b = base_b + (25 * seat_b)
   return f"Est. ${est_a}/mo vs ${est_b}/mo (at 25 seats)"
@@ -410,8 +413,8 @@ def build_deterministic_fallback(nt: dict) -> ComparisonArticle:
   return ComparisonArticle(
       seo_title=f"{pa} vs {pb}: Technical Spec & TCO Matrix (2026)",
       meta_description=(
-          f"Side-by-side architectural audit of {pa} vs {pb} covering {uc},"
-          " REST API rate limits, and 36-month seat TCO."
+          f"Side-by-side architectural comparison of {pa} vs {pb} covering"
+          f" {uc}, REST API rate limits, and 36-month seat TCO."
       ),
       direct_verdict=(
           f"Choose {pa} if your organization requires deep two-way ERP general"
@@ -631,8 +634,20 @@ Return ONLY a valid JSON object matching this exact JSON schema (no markdown fen
 
 
 # ---------------------------------------------------------
-# 5. ACCESSIBLE, HIGH-CONVERTING UI + JSON-LD SCHEMA
+# 5. ACCESSIBLE, LEGALLY HARDENED UI + INTERNAL LINKING
 # ---------------------------------------------------------
+def get_abn_badge() -> str:
+  if ABN_NUMBER and "XX" not in ABN_NUMBER:
+    return (
+        f"ABN: {ABN_NUMBER} • Operated in Brisbane, QLD, Australia • Updated"
+        " October 2026"
+    )
+  return (
+      "Registered Australian Sole Trader Publication • Brisbane, QLD,"
+      " Australia • Updated October 2026"
+  )
+
+
 def get_header(
     title: str,
     description: str,
@@ -668,12 +683,12 @@ def get_header(
     </style>
     {ld_block}
 </head>
-<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-16 sm:pb-0">
-    <!-- Top Compliance & Transparency Bar -->
+<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-20 sm:pb-0">
+    <!-- Top Compliance & Transparency Bar (FTC & ACCC Prominent Disclosure) -->
     <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800">
         <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
-            <span><strong class="text-emerald-400 mono">● DATASET v2026.10</strong> — Verified REST API Limits, SOC2/ATO Governance &amp; TCO Audits</span>
-            <span class="text-slate-400">Reader-supported independent research. <a href="/disclosure.html" class="underline text-slate-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Affiliate &amp; Editorial Disclosure</a></span>
+            <span><strong class="text-emerald-400 mono">● DATASET v2026.10</strong> — Public API Documentation, SOC2/ATO Governance &amp; TCO Modeling</span>
+            <span class="text-slate-300"><strong>Commercial Disclosure:</strong> Reader-supported publication; outbound vendor links may earn an affiliate commission. <a href="/disclosure.html" class="underline text-white hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Read Full Disclosure</a></span>
         </div>
     </div>
 
@@ -684,18 +699,18 @@ def get_header(
                 <div class="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold mono text-sm shadow-sm group-hover:bg-blue-700 transition-colors">B2B</div>
                 <div>
                     <span class="font-extrabold text-lg tracking-tight text-slate-900">B2B<span class="text-blue-600">Comparison</span>.com</span>
-                    <span class="hidden sm:inline-block ml-2 text-[10px] mono uppercase bg-slate-100 text-slate-600 px-2 py-0.5 rounded border border-slate-200">APAC &amp; Global Lab</span>
+                    <span class="hidden sm:inline-block ml-2 text-[10px] mono uppercase bg-slate-100 text-slate-600 px-2 py-0.5 rounded border border-slate-200">APAC &amp; Global Research</span>
                 </div>
             </a>
             <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600" aria-label="Main Navigation">
                 <a href="/" class="hover:text-blue-600 transition-colors">All Matrices</a>
-                <a href="/methodology.html" class="hover:text-blue-600 transition-colors">Testing Methodology</a>
-                <a href="/about.html" class="hover:text-blue-600 transition-colors">About Lab</a>
-                <a href="/disclosure.html" class="hover:text-blue-600 transition-colors">Disclosure</a>
+                <a href="/methodology.html" class="hover:text-blue-600 transition-colors">Methodology</a>
+                <a href="/about.html" class="hover:text-blue-600 transition-colors">About Us</a>
+                <a href="/disclosure.html" class="hover:text-blue-600 transition-colors">Affiliate Disclosure</a>
             </nav>
             <div class="flex items-center space-x-2">
                 <div class="text-xs mono bg-blue-50 text-blue-700 px-3 py-1.5 rounded-md border border-blue-200 font-semibold">
-                    {audit_count} Live Audits
+                    {audit_count} Live Matrices
                 </div>
             </div>
         </div>
@@ -703,13 +718,14 @@ def get_header(
         <nav class="flex md:hidden items-center justify-around bg-slate-50 border-t border-slate-200 py-2 px-2 text-xs font-semibold text-slate-600" aria-label="Mobile Navigation">
             <a href="/" class="hover:text-blue-600 px-2 py-1">All Matrices</a>
             <a href="/methodology.html" class="hover:text-blue-600 px-2 py-1">Methodology</a>
-            <a href="/about.html" class="hover:text-blue-600 px-2 py-1">About Lab</a>
+            <a href="/about.html" class="hover:text-blue-600 px-2 py-1">About</a>
             <a href="/disclosure.html" class="hover:text-blue-600 px-2 py-1">Disclosure</a>
         </nav>
     </header>"""
 
 
-FOOTER = """
+def get_footer() -> str:
+  return f"""
     <footer class="bg-slate-900 text-slate-400 py-12 px-4 sm:px-6 text-sm mt-16 border-t border-slate-800">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
@@ -718,26 +734,26 @@ FOOTER = """
                     <span class="font-bold text-white text-base">B2BComparison.com</span>
                 </div>
                 <p class="mt-3 text-xs text-slate-400 leading-relaxed">
-                    Independent B2B software architecture, integration compatibility, and Total Cost of Ownership (TCO) research for CTOs, Finance Directors, and Operations teams across Australia, APAC, and North America.
+                    Independent B2B software architecture, integration compatibility, and Total Cost of Ownership (TCO) research publication for CTOs, Finance Directors, and Operations teams across Australia, APAC, and North America.
                 </p>
-                <p class="mt-2 text-[11px] text-slate-500 mono">
-                    Operated out of Brisbane, QLD, Australia • Updated October 2026
+                <p class="mt-2 text-[11px] text-slate-400 mono">
+                    {get_abn_badge()}
                 </p>
             </div>
             <div>
                 <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">Governance &amp; Legal</h4>
                 <ul class="space-y-2 text-xs">
-                    <li><a href="/about.html" class="hover:text-white transition-colors">About B2BComparison Research</a></li>
-                    <li><a href="/methodology.html" class="hover:text-white transition-colors">Benchmarking &amp; TCO Methodology</a></li>
+                    <li><a href="/about.html" class="hover:text-white transition-colors">About B2BComparison &amp; Entity Details</a></li>
+                    <li><a href="/methodology.html" class="hover:text-white transition-colors">Documentation &amp; TCO Methodology</a></li>
                     <li><a href="/disclosure.html" class="hover:text-white transition-colors">FTC &amp; ACCC Affiliate Disclosure</a></li>
                     <li><a href="/privacy.html" class="hover:text-white transition-colors">Privacy Policy &amp; Terms of Service</a></li>
                     <li><a href="/sitemap.xml" class="hover:text-white transition-colors">XML Sitemap</a> • <a href="/llms.txt" class="hover:text-white transition-colors">AI / LLMs.txt</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">Editorial Firewall &amp; Compliance</h4>
+                <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">ACCC &amp; FTC Commercial Disclosure</h4>
                 <p class="text-xs text-slate-400 leading-relaxed">
-                    In accordance with Australian Consumer Law (ACL) and US FTC guidelines: we may receive referral compensation when you click outbound vendor links or request demos. Commercial partnerships never alter our REST API rate-limit benchmarks, compliance badges, or TCO pricing math.
+                    In accordance with the Australian Consumer Law (ACL) and US FTC 16 CFR Part 255 guidelines: B2BComparison.com participates in commercial affiliate programs. We may earn a referral fee when you click outbound vendor links or sign up for trials. All specifications and TCO models are compiled from publicly published vendor documentation and are shown exclusive of GST (ex. GST) unless noted.
                 </p>
             </div>
         </div>
@@ -746,7 +762,12 @@ FOOTER = """
 </html>"""
 
 
-def render_html(nt: dict, data: ComparisonArticle, total_count: int) -> str:
+def render_html(
+    nt: dict,
+    data: ComparisonArticle,
+    all_topics: list[dict],
+) -> str:
+  total_count = len(all_topics)
   pa, pb = nt["product_a"], nt["product_b"]
   pA_base, pA_seat = nt["priceA_base"], nt["priceA_seat"]
   pB_base, pB_seat = nt["priceB_base"], nt["priceB_seat"]
@@ -756,7 +777,6 @@ def render_html(nt: dict, data: ComparisonArticle, total_count: int) -> str:
   cheaper_25 = pa if est25_a <= est25_b else pb
   annual_diff_25 = abs(est25_a - est25_b) * 12
 
-  # Count matrix wins to calculate transparent Architectural Score
   a_wins = sum(
       1
       for r in data.comparison_matrix
@@ -812,18 +832,53 @@ def render_html(nt: dict, data: ComparisonArticle, total_count: int) -> str:
   )
   today = datetime.date.today().isoformat()
 
-  # Auto-generated Buyer FAQ + JSON-LD Schema for Google Rich Snippets & AI Answer Engines
+  # Build Internal Linking Grid (4 Related Comparisons for SEO Crawl Depth)
+  related_cards = ""
+  normalized_all = [normalize_topic(x) for x in all_topics]
+  same_cat = [
+      x
+      for x in normalized_all
+      if x["id"] != nt["id"] and x["category"] == nt["category"]
+  ]
+  other_cat = [
+      x
+      for x in normalized_all
+      if x["id"] != nt["id"] and x["category"] != nt["category"]
+  ]
+  related_list = (same_cat + other_cat)[:4]
+
+  for rel in related_list:
+    rel_price = format_pricing_summary(
+        rel["priceA_base"],
+        rel["priceA_seat"],
+        rel["priceB_base"],
+        rel["priceB_seat"],
+    )
+    related_cards += f"""
+        <a href="/{rel['id']}.html" class="group bg-white rounded-xl border border-slate-200 p-4 hover:border-blue-600 hover:shadow-sm transition-all flex flex-col justify-between">
+            <div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-blue-600 mono">{rel['category']}</span>
+                <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 mt-1">{rel['product_a']} vs. {rel['product_b']}</h3>
+                <p class="text-xs text-slate-600 mt-1">{rel['use_case']}</p>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] mono text-slate-500">
+                <span>{rel_price}</span>
+                <span class="text-blue-600 font-semibold">Compare &rarr;</span>
+            </div>
+        </a>"""
+
+  # Auto-generated Buyer FAQ + JSON-LD Schema (FAQPage + BreadcrumbList)
   faqs = [
       (
           f"Is {pa} or {pb} cheaper for a 25-user team in 2026?",
           (
-              f"At 25 active seats, {pa} costs approximately ${est25_a}/month"
-              f" (${pA_base}/mo base + ${pA_seat}/seat), whereas {pb} costs"
-              f" approximately ${est25_b}/month (${pB_base}/mo base +"
-              f" ${pB_seat}/seat). Over a 12-month period, {cheaper_25} saves"
-              f" approximately ${annual_diff_25:,} USD (or"
-              f" A${int(annual_diff_25 * 1.54):,} AUD) before annual billing"
-              " discounts."
+              f"Based on published commercial pricing, at 25 active seats {pa}"
+              f" is estimated at ${est25_a}/month (${pA_base}/mo base +"
+              f" ${pA_seat}/seat), whereas {pb} is estimated at"
+              f" ${est25_b}/month (${pB_base}/mo base + ${pB_seat}/seat). Over"
+              f" a 12-month period, {cheaper_25} saves approximately"
+              f" ${annual_diff_25:,} USD (or A${int(annual_diff_25 * 1.54):,}"
+              " AUD ex. GST) prior to annual billing discounts."
           ),
       ),
       (
@@ -842,32 +897,52 @@ def render_html(nt: dict, data: ComparisonArticle, total_count: int) -> str:
       ),
       (
           (
-              f"Do {pa} and {pb} meet {nt['compliance']} security and"
-              " accounting integration standards?"
+              f"Do {pa} and {pb} support {nt['compliance']} governance and"
+              " accounting sync?"
           ),
           (
-              f"Yes, both {pa} and {pb} are evaluated against"
-              f" {nt['compliance']} governance requirements. However, teams"
-              " requiring SAML 2.0 SSO, SCIM provisioning, or high-frequency"
-              " bi-directional Xero/QuickBooks ledger syncing should verify"
-              " whether these features require an Enterprise tier upgrade."
+              f"Both {pa} and {pb} are evaluated against {nt['compliance']}"
+              " documentation. Teams requiring SAML 2.0 SSO, SCIM"
+              " provisioning, or bi-directional Xero/QuickBooks ledger syncing"
+              " should confirm whether these features are included in the"
+              " standard tier or require an Enterprise add-on."
           ),
       ),
   ]
 
-  faq_schema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-          {
-              "@type": "Question",
-              "name": q,
-              "acceptedAnswer": {"@type": "Answer", "text": a},
-          }
-          for q, a in faqs
-      ],
-  }
-  json_ld_str = json.dumps(faq_schema)
+  combined_schema = [
+      {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+              {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "B2B Software Matrices",
+                  "item": f"{SITE_URL}/",
+              },
+              {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": f"{pa} vs {pb}",
+                  "item": f"{SITE_URL}/{nt['id']}.html",
+              },
+          ],
+      },
+      {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+              {
+                  "@type": "Question",
+                  "name": q,
+                  "acceptedAnswer": {"@type": "Answer", "text": a},
+              }
+              for q, a in faqs
+          ],
+      },
+  ]
+  json_ld_str = json.dumps(combined_schema)
 
   faq_html = "".join(
       f"""
@@ -883,23 +958,30 @@ def render_html(nt: dict, data: ComparisonArticle, total_count: int) -> str:
 
   return f"""{get_header(data.seo_title, data.meta_description, total_count, f"{nt['id']}.html", json_ld_str)}
     <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-10">
-        <a href="/" class="inline-flex items-center text-xs mono font-semibold text-blue-600 hover:text-blue-800">&larr; Back to All Compatibility Matrices</a>
+        <!-- Accessible Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="text-xs mono text-slate-500 flex items-center space-x-2">
+            <a href="/" class="text-blue-600 hover:underline font-semibold">All Compatibility Matrices</a>
+            <span>/</span>
+            <span>{nt['category']}</span>
+            <span>/</span>
+            <span class="text-slate-800 font-semibold">{pa} vs {pb}</span>
+        </nav>
 
         <div class="flex flex-wrap items-center gap-2 mt-4">
             <span class="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-200 mono">{nt['category']}</span>
             <span class="text-xs mono text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200">{nt['compliance']}</span>
-            <span class="text-xs mono text-slate-500 ml-auto">Last Audited: {today}</span>
+            <span class="text-xs mono text-slate-500 ml-auto">Last Reviewed: {today}</span>
         </div>
 
         <h1 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">{data.seo_title}</h1>
         <p class="mt-2 text-sm text-slate-600">Primary Evaluation Vector: <strong class="text-slate-800">{nt['use_case']}</strong></p>
 
-        <!-- Plain-English Quick Decision & Interactive Priority Matcher (Accessible for Non-Tech & Tech Buyers) -->
+        <!-- Plain-English Quick Decision & Interactive Priority Matcher -->
         <div class="mt-6 bg-white rounded-xl border border-slate-200 shadow-sm p-5 sm:p-6">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
                 <div>
                     <span class="text-xs font-bold uppercase tracking-wider text-blue-600 mono">30-Second Buyer Guide</span>
-                    <h2 class="text-lg font-bold text-slate-900">Click Your #1 Priority to See the Winner:</h2>
+                    <h2 class="text-lg font-bold text-slate-900">Click Your #1 Priority to See the Recommended Platform:</h2>
                 </div>
                 <div class="flex flex-wrap gap-1.5" role="group" aria-label="Select your primary buying priority">
                     <button type="button" data-prio="verdict" class="prio-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white transition-colors">Overall Verdict</button>
@@ -910,9 +992,9 @@ def render_html(nt: dict, data: ComparisonArticle, total_count: int) -> str:
             </div>
 
             <div id="prioOutput" class="mt-4 p-4 bg-slate-900 text-white rounded-xl">
-                <div class="flex items-center justify-between mb-1.5">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
                     <span id="prioBadge" class="text-xs uppercase tracking-wider text-emerald-400 font-bold mono">● Executive Summary Verdict</span>
-                    <span class="text-[11px] text-slate-400 mono">Score: {pa} ({score_a}/10) vs {pb} ({score_b}/10)</span>
+                    <span class="text-[11px] text-slate-400 mono">Doc &amp; TCO Index: {pa} ({score_a}/10) vs {pb} ({score_b}/10)</span>
                 </div>
                 <p id="prioText" class="text-sm sm:text-base text-slate-100 leading-relaxed">{data.direct_verdict}</p>
             </div>
@@ -923,7 +1005,7 @@ def render_html(nt: dict, data: ComparisonArticle, total_count: int) -> str:
                     <div>
                         <div class="flex items-center justify-between">
                             <span class="font-extrabold text-slate-900 text-lg">{pa}</span>
-                            <span class="text-xs font-bold mono bg-blue-600 text-white px-2.5 py-0.5 rounded">{score_a} / 10</span>
+                            <span class="text-xs font-bold mono bg-blue-600 text-white px-2.5 py-0.5 rounded" title="Composite score based on documented API limits, integrations, and TCO">{score_a} / 10</span>
                         </div>
                         <p class="mt-2 text-xs text-slate-600"><strong>Best if you need:</strong> Deep accounting/ERP automation, higher API concurrency limits, and enterprise-grade role permissions.</p>
                     </div>
@@ -936,7 +1018,7 @@ def render_html(nt: dict, data: ComparisonArticle, total_count: int) -> str:
                     <div>
                         <div class="flex items-center justify-between">
                             <span class="font-extrabold text-slate-900 text-lg">{pb}</span>
-                            <span class="text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded">{score_b} / 10</span>
+                            <span class="text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded" title="Composite score based on documented API limits, integrations, and TCO">{score_b} / 10</span>
                         </div>
                         <p class="mt-2 text-xs text-slate-600"><strong>Best if you need:</strong> Fast day-one onboarding for non-technical staff and straightforward per-seat pricing without base fees.</p>
                     </div>
@@ -945,7 +1027,7 @@ def render_html(nt: dict, data: ComparisonArticle, total_count: int) -> str:
                     </a>
                 </div>
             </div>
-            <p class="mt-3 text-[11px] text-slate-500">Compliance Note: Outbound vendor links may earn B2BComparison.com a referral commission at zero cost to you (<a href="/disclosure.html" class="underline hover:text-slate-800">read disclosure</a>).</p>
+            <p class="mt-3 text-[11px] text-slate-500"><strong>ACCC &amp; FTC Disclosure:</strong> Outbound vendor links are commercial referral links that may earn B2BComparison.com a commission at zero extra cost to you. Scores reflect our deterministic model of published vendor documentation (<a href="/methodology.html" class="underline hover:text-slate-800">see methodology</a>).</p>
         </div>
 
         <!-- Interactive 36-Month TCO Calculator with Currency (USD/AUD) & Billing Toggle -->
@@ -953,12 +1035,12 @@ def render_html(nt: dict, data: ComparisonArticle, total_count: int) -> str:
             <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 mb-6 border-b border-slate-100 gap-4">
                 <div>
                     <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 mono">Interactive Cost Calculator</span>
-                    <h2 class="text-xl font-bold text-slate-900 mt-0.5">Drag the Slider to Calculate Your Exact Monthly &amp; Annual Cost</h2>
+                    <h2 class="text-xl font-bold text-slate-900 mt-0.5">Drag the Slider to Calculate Your Monthly &amp; Annual TCO</h2>
                 </div>
                 <div class="flex flex-wrap items-center gap-2">
                     <div class="inline-flex rounded-lg border border-slate-200 p-0.5 bg-slate-100 text-xs font-semibold mono" role="group" aria-label="Currency selector">
                         <button type="button" id="btnUSD" class="px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm">USD ($)</button>
-                        <button type="button" id="btnAUD" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900">AUD (A$)</button>
+                        <button type="button" id="btnAUD" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900">AUD (A$ ex. GST)</button>
                     </div>
                     <div class="inline-flex rounded-lg border border-slate-200 p-0.5 bg-slate-100 text-xs font-semibold mono" role="group" aria-label="Billing cycle selector">
                         <button type="button" id="btnMonthly" class="px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm">Monthly</button>
@@ -987,12 +1069,12 @@ def render_html(nt: dict, data: ComparisonArticle, total_count: int) -> str:
                         </div>
                         <div class="mt-3">
                             <span class="text-3xl font-extrabold text-slate-900 mono" id="costA_mo">$0</span>
-                            <span class="text-xs text-slate-500"> / month estimated</span>
+                            <span class="text-xs text-slate-500"> / month estimated (ex. tax/GST)</span>
                         </div>
                         <p class="text-xs text-slate-500 mt-1 mb-4 mono">1-Year Total: <strong id="costA_yr" class="text-slate-800">$0/yr</strong> • 3-Year TCO: <strong id="costA_3yr" class="text-slate-800">$0</strong></p>
                     </div>
                     <a href="{nt['aff_link_a']}" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
-                        Verify {pa} Live Pricing &rarr;
+                        Verify {pa} Official Pricing &rarr;
                     </a>
                 </div>
 
@@ -1004,20 +1086,21 @@ def render_html(nt: dict, data: ComparisonArticle, total_count: int) -> str:
                         </div>
                         <div class="mt-3">
                             <span class="text-3xl font-extrabold text-slate-900 mono" id="costB_mo">$0</span>
-                            <span class="text-xs text-slate-500"> / month estimated</span>
+                            <span class="text-xs text-slate-500"> / month estimated (ex. tax/GST)</span>
                         </div>
                         <p class="text-xs text-slate-500 mt-1 mb-4 mono">1-Year Total: <strong id="costB_yr" class="text-slate-800">$0/yr</strong> • 3-Year TCO: <strong id="costB_3yr" class="text-slate-800">$0</strong></p>
                     </div>
                     <a href="{nt['aff_link_b']}" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
-                        Verify {pb} Live Pricing &rarr;
+                        Verify {pb} Official Pricing &rarr;
                     </a>
                 </div>
             </div>
 
             <div class="mt-4 p-3.5 bg-emerald-50 border border-emerald-200 rounded-lg flex flex-wrap items-center justify-between gap-2 text-xs mono text-emerald-900">
                 <span id="tcoSavingsText" class="font-semibold">Calculating 12-month TCO delta...</span>
-                <span class="bg-white px-2 py-0.5 rounded border border-emerald-200 text-emerald-700 font-bold">Live Seat Math</span>
+                <span class="bg-white px-2 py-0.5 rounded border border-emerald-200 text-emerald-700 font-bold">Indicative Ex-GST Estimate</span>
             </div>
+            <p class="mt-2.5 text-[11px] text-slate-500">Pricing Disclaimer: Calculations reflect published entry/mid-market commercial tiers as of {today}, exclusive of 10% Australian GST or local sales taxes. AUD figures use an indicative 1.54 USD/AUD exchange rate. Confirm final quote on the vendor's official site.</p>
         </div>
 
         <script>
@@ -1047,15 +1130,15 @@ def render_html(nt: dict, data: ComparisonArticle, total_count: int) -> str:
                 }},
                 cost: {{
                     badge: '● Lowest Total Cost Winner: {cheaper_25}',
-                    text: 'At 25 users, {cheaper_25} is the more cost-effective option, saving approximately ${annual_diff_25:,} USD per year (A${int(annual_diff_25 * 1.54):,} AUD/yr). Use the slider below to test your exact headcount.'
+                    text: 'At 25 users, {cheaper_25} is the more cost-effective option based on published base + seat rates, saving approximately ${annual_diff_25:,} USD per year (A${int(annual_diff_25 * 1.54):,} AUD/yr ex. GST). Use the slider below to model your exact headcount.'
                 }},
                 ease: {{
-                    badge: '● Fastest Setup & Onboarding Winner: {pb}',
-                    text: 'For non-technical teams that want to get live in 1–3 days without hiring an external systems integrator, {pb} offers a cleaner self-serve setup and lower initial admin overhead.'
+                    badge: '● Fastest Setup & Onboarding Focus: {pb}',
+                    text: 'For lean teams that want to get live quickly without hiring an external systems integrator, {pb} generally offers a faster self-serve setup and lower initial administration overhead.'
                 }},
                 api: {{
-                    badge: '● Deepest API & Accounting Sync Winner: {pa}',
-                    text: 'For teams syncing complex multi-currency ledgers (Xero/QuickBooks/NetSuite) or running high-volume webhook automations, {pa} provides higher API rate ceilings and stronger governance.'
+                    badge: '● Deepest API & Accounting Sync Focus: {pa}',
+                    text: 'For teams syncing multi-currency ledgers (Xero/QuickBooks/NetSuite) or running automated webhook workflows, {pa} provides strong API rate ceilings and granular role governance.'
                 }}
             }};
 
@@ -1116,9 +1199,9 @@ def render_html(nt: dict, data: ComparisonArticle, total_count: int) -> str:
                 if (diffYr === 0) {{
                     tcoSavingsText.textContent = 'Identical estimated annual licensing cost at ' + s + ' seats.';
                 }} else if (yA < yB) {{
-                    tcoSavingsText.textContent = '★ {pa} saves ~' + sym + diffYr.toLocaleString() + '/yr vs {pb} at ' + s + ' seats.';
+                    tcoSavingsText.textContent = '★ {pa} est. ~' + sym + diffYr.toLocaleString() + '/yr lower than {pb} at ' + s + ' seats (ex. GST).';
                 }} else {{
-                    tcoSavingsText.textContent = '★ {pb} saves ~' + sym + diffYr.toLocaleString() + '/yr vs {pa} at ' + s + ' seats.';
+                    tcoSavingsText.textContent = '★ {pb} est. ~' + sym + diffYr.toLocaleString() + '/yr lower than {pa} at ' + s + ' seats (ex. GST).';
                 }}
             }}
 
@@ -1140,16 +1223,16 @@ def render_html(nt: dict, data: ComparisonArticle, total_count: int) -> str:
                         <th class="p-4">Evaluation Vector</th>
                         <th class="p-4">{pa}</th>
                         <th class="p-4">{pb}</th>
-                        <th class="p-4">Category Winner</th>
+                        <th class="p-4">Documented Edge</th>
                     </tr>
                 </thead>
                 <tbody>{rows_html}</tbody>
                 <tfoot>
                     <tr class="bg-slate-50 border-t border-slate-200">
-                        <td class="p-4 font-bold text-slate-900 text-xs mono uppercase">Verify Official Tiers</td>
+                        <td class="p-4 font-bold text-slate-900 text-xs mono uppercase">Official Vendor Links (Referral)</td>
                         <td class="p-4"><a href="{nt['aff_link_a']}" target="_blank" rel="nofollow sponsored" class="inline-block px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition-colors">Visit {pa} &rarr;</a></td>
                         <td class="p-4"><a href="{nt['aff_link_b']}" target="_blank" rel="nofollow sponsored" class="inline-block px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">Visit {pb} &rarr;</a></td>
-                        <td class="p-4 text-xs mono text-slate-500">Updated {today}</td>
+                        <td class="p-4 text-xs mono text-slate-500">Reviewed {today}</td>
                     </tr>
                 </tfoot>
             </table>
@@ -1192,34 +1275,48 @@ def render_html(nt: dict, data: ComparisonArticle, total_count: int) -> str:
             <p class="mt-2 text-sm text-amber-900 leading-relaxed">{data.hidden_gotchas}</p>
         </div>
 
-        <!-- Buyer FAQ Accordion (Backed by JSON-LD Schema for Google & AI Search) -->
+        <!-- Buyer FAQ Accordion -->
         <div class="mt-10">
             <h2 class="text-2xl font-bold text-slate-900 mb-4">Frequently Asked Questions: {pa} vs {pb}</h2>
             <div class="space-y-3">
                 {faq_html}
             </div>
         </div>
+
+        <!-- Internal Linking Grid for SEO Crawl Depth & Multi-Page Sessions -->
+        <div class="mt-12 pt-8 border-t border-slate-200">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-slate-900">Related B2B Software &amp; TCO Comparisons</h2>
+                <a href="/" class="text-xs font-semibold mono text-blue-600 hover:underline">View All {total_count} Matrices &rarr;</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {related_cards}
+            </div>
+        </div>
     </main>
 
-    <!-- Sticky Bottom Quick-Compare Bar for Mobile & Desktop Conversions -->
+    <!-- Sticky Bottom Quick-Compare Bar with FTC/ACCC Proximity Disclosure -->
     <div class="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-200 py-2.5 px-4 z-40 shadow-lg">
         <div class="max-w-5xl mx-auto flex items-center justify-between gap-2">
-            <span class="hidden sm:inline text-xs font-bold text-slate-700 mono">Quick Compare: {pa} vs {pb}</span>
+            <div class="hidden sm:block">
+                <span class="text-xs font-bold text-slate-800 mono">Compare: {pa} vs {pb}</span>
+                <span class="block text-[10px] text-slate-500">Referral links: we may earn a commission (<a href="/disclosure.html" class="underline">disclosure</a>)</span>
+            </div>
             <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+                <span class="sm:hidden text-[10px] text-slate-500 mono mr-1">Ad/Referral:</span>
                 <a href="{nt['aff_link_a']}" target="_blank" rel="nofollow sponsored" class="flex-1 sm:flex-initial text-center px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition-colors">
-                    Try {pa} &rarr;
+                    Visit {pa} &rarr;
                 </a>
                 <a href="{nt['aff_link_b']}" target="_blank" rel="nofollow sponsored" class="flex-1 sm:flex-initial text-center px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">
-                    Try {pb} &rarr;
+                    Visit {pb} &rarr;
                 </a>
             </div>
         </div>
     </div>
-{FOOTER}"""
+{get_footer()}"""
 
 
 def ping_indexnow(urls: list[str]):
-  """Automatically notifies Bing, ChatGPT Search, Copilot, DuckDuckGo & Yandex via IndexNow."""
   key_path = os.path.join(PUBLIC_DIR, f"{INDEXNOW_KEY}.txt")
   with open(key_path, "w", encoding="utf-8") as f:
     f.write(INDEXNOW_KEY)
@@ -1253,11 +1350,11 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
       f"# {BRAND_NAME}.com — B2B Software Compatibility, API & TCO Benchmarks",
       (
           "> Independent B2B SaaS architectural comparisons, REST API rate-limit"
-          " audits, Australian/APAC STP Phase 2 & BAS compliance, and 36-month"
-          " seat-scaling TCO pricing matrices."
+          " documentation audits, Australian/APAC STP Phase 2 & BAS compliance,"
+          " and 36-month seat-scaling TCO pricing matrices."
       ),
       "",
-      "## Published Head-to-Head Software Audits",
+      "## Published Head-to-Head Software Matrices",
   ]
 
   for raw_t in topics:
@@ -1293,7 +1390,7 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
                     {nt['product_a']} vs. {nt['product_b']}
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> {nt['use_case']}. Compare live USD/AUD seat scaling, API rate limits, and hidden contract fees.
+                    <strong>Focus:</strong> {nt['use_case']}. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
                 </p>
             </div>
             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
@@ -1305,7 +1402,7 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
   cat_buttons = (
       '<button type="button" data-filter="ALL" class="filter-btn px-3 py-1.5'
       " rounded-lg text-xs font-semibold mono bg-slate-900 text-white"
-      f' transition-colors">All Audits ({len(topics)})</button>'
+      f' transition-colors">All Matrices ({len(topics)})</button>'
   )
   for cat in sorted(categories):
     cat_buttons += (
@@ -1319,13 +1416,13 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
     <section class="bg-white border-b border-slate-200 py-12 sm:py-16 px-4 sm:px-6">
         <div class="max-w-6xl mx-auto">
             <div class="inline-flex items-center space-x-2 bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-200 mb-4 mono">
-                <span>INDEPENDENT SAAS ARCHITECTURE &amp; TCO BENCHMARK LAB</span>
+                <span>INDEPENDENT SAAS ARCHITECTURE &amp; TCO RESEARCH PUBLICATION</span>
             </div>
             <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 max-w-3xl leading-tight">
                 B2B Software Compatibility &amp; TCO Pricing Benchmarks
             </h1>
             <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
-                Plain-English verdicts and spec-level evaluations of B2B SaaS integrations, REST API rate ceilings, Australian STP Phase 2 / Xero BAS compliance, and interactive 36-month seat-scaling calculators.
+                Plain-English verdicts and documentation-verified comparisons of B2B SaaS integrations, REST API rate ceilings, Australian STP Phase 2 / Xero BAS compliance, and interactive 36-month seat-scaling calculators.
             </p>
             <div class="mt-6 max-w-xl">
                 <label for="matrixSearch" class="sr-only">Search software comparisons</label>
@@ -1379,57 +1476,60 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
         searchInput.addEventListener('input', filterCards);
     }})();
     </script>
-{FOOTER}"""
+{get_footer()}"""
 
   with open(
       os.path.join(PUBLIC_DIR, "index.html"), "w", encoding="utf-8"
   ) as f:
     f.write(index_html)
 
+  abn_line = get_abn_badge()
   legal_pages = {
       "about.html": (
-          "About B2BComparison Research Lab",
-          """
-            <h2 class="text-xl font-bold text-slate-900 mt-4 mb-2">Independent B2B Software Architecture &amp; TCO Audits</h2>
-            <p class="text-slate-600 leading-relaxed mb-4">B2BComparison.com is an independent software benchmarking and Total Cost of Ownership (TCO) modeling platform built for CTOs, Finance Directors, RevOps leaders, and SMB/Mid-Market procurement teams across Australia, APAC, and North America.</p>
+          "About B2BComparison.com",
+          f"""
+            <h2 class="text-xl font-bold text-slate-900 mt-4 mb-2">Independent B2B Software &amp; TCO Research Publication</h2>
+            <p class="text-slate-600 leading-relaxed mb-4">B2BComparison.com is an independent software documentation review and Total Cost of Ownership (TCO) modeling publication built for CTOs, Finance Directors, RevOps leaders, and SMB/Mid-Market procurement teams across Australia, APAC, and North America.</p>
             <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Why We Built B2BComparison.com</h3>
-            <p class="text-slate-600 leading-relaxed mb-4">Most software review directories rely on subjective user star-ratings and hide the technical realities that cause implementation failures: REST API rate ceilings, webhook retry bottlenecks, SAML SSO tier gating, and regional tax/payroll compliance (such as Australian ATO Single Touch Payroll Phase 2, Payday Super, and two-way Xero/QuickBooks general ledger mapping).</p>
-            <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Publication &amp; Contact Information</h3>
-            <p class="text-slate-600 leading-relaxed">B2BComparison.com is independently operated out of Brisbane, Queensland, Australia. For vendor specification updates, audit corrections, or partnership inquiries, contact our editorial desk at <span class="mono text-slate-900 font-semibold">admin@b2bcomparison.com</span>.</p>
+            <p class="text-slate-600 leading-relaxed mb-4">Most software directories rely on subjective star-ratings and omit the commercial and technical details that drive total cost: REST API rate ceilings, webhook retry queues, SAML SSO tier gating, and regional tax/payroll compliance (such as Australian ATO Single Touch Payroll Phase 2, Payday Super 2026, Fair Work Award interpretation, and two-way Xero/MYOB/QuickBooks ledger reconciliation).</p>
+            <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Entity, ABN &amp; Contact Information</h3>
+            <p class="text-slate-600 leading-relaxed mb-2">B2BComparison.com is independently owned and operated out of Brisbane, Queensland, Australia ({abn_line}).</p>
+            <p class="text-slate-600 leading-relaxed">For vendor specification updates, pricing corrections, or partnership inquiries, contact our editorial desk at <span class="mono text-slate-900 font-semibold">admin@b2bcomparison.com</span>.</p>
         """,
       ),
       "methodology.html": (
-          "Testing & Benchmarking Methodology",
+          "Documentation & TCO Benchmarking Methodology",
           """
-            <h2 class="text-xl font-bold text-slate-900 mt-4 mb-2">How We Audit Enterprise &amp; Mid-Market SaaS Platforms</h2>
-            <p class="text-slate-600 leading-relaxed mb-4">Every head-to-head matrix published on B2BComparison.com follows a standardized 4-vector technical and commercial evaluation protocol:</p>
+            <h2 class="text-xl font-bold text-slate-900 mt-4 mb-2">How We Evaluate &amp; Score B2B SaaS Platforms</h2>
+            <p class="text-slate-600 leading-relaxed mb-4">To ensure transparency under Australian Consumer Law (ACL) and international publishing standards, B2BComparison.com discloses that our matrices and composite scores are compiled through structured desk research of publicly published vendor documentation, developer portals, and commercial pricing schedules:</p>
             <ul class="list-disc pl-6 space-y-2.5 text-slate-600 mb-6">
-                <li><strong>REST &amp; GraphQL API Inspection:</strong> We review official developer documentation to verify request-per-minute rate limits, burst concurrency buckets, and webhook payload retry mechanics.</li>
-                <li><strong>ERP &amp; Accounting Ledger Fidelity:</strong> We audit whether integrations with Xero, MYOB, QuickBooks Online, and NetSuite support true bi-directional general ledger syncing, multi-currency FX reconciliation, and automated tax codes.</li>
-                <li><strong>Security &amp; Regional Governance Verification:</strong> We check public trust centers for active SOC2 Type II attestations, ISO 27001 certification, SAML 2.0 / SCIM provisioning, and Australian Privacy Act (APP) / ATO DSP compliance where applicable.</li>
-                <li><strong>Deterministic 36-Month TCO Modeling:</strong> We extract base platform fees and per-seat licensing tiers in both USD and AUD to model how total software costs scale from 5 to 250+ active users.</li>
+                <li><strong>REST &amp; GraphQL API Documentation Review:</strong> We inspect official vendor developer documentation to record published request-per-minute (RPM) rate limits, burst concurrency buckets, and webhook payload retry mechanics.</li>
+                <li><strong>ERP &amp; Accounting Integration Verification:</strong> We review official app marketplace listings (Xero App Store, QuickBooks Apps, NetSuite SuiteApps) to verify whether integrations support bi-directional general ledger syncing, multi-currency FX reconciliation, and Australian BAS/GST tax codes.</li>
+                <li><strong>Security &amp; Regional Governance Attestations:</strong> We check public vendor trust centers for active SOC2 Type II attestations, ISO 27001 certification, SAML 2.0 / SCIM provisioning tiers, and Australian Privacy Act (APP) / ATO DSP status where applicable.</li>
+                <li><strong>Deterministic 36-Month TCO Modeling:</strong> We extract published base platform fees and per-seat licensing tiers in USD and indicative AUD (exclusive of 10% GST) to model how software costs scale from 5 to 250 active seats.</li>
+                <li><strong>Composite Index Scoring:</strong> Page scores (e.g., 9.0/10) are calculated deterministically from the number of category specification advantages in our 8-point matrix.</li>
             </ul>
         """,
       ),
       "disclosure.html": (
-          "FTC & ACCC Affiliate Disclosure",
-          """
+          "FTC & ACCC Affiliate & Commercial Disclosure",
+          f"""
             <h2 class="text-xl font-bold text-slate-900 mt-4 mb-2">Commercial Affiliate &amp; Editorial Independence Disclosure</h2>
-            <p class="text-slate-600 leading-relaxed mb-4">In full compliance with the Australian Competition and Consumer Commission (ACCC) / Australian Consumer Law (ACL) and the United States Federal Trade Commission (FTC) 16 CFR Part 255 guidelines, B2BComparison.com discloses that we participate in B2B software referral and affiliate partner programs (including Impact.com, PartnerStack, and direct vendor programs).</p>
-            <p class="text-slate-600 leading-relaxed mb-4">When you click on outbound vendor links or request a software trial/demo through our comparison matrices, we may earn a referral commission at zero additional cost to you or your organization.</p>
-            <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Strict Editorial Firewall</h3>
-            <p class="text-slate-600 leading-relaxed">Commercial referral partnerships never alter our REST API rate limit reporting, security compliance badges, or deterministic TCO calculator outputs. All pricing and technical specifications are audited against publicly published vendor documentation.</p>
+            <p class="text-slate-600 leading-relaxed mb-4">In full compliance with the Australian Competition and Consumer Commission (ACCC) / Australian Consumer Law (Schedule 2 of the <em>Competition and Consumer Act 2010</em>) and the United States Federal Trade Commission (FTC) 16 CFR Part 255 guidelines, B2BComparison.com ({abn_line}) makes the following commercial disclosure:</p>
+            <p class="text-slate-600 leading-relaxed mb-4">B2BComparison.com is a reader-supported commercial publication. We participate in B2B software referral and affiliate partner programs (including Impact.com, PartnerStack, and direct SaaS vendor affiliate programs). When you click on outbound vendor links on our site, request a software demo, or sign up for a trial or subscription, we may receive a referral commission from the software vendor at <strong>zero additional cost</strong> to you or your organization.</p>
+            <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Scope of Market Coverage &amp; Editorial Firewall</h3>
+            <p class="text-slate-600 leading-relaxed">B2BComparison.com does not compare every software product available in the market; we focus on widely adopted B2B operational platforms. Commercial referral partnerships never alter our documented API rate-limit tables, compliance badges, or mathematical TCO calculator outputs.</p>
         """,
       ),
       "privacy.html": (
           "Privacy Policy & Terms of Service",
-          """
+          f"""
             <h2 class="text-xl font-bold text-slate-900 mt-4 mb-2">Privacy Policy &amp; Data Governance</h2>
-            <p class="text-slate-600 leading-relaxed mb-4">B2BComparison.com respects your privacy and complies with the Australian Privacy Principles (APPs) under the <em>Privacy Act 1988 (Cth)</em> as well as international data protection standards (GDPR/CCPA). We do not sell personal data or require user account registration to use our interactive TCO calculators.</p>
-            <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Analytics &amp; Outbound Attribution Cookies</h3>
-            <p class="text-slate-600 leading-relaxed mb-4">When you click an outbound vendor link, our affiliate attribution partners (such as Impact.com or PartnerStack) may set a standard referral tracking cookie in your browser solely to attribute commercial signups.</p>
-            <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Terms of Use &amp; Governing Law</h3>
-            <p class="text-slate-600 leading-relaxed">All benchmarks and TCO calculators are provided for informational and procurement estimation purposes. Commercial software pricing and API limits are subject to change by the respective vendors. These terms are governed by the laws of Queensland, Australia.</p>
+            <p class="text-slate-600 leading-relaxed mb-4">B2BComparison.com ({abn_line}) respects your privacy and handles information in accordance with the Australian Privacy Principles (APPs) under the <em>Privacy Act 1988 (Cth)</em> as well as international data protection standards (GDPR/CCPA). We do not sell personal data or require user account registration to use our interactive TCO calculators.</p>
+            <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Analytics &amp; Outbound Affiliate Attribution Cookies</h3>
+            <p class="text-slate-600 leading-relaxed mb-4">Our site is hosted on Cloudflare's global edge network, which logs anonymized technical request metadata for security and performance. When you click an outbound vendor link (marked with <span class="mono">rel="nofollow sponsored"</span>), our affiliate attribution partners (such as Impact.com, PartnerStack, or the vendor's affiliate platform) may place a referral tracking cookie in your browser solely to attribute commercial signups. For privacy inquiries, contact <span class="mono">admin@b2bcomparison.com</span>.</p>
+            <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Terms of Use, GST Disclaimer &amp; Governing Law</h3>
+            <p class="text-slate-600 leading-relaxed">All comparisons, specifications, and TCO calculators are provided for general informational and procurement estimation purposes only and do not constitute financial, tax, or legal advice. Unless explicitly stated otherwise, all USD and indicative AUD prices are shown <strong>exclusive of 10% Australian Goods and Services Tax (ex. GST)</strong> and local sales taxes. Software vendors change pricing and API limits frequently; always verify final commercial terms directly on the vendor's official website. These terms are governed by the laws of Queensland, Australia.</p>
         """,
       ),
   }
@@ -1442,7 +1542,7 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
             {body}
         </div>
     </main>
-{FOOTER}"""
+{get_footer()}"""
     with open(os.path.join(PUBLIC_DIR, filename), "w", encoding="utf-8") as out:
       out.write(page)
 
@@ -1500,7 +1600,7 @@ def main():
     if (not topic.get("processed") or not has_cache) and generated_ai_count < 3:
       print(f"Generating live AI + Scraped comparison for: {nt['id']}...")
       article_data, used_ai = synthesize_comparison(nt, use_ai=True)
-      html_out = render_html(nt, article_data, len(topics))
+      html_out = render_html(nt, article_data, topics)
       with open(out_path, "w", encoding="utf-8") as out_f:
         out_f.write(html_out)
       if used_ai:
@@ -1512,7 +1612,7 @@ def main():
           f"Rendering UI & TCO Calculator from persistent cache for: {nt['id']}"
       )
       article_data, _ = synthesize_comparison(nt, use_ai=False)
-      html_out = render_html(nt, article_data, len(topics))
+      html_out = render_html(nt, article_data, topics)
       with open(out_path, "w", encoding="utf-8") as out_f:
         out_f.write(html_out)
 
