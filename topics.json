@@ -30,7 +30,7 @@
     "url_b": "https://clickup.com/pricing",
     "aff_link_a": "https://your-affiliate-link.com/monday",
     "aff_link_b": "https://your-affiliate-link.com/clickup",
-    "processed": false
+    "processed": true
   },
   {
     "id": "hubspot-vs-pipedrive-quickbooks-sync",
@@ -41,7 +41,7 @@
     "url_b": "https://www.pipedrive.com/en/pricing",
     "aff_link_a": "https://your-affiliate-link.com/hubspot",
     "aff_link_b": "https://your-affiliate-link.com/pipedrive",
-    "processed": false
+    "processed": true
   },
   {
     "id": "freshbooks-vs-xero-multi-entity",
