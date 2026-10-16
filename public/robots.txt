@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://b2bcomparison.com/sitemap.xml
+# AI Answer Engine Index: https://b2bcomparison.com/llms.txt

@@ -116,7 +116,7 @@
     "priceB_base": 60,
     "priceB_seat": 0,
     "compliance": "SOC2 & GDPR Compliant",
-    "processed": false
+    "processed": true
   },
   {
     "id": "zendesk-vs-intercom-sla-routing",
@@ -133,7 +133,7 @@
     "priceB_base": 0,
     "priceB_seat": 39,
     "compliance": "SOC2 Type II & HIPAA",
-    "processed": false
+    "processed": true
   },
   {
     "id": "shopify-vs-bigcommerce-b2b-api",
@@ -150,7 +150,7 @@
     "priceB_base": 105,
     "priceB_seat": 0,
     "compliance": "PCI-DSS Level 1 & SOC2",
-    "processed": false
+    "processed": true
   },
   {
     "id": "asana-vs-smartsheet-resource-audit",

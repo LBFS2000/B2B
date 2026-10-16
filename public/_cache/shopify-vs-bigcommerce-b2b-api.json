@@ -1,0 +1,74 @@
+{
+  "seo_title": "Shopify vs BigCommerce: Headless API & B2B Audit (2026)",
+  "meta_description": "Technical comparison of Shopify Plus vs BigCommerce Performance for headless GraphQL API limits and B2B wholesale checkout architecture.",
+  "direct_verdict": "Shopify Plus wins for high-volume headless storefronts requiring massive API throughput and native checkout customization. BigCommerce Performance is superior for complex B2B wholesale requirements where native price lists and customer segmentation are prioritized over custom checkout logic.",
+  "comparison_matrix": [
+    {
+      "feature_name": "GraphQL API Rate Limits",
+      "product_a_spec": "Up to 10x standard limits on Plus",
+      "product_b_spec": "Standardized limits based on plan",
+      "winner": "Shopify"
+    },
+    {
+      "feature_name": "B2B Wholesale Checkout",
+      "product_a_spec": "Fully customizable via Checkout Extensibility",
+      "product_b_spec": "Native price lists and customer groups",
+      "winner": "Tie"
+    },
+    {
+      "feature_name": "Headless Storefronts",
+      "product_a_spec": "25 included on Plus",
+      "product_b_spec": "Multi-storefront add-on model",
+      "winner": "Shopify"
+    },
+    {
+      "feature_name": "Transaction Fees",
+      "product_a_spec": "0.2% on Plus",
+      "product_b_spec": "0% on Performance (contracted)",
+      "winner": "BigCommerce"
+    },
+    {
+      "feature_name": "Inventory Locations",
+      "product_a_spec": "200 locations",
+      "product_b_spec": "8 locations",
+      "winner": "Shopify"
+    },
+    {
+      "feature_name": "Native B2B Features",
+      "product_a_spec": "Unlimited catalogs",
+      "product_b_spec": "SKU-level price lists",
+      "winner": "BigCommerce"
+    },
+    {
+      "feature_name": "API Data Access",
+      "product_a_spec": "Full access on Plus",
+      "product_b_spec": "Standardized API access",
+      "winner": "Shopify"
+    },
+    {
+      "feature_name": "Starting Enterprise Price",
+      "product_a_spec": "$2,300/mo",
+      "product_b_spec": "$1,499/mo",
+      "winner": "BigCommerce"
+    }
+  ],
+  "product_a_pros": [
+    "Superior GraphQL API throughput for headless builds",
+    "Checkout Extensibility allows deep customization of B2B flows",
+    "Massive ecosystem of certified apps for complex integrations"
+  ],
+  "product_a_cons": [
+    "High base cost for Plus entry",
+    "Third-party transaction fees persist unless using Shopify Payments"
+  ],
+  "product_b_pros": [
+    "Native SKU-level price lists reduce need for custom B2B middleware",
+    "Lower entry point for enterprise-grade performance plans",
+    "Flexible open payment provider options without transaction penalties"
+  ],
+  "product_b_cons": [
+    "Limited inventory location scaling compared to Shopify",
+    "Multi-storefront architecture requires paid add-ons"
+  ],
+  "hidden_gotchas": "Shopify Plus API limits are often misunderstood; while they offer 10x increases, these are not infinite and require careful bucket management for high-concurrency headless storefronts. BigCommerce's 'Performance' plan pricing is highly variable based on GMV, and the 'Open Payment Provider' fee can silently erode margins if you do not utilize their embedded payment partners. Both platforms enforce strict contract lock-ins for enterprise tiers, making migration out of their respective ecosystems expensive and technically taxing."
+}

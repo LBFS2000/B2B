@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-slate-50 text-slate-900 antialiased">
+<html lang="en-AU" class="bg-slate-50 text-slate-900 antialiased scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About B2BComparison Research Lab | B2BComparison.com</title>
     <meta name="description" content="About B2BComparison Research Lab">
+    <meta property="og:title" content="About B2BComparison Research Lab | B2BComparison.com">
+    <meta property="og:description" content="About B2BComparison Research Lab">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://b2bcomparison.com/about.html">
     <link rel="canonical" href="https://b2bcomparison.com/about.html">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,36 +18,46 @@
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         .mono { font-family: 'JetBrains Mono', monospace; }
     </style>
+    
 </head>
-<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-16 sm:pb-0">
     <!-- Top Compliance & Transparency Bar -->
     <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800">
         <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
             <span><strong class="text-emerald-400 mono">● DATASET v2026.10</strong> — Verified REST API Limits, SOC2/ATO Governance &amp; TCO Audits</span>
-            <span class="text-slate-400">Reader-supported independent research. <a href="/disclosure.html" class="underline text-slate-200 hover:text-white">Affiliate &amp; Editorial Disclosure</a></span>
+            <span class="text-slate-400">Reader-supported independent research. <a href="/disclosure.html" class="underline text-slate-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Affiliate &amp; Editorial Disclosure</a></span>
         </div>
     </div>
 
     <!-- Sticky Enterprise Navigation Header -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-            <a href="/" class="flex items-center space-x-2.5 group">
+            <a href="/" class="flex items-center space-x-2.5 group focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-lg" aria-label="B2BComparison Home">
                 <div class="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold mono text-sm shadow-sm group-hover:bg-blue-700 transition-colors">B2B</div>
                 <div>
                     <span class="font-extrabold text-lg tracking-tight text-slate-900">B2B<span class="text-blue-600">Comparison</span>.com</span>
                     <span class="hidden sm:inline-block ml-2 text-[10px] mono uppercase bg-slate-100 text-slate-600 px-2 py-0.5 rounded border border-slate-200">APAC &amp; Global Lab</span>
                 </div>
             </a>
-            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600" aria-label="Main Navigation">
                 <a href="/" class="hover:text-blue-600 transition-colors">All Matrices</a>
                 <a href="/methodology.html" class="hover:text-blue-600 transition-colors">Testing Methodology</a>
                 <a href="/about.html" class="hover:text-blue-600 transition-colors">About Lab</a>
                 <a href="/disclosure.html" class="hover:text-blue-600 transition-colors">Disclosure</a>
             </nav>
-            <div class="text-xs mono bg-blue-50 text-blue-700 px-3 py-1.5 rounded-md border border-blue-200 font-semibold">
-                15 Live Audits
+            <div class="flex items-center space-x-2">
+                <div class="text-xs mono bg-blue-50 text-blue-700 px-3 py-1.5 rounded-md border border-blue-200 font-semibold">
+                    15 Live Audits
+                </div>
             </div>
         </div>
+        <!-- Mobile Accessible Quick-Nav Bar -->
+        <nav class="flex md:hidden items-center justify-around bg-slate-50 border-t border-slate-200 py-2 px-2 text-xs font-semibold text-slate-600" aria-label="Mobile Navigation">
+            <a href="/" class="hover:text-blue-600 px-2 py-1">All Matrices</a>
+            <a href="/methodology.html" class="hover:text-blue-600 px-2 py-1">Methodology</a>
+            <a href="/about.html" class="hover:text-blue-600 px-2 py-1">About Lab</a>
+            <a href="/disclosure.html" class="hover:text-blue-600 px-2 py-1">Disclosure</a>
+        </nav>
     </header>
     <main class="flex-grow max-w-3xl w-full mx-auto px-4 sm:px-6 py-12">
         <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
@@ -80,7 +94,7 @@
                     <li><a href="/methodology.html" class="hover:text-white transition-colors">Benchmarking &amp; TCO Methodology</a></li>
                     <li><a href="/disclosure.html" class="hover:text-white transition-colors">FTC &amp; ACCC Affiliate Disclosure</a></li>
                     <li><a href="/privacy.html" class="hover:text-white transition-colors">Privacy Policy &amp; Terms of Service</a></li>
-                    <li><a href="/sitemap.xml" class="hover:text-white transition-colors">XML Sitemap</a></li>
+                    <li><a href="/sitemap.xml" class="hover:text-white transition-colors">XML Sitemap</a> • <a href="/llms.txt" class="hover:text-white transition-colors">AI / LLMs.txt</a></li>
                 </ul>
             </div>
             <div>

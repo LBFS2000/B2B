@@ -1,0 +1,74 @@
+{
+  "seo_title": "Zendesk vs Intercom: AI Agent & API Architecture Audit (2026)",
+  "meta_description": "Technical audit of Zendesk vs Intercom for omnichannel routing, AI agent costs, and webhook extensibility for enterprise support stacks.",
+  "direct_verdict": "Zendesk is the superior choice for high-volume, complex omnichannel support requiring deep ERP integration and granular SLA control. Intercom wins for product-led growth teams prioritizing rapid AI deployment and lower initial overhead via usage-based pricing.",
+  "comparison_matrix": [
+    {
+      "feature_name": "Base Seat Pricing",
+      "product_a_spec": "$19/agent/mo (Support Team)",
+      "product_b_spec": "$29/seat/mo (Essential)",
+      "winner": "Zendesk"
+    },
+    {
+      "feature_name": "AI Agent Cost Model",
+      "product_a_spec": "Bundled in Suite tiers",
+      "product_b_spec": "$0.99 per resolution",
+      "winner": "Intercom"
+    },
+    {
+      "feature_name": "API Rate Limits",
+      "product_a_spec": "700 requests/minute",
+      "product_b_spec": "Variable based on tier",
+      "winner": "Zendesk"
+    },
+    {
+      "feature_name": "SLA Routing Logic",
+      "product_a_spec": "Advanced multi-condition triggers",
+      "product_b_spec": "Standard round-robin/assignment",
+      "winner": "Zendesk"
+    },
+    {
+      "feature_name": "Webhook Extensibility",
+      "product_a_spec": "High-volume event streaming",
+      "product_b_spec": "Standard REST hooks",
+      "winner": "Zendesk"
+    },
+    {
+      "feature_name": "Compliance Standards",
+      "product_a_spec": "SOC2, HIPAA, GDPR, FedRAMP",
+      "product_b_spec": "SOC2, HIPAA, GDPR",
+      "winner": "Zendesk"
+    },
+    {
+      "feature_name": "Omnichannel Native",
+      "product_a_spec": "Full voice/email/social/chat",
+      "product_b_spec": "Chat/email focus",
+      "winner": "Zendesk"
+    },
+    {
+      "feature_name": "Setup Time",
+      "product_a_spec": "Weeks (Enterprise complexity)",
+      "product_b_spec": "Hours (Plug-and-play)",
+      "winner": "Intercom"
+    }
+  ],
+  "product_a_pros": [
+    "Superior omnichannel routing engine for complex global support teams",
+    "Robust API with 700 req/min limit supporting high-frequency data sync",
+    "Comprehensive compliance certifications including FedRAMP"
+  ],
+  "product_a_cons": [
+    "Steep learning curve for admin configuration and workflow management",
+    "High total cost of ownership for mid-market teams requiring advanced AI features"
+  ],
+  "product_b_pros": [
+    "Transparent $0.99 per resolution pricing for AI agents",
+    "Exceptional UI/UX for rapid deployment in product-led organizations",
+    "Native integration with modern product analytics stacks"
+  ],
+  "product_b_cons": [
+    "Limited SLA routing capabilities compared to enterprise-grade ticketing",
+    "Usage-based costs can scale unpredictably during high-volume support spikes"
+  ],
+  "hidden_gotchas": "Zendesk hides significant costs behind 'Enterprise' tier requirements for advanced AI governance and sandbox environments, often forcing upgrades that double per-seat costs. Intercom's $0.99 per resolution model appears cheap, but the 'outcome' definition is broad; if a customer reopens a ticket, you may be double-billed, and the lack of native voice routing forces reliance on expensive third-party integrations that inflate the monthly bill beyond the advertised seat price."
+}
