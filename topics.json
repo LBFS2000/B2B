@@ -65,7 +65,7 @@
     "priceB_base": 0,
     "priceB_seat": 24,
     "compliance": "SOC2 Type II & GDPR",
-    "processed": false
+    "processed": true
   },
   {
     "id": "freshbooks-vs-xero-multi-entity",
@@ -82,7 +82,7 @@
     "priceB_base": 42,
     "priceB_seat": 0,
     "compliance": "ISO 27001 & PCI-DSS",
-    "processed": false
+    "processed": true
   },
   {
     "id": "notion-vs-coda-enterprise-wiki",
@@ -99,7 +99,7 @@
     "priceB_base": 0,
     "priceB_seat": 12,
     "compliance": "SOC2 Type II & SAML SSO",
-    "processed": false
+    "processed": true
   },
   {
     "id": "activecampaign-vs-klaviyo-webhooks",

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notion vs Coda: Technical Spec & TCO Matrix (2026)</title>
-    <meta name="description" content="Side-by-side architectural audit of Notion vs Coda covering Enterprise Wiki Permissions, SAML SSO & REST API Payload Limits, REST API rate limits, and 36-month seat TCO.">
+    <title>Notion vs Coda: Enterprise API & Security Audit (2026)</title>
+    <meta name="description" content="Technical comparison of Notion vs Coda for enterprise wiki permissions, SAML SSO, and REST API throughput for scaling organizations.">
     <link rel="canonical" href="https://b2bcomparison.com/notion-vs-coda-enterprise-wiki.html">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,7 +54,7 @@
             <span class="text-xs mono text-slate-500 ml-auto">Last Audited: 2026-10-16</span>
         </div>
 
-        <h1 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Notion vs Coda: Technical Spec & TCO Matrix (2026)</h1>
+        <h1 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Notion vs Coda: Enterprise API & Security Audit (2026)</h1>
         <p class="mt-2 text-sm text-slate-500">Focus Vector: <strong class="text-slate-700">Enterprise Wiki Permissions, SAML SSO & REST API Payload Limits</strong></p>
 
         <!-- Executive Verdict Box -->
@@ -63,7 +63,7 @@
                 <span class="text-xs uppercase tracking-wider text-emerald-400 font-bold mono">● Systems Architect Verdict</span>
                 <span class="text-[11px] text-slate-400 mono">Commercial &amp; Technical Audit</span>
             </div>
-            <p class="text-base sm:text-lg text-slate-100 leading-relaxed">Choose Notion if your organization requires deep two-way ERP general ledger synchronization and granular role-based access control for enterprise wiki permissions, saml sso & rest api payload limits. Choose Coda if you prioritize rapid self-serve onboarding and predictable seat scaling without base platform overhead.</p>
+            <p class="text-base sm:text-lg text-slate-100 leading-relaxed">Notion is the superior choice for large-scale documentation and granular security controls via SCIM and DLP integrations. Coda wins for teams requiring complex, logic-heavy relational data applications that demand high-frequency API interactions.</p>
             <div class="mt-5 flex flex-wrap gap-3">
                 <a href="https://www.notion.so/pricing" target="_blank" rel="nofollow sponsored" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
                     Verify Notion Live Tier &amp; API Docs &rarr;
@@ -235,52 +235,52 @@
                 </thead>
                 <tbody>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-            <td class="p-4 font-semibold text-slate-900 text-sm">Primary Architecture Focus</td>
-            <td class="p-4 text-slate-600 text-sm">Enterprise Wiki Permissions, SAML SSO & REST API Payload Limits</td>
-            <td class="p-4 text-slate-600 text-sm">Enterprise Wiki Permissions, SAML SSO & REST API Payload Limits</td>
+            <td class="p-4 font-semibold text-slate-900 text-sm">SAML SSO Availability</td>
+            <td class="p-4 text-slate-600 text-sm">Enterprise Plan only</td>
+            <td class="p-4 text-slate-600 text-sm">Enterprise Plan only</td>
             <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Tie</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-            <td class="p-4 font-semibold text-slate-900 text-sm">Commercial Licensing Model</td>
-            <td class="p-4 text-slate-600 text-sm">$0/mo base + $15/seat</td>
-            <td class="p-4 text-slate-600 text-sm">$0/mo base + $12/seat</td>
+            <td class="p-4 font-semibold text-slate-900 text-sm">SCIM User Provisioning</td>
+            <td class="p-4 text-slate-600 text-sm">Native support on Enterprise</td>
+            <td class="p-4 text-slate-600 text-sm">Supported via Okta/OneLogin</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Notion</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">API Rate Limits</td>
+            <td class="p-4 text-slate-600 text-sm">3 requests per second</td>
+            <td class="p-4 text-slate-600 text-sm">10 requests per second</td>
             <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Coda</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-            <td class="p-4 font-semibold text-slate-900 text-sm">REST API Rate Ceiling</td>
-            <td class="p-4 text-slate-600 text-sm">300 requests/min (Burst token bucket)</td>
-            <td class="p-4 text-slate-600 text-sm">150–200 requests/min (Tier dependent)</td>
+            <td class="p-4 font-semibold text-slate-900 text-sm">Granular Permissions</td>
+            <td class="p-4 text-slate-600 text-sm">Database row-level access</td>
+            <td class="p-4 text-slate-600 text-sm">Page and table-level access</td>
             <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Notion</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-            <td class="p-4 font-semibold text-slate-900 text-sm">Webhook Event Reliability</td>
-            <td class="p-4 text-slate-600 text-sm">Real-time JSON payloads + exponential retry queue</td>
-            <td class="p-4 text-slate-600 text-sm">Standard webhook triggers + polling fallback</td>
+            <td class="p-4 font-semibold text-slate-900 text-sm">DLP/SIEM Integration</td>
+            <td class="p-4 text-slate-600 text-sm">Native API hooks for DLP</td>
+            <td class="p-4 text-slate-600 text-sm">Limited native support</td>
             <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Notion</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-            <td class="p-4 font-semibold text-slate-900 text-sm">ERP & Accounting Ledger Sync</td>
-            <td class="p-4 text-slate-600 text-sm">Native bi-directional Xero, QuickBooks & NetSuite sync</td>
-            <td class="p-4 text-slate-600 text-sm">Standard invoice/contact sync (Custom objects via API)</td>
+            <td class="p-4 font-semibold text-slate-900 text-sm">Max File Upload Size</td>
+            <td class="p-4 text-slate-600 text-sm">5GB per file</td>
+            <td class="p-4 text-slate-600 text-sm">2GB per file</td>
             <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Notion</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-            <td class="p-4 font-semibold text-slate-900 text-sm">Security & Compliance Attestation</td>
-            <td class="p-4 text-slate-600 text-sm">SOC2 Type II & SAML SSO + immutable 90-day audit logs</td>
-            <td class="p-4 text-slate-600 text-sm">SOC2 Type II & SAML SSO standard tier coverage</td>
+            <td class="p-4 font-semibold text-slate-900 text-sm">Enterprise Pricing</td>
+            <td class="p-4 text-slate-600 text-sm">Custom quote required</td>
+            <td class="p-4 text-slate-600 text-sm">Custom quote required</td>
             <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Tie</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-            <td class="p-4 font-semibold text-slate-900 text-sm">SAML 2.0 SSO & SCIM Provisioning</td>
-            <td class="p-4 text-slate-600 text-sm">Native Okta, Microsoft Entra ID & Google SSO</td>
-            <td class="p-4 text-slate-600 text-sm">Available on Enterprise tier / SSO add-on</td>
+            <td class="p-4 font-semibold text-slate-900 text-sm">Audit Log Retention</td>
+            <td class="p-4 text-slate-600 text-sm">Unlimited (Enterprise)</td>
+            <td class="p-4 text-slate-600 text-sm">90 days standard</td>
             <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Notion</span></td>
-        </tr>
-        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-            <td class="p-4 font-semibold text-slate-900 text-sm">Implementation & Data Migration SLA</td>
-            <td class="p-4 text-slate-600 text-sm">5–14 business days (Guided schema migration)</td>
-            <td class="p-4 text-slate-600 text-sm">1–3 business days (Self-serve CSV/API import)</td>
-            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Coda</span></td>
         </tr></tbody>
             </table>
         </div>
@@ -290,8 +290,8 @@
             <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
                 <div>
                     <h3 class="text-xl font-bold text-slate-900 mb-4">Notion Architectural Breakdown</h3>
-                    <ul class="text-sm text-slate-700 mb-4 list-none pl-0"><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Higher REST API concurrency limits and automated webhook retry queues for enterprise wiki permissions, saml sso & rest api payload limits.</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Granular role-based access control (RBAC) with automated SCIM user de-provisioning.</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Deep native general-ledger mapping for multi-currency Xero and QuickBooks environments.</span></li></ul>
-                    <ul class="text-sm text-slate-600 list-none pl-0 border-t border-slate-100 pt-3"><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2'>✗</span><span>Base platform fee ($0/mo) plus per-seat licensing increases TCO for smaller teams.</span></li><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2'>✗</span><span>Initial schema mapping and sandbox validation require dedicated IT/RevOps configuration.</span></li></ul>
+                    <ul class="text-sm text-slate-700 mb-4 list-none pl-0"><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Superior SCIM and DLP integration for enterprise compliance</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Granular row-level database permissions for sensitive data</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Higher file upload limits suitable for media-heavy wikis</span></li></ul>
+                    <ul class="text-sm text-slate-600 list-none pl-0 border-t border-slate-100 pt-3"><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2'>✗</span><span>Strict 3 RPS API limit hinders high-frequency automation</span></li><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2'>✗</span><span>High cost of entry for advanced security features</span></li></ul>
                 </div>
                 <a href="https://www.notion.so/pricing" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-900 font-semibold text-sm rounded-lg transition-colors">
                     Explore Notion Documentation &amp; Pricing &rarr;
@@ -301,8 +301,8 @@
             <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
                 <div>
                     <h3 class="text-xl font-bold text-slate-900 mb-4">Coda Architectural Breakdown</h3>
-                    <ul class="text-sm text-slate-700 mb-4 list-none pl-0"><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Rapid self-serve deployment with minimal middleware configuration required on day one.</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Predictable seat scaling ($12/seat) tailored for growing SMB and mid-market teams.</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Intuitive admin console that reduces training overhead for non-technical department leads.</span></li></ul>
-                    <ul class="text-sm text-slate-600 list-none pl-0 border-t border-slate-100 pt-3"><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2'>✗</span><span>Lower API burst ceilings can bottleneck high-frequency end-of-month batch syncs.</span></li><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2'>✗</span><span>Advanced SAML SSO and custom audit log retention are gated behind higher commercial tiers.</span></li></ul>
+                    <ul class="text-sm text-slate-700 mb-4 list-none pl-0"><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Higher API throughput for complex data-driven workflows</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Advanced formulaic logic within documents</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Better performance for interactive data dashboards</span></li></ul>
+                    <ul class="text-sm text-slate-600 list-none pl-0 border-t border-slate-100 pt-3"><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2'>✗</span><span>Limited native SIEM/DLP integration capabilities</span></li><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2'>✗</span><span>Shorter audit log retention periods compared to competitors</span></li></ul>
                 </div>
                 <a href="https://coda.io/pricing" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-900 font-semibold text-sm rounded-lg transition-colors">
                     Explore Coda Documentation &amp; Pricing &rarr;
@@ -313,7 +313,7 @@
         <!-- Hidden Gotchas -->
         <div class="mt-10 p-6 bg-amber-50 border border-amber-200 rounded-xl">
             <h3 class="font-bold text-amber-900 mono uppercase text-xs tracking-wider">⚠ Contract Lock-In, Add-On Fees &amp; API Rate Gotchas</h3>
-            <p class="mt-2 text-sm text-amber-900 leading-relaxed">When migrating between Notion and Coda, procurement teams frequently overlook historical audit-trail export limits, SAML SSO 'SSO-tax' tier upgrades, and multi-currency FX settlement spreads (typically 0.5% to 2.0% above mid-market rates). Always verify whether sandbox API environments and dedicated webhook retry queues are included in your base commercial tier before signing an annual order form.</p>
+            <p class="mt-2 text-sm text-amber-900 leading-relaxed">Notion enforces a strict 3 requests per second limit on its public API, which creates significant bottlenecks for automated data synchronization in large environments. Coda offers higher throughput but often requires custom 'Packs' development to handle complex authentication, which can lead to hidden maintenance overhead. Both platforms lock advanced security features behind Enterprise tiers, and buyers should be wary of 'per-seat' pricing models that inflate rapidly when scaling guest access or external collaborator accounts.</p>
         </div>
     </main>
 
