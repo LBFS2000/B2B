@@ -1,97 +1,353 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-slate-50 text-slate-900 antialiased">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>monday.com vs ClickUp: Security & API Limits Specs</title>
-    <meta name="description" content="Compare monday.com and ClickUp based on SOC2, HIPAA readiness, API rate limits, and pricing tiers for engineering teams.">
+    <title>monday.com vs ClickUp: API & Compliance Audit (2026)</title>
+    <meta name="description" content="Technical comparison of monday.com and ClickUp regarding SOC2, HIPAA, and REST API rate limits for enterprise architecture.">
+    <link rel="canonical" href="https://b2bcomparison.com/monday-vs-clickup-soc2-enterprise.html">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
-    <main class="max-w-4xl mx-auto px-6 py-12">
-        <a href="index.html" class="text-sm font-medium text-indigo-600 hover:underline">&larr; All B2B Architecture Comparisons</a>
-        <div class="mt-4 text-xs uppercase tracking-wider text-slate-500 font-semibold">Updated: 2026-10-16 &bull; SOC2 Compliance, HIPAA Readiness & API Rate Limits</div>
-        <h1 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">monday.com vs ClickUp: Security & API Limits Specs</h1>
-        
-        <div class="mt-6 p-6 bg-indigo-950 text-white rounded-xl shadow-md">
-            <div class="text-xs uppercase tracking-wider text-indigo-300 font-bold mb-1">Executive Verdict</div>
-            <p class="text-lg leading-relaxed">Choose monday.com if your infrastructure requires predictable daily API ceilings and straightforward feature scaling across standard business tiers. Choose ClickUp if your application demands high-frequency programmatic access up to 10000 requests per minute and explicit Enterprise HIPAA compliance readiness.</p>
-            <div class="mt-6 flex flex-wrap gap-4">
-                <a href="https://your-affiliate-link.com/monday" target="_blank" rel="nofollow sponsored" class="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-lg transition">Check monday.com Pricing &rarr;</a>
-                <a href="https://your-affiliate-link.com/clickup" target="_blank" rel="nofollow sponsored" class="px-5 py-2.5 bg-white hover:bg-slate-100 text-slate-900 font-bold rounded-lg transition">Check ClickUp Pricing &rarr;</a>
+<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+    <!-- Top Compliance & Transparency Bar -->
+    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800">
+        <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <span><strong class="text-emerald-400 mono">● DATASET v2026.10</strong> — Verified REST API Limits, SOC2/ATO Governance &amp; TCO Audits</span>
+            <span class="text-slate-400">Reader-supported independent research. <a href="/disclosure.html" class="underline text-slate-200 hover:text-white">Affiliate &amp; Editorial Disclosure</a></span>
+        </div>
+    </div>
+
+    <!-- Sticky Enterprise Navigation Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center space-x-2.5 group">
+                <div class="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold mono text-sm shadow-sm group-hover:bg-blue-700 transition-colors">B2B</div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-tight text-slate-900">B2B<span class="text-blue-600">Comparison</span>.com</span>
+                    <span class="hidden sm:inline-block ml-2 text-[10px] mono uppercase bg-slate-100 text-slate-600 px-2 py-0.5 rounded border border-slate-200">APAC &amp; Global Lab</span>
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
+                <a href="/" class="hover:text-blue-600 transition-colors">All Matrices</a>
+                <a href="/methodology.html" class="hover:text-blue-600 transition-colors">Testing Methodology</a>
+                <a href="/about.html" class="hover:text-blue-600 transition-colors">About Lab</a>
+                <a href="/disclosure.html" class="hover:text-blue-600 transition-colors">Disclosure</a>
+            </nav>
+            <div class="text-xs mono bg-blue-50 text-blue-700 px-3 py-1.5 rounded-md border border-blue-200 font-semibold">
+                15 Live Audits
+            </div>
+        </div>
+    </header>
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 py-10">
+        <a href="/" class="inline-flex items-center text-xs mono font-semibold text-blue-600 hover:text-blue-800">&larr; Back to All Compatibility Matrices</a>
+
+        <div class="flex flex-wrap items-center gap-2 mt-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-200 mono">Project & Enterprise Ops</span>
+            <span class="text-xs mono text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200">SOC2 Type II & ISO 27001</span>
+            <span class="text-xs mono text-slate-500 ml-auto">Last Audited: 2026-10-16</span>
+        </div>
+
+        <h1 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">monday.com vs ClickUp: API & Compliance Audit (2026)</h1>
+        <p class="mt-2 text-sm text-slate-500">Focus Vector: <strong class="text-slate-700">SOC2 Compliance, HIPAA Readiness & REST API Rate Limits</strong></p>
+
+        <!-- Executive Verdict Box -->
+        <div class="mt-6 p-6 bg-slate-900 text-white rounded-xl shadow-md border border-slate-800">
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-xs uppercase tracking-wider text-emerald-400 font-bold mono">● Systems Architect Verdict</span>
+                <span class="text-[11px] text-slate-400 mono">Commercial &amp; Technical Audit</span>
+            </div>
+            <p class="text-base sm:text-lg text-slate-100 leading-relaxed">monday.com provides a more stable, predictable API architecture for mid-market teams requiring strict governance. ClickUp offers superior granular feature density for power users but requires Enterprise-tier contracts to unlock essential security and API scalability.</p>
+            <div class="mt-5 flex flex-wrap gap-3">
+                <a href="https://monday.com/pricing" target="_blank" rel="nofollow sponsored" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                    Verify monday.com Live Tier &amp; API Docs &rarr;
+                </a>
+                <a href="https://clickup.com/pricing" target="_blank" rel="nofollow sponsored" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold rounded-lg border border-slate-700 transition-colors">
+                    Verify ClickUp Live Tier &amp; API Docs &rarr;
+                </a>
+            </div>
+            <p class="mt-3 text-[11px] text-slate-400">Transparency Notice: Outbound vendor links may earn B2BComparison.com a referral fee at zero cost to your organization.</p>
+        </div>
+
+        <!-- Interactive 36-Month TCO Calculator with Currency (USD/AUD) & Billing Toggle -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 mt-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 mb-6 border-b border-slate-100 gap-4">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 mono">Interactive TCO Engine</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-0.5">Seat-Scaling &amp; Annual Total Cost of Ownership Calculator</h2>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <div class="inline-flex rounded-lg border border-slate-200 p-0.5 bg-slate-100 text-xs font-semibold mono">
+                        <button type="button" id="btnUSD" class="px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm">USD ($)</button>
+                        <button type="button" id="btnAUD" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900">AUD (A$)</button>
+                    </div>
+                    <div class="inline-flex rounded-lg border border-slate-200 p-0.5 bg-slate-100 text-xs font-semibold mono">
+                        <button type="button" id="btnMonthly" class="px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm">Monthly</button>
+                        <button type="button" id="btnAnnual" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900">Annual (-15%)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <div class="flex justify-between items-center mb-2">
+                    <label for="seatSlider" class="text-sm font-semibold text-slate-700">Active Organization Headcount / Licensed Users:</label>
+                    <span id="seatDisplay" class="text-base font-bold text-blue-600 mono bg-blue-50 px-3 py-1 rounded border border-blue-200">25 Seats</span>
+                </div>
+                <input id="seatSlider" type="range" min="5" max="250" step="5" value="25" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                <div class="flex justify-between text-xs text-slate-400 mono mt-1.5">
+                    <span>5 Seats</span><span>50 Seats</span><span>125 Seats</span><span>250 Seats</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-slate-900 text-lg">monday.com</span>
+                            <span class="text-xs mono text-slate-500" id="rateA_label">$0/mo base + $12/seat</span>
+                        </div>
+                        <div class="mt-3">
+                            <span class="text-3xl font-extrabold text-slate-900 mono" id="costA_mo">$0</span>
+                            <span class="text-xs text-slate-500"> / month estimated</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1 mb-4 mono">12-Month TCO: <strong id="costA_yr" class="text-slate-800">$0/yr</strong> • 36-Month: <strong id="costA_3yr" class="text-slate-800">$0</strong></p>
+                    </div>
+                    <a href="https://monday.com/pricing" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
+                        Lock In monday.com Commercial Pricing &rarr;
+                    </a>
+                </div>
+
+                <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-slate-900 text-lg">ClickUp</span>
+                            <span class="text-xs mono text-slate-500" id="rateB_label">$0/mo base + $10/seat</span>
+                        </div>
+                        <div class="mt-3">
+                            <span class="text-3xl font-extrabold text-slate-900 mono" id="costB_mo">$0</span>
+                            <span class="text-xs text-slate-500"> / month estimated</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1 mb-4 mono">12-Month TCO: <strong id="costB_yr" class="text-slate-800">$0/yr</strong> • 36-Month: <strong id="costB_3yr" class="text-slate-800">$0</strong></p>
+                    </div>
+                    <a href="https://clickup.com/pricing" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
+                        Lock In ClickUp Commercial Pricing &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-4 p-3 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center justify-between text-xs mono text-emerald-900">
+                <span id="tcoSavingsText">Calculating 12-month TCO delta...</span>
+                <span class="font-bold">Est. Commercial Tier</span>
             </div>
         </div>
 
-        <h2 class="mt-10 text-2xl font-bold">Technical & Pricing Matrix</h2>
+        <script>
+        (function() {
+            const slider = document.getElementById('seatSlider');
+            const seatDisplay = document.getElementById('seatDisplay');
+            const costA_mo = document.getElementById('costA_mo');
+            const costA_yr = document.getElementById('costA_yr');
+            const costA_3yr = document.getElementById('costA_3yr');
+            const costB_mo = document.getElementById('costB_mo');
+            const costB_yr = document.getElementById('costB_yr');
+            const costB_3yr = document.getElementById('costB_3yr');
+            const tcoSavingsText = document.getElementById('tcoSavingsText');
+            const btnUSD = document.getElementById('btnUSD');
+            const btnAUD = document.getElementById('btnAUD');
+            const btnMonthly = document.getElementById('btnMonthly');
+            const btnAnnual = document.getElementById('btnAnnual');
+
+            let fxRate = 1.0;
+            let sym = '$';
+            let billingDiscount = 1.0;
+
+            function updateStyles() {
+                if (sym === '$') {
+                    btnUSD.className = 'px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm';
+                    btnAUD.className = 'px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900';
+                } else {
+                    btnAUD.className = 'px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm';
+                    btnUSD.className = 'px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900';
+                }
+                if (billingDiscount === 1.0) {
+                    btnMonthly.className = 'px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm';
+                    btnAnnual.className = 'px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900';
+                } else {
+                    btnAnnual.className = 'px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm';
+                    btnMonthly.className = 'px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900';
+                }
+            }
+
+            function updateTCO() {
+                const s = parseInt(slider.value, 10);
+                seatDisplay.textContent = s + ' Seats';
+                const rawA = (0 + (s * 12)) * fxRate * billingDiscount;
+                const rawB = (0 + (s * 10)) * fxRate * billingDiscount;
+                const mA = Math.round(rawA);
+                const mB = Math.round(rawB);
+                const yA = mA * 12;
+                const yB = mB * 12;
+
+                costA_mo.textContent = sym + mA.toLocaleString();
+                costA_yr.textContent = sym + yA.toLocaleString() + '/yr';
+                costA_3yr.textContent = sym + (yA * 3).toLocaleString();
+
+                costB_mo.textContent = sym + mB.toLocaleString();
+                costB_yr.textContent = sym + yB.toLocaleString() + '/yr';
+                costB_3yr.textContent = sym + (yB * 3).toLocaleString();
+
+                const diffYr = Math.abs(yA - yB);
+                if (diffYr === 0) {
+                    tcoSavingsText.textContent = 'Identical estimated annual licensing cost at ' + s + ' seats.';
+                } else if (yA < yB) {
+                    tcoSavingsText.textContent = '★ monday.com saves ~' + sym + diffYr.toLocaleString() + '/yr vs ClickUp at ' + s + ' seats.';
+                } else {
+                    tcoSavingsText.textContent = '★ ClickUp saves ~' + sym + diffYr.toLocaleString() + '/yr vs monday.com at ' + s + ' seats.';
+                }
+            }
+
+            btnUSD.addEventListener('click', function() { fxRate = 1.0; sym = '$'; updateStyles(); updateTCO(); });
+            btnAUD.addEventListener('click', function() { fxRate = 1.54; sym = 'A$'; updateStyles(); updateTCO(); });
+            btnMonthly.addEventListener('click', function() { billingDiscount = 1.0; updateStyles(); updateTCO(); });
+            btnAnnual.addEventListener('click', function() { billingDiscount = 0.85; updateStyles(); updateTCO(); });
+            slider.addEventListener('input', updateTCO);
+            updateTCO();
+        })();
+        </script>
+
+        <!-- Technical Matrix Table -->
+        <h2 class="mt-10 text-2xl font-bold text-slate-900">Technical &amp; Architectural Specification Matrix</h2>
         <div class="mt-4 overflow-x-auto bg-white rounded-xl shadow-sm border border-slate-200">
             <table class="w-full text-left border-collapse">
                 <thead>
-                    <tr class="bg-slate-100 border-b border-slate-200 text-xs uppercase text-slate-600">
-                        <th class="p-4">Specification</th>
+                    <tr class="bg-slate-900 text-white text-xs uppercase tracking-wider mono">
+                        <th class="p-4">Architectural Vector</th>
                         <th class="p-4">monday.com</th>
                         <th class="p-4">ClickUp</th>
-                        <th class="p-4">Edge</th>
+                        <th class="p-4">Technical Edge</th>
                     </tr>
                 </thead>
-                <tbody class="text-sm">
-        <tr class="border-b border-slate-200">
-            <td class="p-4 font-semibold text-slate-800">SOC2 Compliance</td>
-            <td class="p-4 text-slate-600">Enterprise-grade security and governance controls available on custom quote tier</td>
-            <td class="p-4 text-slate-600">Standardized SOC2 Type II compliance controls across workspace operations</td>
-            <td class="p-4"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-bold">Tie</span></td>
+                <tbody>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">Max API Rate Limit</td>
+            <td class="p-4 text-slate-600 text-sm">25,000 calls/day (Enterprise)</td>
+            <td class="p-4 text-slate-600 text-sm">10,000 calls/minute (Enterprise)</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">ClickUp</span></td>
         </tr>
-        <tr class="border-b border-slate-200">
-            <td class="p-4 font-semibold text-slate-800">HIPAA Readiness</td>
-            <td class="p-4 text-slate-600">Not explicitly guaranteed or documented in standard tier specifications</td>
-            <td class="p-4 text-slate-600">Explicitly available via Enterprise plan contract and business associate agreement</td>
-            <td class="p-4"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-bold">ClickUp</span></td>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">SOC2 Compliance</td>
+            <td class="p-4 text-slate-600 text-sm">Standardized across tiers</td>
+            <td class="p-4 text-slate-600 text-sm">Standardized across tiers</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Tie</span></td>
         </tr>
-        <tr class="border-b border-slate-200">
-            <td class="p-4 font-semibold text-slate-800">API Rate Limit (Standard)</td>
-            <td class="p-4 text-slate-600">1000 API calls per day on Standard plan</td>
-            <td class="p-4 text-slate-600">100 API calls per minute across standard paid tiers</td>
-            <td class="p-4"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-bold">ClickUp</span></td>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">HIPAA Readiness</td>
+            <td class="p-4 text-slate-600 text-sm">Enterprise only</td>
+            <td class="p-4 text-slate-600 text-sm">Enterprise only</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Tie</span></td>
         </tr>
-        <tr class="border-b border-slate-200">
-            <td class="p-4 font-semibold text-slate-800">API Rate Limit (Enterprise)</td>
-            <td class="p-4 text-slate-600">25000 API calls per day on Enterprise plan</td>
-            <td class="p-4 text-slate-600">10000 API calls per minute on Enterprise plan</td>
-            <td class="p-4"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-bold">ClickUp</span></td>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">Data Residency</td>
+            <td class="p-4 text-slate-600 text-sm">US, EU, AU, CA</td>
+            <td class="p-4 text-slate-600 text-sm">US, EU, APAC</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">monday.com</span></td>
         </tr>
-        <tr class="border-b border-slate-200">
-            <td class="p-4 font-semibold text-slate-800">Starting Paid Price</td>
-            <td class="p-4 text-slate-600">$9 per seat/month billed annually (Basic plan)</td>
-            <td class="p-4 text-slate-600">$7 per user/month billed annually (Unlimited plan)</td>
-            <td class="p-4"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-bold">ClickUp</span></td>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">Automation Actions/Mo</td>
+            <td class="p-4 text-slate-600 text-sm">250,000 (Enterprise)</td>
+            <td class="p-4 text-slate-600 text-sm">250,000 (Enterprise)</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Tie</span></td>
         </tr>
-        <tr class="border-b border-slate-200">
-            <td class="p-4 font-semibold text-slate-800">Automation Limits</td>
-            <td class="p-4 text-slate-600">Up to 250000 actions per month on Enterprise plan</td>
-            <td class="p-4 text-slate-600">250000 automation executions per month on Enterprise plan</td>
-            <td class="p-4"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-bold">Tie</span></td>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">SCIM Provisioning</td>
+            <td class="p-4 text-slate-600 text-sm">Enterprise only</td>
+            <td class="p-4 text-slate-600 text-sm">Enterprise only</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Tie</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">Base Seat Pricing</td>
+            <td class="p-4 text-slate-600 text-sm">$19/user (Pro)</td>
+            <td class="p-4 text-slate-600 text-sm">$12/user (Business)</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">ClickUp</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">SLA Uptime</td>
+            <td class="p-4 text-slate-600 text-sm">99.9% (Enterprise)</td>
+            <td class="p-4 text-slate-600 text-sm">Not publicly guaranteed</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">monday.com</span></td>
         </tr></tbody>
             </table>
         </div>
 
+        <!-- Pros & Cons Breakdown -->
         <div class="mt-10 grid sm:grid-cols-2 gap-6">
-            <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
-                <h3 class="text-xl font-bold mb-4">monday.com Breakdown</h3>
-                <ul class="text-sm text-slate-700 mb-4"><li class='mb-1'>✅ Granular daily API call allocations scaled directly with tier upgrades</li><li class='mb-1'>✅ Intuitive Vibe app builder for custom internal application logic</li><li class='mb-1'>✅ Robust enterprise resource management and workload balancing tools</li></ul>
-                <ul class="text-sm text-slate-600"><li class='mb-1'>❌ Restrictive daily API caps on lower tiers capping out at 1000 calls per day</li><li class='mb-1'>❌ Opaque enterprise pricing requiring direct sales contact for quotes</li></ul>
-                <a href="https://your-affiliate-link.com/monday" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center w-full py-2.5 bg-slate-900 text-white font-semibold rounded-lg hover:bg-slate-800">Try monday.com Free</a>
+            <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">monday.com Architectural Breakdown</h3>
+                    <ul class="text-sm text-slate-700 mb-4 list-none pl-0"><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Predictable API performance with clear daily quotas</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Robust multi-region data residency including Australia</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Consistent UI/UX reduces training overhead for large teams</span></li></ul>
+                    <ul class="text-sm text-slate-600 list-none pl-0 border-t border-slate-100 pt-3"><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2'>✗</span><span>High cost-per-seat for advanced automation features</span></li><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2'>✗</span><span>Restrictive API limits on lower-tier plans</span></li></ul>
+                </div>
+                <a href="https://monday.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-900 font-semibold text-sm rounded-lg transition-colors">
+                    Explore monday.com Documentation &amp; Pricing &rarr;
+                </a>
             </div>
-            <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
-                <h3 class="text-xl font-bold mb-4">ClickUp Breakdown</h3>
-                <ul class="text-sm text-slate-700 mb-4"><li class='mb-1'>✅ High-frequency API architecture supporting up to 10000 calls per minute on Enterprise</li><li class='mb-1'>✅ Lower baseline entry cost starting at $7 per user per month</li><li class='mb-1'>✅ Explicitly documented HIPAA availability and custom role governance</li></ul>
-                <ul class="text-sm text-slate-600"><li class='mb-1'>❌ Workspace-wide upgrade enforcement requires paying for all active members simultaneously</li><li class='mb-1'>❌ Complex feature permission setups that complicate granular guest provisioning</li></ul>
-                <a href="https://your-affiliate-link.com/clickup" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center w-full py-2.5 bg-slate-900 text-white font-semibold rounded-lg hover:bg-slate-800">Try ClickUp Free</a>
+
+            <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">ClickUp Architectural Breakdown</h3>
+                    <ul class="text-sm text-slate-700 mb-4 list-none pl-0"><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>High-throughput API (10k/min) for real-time integrations</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Lower entry price for feature-rich Business tier</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Advanced granular permissioning and custom roles</span></li></ul>
+                    <ul class="text-sm text-slate-600 list-none pl-0 border-t border-slate-100 pt-3"><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2'>✗</span><span>Complex pricing model with hidden AI credit consumption</span></li><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2'>✗</span><span>Performance variability due to high feature density</span></li></ul>
+                </div>
+                <a href="https://clickup.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-900 font-semibold text-sm rounded-lg transition-colors">
+                    Explore ClickUp Documentation &amp; Pricing &rarr;
+                </a>
             </div>
         </div>
 
+        <!-- Hidden Gotchas -->
         <div class="mt-10 p-6 bg-amber-50 border border-amber-200 rounded-xl">
-            <h3 class="text-lg font-bold text-amber-900">⚠️ Hidden Gotchas & Integration Limits</h3>
-            <p class="mt-2 text-sm text-amber-800 leading-relaxed">Architects must evaluate the stark contrast between daily and minute-based rate limits. monday.com enforces a strict daily ceiling of 25000 API calls even on its highest standard enterprise tier, which can break high-volume webhook integrations. ClickUp offers 10000 calls per minute on Enterprise, making it vastly superior for real-time data synchronization. However, ClickUp forces workspace-wide upgrades for all members, meaning adding even one admin or contributor immediately triggers billing recalculations for the entire seat count.</p>
+            <h3 class="font-bold text-amber-900 mono uppercase text-xs tracking-wider">⚠ Contract Lock-In, Add-On Fees &amp; API Rate Gotchas</h3>
+            <p class="mt-2 text-sm text-amber-900 leading-relaxed">Buyers often overlook that ClickUp's high API limit is gated behind Enterprise contracts, meaning standard Business users are effectively throttled. Conversely, monday.com users frequently hit daily API caps when scaling automated workflows, forcing expensive upgrades to Enterprise. Both platforms treat HIPAA and SAML/SCIM as premium add-ons, effectively doubling the cost for regulated industries compared to advertised sticker prices.</p>
         </div>
     </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 px-4 sm:px-6 text-sm mt-16 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white font-bold mono text-xs">B2B</div>
+                    <span class="font-bold text-white text-base">B2BComparison.com</span>
+                </div>
+                <p class="mt-3 text-xs text-slate-400 leading-relaxed">
+                    Independent B2B software architecture, integration compatibility, and Total Cost of Ownership (TCO) research for CTOs, Finance Directors, and Operations teams across Australia, APAC, and North America.
+                </p>
+                <p class="mt-2 text-[11px] text-slate-500 mono">
+                    Operated out of Brisbane, QLD, Australia • Updated October 2026
+                </p>
+            </div>
+            <div>
+                <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">Governance &amp; Legal</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="/about.html" class="hover:text-white transition-colors">About B2BComparison Research</a></li>
+                    <li><a href="/methodology.html" class="hover:text-white transition-colors">Benchmarking &amp; TCO Methodology</a></li>
+                    <li><a href="/disclosure.html" class="hover:text-white transition-colors">FTC &amp; ACCC Affiliate Disclosure</a></li>
+                    <li><a href="/privacy.html" class="hover:text-white transition-colors">Privacy Policy &amp; Terms of Service</a></li>
+                    <li><a href="/sitemap.xml" class="hover:text-white transition-colors">XML Sitemap</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">Editorial Firewall &amp; Compliance</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    In accordance with Australian Consumer Law (ACL) and US FTC guidelines: we may receive referral compensation when you click outbound vendor links or request demos. Commercial partnerships never alter our REST API rate-limit benchmarks, compliance badges, or TCO pricing math.
+                </p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

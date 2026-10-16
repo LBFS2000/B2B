@@ -14,7 +14,7 @@
     "priceB_base": 0,
     "priceB_seat": 49,
     "compliance": "SOC2 Type II & ISO 27001",
-    "processed": false
+    "processed": true
   },
   {
     "id": "gusto-vs-onpay-xero-integration",
@@ -31,7 +31,7 @@
     "priceB_base": 40,
     "priceB_seat": 6,
     "compliance": "SOC2 & HIPAA Ready",
-    "processed": false
+    "processed": true
   },
   {
     "id": "monday-vs-clickup-soc2-enterprise",
@@ -48,7 +48,7 @@
     "priceB_base": 0,
     "priceB_seat": 10,
     "compliance": "SOC2 Type II & ISO 27001",
-    "processed": false
+    "processed": true
   },
   {
     "id": "hubspot-vs-pipedrive-quickbooks-sync",

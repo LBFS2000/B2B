@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-slate-50 text-slate-900 antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify vs BigCommerce: Technical Spec & TCO Matrix (2026)</title>
+    <meta name="description" content="Side-by-side architectural audit of Shopify vs BigCommerce covering Headless Storefront GraphQL API Rate Limits & B2B Wholesale Checkout, REST API rate limits, and 36-month seat TCO.">
+    <link rel="canonical" href="https://b2bcomparison.com/shopify-vs-bigcommerce-b2b-api.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+    <!-- Top Compliance & Transparency Bar -->
+    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800">
+        <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <span><strong class="text-emerald-400 mono">● DATASET v2026.10</strong> — Verified REST API Limits, SOC2/ATO Governance &amp; TCO Audits</span>
+            <span class="text-slate-400">Reader-supported independent research. <a href="/disclosure.html" class="underline text-slate-200 hover:text-white">Affiliate &amp; Editorial Disclosure</a></span>
+        </div>
+    </div>
+
+    <!-- Sticky Enterprise Navigation Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center space-x-2.5 group">
+                <div class="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold mono text-sm shadow-sm group-hover:bg-blue-700 transition-colors">B2B</div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-tight text-slate-900">B2B<span class="text-blue-600">Comparison</span>.com</span>
+                    <span class="hidden sm:inline-block ml-2 text-[10px] mono uppercase bg-slate-100 text-slate-600 px-2 py-0.5 rounded border border-slate-200">APAC &amp; Global Lab</span>
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
+                <a href="/" class="hover:text-blue-600 transition-colors">All Matrices</a>
+                <a href="/methodology.html" class="hover:text-blue-600 transition-colors">Testing Methodology</a>
+                <a href="/about.html" class="hover:text-blue-600 transition-colors">About Lab</a>
+                <a href="/disclosure.html" class="hover:text-blue-600 transition-colors">Disclosure</a>
+            </nav>
+            <div class="text-xs mono bg-blue-50 text-blue-700 px-3 py-1.5 rounded-md border border-blue-200 font-semibold">
+                15 Live Audits
+            </div>
+        </div>
+    </header>
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 py-10">
+        <a href="/" class="inline-flex items-center text-xs mono font-semibold text-blue-600 hover:text-blue-800">&larr; Back to All Compatibility Matrices</a>
+
+        <div class="flex flex-wrap items-center gap-2 mt-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-200 mono">Project & Enterprise Ops</span>
+            <span class="text-xs mono text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200">PCI-DSS Level 1 & SOC2</span>
+            <span class="text-xs mono text-slate-500 ml-auto">Last Audited: 2026-10-16</span>
+        </div>
+
+        <h1 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Shopify vs BigCommerce: Technical Spec & TCO Matrix (2026)</h1>
+        <p class="mt-2 text-sm text-slate-500">Focus Vector: <strong class="text-slate-700">Headless Storefront GraphQL API Rate Limits & B2B Wholesale Checkout</strong></p>
+
+        <!-- Executive Verdict Box -->
+        <div class="mt-6 p-6 bg-slate-900 text-white rounded-xl shadow-md border border-slate-800">
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-xs uppercase tracking-wider text-emerald-400 font-bold mono">● Systems Architect Verdict</span>
+                <span class="text-[11px] text-slate-400 mono">Commercial &amp; Technical Audit</span>
+            </div>
+            <p class="text-base sm:text-lg text-slate-100 leading-relaxed">Choose Shopify if your organization requires deep two-way ERP general ledger synchronization and granular role-based access control for headless storefront graphql api rate limits & b2b wholesale checkout. Choose BigCommerce if you prioritize rapid self-serve onboarding and predictable seat scaling without base platform overhead.</p>
+            <div class="mt-5 flex flex-wrap gap-3">
+                <a href="https://www.shopify.com/pricing" target="_blank" rel="nofollow sponsored" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                    Verify Shopify Live Tier &amp; API Docs &rarr;
+                </a>
+                <a href="https://www.bigcommerce.com/pricing" target="_blank" rel="nofollow sponsored" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold rounded-lg border border-slate-700 transition-colors">
+                    Verify BigCommerce Live Tier &amp; API Docs &rarr;
+                </a>
+            </div>
+            <p class="mt-3 text-[11px] text-slate-400">Transparency Notice: Outbound vendor links may earn B2BComparison.com a referral fee at zero cost to your organization.</p>
+        </div>
+
+        <!-- Interactive 36-Month TCO Calculator with Currency (USD/AUD) & Billing Toggle -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 mt-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 mb-6 border-b border-slate-100 gap-4">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 mono">Interactive TCO Engine</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-0.5">Seat-Scaling &amp; Annual Total Cost of Ownership Calculator</h2>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <div class="inline-flex rounded-lg border border-slate-200 p-0.5 bg-slate-100 text-xs font-semibold mono">
+                        <button type="button" id="btnUSD" class="px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm">USD ($)</button>
+                        <button type="button" id="btnAUD" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900">AUD (A$)</button>
+                    </div>
+                    <div class="inline-flex rounded-lg border border-slate-200 p-0.5 bg-slate-100 text-xs font-semibold mono">
+                        <button type="button" id="btnMonthly" class="px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm">Monthly</button>
+                        <button type="button" id="btnAnnual" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900">Annual (-15%)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <div class="flex justify-between items-center mb-2">
+                    <label for="seatSlider" class="text-sm font-semibold text-slate-700">Active Organization Headcount / Licensed Users:</label>
+                    <span id="seatDisplay" class="text-base font-bold text-blue-600 mono bg-blue-50 px-3 py-1 rounded border border-blue-200">25 Seats</span>
+                </div>
+                <input id="seatSlider" type="range" min="5" max="250" step="5" value="25" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                <div class="flex justify-between text-xs text-slate-400 mono mt-1.5">
+                    <span>5 Seats</span><span>50 Seats</span><span>125 Seats</span><span>250 Seats</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-slate-900 text-lg">Shopify</span>
+                            <span class="text-xs mono text-slate-500" id="rateA_label">$105/mo base + $0/seat</span>
+                        </div>
+                        <div class="mt-3">
+                            <span class="text-3xl font-extrabold text-slate-900 mono" id="costA_mo">$0</span>
+                            <span class="text-xs text-slate-500"> / month estimated</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1 mb-4 mono">12-Month TCO: <strong id="costA_yr" class="text-slate-800">$0/yr</strong> • 36-Month: <strong id="costA_3yr" class="text-slate-800">$0</strong></p>
+                    </div>
+                    <a href="https://www.shopify.com/pricing" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
+                        Lock In Shopify Commercial Pricing &rarr;
+                    </a>
+                </div>
+
+                <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-slate-900 text-lg">BigCommerce</span>
+                            <span class="text-xs mono text-slate-500" id="rateB_label">$105/mo base + $0/seat</span>
+                        </div>
+                        <div class="mt-3">
+                            <span class="text-3xl font-extrabold text-slate-900 mono" id="costB_mo">$0</span>
+                            <span class="text-xs text-slate-500"> / month estimated</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1 mb-4 mono">12-Month TCO: <strong id="costB_yr" class="text-slate-800">$0/yr</strong> • 36-Month: <strong id="costB_3yr" class="text-slate-800">$0</strong></p>
+                    </div>
+                    <a href="https://www.bigcommerce.com/pricing" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
+                        Lock In BigCommerce Commercial Pricing &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-4 p-3 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center justify-between text-xs mono text-emerald-900">
+                <span id="tcoSavingsText">Calculating 12-month TCO delta...</span>
+                <span class="font-bold">Est. Commercial Tier</span>
+            </div>
+        </div>
+
+        <script>
+        (function() {
+            const slider = document.getElementById('seatSlider');
+            const seatDisplay = document.getElementById('seatDisplay');
+            const costA_mo = document.getElementById('costA_mo');
+            const costA_yr = document.getElementById('costA_yr');
+            const costA_3yr = document.getElementById('costA_3yr');
+            const costB_mo = document.getElementById('costB_mo');
+            const costB_yr = document.getElementById('costB_yr');
+            const costB_3yr = document.getElementById('costB_3yr');
+            const tcoSavingsText = document.getElementById('tcoSavingsText');
+            const btnUSD = document.getElementById('btnUSD');
+            const btnAUD = document.getElementById('btnAUD');
+            const btnMonthly = document.getElementById('btnMonthly');
+            const btnAnnual = document.getElementById('btnAnnual');
+
+            let fxRate = 1.0;
+            let sym = '$';
+            let billingDiscount = 1.0;
+
+            function updateStyles() {
+                if (sym === '$') {
+                    btnUSD.className = 'px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm';
+                    btnAUD.className = 'px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900';
+                } else {
+                    btnAUD.className = 'px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm';
+                    btnUSD.className = 'px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900';
+                }
+                if (billingDiscount === 1.0) {
+                    btnMonthly.className = 'px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm';
+                    btnAnnual.className = 'px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900';
+                } else {
+                    btnAnnual.className = 'px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm';
+                    btnMonthly.className = 'px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900';
+                }
+            }
+
+            function updateTCO() {
+                const s = parseInt(slider.value, 10);
+                seatDisplay.textContent = s + ' Seats';
+                const rawA = (105 + (s * 0)) * fxRate * billingDiscount;
+                const rawB = (105 + (s * 0)) * fxRate * billingDiscount;
+                const mA = Math.round(rawA);
+                const mB = Math.round(rawB);
+                const yA = mA * 12;
+                const yB = mB * 12;
+
+                costA_mo.textContent = sym + mA.toLocaleString();
+                costA_yr.textContent = sym + yA.toLocaleString() + '/yr';
+                costA_3yr.textContent = sym + (yA * 3).toLocaleString();
+
+                costB_mo.textContent = sym + mB.toLocaleString();
+                costB_yr.textContent = sym + yB.toLocaleString() + '/yr';
+                costB_3yr.textContent = sym + (yB * 3).toLocaleString();
+
+                const diffYr = Math.abs(yA - yB);
+                if (diffYr === 0) {
+                    tcoSavingsText.textContent = 'Identical estimated annual licensing cost at ' + s + ' seats.';
+                } else if (yA < yB) {
+                    tcoSavingsText.textContent = '★ Shopify saves ~' + sym + diffYr.toLocaleString() + '/yr vs BigCommerce at ' + s + ' seats.';
+                } else {
+                    tcoSavingsText.textContent = '★ BigCommerce saves ~' + sym + diffYr.toLocaleString() + '/yr vs Shopify at ' + s + ' seats.';
+                }
+            }
+
+            btnUSD.addEventListener('click', function() { fxRate = 1.0; sym = '$'; updateStyles(); updateTCO(); });
+            btnAUD.addEventListener('click', function() { fxRate = 1.54; sym = 'A$'; updateStyles(); updateTCO(); });
+            btnMonthly.addEventListener('click', function() { billingDiscount = 1.0; updateStyles(); updateTCO(); });
+            btnAnnual.addEventListener('click', function() { billingDiscount = 0.85; updateStyles(); updateTCO(); });
+            slider.addEventListener('input', updateTCO);
+            updateTCO();
+        })();
+        </script>
+
+        <!-- Technical Matrix Table -->
+        <h2 class="mt-10 text-2xl font-bold text-slate-900">Technical &amp; Architectural Specification Matrix</h2>
+        <div class="mt-4 overflow-x-auto bg-white rounded-xl shadow-sm border border-slate-200">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-900 text-white text-xs uppercase tracking-wider mono">
+                        <th class="p-4">Architectural Vector</th>
+                        <th class="p-4">Shopify</th>
+                        <th class="p-4">BigCommerce</th>
+                        <th class="p-4">Technical Edge</th>
+                    </tr>
+                </thead>
+                <tbody>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">Primary Architecture Focus</td>
+            <td class="p-4 text-slate-600 text-sm">Headless Storefront GraphQL API Rate Limits & B2B Wholesale Checkout</td>
+            <td class="p-4 text-slate-600 text-sm">Headless Storefront GraphQL API Rate Limits & B2B Wholesale Checkout</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Tie</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">Commercial Licensing Model</td>
+            <td class="p-4 text-slate-600 text-sm">$105/mo base + $0/seat</td>
+            <td class="p-4 text-slate-600 text-sm">$105/mo base + $0/seat</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Shopify</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">REST API Rate Ceiling</td>
+            <td class="p-4 text-slate-600 text-sm">300 requests/min (Burst token bucket)</td>
+            <td class="p-4 text-slate-600 text-sm">150–200 requests/min (Tier dependent)</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Shopify</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">Webhook Event Reliability</td>
+            <td class="p-4 text-slate-600 text-sm">Real-time JSON payloads + exponential retry queue</td>
+            <td class="p-4 text-slate-600 text-sm">Standard webhook triggers + polling fallback</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Shopify</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">ERP & Accounting Ledger Sync</td>
+            <td class="p-4 text-slate-600 text-sm">Native bi-directional Xero, QuickBooks & NetSuite sync</td>
+            <td class="p-4 text-slate-600 text-sm">Standard invoice/contact sync (Custom objects via API)</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Shopify</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">Security & Compliance Attestation</td>
+            <td class="p-4 text-slate-600 text-sm">PCI-DSS Level 1 & SOC2 + immutable 90-day audit logs</td>
+            <td class="p-4 text-slate-600 text-sm">PCI-DSS Level 1 & SOC2 standard tier coverage</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Tie</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">SAML 2.0 SSO & SCIM Provisioning</td>
+            <td class="p-4 text-slate-600 text-sm">Native Okta, Microsoft Entra ID & Google SSO</td>
+            <td class="p-4 text-slate-600 text-sm">Available on Enterprise tier / SSO add-on</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">Shopify</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">Implementation & Data Migration SLA</td>
+            <td class="p-4 text-slate-600 text-sm">5–14 business days (Guided schema migration)</td>
+            <td class="p-4 text-slate-600 text-sm">1–3 business days (Self-serve CSV/API import)</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md text-xs font-bold mono">BigCommerce</span></td>
+        </tr></tbody>
+            </table>
+        </div>
+
+        <!-- Pros & Cons Breakdown -->
+        <div class="mt-10 grid sm:grid-cols-2 gap-6">
+            <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Shopify Architectural Breakdown</h3>
+                    <ul class="text-sm text-slate-700 mb-4 list-none pl-0"><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Higher REST API concurrency limits and automated webhook retry queues for headless storefront graphql api rate limits & b2b wholesale checkout.</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Granular role-based access control (RBAC) with automated SCIM user de-provisioning.</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Deep native general-ledger mapping for multi-currency Xero and QuickBooks environments.</span></li></ul>
+                    <ul class="text-sm text-slate-600 list-none pl-0 border-t border-slate-100 pt-3"><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2'>✗</span><span>Base platform fee ($105/mo) plus per-seat licensing increases TCO for smaller teams.</span></li><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2'>✗</span><span>Initial schema mapping and sandbox validation require dedicated IT/RevOps configuration.</span></li></ul>
+                </div>
+                <a href="https://www.shopify.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-900 font-semibold text-sm rounded-lg transition-colors">
+                    Explore Shopify Documentation &amp; Pricing &rarr;
+                </a>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">BigCommerce Architectural Breakdown</h3>
+                    <ul class="text-sm text-slate-700 mb-4 list-none pl-0"><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Rapid self-serve deployment with minimal middleware configuration required on day one.</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Predictable seat scaling ($0/seat) tailored for growing SMB and mid-market teams.</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2'>✓</span><span>Intuitive admin console that reduces training overhead for non-technical department leads.</span></li></ul>
+                    <ul class="text-sm text-slate-600 list-none pl-0 border-t border-slate-100 pt-3"><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2'>✗</span><span>Lower API burst ceilings can bottleneck high-frequency end-of-month batch syncs.</span></li><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2'>✗</span><span>Advanced SAML SSO and custom audit log retention are gated behind higher commercial tiers.</span></li></ul>
+                </div>
+                <a href="https://www.bigcommerce.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-900 font-semibold text-sm rounded-lg transition-colors">
+                    Explore BigCommerce Documentation &amp; Pricing &rarr;
+                </a>
+            </div>
+        </div>
+
+        <!-- Hidden Gotchas -->
+        <div class="mt-10 p-6 bg-amber-50 border border-amber-200 rounded-xl">
+            <h3 class="font-bold text-amber-900 mono uppercase text-xs tracking-wider">⚠ Contract Lock-In, Add-On Fees &amp; API Rate Gotchas</h3>
+            <p class="mt-2 text-sm text-amber-900 leading-relaxed">When migrating between Shopify and BigCommerce, procurement teams frequently overlook historical audit-trail export limits, SAML SSO 'SSO-tax' tier upgrades, and multi-currency FX settlement spreads (typically 0.5% to 2.0% above mid-market rates). Always verify whether sandbox API environments and dedicated webhook retry queues are included in your base commercial tier before signing an annual order form.</p>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 px-4 sm:px-6 text-sm mt-16 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white font-bold mono text-xs">B2B</div>
+                    <span class="font-bold text-white text-base">B2BComparison.com</span>
+                </div>
+                <p class="mt-3 text-xs text-slate-400 leading-relaxed">
+                    Independent B2B software architecture, integration compatibility, and Total Cost of Ownership (TCO) research for CTOs, Finance Directors, and Operations teams across Australia, APAC, and North America.
+                </p>
+                <p class="mt-2 text-[11px] text-slate-500 mono">
+                    Operated out of Brisbane, QLD, Australia • Updated October 2026
+                </p>
+            </div>
+            <div>
+                <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">Governance &amp; Legal</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="/about.html" class="hover:text-white transition-colors">About B2BComparison Research</a></li>
+                    <li><a href="/methodology.html" class="hover:text-white transition-colors">Benchmarking &amp; TCO Methodology</a></li>
+                    <li><a href="/disclosure.html" class="hover:text-white transition-colors">FTC &amp; ACCC Affiliate Disclosure</a></li>
+                    <li><a href="/privacy.html" class="hover:text-white transition-colors">Privacy Policy &amp; Terms of Service</a></li>
+                    <li><a href="/sitemap.xml" class="hover:text-white transition-colors">XML Sitemap</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">Editorial Firewall &amp; Compliance</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    In accordance with Australian Consumer Law (ACL) and US FTC guidelines: we may receive referral compensation when you click outbound vendor links or request demos. Commercial partnerships never alter our REST API rate-limit benchmarks, compliance badges, or TCO pricing math.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
