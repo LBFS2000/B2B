@@ -52,6 +52,6 @@
     "url_b": "https://www.xero.com/us/pricing-plans/",
     "aff_link_a": "https://your-affiliate-link.com/freshbooks",
     "aff_link_b": "https://your-affiliate-link.com/xero",
-    "processed": false
+    "processed": true
   }
 ]
