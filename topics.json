@@ -8,7 +8,7 @@
     "url_b": "https://www.deel.com/pricing",
     "aff_link_a": "https://your-affiliate-link.com/rippling",
     "aff_link_b": "https://your-affiliate-link.com/deel",
-    "processed": false
+    "processed": true
   },
   {
     "id": "gusto-vs-onpay-xero-integration",
@@ -19,7 +19,7 @@
     "url_b": "https://onpay.com/pricing",
     "aff_link_a": "https://your-affiliate-link.com/gusto",
     "aff_link_b": "https://your-affiliate-link.com/onpay",
-    "processed": false
+    "processed": true
   },
   {
     "id": "monday-vs-clickup-soc2-enterprise",
