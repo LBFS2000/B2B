@@ -1,0 +1,57 @@
+[
+  {
+    "id": "rippling-vs-deel-global-payroll",
+    "product_a": "Rippling",
+    "product_b": "Deel",
+    "use_case": "Global Contractor Compliance & Multi-Currency Payroll",
+    "url_a": "https://www.rippling.com/pricing",
+    "url_b": "https://www.deel.com/pricing",
+    "aff_link_a": "https://your-affiliate-link.com/rippling",
+    "aff_link_b": "https://your-affiliate-link.com/deel",
+    "processed": false
+  },
+  {
+    "id": "gusto-vs-onpay-xero-integration",
+    "product_a": "Gusto",
+    "product_b": "OnPay",
+    "use_case": "Two-Way Xero Accounting Sync & Automated Tax Filing",
+    "url_a": "https://gusto.com/product/pricing",
+    "url_b": "https://onpay.com/pricing",
+    "aff_link_a": "https://your-affiliate-link.com/gusto",
+    "aff_link_b": "https://your-affiliate-link.com/onpay",
+    "processed": false
+  },
+  {
+    "id": "monday-vs-clickup-soc2-enterprise",
+    "product_a": "monday.com",
+    "product_b": "ClickUp",
+    "use_case": "SOC2 Compliance, HIPAA Readiness & API Rate Limits",
+    "url_a": "https://monday.com/pricing",
+    "url_b": "https://clickup.com/pricing",
+    "aff_link_a": "https://your-affiliate-link.com/monday",
+    "aff_link_b": "https://your-affiliate-link.com/clickup",
+    "processed": false
+  },
+  {
+    "id": "hubspot-vs-pipedrive-quickbooks-sync",
+    "product_a": "HubSpot CRM",
+    "product_b": "Pipedrive",
+    "use_case": "Native QuickBooks Invoicing Sync & Two-Way Deal Automation",
+    "url_a": "https://www.hubspot.com/pricing/crm",
+    "url_b": "https://www.pipedrive.com/en/pricing",
+    "aff_link_a": "https://your-affiliate-link.com/hubspot",
+    "aff_link_b": "https://your-affiliate-link.com/pipedrive",
+    "processed": false
+  },
+  {
+    "id": "freshbooks-vs-xero-multi-entity",
+    "product_a": "FreshBooks",
+    "product_b": "Xero",
+    "use_case": "Multi-Currency Invoicing & Automated Bank Reconciliation",
+    "url_a": "https://www.freshbooks.com/pricing",
+    "url_b": "https://www.xero.com/us/pricing-plans/",
+    "aff_link_a": "https://your-affiliate-link.com/freshbooks",
+    "aff_link_b": "https://your-affiliate-link.com/xero",
+    "processed": false
+  }
+]
