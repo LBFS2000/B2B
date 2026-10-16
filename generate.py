@@ -236,4 +236,10 @@ def main():
             time.sleep(3)
 
     with open("topics.json", "w", encoding="utf-8") as f:
-        json.
+        json.dump(topics, f, indent=2)
+
+    rebuild_index(topics)
+    print(f"Run complete. Generated {generated_count} new pages.")
+
+if __name__ == "__main__":
+    main()
