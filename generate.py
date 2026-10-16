@@ -45,14 +45,17 @@ def scrape_page_text(url: str, max_chars: int = 12000) -> str:
         return f"Could not scrape live URL ({e}). Rely on verified technical specifications."
 
 # ---------------------------------------------------------
-# 3. GEMINI SYNTHESIS ENGINE (WITH AUTO-FALLBACK)
+# 3. GEMINI SYNTHESIS ENGINE (ACTIVE 3.x + GEMMA 4 POOLS)
 # ---------------------------------------------------------
 FREE_TIER_MODELS = [
+    "gemini-3.7-flash",
+    "gemini-3.5-flash",
+    "gemini-3.1-flash-lite",
     "gemini-3.8-flash",
     "gemini-3.6-flash",
-    "gemini-2.5-flash",
     "gemini-3.5-flash-lite",
-    "gemini-2.5-flash-lite",
+    "gemma-4-31b-it",
+    "gemma-4-26b-a4b-it",
 ]
 
 def synthesize_comparison(topic: dict) -> ComparisonArticle:
@@ -61,45 +64,69 @@ def synthesize_comparison(topic: dict) -> ComparisonArticle:
     raw_a = scrape_page_text(topic["url_a"])
     raw_b = scrape_page_text(topic["url_b"])
 
-    system_instruction = (
-        "You are a ruthless, objective B2B software systems architect. "
-        "Compare the two products strictly for the specified use case using the scraped context. "
-        "BANNED WORDS: delve, tapestry, testament, fast-paced, digital landscape, crucial, overarching, realm. "
-        "Lead with concrete numbers, API rate limits, integration architecture, and exact pricing mechanics."
-    )
+    # Embed instructions and JSON schema directly in the prompt so both 
+    # Gemini 3.x and Gemma 4 backup servers can execute it identically
+    schema_json = json.dumps(ComparisonArticle.model_json_schema(), indent=2)
 
-    prompt = f"""
-    Compare {topic['product_a']} vs {topic['product_b']} specifically for: {topic['use_case']}.
-    
-    Scraped Context for {topic['product_a']}:
-    {raw_a}
-    
-    Scraped Context for {topic['product_b']}:
-    {raw_b}
-    """
+    prompt = f"""You are a ruthless, objective B2B software systems architect.
+Compare {topic['product_a']} vs {topic['product_b']} strictly for: {topic['use_case']}.
+BANNED WORDS: delve, tapestry, testament, fast-paced, digital landscape, crucial, overarching, realm.
+Lead with concrete numbers, API rate limits, integration architecture, and exact pricing mechanics.
+
+Scraped Context for {topic['product_a']}:
+{raw_a}
+
+Scraped Context for {topic['product_b']}:
+{raw_b}
+
+Return ONLY a valid JSON object matching this exact JSON schema (no markdown fences, no extra text):
+{schema_json}
+"""
 
     last_error = None
-    for model_name in FREE_TIER_MODELS:
-        try:
-            print(f"  -> Trying model: {model_name}...")
-            response = client.models.generate_content(
-                model=model_name,
-                contents=prompt,
-                config=types.GenerateContentConfig(
-                    system_instruction=system_instruction,
-                    response_mime_type="application/json",
-                    response_schema=ComparisonArticle,
-                    temperature=0.2,
-                ),
-            )
-            print(f"  -> Success with {model_name}!")
-            return ComparisonArticle.model_validate_json(response.text)
-        except Exception as e:
-            print(f"  -> {model_name} busy or rate-limited ({e}). Switching to backup model in 4s...")
-            last_error = e
-            time.sleep(4)
+    # Do up to 3 full passes with increasing wait times if Google has a traffic spike
+    for attempt in range(1, 4):
+        for model_name in FREE_TIER_MODELS:
+            try:
+                print(f"  -> [Pass {attempt}] Trying model: {model_name}...")
+                
+                # Use native structured outputs for Gemini 3.x, raw JSON mode for Gemma 4
+                if model_name.startswith("gemini-"):
+                    config = types.GenerateContentConfig(
+                        response_mime_type="application/json",
+                        response_schema=ComparisonArticle,
+                        temperature=0.2,
+                    )
+                else:
+                    config = types.GenerateContentConfig(
+                        temperature=0.2,
+                    )
 
-    raise RuntimeError(f"All free-tier models were temporarily busy. Last error: {last_error}")
+                response = client.models.generate_content(
+                    model=model_name,
+                    contents=prompt,
+                    config=config,
+                )
+                
+                # Clean markdown fences if Gemma 4 wraps the JSON
+                clean_text = response.text.strip()
+                if clean_text.startswith("```"):
+                    clean_text = clean_text.strip("`").removeprefix("json").strip()
+
+                print(f"  -> Success with {model_name}!")
+                return ComparisonArticle.model_validate_json(clean_text)
+
+            except Exception as e:
+                err_str = str(e)
+                print(f"  -> {model_name} unavailable ({err_str[:120]}...).")
+                last_error = e
+                time.sleep(5)
+        
+        wait_seconds = attempt * 15
+        print(f"All Gemini pools busy on pass {attempt}. Waiting {wait_seconds}s before retry...")
+        time.sleep(wait_seconds)
+
+    raise RuntimeError(f"All free-tier models were busy after 3 full passes. Last error: {last_error}")
 
 # ---------------------------------------------------------
 # 4. ZERO-DEPENDENCY STATIC HTML GENERATOR
