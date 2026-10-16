@@ -1,5 +1,6 @@
 import os
 import json
+import time
 import datetime
 import requests
 from bs4 import BeautifulSoup
@@ -44,8 +45,16 @@ def scrape_page_text(url: str, max_chars: int = 12000) -> str:
         return f"Could not scrape live URL ({e}). Rely on verified technical specifications."
 
 # ---------------------------------------------------------
-# 3. GEMINI SYNTHESIS ENGINE
+# 3. GEMINI SYNTHESIS ENGINE (WITH AUTO-FALLBACK)
 # ---------------------------------------------------------
+FREE_TIER_MODELS = [
+    "gemini-3.8-flash",
+    "gemini-3.6-flash",
+    "gemini-2.5-flash",
+    "gemini-3.5-flash-lite",
+    "gemini-2.5-flash-lite",
+]
+
 def synthesize_comparison(topic: dict) -> ComparisonArticle:
     client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
     
@@ -69,17 +78,28 @@ def synthesize_comparison(topic: dict) -> ComparisonArticle:
     {raw_b}
     """
 
-    response = client.models.generate_content(
-        model="gemini-3.8-flash",
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            system_instruction=system_instruction,
-            response_mime_type="application/json",
-            response_schema=ComparisonArticle,
-            temperature=0.2,
-        ),
-    )
-    return ComparisonArticle.model_validate_json(response.text)
+    last_error = None
+    for model_name in FREE_TIER_MODELS:
+        try:
+            print(f"  -> Trying model: {model_name}...")
+            response = client.models.generate_content(
+                model=model_name,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    system_instruction=system_instruction,
+                    response_mime_type="application/json",
+                    response_schema=ComparisonArticle,
+                    temperature=0.2,
+                ),
+            )
+            print(f"  -> Success with {model_name}!")
+            return ComparisonArticle.model_validate_json(response.text)
+        except Exception as e:
+            print(f"  -> {model_name} busy or rate-limited ({e}). Switching to backup model in 4s...")
+            last_error = e
+            time.sleep(4)
+
+    raise RuntimeError(f"All free-tier models were temporarily busy. Last error: {last_error}")
 
 # ---------------------------------------------------------
 # 4. ZERO-DEPENDENCY STATIC HTML GENERATOR
@@ -213,12 +233,7 @@ def main():
             
             topic["processed"] = True
             generated_count += 1
+            time.sleep(3)
 
     with open("topics.json", "w", encoding="utf-8") as f:
-        json.dump(topics, f, indent=2)
-
-    rebuild_index(topics)
-    print(f"Run complete. Generated {generated_count} new pages.")
-
-if __name__ == "__main__":
-    main()
+        json.
