@@ -1,0 +1,74 @@
+{
+  "seo_title": "Xero vs MYOB Business: 2026 Payroll & API Audit",
+  "meta_description": "Technical comparison of Xero and MYOB Business for Australian BAS, payroll, and bank feed integration. Find the right architecture for your business size.",
+  "direct_verdict": "Xero is the superior choice for high-growth firms requiring robust API integrations and ecosystem scalability. MYOB Business is the more cost-effective solution for small Australian entities prioritizing native, AI-assisted BAS compliance and simplified payroll.",
+  "comparison_matrix": [
+    {
+      "feature_name": "BAS/GST Reconciliation",
+      "product_a_spec": "Manual/Rule-based reconciliation with JAX automation",
+      "product_b_spec": "AI-driven continuous BAS preparation (Iris AI)",
+      "winner": "MYOB Business"
+    },
+    {
+      "feature_name": "Payday Super Clearing",
+      "product_a_spec": "Automated via Xero Payroll",
+      "product_b_spec": "Automated via MYOB Payroll",
+      "winner": "Tie"
+    },
+    {
+      "feature_name": "Bank Feed Architecture",
+      "product_a_spec": "Direct bank feeds with high-confidence JAX matching",
+      "product_b_spec": "Unlimited bank account connections on Pro/Plus plans",
+      "winner": "Xero"
+    },
+    {
+      "feature_name": "API Rate Limits",
+      "product_a_spec": "60-minute rolling window, 5,000 requests/day",
+      "product_b_spec": "Varies by plan, generally lower throughput than Xero",
+      "winner": "Xero"
+    },
+    {
+      "feature_name": "Payroll Scalability",
+      "product_a_spec": "Tiered pricing up to 50 employees",
+      "product_b_spec": "Unlimited employees on Pro/Plus plans",
+      "winner": "MYOB Business"
+    },
+    {
+      "feature_name": "Base Pricing (Post-Promo)",
+      "product_a_spec": "$107 - $250/month",
+      "product_b_spec": "$70 - $165/month",
+      "winner": "MYOB Business"
+    },
+    {
+      "feature_name": "Multi-Currency Support",
+      "product_a_spec": "Included in Comprehensive and Ultimate plans",
+      "product_b_spec": "Premier plan only",
+      "winner": "Xero"
+    },
+    {
+      "feature_name": "User Access Control",
+      "product_a_spec": "Granular roles, extra user fees apply",
+      "product_b_spec": "Unlimited users included",
+      "winner": "MYOB Business"
+    }
+  ],
+  "product_a_pros": [
+    "Superior API ecosystem and third-party integration depth",
+    "Advanced JAX automation for high-volume transaction matching",
+    "Better-defined multi-currency and project tracking modules"
+  ],
+  "product_a_cons": [
+    "High monthly subscription costs for mid-market scaling",
+    "Additional fees for users exceeding plan limits"
+  ],
+  "product_b_pros": [
+    "Lower total cost of ownership for unlimited payroll and users",
+    "Integrated AI-BAS features reduce manual compliance overhead",
+    "Native inventory management included in higher tiers"
+  ],
+  "product_b_cons": [
+    "Limited API throughput compared to Xero's developer ecosystem",
+    "Desktop-dependent architecture for advanced features like Premier"
+  ],
+  "hidden_gotchas": "Buyers often overlook the hidden costs of Xero's 'per-user' and 'per-bill' pricing models, which can inflate monthly invoices significantly as headcount grows. Conversely, MYOB users frequently encounter friction when attempting to integrate niche third-party SaaS tools due to a less mature API developer portal. Both platforms utilize aggressive introductory discounting, but users must audit their actual usage against plan limits—specifically payroll headcount and user seats—before the promo period expires to avoid sudden, steep price hikes."
+}

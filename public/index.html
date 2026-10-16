@@ -20,12 +20,12 @@
     </style>
     
 </head>
-<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-16 sm:pb-0">
-    <!-- Top Compliance & Transparency Bar -->
+<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-20 sm:pb-0">
+    <!-- Top Compliance & Transparency Bar (FTC & ACCC Prominent Disclosure) -->
     <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800">
         <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
-            <span><strong class="text-emerald-400 mono">● DATASET v2026.10</strong> — Verified REST API Limits, SOC2/ATO Governance &amp; TCO Audits</span>
-            <span class="text-slate-400">Reader-supported independent research. <a href="/disclosure.html" class="underline text-slate-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Affiliate &amp; Editorial Disclosure</a></span>
+            <span><strong class="text-emerald-400 mono">● DATASET v2026.10</strong> — Public API Documentation, SOC2/ATO Governance &amp; TCO Modeling</span>
+            <span class="text-slate-300"><strong>Commercial Disclosure:</strong> Reader-supported publication; outbound vendor links may earn an affiliate commission. <a href="/disclosure.html" class="underline text-white hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Read Full Disclosure</a></span>
         </div>
     </div>
 
@@ -36,18 +36,18 @@
                 <div class="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold mono text-sm shadow-sm group-hover:bg-blue-700 transition-colors">B2B</div>
                 <div>
                     <span class="font-extrabold text-lg tracking-tight text-slate-900">B2B<span class="text-blue-600">Comparison</span>.com</span>
-                    <span class="hidden sm:inline-block ml-2 text-[10px] mono uppercase bg-slate-100 text-slate-600 px-2 py-0.5 rounded border border-slate-200">APAC &amp; Global Lab</span>
+                    <span class="hidden sm:inline-block ml-2 text-[10px] mono uppercase bg-slate-100 text-slate-600 px-2 py-0.5 rounded border border-slate-200">APAC &amp; Global Research</span>
                 </div>
             </a>
             <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600" aria-label="Main Navigation">
                 <a href="/" class="hover:text-blue-600 transition-colors">All Matrices</a>
-                <a href="/methodology.html" class="hover:text-blue-600 transition-colors">Testing Methodology</a>
-                <a href="/about.html" class="hover:text-blue-600 transition-colors">About Lab</a>
-                <a href="/disclosure.html" class="hover:text-blue-600 transition-colors">Disclosure</a>
+                <a href="/methodology.html" class="hover:text-blue-600 transition-colors">Methodology</a>
+                <a href="/about.html" class="hover:text-blue-600 transition-colors">About Us</a>
+                <a href="/disclosure.html" class="hover:text-blue-600 transition-colors">Affiliate Disclosure</a>
             </nav>
             <div class="flex items-center space-x-2">
                 <div class="text-xs mono bg-blue-50 text-blue-700 px-3 py-1.5 rounded-md border border-blue-200 font-semibold">
-                    15 Live Audits
+                    15 Live Matrices
                 </div>
             </div>
         </div>
@@ -55,20 +55,20 @@
         <nav class="flex md:hidden items-center justify-around bg-slate-50 border-t border-slate-200 py-2 px-2 text-xs font-semibold text-slate-600" aria-label="Mobile Navigation">
             <a href="/" class="hover:text-blue-600 px-2 py-1">All Matrices</a>
             <a href="/methodology.html" class="hover:text-blue-600 px-2 py-1">Methodology</a>
-            <a href="/about.html" class="hover:text-blue-600 px-2 py-1">About Lab</a>
+            <a href="/about.html" class="hover:text-blue-600 px-2 py-1">About</a>
             <a href="/disclosure.html" class="hover:text-blue-600 px-2 py-1">Disclosure</a>
         </nav>
     </header>
     <section class="bg-white border-b border-slate-200 py-12 sm:py-16 px-4 sm:px-6">
         <div class="max-w-6xl mx-auto">
             <div class="inline-flex items-center space-x-2 bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-200 mb-4 mono">
-                <span>INDEPENDENT SAAS ARCHITECTURE &amp; TCO BENCHMARK LAB</span>
+                <span>INDEPENDENT SAAS ARCHITECTURE &amp; TCO RESEARCH PUBLICATION</span>
             </div>
             <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 max-w-3xl leading-tight">
                 B2B Software Compatibility &amp; TCO Pricing Benchmarks
             </h1>
             <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
-                Plain-English verdicts and spec-level evaluations of B2B SaaS integrations, REST API rate ceilings, Australian STP Phase 2 / Xero BAS compliance, and interactive 36-month seat-scaling calculators.
+                Plain-English verdicts and documentation-verified comparisons of B2B SaaS integrations, REST API rate ceilings, Australian STP Phase 2 / Xero BAS compliance, and interactive 36-month seat-scaling calculators.
             </p>
             <div class="mt-6 max-w-xl">
                 <label for="matrixSearch" class="sr-only">Search software comparisons</label>
@@ -80,7 +80,7 @@
     <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 py-10">
         <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
             <div class="flex flex-wrap gap-2" id="filterBar" role="group" aria-label="Filter comparisons by category">
-                <button type="button" data-filter="ALL" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-slate-900 text-white transition-colors">All Audits (15)</button><button type="button" data-filter="AU & APAC Compliance" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">AU & APAC Compliance</button><button type="button" data-filter="CRM & RevOps" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">CRM & RevOps</button><button type="button" data-filter="Global Payroll & EOR" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">Global Payroll & EOR</button><button type="button" data-filter="Payroll & Accounting" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">Payroll & Accounting</button><button type="button" data-filter="Project & Enterprise Ops" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">Project & Enterprise Ops</button>
+                <button type="button" data-filter="ALL" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-slate-900 text-white transition-colors">All Matrices (15)</button><button type="button" data-filter="AU & APAC Compliance" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">AU & APAC Compliance</button><button type="button" data-filter="CRM & RevOps" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">CRM & RevOps</button><button type="button" data-filter="Global Payroll & EOR" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">Global Payroll & EOR</button><button type="button" data-filter="Payroll & Accounting" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">Payroll & Accounting</button><button type="button" data-filter="Project & Enterprise Ops" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">Project & Enterprise Ops</button>
             </div>
             <span class="text-xs text-slate-500 mono">Dataset Updated: October 2026</span>
         </div>
@@ -97,7 +97,7 @@
                     Rippling vs. Deel
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Global Contractor Compliance, EOR Statutory Fees & Multi-Currency Payroll. Compare live USD/AUD seat scaling, API rate limits, and hidden contract fees.
+                    <strong>Focus:</strong> Global Contractor Compliance, EOR Statutory Fees & Multi-Currency Payroll. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
                 </p>
             </div>
             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
@@ -115,7 +115,7 @@
                     Gusto vs. OnPay
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Two-Way Xero Accounting Sync & Automated Tax Filing. Compare live USD/AUD seat scaling, API rate limits, and hidden contract fees.
+                    <strong>Focus:</strong> Two-Way Xero Accounting Sync & Automated Tax Filing. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
                 </p>
             </div>
             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
@@ -133,7 +133,7 @@
                     monday.com vs. ClickUp
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> SOC2 Compliance, HIPAA Readiness & REST API Rate Limits. Compare live USD/AUD seat scaling, API rate limits, and hidden contract fees.
+                    <strong>Focus:</strong> SOC2 Compliance, HIPAA Readiness & REST API Rate Limits. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
                 </p>
             </div>
             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
@@ -151,7 +151,7 @@
                     HubSpot CRM vs. Pipedrive
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Native QuickBooks & Xero Invoicing Sync & Two-Way Deal Automation. Compare live USD/AUD seat scaling, API rate limits, and hidden contract fees.
+                    <strong>Focus:</strong> Native QuickBooks & Xero Invoicing Sync & Two-Way Deal Automation. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
                 </p>
             </div>
             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
@@ -169,7 +169,7 @@
                     FreshBooks vs. Xero
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Multi-Currency Invoicing, BAS/GST Tax & Automated Bank Reconciliation. Compare live USD/AUD seat scaling, API rate limits, and hidden contract fees.
+                    <strong>Focus:</strong> Multi-Currency Invoicing, BAS/GST Tax & Automated Bank Reconciliation. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
                 </p>
             </div>
             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
@@ -187,7 +187,7 @@
                     Notion vs. Coda
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Enterprise Wiki Permissions, SAML SSO & REST API Payload Limits. Compare live USD/AUD seat scaling, API rate limits, and hidden contract fees.
+                    <strong>Focus:</strong> Enterprise Wiki Permissions, SAML SSO & REST API Payload Limits. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
                 </p>
             </div>
             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
@@ -205,7 +205,7 @@
                     ActiveCampaign vs. Klaviyo
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Webhook Automation Latency, API Throughput & E-Commerce CRM Sync. Compare live USD/AUD seat scaling, API rate limits, and hidden contract fees.
+                    <strong>Focus:</strong> Webhook Automation Latency, API Throughput & E-Commerce CRM Sync. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
                 </p>
             </div>
             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
@@ -223,7 +223,7 @@
                     Zendesk vs. Intercom
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Omnichannel Ticketing SLA Routing, AI Agent Costs & Custom Webhooks. Compare live USD/AUD seat scaling, API rate limits, and hidden contract fees.
+                    <strong>Focus:</strong> Omnichannel Ticketing SLA Routing, AI Agent Costs & Custom Webhooks. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
                 </p>
             </div>
             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
@@ -241,7 +241,7 @@
                     Shopify vs. BigCommerce
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Headless Storefront GraphQL API Rate Limits & B2B Wholesale Checkout. Compare live USD/AUD seat scaling, API rate limits, and hidden contract fees.
+                    <strong>Focus:</strong> Headless Storefront GraphQL API Rate Limits & B2B Wholesale Checkout. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
                 </p>
             </div>
             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
@@ -259,7 +259,7 @@
                     Asana vs. Smartsheet
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Portfolio Resource Allocation, SAML SSO & Immutable Audit Log Export. Compare live USD/AUD seat scaling, API rate limits, and hidden contract fees.
+                    <strong>Focus:</strong> Portfolio Resource Allocation, SAML SSO & Immutable Audit Log Export. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
                 </p>
             </div>
             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
@@ -277,7 +277,7 @@
                     Rippling AU vs. Employment Hero
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Australian STP Phase 2, Payday Super 2026, Fair Work Awards & Xero Sync. Compare live USD/AUD seat scaling, API rate limits, and hidden contract fees.
+                    <strong>Focus:</strong> Australian STP Phase 2, Payday Super 2026, Fair Work Awards & Xero Sync. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
                 </p>
             </div>
             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
@@ -295,7 +295,7 @@
                     Xero vs. MYOB Business
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Australian BAS/GST Reconciliation, Payday Super Clearing & Bank Feeds. Compare live USD/AUD seat scaling, API rate limits, and hidden contract fees.
+                    <strong>Focus:</strong> Australian BAS/GST Reconciliation, Payday Super Clearing & Bank Feeds. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
                 </p>
             </div>
             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
@@ -313,7 +313,7 @@
                     ServiceM8 vs. Tradify
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Australian Field Service Job Dispatch, Quoting & Two-Way Xero Sync. Compare live USD/AUD seat scaling, API rate limits, and hidden contract fees.
+                    <strong>Focus:</strong> Australian Field Service Job Dispatch, Quoting & Two-Way Xero Sync. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
                 </p>
             </div>
             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
@@ -331,7 +331,7 @@
                     Deel vs. Remote.com
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Employer of Record (EOR) Statutory Onboarding in Australia, NZ & APAC. Compare live USD/AUD seat scaling, API rate limits, and hidden contract fees.
+                    <strong>Focus:</strong> Employer of Record (EOR) Statutory Onboarding in Australia, NZ & APAC. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
                 </p>
             </div>
             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
@@ -349,7 +349,7 @@
                     Deputy vs. Tanda (Workforce)
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Australian Fair Work Modern Award Interpretation, Rostering & Xero Payroll. Compare live USD/AUD seat scaling, API rate limits, and hidden contract fees.
+                    <strong>Focus:</strong> Australian Fair Work Modern Award Interpretation, Rostering & Xero Payroll. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
                 </p>
             </div>
             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
@@ -401,26 +401,26 @@
                     <span class="font-bold text-white text-base">B2BComparison.com</span>
                 </div>
                 <p class="mt-3 text-xs text-slate-400 leading-relaxed">
-                    Independent B2B software architecture, integration compatibility, and Total Cost of Ownership (TCO) research for CTOs, Finance Directors, and Operations teams across Australia, APAC, and North America.
+                    Independent B2B software architecture, integration compatibility, and Total Cost of Ownership (TCO) research publication for CTOs, Finance Directors, and Operations teams across Australia, APAC, and North America.
                 </p>
-                <p class="mt-2 text-[11px] text-slate-500 mono">
-                    Operated out of Brisbane, QLD, Australia • Updated October 2026
+                <p class="mt-2 text-[11px] text-slate-400 mono">
+                    ABN: 51 205 277 641 • Operated in Brisbane, QLD, Australia • Updated October 2026
                 </p>
             </div>
             <div>
                 <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">Governance &amp; Legal</h4>
                 <ul class="space-y-2 text-xs">
-                    <li><a href="/about.html" class="hover:text-white transition-colors">About B2BComparison Research</a></li>
-                    <li><a href="/methodology.html" class="hover:text-white transition-colors">Benchmarking &amp; TCO Methodology</a></li>
+                    <li><a href="/about.html" class="hover:text-white transition-colors">About B2BComparison &amp; Entity Details</a></li>
+                    <li><a href="/methodology.html" class="hover:text-white transition-colors">Documentation &amp; TCO Methodology</a></li>
                     <li><a href="/disclosure.html" class="hover:text-white transition-colors">FTC &amp; ACCC Affiliate Disclosure</a></li>
                     <li><a href="/privacy.html" class="hover:text-white transition-colors">Privacy Policy &amp; Terms of Service</a></li>
                     <li><a href="/sitemap.xml" class="hover:text-white transition-colors">XML Sitemap</a> • <a href="/llms.txt" class="hover:text-white transition-colors">AI / LLMs.txt</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">Editorial Firewall &amp; Compliance</h4>
+                <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">ACCC &amp; FTC Commercial Disclosure</h4>
                 <p class="text-xs text-slate-400 leading-relaxed">
-                    In accordance with Australian Consumer Law (ACL) and US FTC guidelines: we may receive referral compensation when you click outbound vendor links or request demos. Commercial partnerships never alter our REST API rate-limit benchmarks, compliance badges, or TCO pricing math.
+                    In accordance with the Australian Consumer Law (ACL) and US FTC 16 CFR Part 255 guidelines: B2BComparison.com participates in commercial affiliate programs. We may earn a referral fee when you click outbound vendor links or sign up for trials. All specifications and TCO models are compiled from publicly published vendor documentation and are shown exclusive of GST (ex. GST) unless noted.
                 </p>
             </div>
         </div>

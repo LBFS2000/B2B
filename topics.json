@@ -167,7 +167,7 @@
     "priceB_base": 0,
     "priceB_seat": 19,
     "compliance": "SOC2 Type II & ISO 27001",
-    "processed": false
+    "processed": true
   },
   {
     "id": "rippling-vs-employment-hero-australia",
@@ -184,7 +184,7 @@
     "priceB_base": 0,
     "priceB_seat": 12,
     "compliance": "ATO STP Phase 2 & ISO 27001",
-    "processed": false
+    "processed": true
   },
   {
     "id": "xero-vs-myob-australian-accounting",
@@ -201,7 +201,7 @@
     "priceB_base": 34,
     "priceB_seat": 2,
     "compliance": "ATO DSP Certified & ISO 27001",
-    "processed": false
+    "processed": true
   },
   {
     "id": "servicem8-vs-tradify-xero-tradies",

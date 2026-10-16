@@ -1,0 +1,74 @@
+{
+  "seo_title": "Asana vs Smartsheet: Portfolio & Audit Log Audit (2026)",
+  "meta_description": "Technical comparison of Asana and Smartsheet for enterprise resource planning, SAML SSO, and immutable audit log export requirements.",
+  "direct_verdict": "Asana is superior for UI-driven task management and cross-functional collaboration in mid-market firms. Smartsheet wins for large-scale portfolio resource allocation and complex data-heavy ERP synchronization.",
+  "comparison_matrix": [
+    {
+      "feature_name": "Portfolio Resource Allocation",
+      "product_a_spec": "Advanced tier includes portfolio views and workload balancing",
+      "product_b_spec": "Advanced Work Management tier includes Control Center and Resource Management",
+      "winner": "Smartsheet"
+    },
+    {
+      "feature_name": "SAML SSO Availability",
+      "product_a_spec": "Enterprise tier only",
+      "product_b_spec": "Enterprise and Advanced Work Management tiers",
+      "winner": "Tie"
+    },
+    {
+      "feature_name": "Immutable Audit Log Export",
+      "product_a_spec": "Enterprise+ tier only",
+      "product_b_spec": "Add-on for Enterprise and Advanced Work Management",
+      "winner": "Smartsheet"
+    },
+    {
+      "feature_name": "API Rate Limits",
+      "product_a_spec": "Dynamic based on tier; service accounts available",
+      "product_b_spec": "Tiered limits; requires Data Shuttle for high-volume sync",
+      "winner": "Asana"
+    },
+    {
+      "feature_name": "ERP/Data Sync Architecture",
+      "product_a_spec": "Salesforce, Tableau, Power BI native connectors",
+      "product_b_spec": "Data Shuttle, DataMesh, and Bridge for complex ETL",
+      "winner": "Smartsheet"
+    },
+    {
+      "feature_name": "Base Pricing (Annual)",
+      "product_a_spec": "$24.99/user/mo (Advanced)",
+      "product_b_spec": "$27 AUD/member/mo (Business)",
+      "winner": "Asana"
+    },
+    {
+      "feature_name": "Attachment Storage",
+      "product_a_spec": "Unlimited (100MB per file)",
+      "product_b_spec": "Unlimited (250MB per file)",
+      "winner": "Smartsheet"
+    },
+    {
+      "feature_name": "Compliance Support",
+      "product_a_spec": "Enterprise+ for data residency/SIEM",
+      "product_b_spec": "Gov cloud and regional data residency add-ons",
+      "winner": "Smartsheet"
+    }
+  ],
+  "product_a_pros": [
+    "Superior UX for task-level collaboration",
+    "Native AI Teammates and Dash automation",
+    "Lower entry cost for advanced project features"
+  ],
+  "product_a_cons": [
+    "Audit logs locked behind highest Enterprise+ tier",
+    "Limited native ETL capabilities for complex data"
+  ],
+  "product_b_pros": [
+    "Robust portfolio management via Control Center",
+    "Advanced data manipulation via Data Shuttle and Bridge",
+    "Higher individual file attachment limits"
+  ],
+  "product_b_cons": [
+    "High cost of entry for premium add-ons like Dynamic View",
+    "Steeper learning curve for non-spreadsheet users"
+  ],
+  "hidden_gotchas": "Buyers often overlook that both platforms gate critical security features like SCIM and SAML behind their most expensive Enterprise tiers. Asana's Enterprise+ is a distinct, high-cost SKU required for SIEM integration and true audit log immutability. Smartsheet's pricing is deceptive; while the Business plan seems affordable, the actual portfolio management and data integration features (Control Center, Data Shuttle, Bridge) are expensive add-ons that can double the total cost of ownership. API rate limits are rarely documented clearly in sales decks, leading to unexpected throttling for teams attempting to build custom middleware for real-time ERP synchronization."
+}

@@ -1,0 +1,74 @@
+{
+  "seo_title": "Rippling vs Employment Hero: AU Payroll & API Audit (2026)",
+  "meta_description": "Technical audit of Rippling vs Employment Hero for Australian STP Phase 2, Payday Super 2026, and Xero integration architecture.",
+  "direct_verdict": "Employment Hero is the superior choice for Australian-centric SMEs requiring native Fair Work Award automation and deep local compliance. Rippling wins for global-first organizations needing a unified IT and HR stack with a more robust, developer-friendly API.",
+  "comparison_matrix": [
+    {
+      "feature_name": "STP Phase 2 Compliance",
+      "product_a_spec": "Fully supported via global engine",
+      "product_b_spec": "Native AU-first engine",
+      "winner": "Employment Hero"
+    },
+    {
+      "feature_name": "Payday Super 2026",
+      "product_a_spec": "Automated via global payroll logic",
+      "product_b_spec": "Native NPP-integrated settlement",
+      "winner": "Employment Hero"
+    },
+    {
+      "feature_name": "Fair Work Award Interpretation",
+      "product_a_spec": "Custom rule builder required",
+      "product_b_spec": "Pre-built library for 100+ awards",
+      "winner": "Employment Hero"
+    },
+    {
+      "feature_name": "Xero Sync Architecture",
+      "product_a_spec": "Standard API-based ledger sync",
+      "product_b_spec": "Deep native accounting integration",
+      "winner": "Employment Hero"
+    },
+    {
+      "feature_name": "API Rate Limits",
+      "product_a_spec": "High-throughput (1000+ req/min)",
+      "product_b_spec": "Standard (100-200 req/min)",
+      "winner": "Rippling"
+    },
+    {
+      "feature_name": "Global/Local Focus",
+      "product_a_spec": "Global-first, multi-country",
+      "product_b_spec": "AU-first, regional expansion",
+      "winner": "Rippling"
+    },
+    {
+      "feature_name": "Pricing Model",
+      "product_a_spec": "Modular per-employee/per-app",
+      "product_b_spec": "Tiered platform subscription",
+      "winner": "Tie"
+    },
+    {
+      "feature_name": "IT/Device Management",
+      "product_a_spec": "Native MDM/IT automation",
+      "product_b_spec": "None",
+      "winner": "Rippling"
+    }
+  ],
+  "product_a_pros": [
+    "Unified IT and HR management platform",
+    "High-performance API for custom integrations",
+    "Superior multi-country payroll scalability"
+  ],
+  "product_a_cons": [
+    "High configuration overhead for AU Awards",
+    "Lack of native Australian-specific compliance depth"
+  ],
+  "product_b_pros": [
+    "Deep native support for Australian Fair Work Awards",
+    "Automated Payday Super and NPP settlement",
+    "Strong local market ecosystem and support"
+  ],
+  "product_b_cons": [
+    "Limited global payroll capabilities",
+    "Restrictive API limits for high-scale custom dev"
+  ],
+  "hidden_gotchas": "Rippling's modular pricing often hides significant costs for IT management features that are not included in base HR tiers. Employment Hero utilizes a tiered subscription model where advanced rostering and AI payroll features are gated behind higher-cost plans, often requiring expensive add-ons for larger headcount. Both platforms enforce strict contract lock-ins for enterprise-level service level agreements, and API access for Employment Hero is frequently throttled for non-partner accounts, potentially breaking custom middleware syncs during high-volume pay runs."
+}
