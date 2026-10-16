@@ -1,36 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-slate-50 text-slate-900 antialiased">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B2B Stack Integration & Pricing Matrix</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StackBench | Enterprise B2B SaaS Architecture & API Benchmarks</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
-    <main class="max-w-4xl mx-auto px-6 py-12">
-        <h1 class="text-3xl font-extrabold">B2B Software Compatibility & Pricing Benchmarks</h1>
-        <p class="mt-2 text-slate-600">Unbiased, spec-level comparisons of enterprise SaaS integrations, API limits, and total cost of ownership.</p>
-        <div class="mt-8 grid gap-4">
-            <a href="rippling-vs-deel-global-payroll.html" class="block p-5 bg-white rounded-xl border border-slate-200 hover:border-indigo-500 shadow-sm transition">
-                <div class="text-xs font-bold text-indigo-600 uppercase">Global Contractor Compliance & Multi-Currency Payroll</div>
-                <div class="mt-1 text-lg font-bold text-slate-900">Rippling vs Deel</div>
-            </a>
-            <a href="gusto-vs-onpay-xero-integration.html" class="block p-5 bg-white rounded-xl border border-slate-200 hover:border-indigo-500 shadow-sm transition">
-                <div class="text-xs font-bold text-indigo-600 uppercase">Two-Way Xero Accounting Sync & Automated Tax Filing</div>
-                <div class="mt-1 text-lg font-bold text-slate-900">Gusto vs OnPay</div>
-            </a>
-            <a href="monday-vs-clickup-soc2-enterprise.html" class="block p-5 bg-white rounded-xl border border-slate-200 hover:border-indigo-500 shadow-sm transition">
-                <div class="text-xs font-bold text-indigo-600 uppercase">SOC2 Compliance, HIPAA Readiness & API Rate Limits</div>
-                <div class="mt-1 text-lg font-bold text-slate-900">monday.com vs ClickUp</div>
-            </a>
-            <a href="hubspot-vs-pipedrive-quickbooks-sync.html" class="block p-5 bg-white rounded-xl border border-slate-200 hover:border-indigo-500 shadow-sm transition">
-                <div class="text-xs font-bold text-indigo-600 uppercase">Native QuickBooks Invoicing Sync & Two-Way Deal Automation</div>
-                <div class="mt-1 text-lg font-bold text-slate-900">HubSpot CRM vs Pipedrive</div>
-            </a>
-            <a href="freshbooks-vs-xero-multi-entity.html" class="block p-5 bg-white rounded-xl border border-slate-200 hover:border-indigo-500 shadow-sm transition">
-                <div class="text-xs font-bold text-indigo-600 uppercase">Multi-Currency Invoicing & Automated Bank Reconciliation</div>
-                <div class="mt-1 text-lg font-bold text-slate-900">FreshBooks vs Xero</div>
-            </a></div>
-    </main>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Top Compliance & Announcement Bar -->
+  <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <span><strong class="text-emerald-400 mono">● DATASET v2026.10</strong> — Verified API Rate Limits, Security Compliance & TCO Benchmarks</span>
+      <span class="hidden sm:inline text-slate-400">Reader-supported independent research. <a href="/disclosure.html" class="underline hover:text-white">Affiliate Disclosure</a></span>
+    </div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center space-x-2.5">
+        <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold mono text-sm shadow-sm">SB</div>
+        <span class="font-bold text-lg tracking-tight text-slate-900">StackBench<span class="text-blue-600">.io</span></span>
+      </a>
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
+        <a href="#payroll" class="hover:text-slate-900">HR & Payroll</a>
+        <a href="#accounting" class="hover:text-slate-900">ERP & Accounting</a>
+        <a href="#crm" class="hover:text-slate-900">RevOps & CRM</a>
+        <a href="/methodology.html" class="hover:text-slate-900">Methodology</a>
+      </nav>
+      <div class="text-xs mono bg-slate-100 text-slate-700 px-3 py-1.5 rounded border border-slate-200">
+        24 Vendors Indexed
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-white border-b border-slate-200 py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="inline-flex items-center space-x-2 bg-blue-50 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded border border-blue-200 mb-4 mono">
+        <span>TECHNICAL PROCUREMENT MATRICES</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 max-w-3xl">
+        B2B Software Compatibility, API & Pricing Benchmarks
+      </h1>
+      <p class="mt-3 text-base text-slate-600 max-w-2xl leading-relaxed">
+        Spec-level architectural breakdowns for CTOs, RevOps, and Finance teams. We benchmark webhook payloads, REST API rate limits, native ERP sync fidelity, and 36-month total cost of ownership.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Matrix Grid -->
+  <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-10">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500 mono">Active Head-to-Head Audits</h2>
+      <span class="text-xs text-slate-500">Updated October 2026</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- EXAMPLE CARD (Loop this in your Python/Node build script) -->
+      <a href="/rippling-vs-deel.html" class="group bg-white rounded-lg border border-slate-200 p-5 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-xs mono text-slate-500 mb-2">
+            <span class="text-blue-600 font-semibold uppercase">Global Payroll & EOR</span>
+            <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+            Rippling vs. Deel: Multi-Currency Payroll & API Sync
+          </h3>
+          <p class="text-sm text-slate-600 mt-1.5 line-clamp-2">
+            Side-by-side audit of EOR statutory fee structures, NetSuite/Xero two-way ledger mapping, and REST API rate ceilings.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+          <span>32 Spec Points Compared</span>
+          <span class="text-blue-600 font-medium group-hover:translate-x-0.5 transition-transform">View Matrix →</span>
+        </div>
+      </a>
+      <!-- END CARD -->
+    </div>
+  </main>
+
+  <!-- Mandatory Compliance Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-10 px-4 text-sm mt-16 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <span class="font-bold text-white text-base">StackBench</span>
+        <p class="mt-2 text-xs text-slate-400 leading-relaxed">
+          Independent B2B software architecture research. All benchmarks are tested against public API documentation and standard commercial pricing tiers.
+        </p>
+      </div>
+      <div>
+        <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">Governance & Legal</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="/about.html" class="hover:text-white">About & Testing Methodology</a></li>
+          <li><a href="/disclosure.html" class="hover:text-white">FTC Affiliate Disclosure</a></li>
+          <li><a href="/privacy.html" class="hover:text-white">Privacy Policy</a></li>
+          <li><a href="/terms.html" class="hover:text-white">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">Editorial Standards</h4>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          We may earn a referral fee when you request a demo or purchase through links on our platform. This never influences our technical API or compliance scoring.
+        </p>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
