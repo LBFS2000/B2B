@@ -651,7 +651,10 @@ def synthesize_comparison(
   if not use_ai or not api_key:
     return cached or build_deterministic_fallback(nt), False
 
-  client = genai.Client(api_key=api_key)
+  client = genai.Client(
+        api_key=api_key,
+        http_options=types.HttpOptions(timeout=25000),
+    )
   raw_a = scrape_page_text(nt["url_a"])
   raw_b = scrape_page_text(nt["url_b"])
   schema_json = json.dumps(ComparisonArticle.model_json_schema(), indent=2)
@@ -752,6 +755,8 @@ def get_header(
     <link rel="icon" type="image/svg+xml" href="{FAVICON_DATA_URI}">
     <link rel="canonical" href="{canonical_url}">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
+    <script src="/tco-engine.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1920,6 +1925,11 @@ def main():
     json.dump(topics, f, indent=2)
 
   rebuild_index_legal_and_sitemap(topics)
+  import monetization_engine
+
+    monetization_engine.build_all(
+        topics, normalize_topic, get_header, get_footer
+    )
   print(
       f"Run complete. Built {len(topics)} pages ({generated_ai_count} newly"
       " synthesized via live AI pool) + sitemap.xml + sitemap.txt + llms.txt +"
