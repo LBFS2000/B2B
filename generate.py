@@ -634,7 +634,7 @@ Return ONLY a valid JSON object matching this exact JSON schema (no markdown fen
 
 
 # ---------------------------------------------------------
-# 5. ACCESSIBLE, LEGALLY HARDENED UI + INTERNAL LINKING
+# 5. ACCESSIBLE, LEGALLY HARDENED UI + DYNAMIC WINNER HIGHLIGHTING
 # ---------------------------------------------------------
 def get_abn_badge() -> str:
   if ABN_NUMBER and "XX" not in ABN_NUMBER:
@@ -781,6 +781,7 @@ def render_html(
   est25_a = pA_base + (25 * pA_seat)
   est25_b = pB_base + (25 * pB_seat)
   cheaper_25 = pa if est25_a <= est25_b else pb
+  cost_winner_side = "A" if est25_a <= est25_b else "B"
   annual_diff_25 = abs(est25_a - est25_b) * 12
 
   a_wins = sum(
@@ -797,13 +798,35 @@ def render_html(
   )
   score_a = round(min(9.8, 8.6 + (a_wins * 0.15)), 1)
   score_b = round(min(9.7, 8.5 + (b_wins * 0.15)), 1)
+  if score_a == score_b:
+    if est25_a <= est25_b:
+      score_a = round(score_a + 0.1, 1)
+    else:
+      score_b = round(score_b + 0.1, 1)
+
+  a_wins_overall = score_a >= score_b
+  overall_winner_side = "A" if a_wins_overall else "B"
+
+  # Dynamic button & card classes so the higher-scored product ALWAYS gets the bright blue highlight
+  btn_a_cls = (
+      "bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
+      if a_wins_overall
+      else "bg-slate-900 hover:bg-slate-800 text-white"
+  )
+  btn_b_cls = (
+      "bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
+      if not a_wins_overall
+      else "bg-slate-900 hover:bg-slate-800 text-white"
+  )
 
   rows_html = ""
   for row in data.comparison_matrix:
     w_lower = row.winner.lower()
     if w_lower == "tie":
       badge_cls = "bg-slate-100 text-slate-700 border-slate-300"
-    elif pa.lower() in w_lower:
+    elif (pa.lower() in w_lower and a_wins_overall) or (
+        pb.lower() in w_lower and not a_wins_overall
+    ):
       badge_cls = "bg-blue-50 text-blue-700 border-blue-200"
     else:
       badge_cls = "bg-emerald-50 text-emerald-700 border-emerald-200"
@@ -1002,30 +1025,36 @@ def render_html(
                 <p id="prioText" class="text-sm sm:text-base text-slate-100 leading-relaxed">{data.direct_verdict}</p>
             </div>
 
-            <!-- Side-by-Side Plain-English Scorecard Cards -->
+            <!-- Side-by-Side Plain-English Scorecard Cards (Dynamically Highlighted Based on Score / Priority Winner) -->
             <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="p-4 rounded-xl border border-blue-200 bg-blue-50/40 flex flex-col justify-between">
+                <div id="scoreCardA" class="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all">
                     <div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between gap-2">
                             <span class="font-extrabold text-slate-900 text-lg">{pa}</span>
-                            <span class="text-xs font-bold mono bg-blue-600 text-white px-2.5 py-0.5 rounded" title="Composite score based on documented API limits, integrations, and TCO">{score_a} / 10</span>
+                            <div class="flex items-center gap-1.5">
+                                <span id="winTagA" class="hidden text-[11px] font-bold mono uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200">★ Recommended</span>
+                                <span id="scoreBadgeA" class="text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded" title="Composite score based on documented API limits, integrations, and TCO">{score_a} / 10</span>
+                            </div>
                         </div>
                         <p class="mt-2 text-xs text-slate-600"><strong>Best if you need:</strong> Deep accounting/ERP automation, higher API concurrency limits, and enterprise-grade role permissions.</p>
                     </div>
-                    <a href="{nt['aff_link_a']}" target="_blank" rel="nofollow sponsored" class="mt-4 block w-full text-center px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                    <a id="scoreBtnA" href="{nt['aff_link_a']}" target="_blank" rel="nofollow sponsored" class="mt-4 block w-full text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg transition-colors">
                         Check {pa} Official Pricing &amp; Trial &rarr;
                     </a>
                 </div>
 
-                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
+                <div id="scoreCardB" class="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all">
                     <div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between gap-2">
                             <span class="font-extrabold text-slate-900 text-lg">{pb}</span>
-                            <span class="text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded" title="Composite score based on documented API limits, integrations, and TCO">{score_b} / 10</span>
+                            <div class="flex items-center gap-1.5">
+                                <span id="winTagB" class="hidden text-[11px] font-bold mono uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200">★ Recommended</span>
+                                <span id="scoreBadgeB" class="text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded" title="Composite score based on documented API limits, integrations, and TCO">{score_b} / 10</span>
+                            </div>
                         </div>
                         <p class="mt-2 text-xs text-slate-600"><strong>Best if you need:</strong> Fast day-one onboarding for non-technical staff and straightforward per-seat pricing without base fees.</p>
                     </div>
-                    <a href="{nt['aff_link_b']}" target="_blank" rel="nofollow sponsored" class="mt-4 block w-full text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg transition-colors">
+                    <a id="scoreBtnB" href="{nt['aff_link_b']}" target="_blank" rel="nofollow sponsored" class="mt-4 block w-full text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg transition-colors">
                         Check {pb} Official Pricing &amp; Trial &rarr;
                     </a>
                 </div>
@@ -1064,10 +1093,13 @@ def render_html(
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
+                <div id="calcCardA" class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all">
                     <div>
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-slate-900 text-lg">{pa}</span>
+                        <div class="flex justify-between items-center gap-2">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-slate-900 text-lg">{pa}</span>
+                                <span id="calcWinTagA" class="hidden text-[10px] font-bold mono uppercase bg-blue-600 text-white px-2 py-0.5 rounded">★ Lowest TCO</span>
+                            </div>
                             <span class="text-xs mono text-slate-500">${pA_base}/mo base + ${pA_seat}/user</span>
                         </div>
                         <div class="mt-3">
@@ -1076,15 +1108,18 @@ def render_html(
                         </div>
                         <p class="text-xs text-slate-500 mt-1 mb-4 mono">1-Year Total: <strong id="costA_yr" class="text-slate-800">$0/yr</strong> • 3-Year TCO: <strong id="costA_3yr" class="text-slate-800">$0</strong></p>
                     </div>
-                    <a href="{nt['aff_link_a']}" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
+                    <a id="calcBtnA" href="{nt['aff_link_a']}" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
                         Verify {pa} Official Pricing &rarr;
                     </a>
                 </div>
 
-                <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
+                <div id="calcCardB" class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all">
                     <div>
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-slate-900 text-lg">{pb}</span>
+                        <div class="flex justify-between items-center gap-2">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-slate-900 text-lg">{pb}</span>
+                                <span id="calcWinTagB" class="hidden text-[10px] font-bold mono uppercase bg-blue-600 text-white px-2 py-0.5 rounded">★ Lowest TCO</span>
+                            </div>
                             <span class="text-xs mono text-slate-500">${pB_base}/mo base + ${pB_seat}/user</span>
                         </div>
                         <div class="mt-3">
@@ -1093,7 +1128,7 @@ def render_html(
                         </div>
                         <p class="text-xs text-slate-500 mt-1 mb-4 mono">1-Year Total: <strong id="costB_yr" class="text-slate-800">$0/yr</strong> • 3-Year TCO: <strong id="costB_3yr" class="text-slate-800">$0</strong></p>
                     </div>
-                    <a href="{nt['aff_link_b']}" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
+                    <a id="calcBtnB" href="{nt['aff_link_b']}" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
                         Verify {pb} Official Pricing &rarr;
                     </a>
                 </div>
@@ -1122,24 +1157,79 @@ def render_html(
             const btnMonthly = document.getElementById('btnMonthly');
             const btnAnnual = document.getElementById('btnAnnual');
 
+            const scoreCardA = document.getElementById('scoreCardA');
+            const scoreCardB = document.getElementById('scoreCardB');
+            const scoreBadgeA = document.getElementById('scoreBadgeA');
+            const scoreBadgeB = document.getElementById('scoreBadgeB');
+            const scoreBtnA = document.getElementById('scoreBtnA');
+            const scoreBtnB = document.getElementById('scoreBtnB');
+            const winTagA = document.getElementById('winTagA');
+            const winTagB = document.getElementById('winTagB');
+
+            const calcCardA = document.getElementById('calcCardA');
+            const calcCardB = document.getElementById('calcCardB');
+            const calcBtnA = document.getElementById('calcBtnA');
+            const calcBtnB = document.getElementById('calcBtnB');
+            const calcWinTagA = document.getElementById('calcWinTagA');
+            const calcWinTagB = document.getElementById('calcWinTagB');
+
             const prioBtns = document.querySelectorAll('.prio-btn');
             const prioBadge = document.getElementById('prioBadge');
             const prioText = document.getElementById('prioText');
 
+            function highlightScorecard(winnerSide, labelText) {{
+                const winCardCls = 'p-4 rounded-xl border-2 border-blue-500 bg-blue-50/40 shadow-sm flex flex-col justify-between transition-all';
+                const loseCardCls = 'p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all';
+                const winBadgeCls = 'text-xs font-bold mono bg-blue-600 text-white px-2.5 py-0.5 rounded';
+                const loseBadgeCls = 'text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded';
+                const winBtnCls = 'mt-4 block w-full text-center px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm';
+                const loseBtnCls = 'mt-4 block w-full text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg transition-colors';
+
+                if (winnerSide === 'A') {{
+                    scoreCardA.className = winCardCls;
+                    scoreCardB.className = loseCardCls;
+                    scoreBadgeA.className = winBadgeCls;
+                    scoreBadgeB.className = loseBadgeCls;
+                    scoreBtnA.className = winBtnCls;
+                    scoreBtnB.className = loseBtnCls;
+                    winTagA.textContent = labelText || '★ Top Rated';
+                    winTagA.className = 'inline-block text-[11px] font-bold mono uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200';
+                    winTagB.className = 'hidden';
+                }} else {{
+                    scoreCardB.className = winCardCls;
+                    scoreCardA.className = loseCardCls;
+                    scoreBadgeB.className = winBadgeCls;
+                    scoreBadgeA.className = loseBadgeCls;
+                    scoreBtnB.className = winBtnCls;
+                    scoreBtnA.className = loseBtnCls;
+                    winTagB.textContent = labelText || '★ Top Rated';
+                    winTagB.className = 'inline-block text-[11px] font-bold mono uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200';
+                    winTagA.className = 'hidden';
+                }}
+            }}
+
             const prioMessages = {{
                 verdict: {{
+                    side: '{overall_winner_side}',
+                    tag: '★ Top Rated',
                     badge: '● Executive Summary Verdict',
                     text: {json.dumps(data.direct_verdict)}
                 }},
                 cost: {{
+                    side: '{cost_winner_side}',
+                    tag: '★ Lowest TCO',
                     badge: '● Lowest Total Cost Winner: {cheaper_25}',
                     text: 'At 25 users, {cheaper_25} is the more cost-effective option based on published base + seat rates, saving approximately ${annual_diff_25:,} USD per year (A${int(annual_diff_25 * 1.54):,} AUD/yr ex. GST). Use the slider below to model your exact headcount.'
                 }},
                 ease: {{
+                    side: 'B',
+                    tag: '★ Fastest Setup',
                     badge: '● Fastest Setup & Onboarding Focus: {pb}',
                     text: 'For lean teams that want to get live quickly without hiring an external systems integrator, {pb} generally offers a faster self-serve setup and lower initial administration overhead.'
                 }},
                 api: {{
+                    side: 'A',
+                    tag: '★ Best API / Sync',
                     badge: '● Deepest API & Accounting Sync Focus: {pa}',
                     text: 'For teams syncing multi-currency ledgers (Xero/QuickBooks/NetSuite) or running automated webhook workflows, {pa} provides strong API rate ceilings and granular role governance.'
                 }}
@@ -1155,9 +1245,13 @@ def render_html(
                     if (prioMessages[key]) {{
                         prioBadge.textContent = prioMessages[key].badge;
                         prioText.textContent = prioMessages[key].text;
+                        highlightScorecard(prioMessages[key].side, prioMessages[key].tag);
                     }}
                 }});
             }});
+
+            // Initialize top scorecard highlight to match the higher-scored platform
+            highlightScorecard('{overall_winner_side}', '★ Top Rated');
 
             let fxRate = 1.0;
             let sym = '$';
@@ -1198,13 +1292,36 @@ def render_html(
                 costB_yr.textContent = sym + yB.toLocaleString() + '/yr';
                 costB_3yr.textContent = sym + (yB * 3).toLocaleString();
 
+                const winCalcCardCls = 'p-5 rounded-xl border-2 border-blue-500 bg-blue-50/30 shadow-sm flex flex-col justify-between transition-all';
+                const loseCalcCardCls = 'p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all';
+                const winCalcBtnCls = 'block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors shadow-sm';
+                const loseCalcBtnCls = 'block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors';
+
                 const diffYr = Math.abs(yA - yB);
                 if (diffYr === 0) {{
                     tcoSavingsText.textContent = 'Identical estimated annual licensing cost at ' + s + ' seats.';
+                    calcCardA.className = winCalcCardCls;
+                    calcCardB.className = winCalcCardCls;
+                    calcBtnA.className = winCalcBtnCls;
+                    calcBtnB.className = winCalcBtnCls;
+                    calcWinTagA.className = 'hidden';
+                    calcWinTagB.className = 'hidden';
                 }} else if (yA < yB) {{
                     tcoSavingsText.textContent = '★ {pa} est. ~' + sym + diffYr.toLocaleString() + '/yr lower than {pb} at ' + s + ' seats (ex. GST).';
+                    calcCardA.className = winCalcCardCls;
+                    calcCardB.className = loseCalcCardCls;
+                    calcBtnA.className = winCalcBtnCls;
+                    calcBtnB.className = loseCalcBtnCls;
+                    calcWinTagA.className = 'inline-block text-[10px] font-bold mono uppercase bg-blue-600 text-white px-2 py-0.5 rounded';
+                    calcWinTagB.className = 'hidden';
                 }} else {{
                     tcoSavingsText.textContent = '★ {pb} est. ~' + sym + diffYr.toLocaleString() + '/yr lower than {pa} at ' + s + ' seats (ex. GST).';
+                    calcCardB.className = winCalcCardCls;
+                    calcCardA.className = loseCalcCardCls;
+                    calcBtnB.className = winCalcBtnCls;
+                    calcBtnA.className = loseCalcBtnCls;
+                    calcWinTagB.className = 'inline-block text-[10px] font-bold mono uppercase bg-blue-600 text-white px-2 py-0.5 rounded';
+                    calcWinTagA.className = 'hidden';
                 }}
             }}
 
@@ -1233,8 +1350,8 @@ def render_html(
                 <tfoot>
                     <tr class="bg-slate-50 border-t border-slate-200">
                         <td class="p-4 font-bold text-slate-900 text-xs mono uppercase">Official Vendor Links (Referral)</td>
-                        <td class="p-4"><a href="{nt['aff_link_a']}" target="_blank" rel="nofollow sponsored" class="inline-block px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition-colors">Visit {pa} &rarr;</a></td>
-                        <td class="p-4"><a href="{nt['aff_link_b']}" target="_blank" rel="nofollow sponsored" class="inline-block px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">Visit {pb} &rarr;</a></td>
+                        <td class="p-4"><a href="{nt['aff_link_a']}" target="_blank" rel="nofollow sponsored" class="inline-block px-3.5 py-2 {btn_a_cls} text-xs font-bold rounded-lg transition-colors">Visit {pa} &rarr;</a></td>
+                        <td class="p-4"><a href="{nt['aff_link_b']}" target="_blank" rel="nofollow sponsored" class="inline-block px-3.5 py-2 {btn_b_cls} text-xs font-bold rounded-lg transition-colors">Visit {pb} &rarr;</a></td>
                         <td class="p-4 text-xs mono text-slate-500">Reviewed {today}</td>
                     </tr>
                 </tfoot>
@@ -1243,30 +1360,30 @@ def render_html(
 
         <!-- Pros & Cons Breakdown -->
         <div class="mt-10 grid sm:grid-cols-2 gap-6">
-            <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div class="p-6 bg-white rounded-xl border {'border-blue-400 shadow-sm' if a_wins_overall else 'border-slate-200 shadow-sm'} flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-xl font-bold text-slate-900">{pa} Pros &amp; Cons</h3>
-                        <span class="text-xs mono font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">${pA_base}/mo + ${pA_seat}/seat</span>
+                        <span class="text-xs mono font-semibold {'text-blue-700 bg-blue-50 border-blue-200' if a_wins_overall else 'text-slate-700 bg-slate-100 border-slate-200'} px-2 py-0.5 rounded border">${pA_base}/mo + ${pA_seat}/seat</span>
                     </div>
                     <ul class="text-sm text-slate-700 mb-4 list-none pl-0">{a_pros}</ul>
                     <ul class="text-sm text-slate-600 list-none pl-0 border-t border-slate-100 pt-3">{a_cons}</ul>
                 </div>
-                <a href="{nt['aff_link_a']}" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm rounded-lg transition-colors">
+                <a href="{nt['aff_link_a']}" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 {btn_a_cls} font-semibold text-sm rounded-lg transition-colors">
                     Explore {pa} Plans &amp; Free Trial &rarr;
                 </a>
             </div>
 
-            <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div class="p-6 bg-white rounded-xl border {'border-blue-400 shadow-sm' if not a_wins_overall else 'border-slate-200 shadow-sm'} flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-xl font-bold text-slate-900">{pb} Pros &amp; Cons</h3>
-                        <span class="text-xs mono font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">${pB_base}/mo + ${pB_seat}/seat</span>
+                        <span class="text-xs mono font-semibold {'text-blue-700 bg-blue-50 border-blue-200' if not a_wins_overall else 'text-slate-700 bg-slate-100 border-slate-200'} px-2 py-0.5 rounded border">${pB_base}/mo + ${pB_seat}/seat</span>
                     </div>
                     <ul class="text-sm text-slate-700 mb-4 list-none pl-0">{b_pros}</ul>
                     <ul class="text-sm text-slate-600 list-none pl-0 border-t border-slate-100 pt-3">{b_cons}</ul>
                 </div>
-                <a href="{nt['aff_link_b']}" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm rounded-lg transition-colors">
+                <a href="{nt['aff_link_b']}" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 {btn_b_cls} font-semibold text-sm rounded-lg transition-colors">
                     Explore {pb} Plans &amp; Free Trial &rarr;
                 </a>
             </div>
@@ -1302,16 +1419,16 @@ def render_html(
     <div class="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-200 py-2.5 px-4 z-40 shadow-lg">
         <div class="max-w-5xl mx-auto flex items-center justify-between gap-2">
             <div class="hidden sm:block">
-                <span class="text-xs font-bold text-slate-800 mono">Compare: {pa} vs {pb}</span>
+                <span class="text-xs font-bold text-slate-800 mono">Top Pick: {pa if a_wins_overall else pb} ({max(score_a, score_b)}/10)</span>
                 <span class="block text-[10px] text-slate-500">Referral links: we may earn a commission (<a href="/disclosure.html" class="underline">disclosure</a>)</span>
             </div>
             <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
                 <span class="sm:hidden text-[10px] text-slate-500 mono mr-1">Ad/Referral:</span>
-                <a href="{nt['aff_link_a']}" target="_blank" rel="nofollow sponsored" class="flex-1 sm:flex-initial text-center px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition-colors">
-                    Visit {pa} &rarr;
+                <a href="{nt['aff_link_a']}" target="_blank" rel="nofollow sponsored" class="flex-1 sm:flex-initial text-center px-3.5 py-1.5 {btn_a_cls} text-xs font-bold rounded-lg transition-colors">
+                    {'★ ' if a_wins_overall else ''}Visit {pa} &rarr;
                 </a>
-                <a href="{nt['aff_link_b']}" target="_blank" rel="nofollow sponsored" class="flex-1 sm:flex-initial text-center px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">
-                    Visit {pb} &rarr;
+                <a href="{nt['aff_link_b']}" target="_blank" rel="nofollow sponsored" class="flex-1 sm:flex-initial text-center px-3.5 py-1.5 {btn_b_cls} text-xs font-bold rounded-lg transition-colors">
+                    {'★ ' if not a_wins_overall else ''}Visit {pb} &rarr;
                 </a>
             </div>
         </div>
@@ -1557,7 +1674,6 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
       out.write(page)
 
   today = datetime.date.today().isoformat()
-  # Use clean, redirect-free canonical URLs for both sitemap.xml and sitemap.txt
   urls = [
       f"{SITE_URL}/",
       f"{SITE_URL}/about",
@@ -1581,7 +1697,6 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
   ) as f:
     f.write(sitemap_xml)
 
-  # Also output plain-text sitemap.txt (100% immune to XML header issues in Google Search Console)
   with open(
       os.path.join(PUBLIC_DIR, "sitemap.txt"), "w", encoding="utf-8"
   ) as f:
