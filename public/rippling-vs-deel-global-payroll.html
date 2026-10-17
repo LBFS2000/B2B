@@ -100,30 +100,36 @@
                 <p id="prioText" class="text-sm sm:text-base text-slate-100 leading-relaxed">Rippling is the superior choice for mid-market firms requiring a unified HRIS and IT management stack. Deel wins for lean, global-first startups needing rapid, low-friction EOR deployment across 150+ countries.</p>
             </div>
 
-            <!-- Side-by-Side Plain-English Scorecard Cards -->
+            <!-- Side-by-Side Plain-English Scorecard Cards (Dynamically Highlighted Based on Score / Priority Winner) -->
             <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="p-4 rounded-xl border border-blue-200 bg-blue-50/40 flex flex-col justify-between">
+                <div id="scoreCardA" class="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all">
                     <div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between gap-2">
                             <span class="font-extrabold text-slate-900 text-lg">Rippling</span>
-                            <span class="text-xs font-bold mono bg-blue-600 text-white px-2.5 py-0.5 rounded" title="Composite score based on documented API limits, integrations, and TCO">9.0 / 10</span>
+                            <div class="flex items-center gap-1.5">
+                                <span id="winTagA" class="hidden text-[11px] font-bold mono uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200">★ Recommended</span>
+                                <span id="scoreBadgeA" class="text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded" title="Composite score based on documented API limits, integrations, and TCO">9.0 / 10</span>
+                            </div>
                         </div>
                         <p class="mt-2 text-xs text-slate-600"><strong>Best if you need:</strong> Deep accounting/ERP automation, higher API concurrency limits, and enterprise-grade role permissions.</p>
                     </div>
-                    <a href="https://www.rippling.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-4 block w-full text-center px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                    <a id="scoreBtnA" href="https://www.rippling.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-4 block w-full text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg transition-colors">
                         Check Rippling Official Pricing &amp; Trial &rarr;
                     </a>
                 </div>
 
-                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
+                <div id="scoreCardB" class="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all">
                     <div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between gap-2">
                             <span class="font-extrabold text-slate-900 text-lg">Deel</span>
-                            <span class="text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded" title="Composite score based on documented API limits, integrations, and TCO">9.2 / 10</span>
+                            <div class="flex items-center gap-1.5">
+                                <span id="winTagB" class="hidden text-[11px] font-bold mono uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200">★ Recommended</span>
+                                <span id="scoreBadgeB" class="text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded" title="Composite score based on documented API limits, integrations, and TCO">9.2 / 10</span>
+                            </div>
                         </div>
                         <p class="mt-2 text-xs text-slate-600"><strong>Best if you need:</strong> Fast day-one onboarding for non-technical staff and straightforward per-seat pricing without base fees.</p>
                     </div>
-                    <a href="https://www.deel.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-4 block w-full text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg transition-colors">
+                    <a id="scoreBtnB" href="https://www.deel.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-4 block w-full text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg transition-colors">
                         Check Deel Official Pricing &amp; Trial &rarr;
                     </a>
                 </div>
@@ -162,10 +168,13 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
+                <div id="calcCardA" class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all">
                     <div>
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-slate-900 text-lg">Rippling</span>
+                        <div class="flex justify-between items-center gap-2">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-slate-900 text-lg">Rippling</span>
+                                <span id="calcWinTagA" class="hidden text-[10px] font-bold mono uppercase bg-blue-600 text-white px-2 py-0.5 rounded">★ Lowest TCO</span>
+                            </div>
                             <span class="text-xs mono text-slate-500">$35/mo base + $8/user</span>
                         </div>
                         <div class="mt-3">
@@ -174,15 +183,18 @@
                         </div>
                         <p class="text-xs text-slate-500 mt-1 mb-4 mono">1-Year Total: <strong id="costA_yr" class="text-slate-800">$0/yr</strong> • 3-Year TCO: <strong id="costA_3yr" class="text-slate-800">$0</strong></p>
                     </div>
-                    <a href="https://www.rippling.com/pricing" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
+                    <a id="calcBtnA" href="https://www.rippling.com/pricing" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
                         Verify Rippling Official Pricing &rarr;
                     </a>
                 </div>
 
-                <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
+                <div id="calcCardB" class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all">
                     <div>
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-slate-900 text-lg">Deel</span>
+                        <div class="flex justify-between items-center gap-2">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-slate-900 text-lg">Deel</span>
+                                <span id="calcWinTagB" class="hidden text-[10px] font-bold mono uppercase bg-blue-600 text-white px-2 py-0.5 rounded">★ Lowest TCO</span>
+                            </div>
                             <span class="text-xs mono text-slate-500">$0/mo base + $49/user</span>
                         </div>
                         <div class="mt-3">
@@ -191,7 +203,7 @@
                         </div>
                         <p class="text-xs text-slate-500 mt-1 mb-4 mono">1-Year Total: <strong id="costB_yr" class="text-slate-800">$0/yr</strong> • 3-Year TCO: <strong id="costB_3yr" class="text-slate-800">$0</strong></p>
                     </div>
-                    <a href="https://www.deel.com/pricing" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
+                    <a id="calcBtnB" href="https://www.deel.com/pricing" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
                         Verify Deel Official Pricing &rarr;
                     </a>
                 </div>
@@ -220,24 +232,79 @@
             const btnMonthly = document.getElementById('btnMonthly');
             const btnAnnual = document.getElementById('btnAnnual');
 
+            const scoreCardA = document.getElementById('scoreCardA');
+            const scoreCardB = document.getElementById('scoreCardB');
+            const scoreBadgeA = document.getElementById('scoreBadgeA');
+            const scoreBadgeB = document.getElementById('scoreBadgeB');
+            const scoreBtnA = document.getElementById('scoreBtnA');
+            const scoreBtnB = document.getElementById('scoreBtnB');
+            const winTagA = document.getElementById('winTagA');
+            const winTagB = document.getElementById('winTagB');
+
+            const calcCardA = document.getElementById('calcCardA');
+            const calcCardB = document.getElementById('calcCardB');
+            const calcBtnA = document.getElementById('calcBtnA');
+            const calcBtnB = document.getElementById('calcBtnB');
+            const calcWinTagA = document.getElementById('calcWinTagA');
+            const calcWinTagB = document.getElementById('calcWinTagB');
+
             const prioBtns = document.querySelectorAll('.prio-btn');
             const prioBadge = document.getElementById('prioBadge');
             const prioText = document.getElementById('prioText');
 
+            function highlightScorecard(winnerSide, labelText) {
+                const winCardCls = 'p-4 rounded-xl border-2 border-blue-500 bg-blue-50/40 shadow-sm flex flex-col justify-between transition-all';
+                const loseCardCls = 'p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all';
+                const winBadgeCls = 'text-xs font-bold mono bg-blue-600 text-white px-2.5 py-0.5 rounded';
+                const loseBadgeCls = 'text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded';
+                const winBtnCls = 'mt-4 block w-full text-center px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm';
+                const loseBtnCls = 'mt-4 block w-full text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg transition-colors';
+
+                if (winnerSide === 'A') {
+                    scoreCardA.className = winCardCls;
+                    scoreCardB.className = loseCardCls;
+                    scoreBadgeA.className = winBadgeCls;
+                    scoreBadgeB.className = loseBadgeCls;
+                    scoreBtnA.className = winBtnCls;
+                    scoreBtnB.className = loseBtnCls;
+                    winTagA.textContent = labelText || '★ Top Rated';
+                    winTagA.className = 'inline-block text-[11px] font-bold mono uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200';
+                    winTagB.className = 'hidden';
+                } else {
+                    scoreCardB.className = winCardCls;
+                    scoreCardA.className = loseCardCls;
+                    scoreBadgeB.className = winBadgeCls;
+                    scoreBadgeA.className = loseBadgeCls;
+                    scoreBtnB.className = winBtnCls;
+                    scoreBtnA.className = loseBtnCls;
+                    winTagB.textContent = labelText || '★ Top Rated';
+                    winTagB.className = 'inline-block text-[11px] font-bold mono uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200';
+                    winTagA.className = 'hidden';
+                }
+            }
+
             const prioMessages = {
                 verdict: {
+                    side: 'B',
+                    tag: '★ Top Rated',
                     badge: '● Executive Summary Verdict',
                     text: "Rippling is the superior choice for mid-market firms requiring a unified HRIS and IT management stack. Deel wins for lean, global-first startups needing rapid, low-friction EOR deployment across 150+ countries."
                 },
                 cost: {
+                    side: 'A',
+                    tag: '★ Lowest TCO',
                     badge: '● Lowest Total Cost Winner: Rippling',
                     text: 'At 25 users, Rippling is the more cost-effective option based on published base + seat rates, saving approximately $11,880 USD per year (A$18,295 AUD/yr ex. GST). Use the slider below to model your exact headcount.'
                 },
                 ease: {
+                    side: 'B',
+                    tag: '★ Fastest Setup',
                     badge: '● Fastest Setup & Onboarding Focus: Deel',
                     text: 'For lean teams that want to get live quickly without hiring an external systems integrator, Deel generally offers a faster self-serve setup and lower initial administration overhead.'
                 },
                 api: {
+                    side: 'A',
+                    tag: '★ Best API / Sync',
                     badge: '● Deepest API & Accounting Sync Focus: Rippling',
                     text: 'For teams syncing multi-currency ledgers (Xero/QuickBooks/NetSuite) or running automated webhook workflows, Rippling provides strong API rate ceilings and granular role governance.'
                 }
@@ -253,9 +320,13 @@
                     if (prioMessages[key]) {
                         prioBadge.textContent = prioMessages[key].badge;
                         prioText.textContent = prioMessages[key].text;
+                        highlightScorecard(prioMessages[key].side, prioMessages[key].tag);
                     }
                 });
             });
+
+            // Initialize top scorecard highlight to match the higher-scored platform
+            highlightScorecard('B', '★ Top Rated');
 
             let fxRate = 1.0;
             let sym = '$';
@@ -296,13 +367,36 @@
                 costB_yr.textContent = sym + yB.toLocaleString() + '/yr';
                 costB_3yr.textContent = sym + (yB * 3).toLocaleString();
 
+                const winCalcCardCls = 'p-5 rounded-xl border-2 border-blue-500 bg-blue-50/30 shadow-sm flex flex-col justify-between transition-all';
+                const loseCalcCardCls = 'p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all';
+                const winCalcBtnCls = 'block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors shadow-sm';
+                const loseCalcBtnCls = 'block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors';
+
                 const diffYr = Math.abs(yA - yB);
                 if (diffYr === 0) {
                     tcoSavingsText.textContent = 'Identical estimated annual licensing cost at ' + s + ' seats.';
+                    calcCardA.className = winCalcCardCls;
+                    calcCardB.className = winCalcCardCls;
+                    calcBtnA.className = winCalcBtnCls;
+                    calcBtnB.className = winCalcBtnCls;
+                    calcWinTagA.className = 'hidden';
+                    calcWinTagB.className = 'hidden';
                 } else if (yA < yB) {
                     tcoSavingsText.textContent = '★ Rippling est. ~' + sym + diffYr.toLocaleString() + '/yr lower than Deel at ' + s + ' seats (ex. GST).';
+                    calcCardA.className = winCalcCardCls;
+                    calcCardB.className = loseCalcCardCls;
+                    calcBtnA.className = winCalcBtnCls;
+                    calcBtnB.className = loseCalcBtnCls;
+                    calcWinTagA.className = 'inline-block text-[10px] font-bold mono uppercase bg-blue-600 text-white px-2 py-0.5 rounded';
+                    calcWinTagB.className = 'hidden';
                 } else {
                     tcoSavingsText.textContent = '★ Deel est. ~' + sym + diffYr.toLocaleString() + '/yr lower than Rippling at ' + s + ' seats (ex. GST).';
+                    calcCardB.className = winCalcCardCls;
+                    calcCardA.className = loseCalcCardCls;
+                    calcBtnB.className = winCalcBtnCls;
+                    calcBtnA.className = loseCalcBtnCls;
+                    calcWinTagB.className = 'inline-block text-[10px] font-bold mono uppercase bg-blue-600 text-white px-2 py-0.5 rounded';
+                    calcWinTagA.className = 'hidden';
                 }
             }
 
@@ -332,55 +426,55 @@
             <td class="p-4 font-semibold text-slate-900 text-sm">EOR Monthly Fee</td>
             <td class="p-4 text-slate-700 text-sm">Custom quote (bundled)</td>
             <td class="p-4 text-slate-700 text-sm">$599 per employee</td>
-            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Deel</span></td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Deel</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
             <td class="p-4 font-semibold text-slate-900 text-sm">Contractor Fee</td>
             <td class="p-4 text-slate-700 text-sm">Custom quote (bundled)</td>
             <td class="p-4 text-slate-700 text-sm">$49 per contractor</td>
-            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Deel</span></td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Deel</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
             <td class="p-4 font-semibold text-slate-900 text-sm">API Rate Limits</td>
             <td class="p-4 text-slate-700 text-sm">High-throughput (Internal)</td>
             <td class="p-4 text-slate-700 text-sm">Standardized REST API</td>
-            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Rippling</span></td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Rippling</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
             <td class="p-4 font-semibold text-slate-900 text-sm">Core Architecture</td>
             <td class="p-4 text-slate-700 text-sm">Unified HRIS/IT/Payroll</td>
             <td class="p-4 text-slate-700 text-sm">Global Payroll/EOR/HRIS</td>
-            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Rippling</span></td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Rippling</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
             <td class="p-4 font-semibold text-slate-900 text-sm">Currency Support</td>
             <td class="p-4 text-slate-700 text-sm">Multi-currency payroll</td>
             <td class="p-4 text-slate-700 text-sm">120+ currencies</td>
-            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Deel</span></td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Deel</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
             <td class="p-4 font-semibold text-slate-900 text-sm">Compliance Model</td>
             <td class="p-4 text-slate-700 text-sm">Entity-based/Partner</td>
             <td class="p-4 text-slate-700 text-sm">Direct EOR/Contractor</td>
-            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Deel</span></td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Deel</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
             <td class="p-4 font-semibold text-slate-900 text-sm">ERP Integration</td>
             <td class="p-4 text-slate-700 text-sm">Native NetSuite/Sage</td>
             <td class="p-4 text-slate-700 text-sm">API-first/Webhook</td>
-            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Rippling</span></td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Rippling</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
             <td class="p-4 font-semibold text-slate-900 text-sm">Contract Flexibility</td>
             <td class="p-4 text-slate-700 text-sm">Custom/Enterprise</td>
             <td class="p-4 text-slate-700 text-sm">Month-to-month</td>
-            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Deel</span></td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Deel</span></td>
         </tr></tbody>
                 <tfoot>
                     <tr class="bg-slate-50 border-t border-slate-200">
                         <td class="p-4 font-bold text-slate-900 text-xs mono uppercase">Official Vendor Links (Referral)</td>
-                        <td class="p-4"><a href="https://www.rippling.com/pricing" target="_blank" rel="nofollow sponsored" class="inline-block px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition-colors">Visit Rippling &rarr;</a></td>
-                        <td class="p-4"><a href="https://www.deel.com/pricing" target="_blank" rel="nofollow sponsored" class="inline-block px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">Visit Deel &rarr;</a></td>
+                        <td class="p-4"><a href="https://www.rippling.com/pricing" target="_blank" rel="nofollow sponsored" class="inline-block px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">Visit Rippling &rarr;</a></td>
+                        <td class="p-4"><a href="https://www.deel.com/pricing" target="_blank" rel="nofollow sponsored" class="inline-block px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white shadow-sm text-xs font-bold rounded-lg transition-colors">Visit Deel &rarr;</a></td>
                         <td class="p-4 text-xs mono text-slate-500">Reviewed 2026-10-17</td>
                     </tr>
                 </tfoot>
@@ -393,26 +487,26 @@
                 <div>
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-xl font-bold text-slate-900">Rippling Pros &amp; Cons</h3>
-                        <span class="text-xs mono font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">$35/mo + $8/seat</span>
+                        <span class="text-xs mono font-semibold text-slate-700 bg-slate-100 border-slate-200 px-2 py-0.5 rounded border">$35/mo + $8/seat</span>
                     </div>
                     <ul class="text-sm text-slate-700 mb-4 list-none pl-0"><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Unified data model across IT, HR, and Payroll</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Deep native integrations with enterprise ERPs</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Automated device management and provisioning</span></li></ul>
                     <ul class="text-sm text-slate-600 list-none pl-0 border-t border-slate-100 pt-3"><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2' aria-hidden='true'>✗</span><span>Opaque pricing structure requires sales engagement</span></li><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2' aria-hidden='true'>✗</span><span>Heavy reliance on internal ecosystem for full value</span></li></ul>
                 </div>
-                <a href="https://www.rippling.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm rounded-lg transition-colors">
+                <a href="https://www.rippling.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm rounded-lg transition-colors">
                     Explore Rippling Plans &amp; Free Trial &rarr;
                 </a>
             </div>
 
-            <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div class="p-6 bg-white rounded-xl border border-blue-400 shadow-sm flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-xl font-bold text-slate-900">Deel Pros &amp; Cons</h3>
-                        <span class="text-xs mono font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">$0/mo + $49/seat</span>
+                        <span class="text-xs mono font-semibold text-blue-700 bg-blue-50 border-blue-200 px-2 py-0.5 rounded border">$0/mo + $49/seat</span>
                     </div>
                     <ul class="text-sm text-slate-700 mb-4 list-none pl-0"><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Transparent, public per-worker pricing</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Rapid deployment for international contractors</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Flexible month-to-month contract terms</span></li></ul>
                     <ul class="text-sm text-slate-600 list-none pl-0 border-t border-slate-100 pt-3"><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2' aria-hidden='true'>✗</span><span>Limited depth in non-payroll HRIS features</span></li><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2' aria-hidden='true'>✗</span><span>Risk of vendor lock-in for EOR services</span></li></ul>
                 </div>
-                <a href="https://www.deel.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm rounded-lg transition-colors">
+                <a href="https://www.deel.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white shadow-sm font-semibold text-sm rounded-lg transition-colors">
                     Explore Deel Plans &amp; Free Trial &rarr;
                 </a>
             </div>
@@ -520,16 +614,16 @@
     <div class="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-200 py-2.5 px-4 z-40 shadow-lg">
         <div class="max-w-5xl mx-auto flex items-center justify-between gap-2">
             <div class="hidden sm:block">
-                <span class="text-xs font-bold text-slate-800 mono">Compare: Rippling vs Deel</span>
+                <span class="text-xs font-bold text-slate-800 mono">Top Pick: Deel (9.2/10)</span>
                 <span class="block text-[10px] text-slate-500">Referral links: we may earn a commission (<a href="/disclosure.html" class="underline">disclosure</a>)</span>
             </div>
             <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
                 <span class="sm:hidden text-[10px] text-slate-500 mono mr-1">Ad/Referral:</span>
-                <a href="https://www.rippling.com/pricing" target="_blank" rel="nofollow sponsored" class="flex-1 sm:flex-initial text-center px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition-colors">
+                <a href="https://www.rippling.com/pricing" target="_blank" rel="nofollow sponsored" class="flex-1 sm:flex-initial text-center px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">
                     Visit Rippling &rarr;
                 </a>
-                <a href="https://www.deel.com/pricing" target="_blank" rel="nofollow sponsored" class="flex-1 sm:flex-initial text-center px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">
-                    Visit Deel &rarr;
+                <a href="https://www.deel.com/pricing" target="_blank" rel="nofollow sponsored" class="flex-1 sm:flex-initial text-center px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white shadow-sm text-xs font-bold rounded-lg transition-colors">
+                    ★ Visit Deel &rarr;
                 </a>
             </div>
         </div>

@@ -100,30 +100,36 @@
                 <p id="prioText" class="text-sm sm:text-base text-slate-100 leading-relaxed">Asana is superior for UI-driven task management and cross-functional collaboration in mid-market firms. Smartsheet wins for large-scale portfolio resource allocation and complex data-heavy ERP synchronization.</p>
             </div>
 
-            <!-- Side-by-Side Plain-English Scorecard Cards -->
+            <!-- Side-by-Side Plain-English Scorecard Cards (Dynamically Highlighted Based on Score / Priority Winner) -->
             <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="p-4 rounded-xl border border-blue-200 bg-blue-50/40 flex flex-col justify-between">
+                <div id="scoreCardA" class="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all">
                     <div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between gap-2">
                             <span class="font-extrabold text-slate-900 text-lg">Asana</span>
-                            <span class="text-xs font-bold mono bg-blue-600 text-white px-2.5 py-0.5 rounded" title="Composite score based on documented API limits, integrations, and TCO">8.9 / 10</span>
+                            <div class="flex items-center gap-1.5">
+                                <span id="winTagA" class="hidden text-[11px] font-bold mono uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200">★ Recommended</span>
+                                <span id="scoreBadgeA" class="text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded" title="Composite score based on documented API limits, integrations, and TCO">8.9 / 10</span>
+                            </div>
                         </div>
                         <p class="mt-2 text-xs text-slate-600"><strong>Best if you need:</strong> Deep accounting/ERP automation, higher API concurrency limits, and enterprise-grade role permissions.</p>
                     </div>
-                    <a href="https://asana.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-4 block w-full text-center px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                    <a id="scoreBtnA" href="https://asana.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-4 block w-full text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg transition-colors">
                         Check Asana Official Pricing &amp; Trial &rarr;
                     </a>
                 </div>
 
-                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
+                <div id="scoreCardB" class="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all">
                     <div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between gap-2">
                             <span class="font-extrabold text-slate-900 text-lg">Smartsheet</span>
-                            <span class="text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded" title="Composite score based on documented API limits, integrations, and TCO">9.2 / 10</span>
+                            <div class="flex items-center gap-1.5">
+                                <span id="winTagB" class="hidden text-[11px] font-bold mono uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200">★ Recommended</span>
+                                <span id="scoreBadgeB" class="text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded" title="Composite score based on documented API limits, integrations, and TCO">9.2 / 10</span>
+                            </div>
                         </div>
                         <p class="mt-2 text-xs text-slate-600"><strong>Best if you need:</strong> Fast day-one onboarding for non-technical staff and straightforward per-seat pricing without base fees.</p>
                     </div>
-                    <a href="https://www.smartsheet.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-4 block w-full text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg transition-colors">
+                    <a id="scoreBtnB" href="https://www.smartsheet.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-4 block w-full text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg transition-colors">
                         Check Smartsheet Official Pricing &amp; Trial &rarr;
                     </a>
                 </div>
@@ -162,10 +168,13 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
+                <div id="calcCardA" class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all">
                     <div>
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-slate-900 text-lg">Asana</span>
+                        <div class="flex justify-between items-center gap-2">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-slate-900 text-lg">Asana</span>
+                                <span id="calcWinTagA" class="hidden text-[10px] font-bold mono uppercase bg-blue-600 text-white px-2 py-0.5 rounded">★ Lowest TCO</span>
+                            </div>
                             <span class="text-xs mono text-slate-500">$0/mo base + $24/user</span>
                         </div>
                         <div class="mt-3">
@@ -174,15 +183,18 @@
                         </div>
                         <p class="text-xs text-slate-500 mt-1 mb-4 mono">1-Year Total: <strong id="costA_yr" class="text-slate-800">$0/yr</strong> • 3-Year TCO: <strong id="costA_3yr" class="text-slate-800">$0</strong></p>
                     </div>
-                    <a href="https://asana.com/pricing" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
+                    <a id="calcBtnA" href="https://asana.com/pricing" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
                         Verify Asana Official Pricing &rarr;
                     </a>
                 </div>
 
-                <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
+                <div id="calcCardB" class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all">
                     <div>
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-slate-900 text-lg">Smartsheet</span>
+                        <div class="flex justify-between items-center gap-2">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-slate-900 text-lg">Smartsheet</span>
+                                <span id="calcWinTagB" class="hidden text-[10px] font-bold mono uppercase bg-blue-600 text-white px-2 py-0.5 rounded">★ Lowest TCO</span>
+                            </div>
                             <span class="text-xs mono text-slate-500">$0/mo base + $19/user</span>
                         </div>
                         <div class="mt-3">
@@ -191,7 +203,7 @@
                         </div>
                         <p class="text-xs text-slate-500 mt-1 mb-4 mono">1-Year Total: <strong id="costB_yr" class="text-slate-800">$0/yr</strong> • 3-Year TCO: <strong id="costB_3yr" class="text-slate-800">$0</strong></p>
                     </div>
-                    <a href="https://www.smartsheet.com/pricing" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
+                    <a id="calcBtnB" href="https://www.smartsheet.com/pricing" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
                         Verify Smartsheet Official Pricing &rarr;
                     </a>
                 </div>
@@ -220,24 +232,79 @@
             const btnMonthly = document.getElementById('btnMonthly');
             const btnAnnual = document.getElementById('btnAnnual');
 
+            const scoreCardA = document.getElementById('scoreCardA');
+            const scoreCardB = document.getElementById('scoreCardB');
+            const scoreBadgeA = document.getElementById('scoreBadgeA');
+            const scoreBadgeB = document.getElementById('scoreBadgeB');
+            const scoreBtnA = document.getElementById('scoreBtnA');
+            const scoreBtnB = document.getElementById('scoreBtnB');
+            const winTagA = document.getElementById('winTagA');
+            const winTagB = document.getElementById('winTagB');
+
+            const calcCardA = document.getElementById('calcCardA');
+            const calcCardB = document.getElementById('calcCardB');
+            const calcBtnA = document.getElementById('calcBtnA');
+            const calcBtnB = document.getElementById('calcBtnB');
+            const calcWinTagA = document.getElementById('calcWinTagA');
+            const calcWinTagB = document.getElementById('calcWinTagB');
+
             const prioBtns = document.querySelectorAll('.prio-btn');
             const prioBadge = document.getElementById('prioBadge');
             const prioText = document.getElementById('prioText');
 
+            function highlightScorecard(winnerSide, labelText) {
+                const winCardCls = 'p-4 rounded-xl border-2 border-blue-500 bg-blue-50/40 shadow-sm flex flex-col justify-between transition-all';
+                const loseCardCls = 'p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all';
+                const winBadgeCls = 'text-xs font-bold mono bg-blue-600 text-white px-2.5 py-0.5 rounded';
+                const loseBadgeCls = 'text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded';
+                const winBtnCls = 'mt-4 block w-full text-center px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm';
+                const loseBtnCls = 'mt-4 block w-full text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg transition-colors';
+
+                if (winnerSide === 'A') {
+                    scoreCardA.className = winCardCls;
+                    scoreCardB.className = loseCardCls;
+                    scoreBadgeA.className = winBadgeCls;
+                    scoreBadgeB.className = loseBadgeCls;
+                    scoreBtnA.className = winBtnCls;
+                    scoreBtnB.className = loseBtnCls;
+                    winTagA.textContent = labelText || '★ Top Rated';
+                    winTagA.className = 'inline-block text-[11px] font-bold mono uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200';
+                    winTagB.className = 'hidden';
+                } else {
+                    scoreCardB.className = winCardCls;
+                    scoreCardA.className = loseCardCls;
+                    scoreBadgeB.className = winBadgeCls;
+                    scoreBadgeA.className = loseBadgeCls;
+                    scoreBtnB.className = winBtnCls;
+                    scoreBtnA.className = loseBtnCls;
+                    winTagB.textContent = labelText || '★ Top Rated';
+                    winTagB.className = 'inline-block text-[11px] font-bold mono uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200';
+                    winTagA.className = 'hidden';
+                }
+            }
+
             const prioMessages = {
                 verdict: {
+                    side: 'B',
+                    tag: '★ Top Rated',
                     badge: '● Executive Summary Verdict',
                     text: "Asana is superior for UI-driven task management and cross-functional collaboration in mid-market firms. Smartsheet wins for large-scale portfolio resource allocation and complex data-heavy ERP synchronization."
                 },
                 cost: {
+                    side: 'B',
+                    tag: '★ Lowest TCO',
                     badge: '● Lowest Total Cost Winner: Smartsheet',
                     text: 'At 25 users, Smartsheet is the more cost-effective option based on published base + seat rates, saving approximately $1,500 USD per year (A$2,310 AUD/yr ex. GST). Use the slider below to model your exact headcount.'
                 },
                 ease: {
+                    side: 'B',
+                    tag: '★ Fastest Setup',
                     badge: '● Fastest Setup & Onboarding Focus: Smartsheet',
                     text: 'For lean teams that want to get live quickly without hiring an external systems integrator, Smartsheet generally offers a faster self-serve setup and lower initial administration overhead.'
                 },
                 api: {
+                    side: 'A',
+                    tag: '★ Best API / Sync',
                     badge: '● Deepest API & Accounting Sync Focus: Asana',
                     text: 'For teams syncing multi-currency ledgers (Xero/QuickBooks/NetSuite) or running automated webhook workflows, Asana provides strong API rate ceilings and granular role governance.'
                 }
@@ -253,9 +320,13 @@
                     if (prioMessages[key]) {
                         prioBadge.textContent = prioMessages[key].badge;
                         prioText.textContent = prioMessages[key].text;
+                        highlightScorecard(prioMessages[key].side, prioMessages[key].tag);
                     }
                 });
             });
+
+            // Initialize top scorecard highlight to match the higher-scored platform
+            highlightScorecard('B', '★ Top Rated');
 
             let fxRate = 1.0;
             let sym = '$';
@@ -296,13 +367,36 @@
                 costB_yr.textContent = sym + yB.toLocaleString() + '/yr';
                 costB_3yr.textContent = sym + (yB * 3).toLocaleString();
 
+                const winCalcCardCls = 'p-5 rounded-xl border-2 border-blue-500 bg-blue-50/30 shadow-sm flex flex-col justify-between transition-all';
+                const loseCalcCardCls = 'p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all';
+                const winCalcBtnCls = 'block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors shadow-sm';
+                const loseCalcBtnCls = 'block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors';
+
                 const diffYr = Math.abs(yA - yB);
                 if (diffYr === 0) {
                     tcoSavingsText.textContent = 'Identical estimated annual licensing cost at ' + s + ' seats.';
+                    calcCardA.className = winCalcCardCls;
+                    calcCardB.className = winCalcCardCls;
+                    calcBtnA.className = winCalcBtnCls;
+                    calcBtnB.className = winCalcBtnCls;
+                    calcWinTagA.className = 'hidden';
+                    calcWinTagB.className = 'hidden';
                 } else if (yA < yB) {
                     tcoSavingsText.textContent = '★ Asana est. ~' + sym + diffYr.toLocaleString() + '/yr lower than Smartsheet at ' + s + ' seats (ex. GST).';
+                    calcCardA.className = winCalcCardCls;
+                    calcCardB.className = loseCalcCardCls;
+                    calcBtnA.className = winCalcBtnCls;
+                    calcBtnB.className = loseCalcBtnCls;
+                    calcWinTagA.className = 'inline-block text-[10px] font-bold mono uppercase bg-blue-600 text-white px-2 py-0.5 rounded';
+                    calcWinTagB.className = 'hidden';
                 } else {
                     tcoSavingsText.textContent = '★ Smartsheet est. ~' + sym + diffYr.toLocaleString() + '/yr lower than Asana at ' + s + ' seats (ex. GST).';
+                    calcCardB.className = winCalcCardCls;
+                    calcCardA.className = loseCalcCardCls;
+                    calcBtnB.className = winCalcBtnCls;
+                    calcBtnA.className = loseCalcBtnCls;
+                    calcWinTagB.className = 'inline-block text-[10px] font-bold mono uppercase bg-blue-600 text-white px-2 py-0.5 rounded';
+                    calcWinTagA.className = 'hidden';
                 }
             }
 
@@ -332,7 +426,7 @@
             <td class="p-4 font-semibold text-slate-900 text-sm">Portfolio Resource Allocation</td>
             <td class="p-4 text-slate-700 text-sm">Advanced tier includes portfolio views and workload balancing</td>
             <td class="p-4 text-slate-700 text-sm">Advanced Work Management tier includes Control Center and Resource Management</td>
-            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Smartsheet</span></td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Smartsheet</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
             <td class="p-4 font-semibold text-slate-900 text-sm">SAML SSO Availability</td>
@@ -344,43 +438,43 @@
             <td class="p-4 font-semibold text-slate-900 text-sm">Immutable Audit Log Export</td>
             <td class="p-4 text-slate-700 text-sm">Enterprise+ tier only</td>
             <td class="p-4 text-slate-700 text-sm">Add-on for Enterprise and Advanced Work Management</td>
-            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Smartsheet</span></td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Smartsheet</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
             <td class="p-4 font-semibold text-slate-900 text-sm">API Rate Limits</td>
             <td class="p-4 text-slate-700 text-sm">Dynamic based on tier; service accounts available</td>
             <td class="p-4 text-slate-700 text-sm">Tiered limits; requires Data Shuttle for high-volume sync</td>
-            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Asana</span></td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Asana</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
             <td class="p-4 font-semibold text-slate-900 text-sm">ERP/Data Sync Architecture</td>
             <td class="p-4 text-slate-700 text-sm">Salesforce, Tableau, Power BI native connectors</td>
             <td class="p-4 text-slate-700 text-sm">Data Shuttle, DataMesh, and Bridge for complex ETL</td>
-            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Smartsheet</span></td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Smartsheet</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
             <td class="p-4 font-semibold text-slate-900 text-sm">Base Pricing (Annual)</td>
             <td class="p-4 text-slate-700 text-sm">$24.99/user/mo (Advanced)</td>
             <td class="p-4 text-slate-700 text-sm">$27 AUD/member/mo (Business)</td>
-            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Asana</span></td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Asana</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
             <td class="p-4 font-semibold text-slate-900 text-sm">Attachment Storage</td>
             <td class="p-4 text-slate-700 text-sm">Unlimited (100MB per file)</td>
             <td class="p-4 text-slate-700 text-sm">Unlimited (250MB per file)</td>
-            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Smartsheet</span></td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Smartsheet</span></td>
         </tr>
         <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
             <td class="p-4 font-semibold text-slate-900 text-sm">Compliance Support</td>
             <td class="p-4 text-slate-700 text-sm">Enterprise+ for data residency/SIEM</td>
             <td class="p-4 text-slate-700 text-sm">Gov cloud and regional data residency add-ons</td>
-            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Smartsheet</span></td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Smartsheet</span></td>
         </tr></tbody>
                 <tfoot>
                     <tr class="bg-slate-50 border-t border-slate-200">
                         <td class="p-4 font-bold text-slate-900 text-xs mono uppercase">Official Vendor Links (Referral)</td>
-                        <td class="p-4"><a href="https://asana.com/pricing" target="_blank" rel="nofollow sponsored" class="inline-block px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition-colors">Visit Asana &rarr;</a></td>
-                        <td class="p-4"><a href="https://www.smartsheet.com/pricing" target="_blank" rel="nofollow sponsored" class="inline-block px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">Visit Smartsheet &rarr;</a></td>
+                        <td class="p-4"><a href="https://asana.com/pricing" target="_blank" rel="nofollow sponsored" class="inline-block px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">Visit Asana &rarr;</a></td>
+                        <td class="p-4"><a href="https://www.smartsheet.com/pricing" target="_blank" rel="nofollow sponsored" class="inline-block px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white shadow-sm text-xs font-bold rounded-lg transition-colors">Visit Smartsheet &rarr;</a></td>
                         <td class="p-4 text-xs mono text-slate-500">Reviewed 2026-10-17</td>
                     </tr>
                 </tfoot>
@@ -393,26 +487,26 @@
                 <div>
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-xl font-bold text-slate-900">Asana Pros &amp; Cons</h3>
-                        <span class="text-xs mono font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">$0/mo + $24/seat</span>
+                        <span class="text-xs mono font-semibold text-slate-700 bg-slate-100 border-slate-200 px-2 py-0.5 rounded border">$0/mo + $24/seat</span>
                     </div>
                     <ul class="text-sm text-slate-700 mb-4 list-none pl-0"><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Superior UX for task-level collaboration</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Native AI Teammates and Dash automation</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Lower entry cost for advanced project features</span></li></ul>
                     <ul class="text-sm text-slate-600 list-none pl-0 border-t border-slate-100 pt-3"><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2' aria-hidden='true'>✗</span><span>Audit logs locked behind highest Enterprise+ tier</span></li><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2' aria-hidden='true'>✗</span><span>Limited native ETL capabilities for complex data</span></li></ul>
                 </div>
-                <a href="https://asana.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm rounded-lg transition-colors">
+                <a href="https://asana.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm rounded-lg transition-colors">
                     Explore Asana Plans &amp; Free Trial &rarr;
                 </a>
             </div>
 
-            <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div class="p-6 bg-white rounded-xl border border-blue-400 shadow-sm flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-xl font-bold text-slate-900">Smartsheet Pros &amp; Cons</h3>
-                        <span class="text-xs mono font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">$0/mo + $19/seat</span>
+                        <span class="text-xs mono font-semibold text-blue-700 bg-blue-50 border-blue-200 px-2 py-0.5 rounded border">$0/mo + $19/seat</span>
                     </div>
                     <ul class="text-sm text-slate-700 mb-4 list-none pl-0"><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Robust portfolio management via Control Center</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Advanced data manipulation via Data Shuttle and Bridge</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Higher individual file attachment limits</span></li></ul>
                     <ul class="text-sm text-slate-600 list-none pl-0 border-t border-slate-100 pt-3"><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2' aria-hidden='true'>✗</span><span>High cost of entry for premium add-ons like Dynamic View</span></li><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2' aria-hidden='true'>✗</span><span>Steeper learning curve for non-spreadsheet users</span></li></ul>
                 </div>
-                <a href="https://www.smartsheet.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm rounded-lg transition-colors">
+                <a href="https://www.smartsheet.com/pricing" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white shadow-sm font-semibold text-sm rounded-lg transition-colors">
                     Explore Smartsheet Plans &amp; Free Trial &rarr;
                 </a>
             </div>
@@ -520,16 +614,16 @@
     <div class="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-200 py-2.5 px-4 z-40 shadow-lg">
         <div class="max-w-5xl mx-auto flex items-center justify-between gap-2">
             <div class="hidden sm:block">
-                <span class="text-xs font-bold text-slate-800 mono">Compare: Asana vs Smartsheet</span>
+                <span class="text-xs font-bold text-slate-800 mono">Top Pick: Smartsheet (9.2/10)</span>
                 <span class="block text-[10px] text-slate-500">Referral links: we may earn a commission (<a href="/disclosure.html" class="underline">disclosure</a>)</span>
             </div>
             <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
                 <span class="sm:hidden text-[10px] text-slate-500 mono mr-1">Ad/Referral:</span>
-                <a href="https://asana.com/pricing" target="_blank" rel="nofollow sponsored" class="flex-1 sm:flex-initial text-center px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition-colors">
+                <a href="https://asana.com/pricing" target="_blank" rel="nofollow sponsored" class="flex-1 sm:flex-initial text-center px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">
                     Visit Asana &rarr;
                 </a>
-                <a href="https://www.smartsheet.com/pricing" target="_blank" rel="nofollow sponsored" class="flex-1 sm:flex-initial text-center px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">
-                    Visit Smartsheet &rarr;
+                <a href="https://www.smartsheet.com/pricing" target="_blank" rel="nofollow sponsored" class="flex-1 sm:flex-initial text-center px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white shadow-sm text-xs font-bold rounded-lg transition-colors">
+                    ★ Visit Smartsheet &rarr;
                 </a>
             </div>
         </div>
