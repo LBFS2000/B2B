@@ -1634,7 +1634,7 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
                     {nt['product_a']} vs. {nt['product_b']}
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-    {nt[' use_case']}
+    {nt['use_case']}
                 </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
