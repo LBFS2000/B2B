@@ -1921,15 +1921,13 @@ def main():
       with open(out_path, "w", encoding="utf-8") as out_f:
         out_f.write(html_out)
 
-  with open("topics.json", "w", encoding="utf-8") as f:
+with open("topics.json", "w", encoding="utf-8") as f:
     json.dump(topics, f, indent=2)
 
   rebuild_index_legal_and_sitemap(topics)
   import monetization_engine
 
-    monetization_engine.build_all(
-        topics, normalize_topic, get_header, get_footer
-    )
+  monetization_engine.build_all(topics, normalize_topic, get_header, get_footer)
   print(
       f"Run complete. Built {len(topics)} pages ({generated_ai_count} newly"
       " synthesized via live AI pool) + sitemap.xml + sitemap.txt + llms.txt +"
