@@ -286,7 +286,7 @@ def build_client_js(enriched_topics: list[dict]):
                     <div>
                         <div class="flex items-center justify-between gap-2 mb-2">
                             <span class="text-[11px] font-bold uppercase tracking-wider text-blue-600 mono">Boardroom Ready</span>
-                            <span class="bg-slate-200 text-slate-800 font-bold mono px-2 py-0.5 rounded text-xs">$19 One-Time</span>
+                            <span class="bg-slate-200 text-slate-800 font-bold mono px-2 py-0.5 rounded text-xs">Free Instant Export</span>
                         </div>
                         <h4 class="text-sm font-bold text-slate-900">36-Month CFO TCO &amp; RFP Excel/CSV Model</h4>
                         <p class="text-xs text-slate-600 mt-1 leading-relaxed">
@@ -294,7 +294,7 @@ def build_client_js(enriched_topics: list[dict]):
                         </p>
                     </div>
                     <a href="${{checkoutHref}}" data-item-id="${{item ? item.id : ''}}" class="${{lsClass}}cfo-export-btn mt-4 block w-full text-center px-3 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-lg transition-colors">
-                         Download 36-Month CFO Boardroom CSV/Excel Model ($19)
+                         Download 36-Month CFO Boardroom CSV/Excel Model (Free)
                     </a>
                 </div>
             </div>
