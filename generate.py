@@ -14,7 +14,7 @@ SITE_HOST = "b2bcomparison.com"
 BRAND_NAME = "B2BComparison"
 
 # ---> PASTE YOUR 11-DIGIT AUSTRALIAN BUSINESS NUMBER (ABN) BELOW <---
-ABN_NUMBER = "51 205 277 641"
+ABN_NUMBER = "XX XXX XXX XXX"
 
 PUBLIC_DIR = "public"
 CACHE_DIR = os.path.join(PUBLIC_DIR, "_cache")
@@ -655,7 +655,10 @@ def get_header(
     canonical_path: str = "",
     json_ld: str = "",
 ) -> str:
-  canonical_url = f"{SITE_URL}/{canonical_path.lstrip('/')}"
+  clean_path = canonical_path.lstrip("/").removesuffix(".html")
+  if clean_path == "index":
+    clean_path = ""
+  canonical_url = f"{SITE_URL}/{clean_path}" if clean_path else f"{SITE_URL}/"
   ld_block = (
       f'<script type="application/ld+json">{json_ld}</script>'
       if json_ld
@@ -704,7 +707,7 @@ def get_header(
             </a>
             <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600" aria-label="Main Navigation">
                 <a href="/" class="hover:text-blue-600 transition-colors">All Matrices</a>
-                <a href="/methodology.html" class="hover:text-blue-600 transition-colors">Methodology</a>
+                <a href="/methodology.html" class="hover:text-blue-600 transition-colors">Methodology &amp; AI Policy</a>
                 <a href="/about.html" class="hover:text-blue-600 transition-colors">About Us</a>
                 <a href="/disclosure.html" class="hover:text-blue-600 transition-colors">Affiliate Disclosure</a>
             </nav>
@@ -736,7 +739,7 @@ def get_footer() -> str:
                 <p class="mt-3 text-xs text-slate-400 leading-relaxed">
                     Independent B2B software architecture, integration compatibility, and Total Cost of Ownership (TCO) research publication for CTOs, Finance Directors, and Operations teams across Australia, APAC, and North America.
                 </p>
-                <p class="mt-2 text-[11px] text-slate-400 mono">
+                <p class="mt-2 text-[11px] text-slate-300 mono">
                     {get_abn_badge()}
                 </p>
             </div>
@@ -744,16 +747,19 @@ def get_footer() -> str:
                 <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">Governance &amp; Legal</h4>
                 <ul class="space-y-2 text-xs">
                     <li><a href="/about.html" class="hover:text-white transition-colors">About B2BComparison &amp; Entity Details</a></li>
-                    <li><a href="/methodology.html" class="hover:text-white transition-colors">Documentation &amp; TCO Methodology</a></li>
+                    <li><a href="/methodology.html" class="hover:text-white transition-colors">Methodology &amp; AI Transparency Policy</a></li>
                     <li><a href="/disclosure.html" class="hover:text-white transition-colors">FTC &amp; ACCC Affiliate Disclosure</a></li>
                     <li><a href="/privacy.html" class="hover:text-white transition-colors">Privacy Policy &amp; Terms of Service</a></li>
-                    <li><a href="/sitemap.xml" class="hover:text-white transition-colors">XML Sitemap</a> • <a href="/llms.txt" class="hover:text-white transition-colors">AI / LLMs.txt</a></li>
+                    <li><a href="/sitemap.xml" class="hover:text-white transition-colors">XML Sitemap</a> • <a href="/sitemap.txt" class="hover:text-white transition-colors">TXT Sitemap</a> • <a href="/llms.txt" class="hover:text-white transition-colors">LLMs.txt</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">ACCC &amp; FTC Commercial Disclosure</h4>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                    In accordance with the Australian Consumer Law (ACL) and US FTC 16 CFR Part 255 guidelines: B2BComparison.com participates in commercial affiliate programs. We may earn a referral fee when you click outbound vendor links or sign up for trials. All specifications and TCO models are compiled from publicly published vendor documentation and are shown exclusive of GST (ex. GST) unless noted.
+                <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">Commercial, Trademark &amp; Advice Disclaimers</h4>
+                <p class="text-xs text-slate-400 leading-relaxed mb-2">
+                    <strong>Affiliate Disclosure (ACL &amp; FTC):</strong> We may earn a referral commission when you click outbound vendor links. All pricing models are compiled from public vendor schedules and shown exclusive of 10% Australian GST (ex. GST) unless noted.
+                </p>
+                <p class="text-[11px] text-slate-500 leading-relaxed">
+                    <strong>Trademarks &amp; General Information:</strong> All third-party product names and trademarks are property of their respective owners and used strictly for comparative identification. Content is general technical information only and does not constitute financial, tax agent, or legal/Fair Work advice.
                 </p>
             </div>
         </div>
@@ -832,7 +838,6 @@ def render_html(
   )
   today = datetime.date.today().isoformat()
 
-  # Build Internal Linking Grid (4 Related Comparisons for SEO Crawl Depth)
   related_cards = ""
   normalized_all = [normalize_topic(x) for x in all_topics]
   same_cat = [
@@ -867,7 +872,6 @@ def render_html(
             </div>
         </a>"""
 
-  # Auto-generated Buyer FAQ + JSON-LD Schema (FAQPage + BreadcrumbList)
   faqs = [
       (
           f"Is {pa} or {pb} cheaper for a 25-user team in 2026?",
@@ -925,7 +929,7 @@ def render_html(
                   "@type": "ListItem",
                   "position": 2,
                   "name": f"{pa} vs {pb}",
-                  "item": f"{SITE_URL}/{nt['id']}.html",
+                  "item": f"{SITE_URL}/{nt['id']}",
               },
           ],
       },
@@ -956,9 +960,8 @@ def render_html(
       for q, a in faqs
   )
 
-  return f"""{get_header(data.seo_title, data.meta_description, total_count, f"{nt['id']}.html", json_ld_str)}
+  return f"""{get_header(data.seo_title, data.meta_description, total_count, nt['id'], json_ld_str)}
     <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-10">
-        <!-- Accessible Breadcrumb Navigation -->
         <nav aria-label="Breadcrumb" class="text-xs mono text-slate-500 flex items-center space-x-2">
             <a href="/" class="text-blue-600 hover:underline font-semibold">All Compatibility Matrices</a>
             <span>/</span>
@@ -1027,7 +1030,7 @@ def render_html(
                     </a>
                 </div>
             </div>
-            <p class="mt-3 text-[11px] text-slate-500"><strong>ACCC &amp; FTC Disclosure:</strong> Outbound vendor links are commercial referral links that may earn B2BComparison.com a commission at zero extra cost to you. Scores reflect our deterministic model of published vendor documentation (<a href="/methodology.html" class="underline hover:text-slate-800">see methodology</a>).</p>
+            <p class="mt-3 text-[11px] text-slate-500"><strong>ACCC &amp; FTC Disclosure:</strong> Outbound vendor links are commercial referral links that may earn B2BComparison.com a commission at zero extra cost to you. Scores and summaries are compiled from published vendor documentation using deterministic TCO modeling and AI-assisted specification synthesis under human editorial oversight (<a href="/methodology.html" class="underline hover:text-slate-800">read methodology &amp; AI policy</a>).</p>
         </div>
 
         <!-- Interactive 36-Month TCO Calculator with Currency (USD/AUD) & Billing Toggle -->
@@ -1100,7 +1103,7 @@ def render_html(
                 <span id="tcoSavingsText" class="font-semibold">Calculating 12-month TCO delta...</span>
                 <span class="bg-white px-2 py-0.5 rounded border border-emerald-200 text-emerald-700 font-bold">Indicative Ex-GST Estimate</span>
             </div>
-            <p class="mt-2.5 text-[11px] text-slate-500">Pricing Disclaimer: Calculations reflect published entry/mid-market commercial tiers as of {today}, exclusive of 10% Australian GST or local sales taxes. AUD figures use an indicative 1.54 USD/AUD exchange rate. Confirm final quote on the vendor's official site.</p>
+            <p class="mt-2.5 text-[11px] text-slate-500">Pricing &amp; Advice Disclaimer: Calculations run locally in your browser and reflect published entry/mid-market commercial tiers as of {today}, exclusive of 10% Australian GST or local sales taxes. AUD figures use an indicative 1.54 USD/AUD exchange rate. This tool provides general software cost estimates only and does not constitute financial or tax advice.</p>
         </div>
 
         <script>
@@ -1375,7 +1378,7 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
 
     llms_lines.append(
         f"- [{nt['product_a']} vs"
-        f" {nt['product_b']}]({SITE_URL}/{nt['id']}.html): {nt['use_case']}."
+        f" {nt['product_b']}]({SITE_URL}/{nt['id']}): {nt['use_case']}."
         f" {price_summary}. Verdict: {verdict_snippet}"
     )
 
@@ -1492,23 +1495,25 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
             <p class="text-slate-600 leading-relaxed mb-4">B2BComparison.com is an independent software documentation review and Total Cost of Ownership (TCO) modeling publication built for CTOs, Finance Directors, RevOps leaders, and SMB/Mid-Market procurement teams across Australia, APAC, and North America.</p>
             <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Why We Built B2BComparison.com</h3>
             <p class="text-slate-600 leading-relaxed mb-4">Most software directories rely on subjective star-ratings and omit the commercial and technical details that drive total cost: REST API rate ceilings, webhook retry queues, SAML SSO tier gating, and regional tax/payroll compliance (such as Australian ATO Single Touch Payroll Phase 2, Payday Super 2026, Fair Work Award interpretation, and two-way Xero/MYOB/QuickBooks ledger reconciliation).</p>
-            <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Entity, ABN &amp; Contact Information</h3>
-            <p class="text-slate-600 leading-relaxed mb-2">B2BComparison.com is independently owned and operated out of Brisbane, Queensland, Australia ({abn_line}).</p>
+            <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Editorial Responsibility, ABN &amp; Contact Information</h3>
+            <p class="text-slate-600 leading-relaxed mb-2">B2BComparison.com is independently owned, published, and editorially controlled out of Brisbane, Queensland, Australia ({abn_line}).</p>
             <p class="text-slate-600 leading-relaxed">For vendor specification updates, pricing corrections, or partnership inquiries, contact our editorial desk at <span class="mono text-slate-900 font-semibold">admin@b2bcomparison.com</span>.</p>
         """,
       ),
       "methodology.html": (
-          "Documentation & TCO Benchmarking Methodology",
-          """
+          "Methodology & AI Transparency Policy",
+          f"""
             <h2 class="text-xl font-bold text-slate-900 mt-4 mb-2">How We Evaluate &amp; Score B2B SaaS Platforms</h2>
-            <p class="text-slate-600 leading-relaxed mb-4">To ensure transparency under Australian Consumer Law (ACL) and international publishing standards, B2BComparison.com discloses that our matrices and composite scores are compiled through structured desk research of publicly published vendor documentation, developer portals, and commercial pricing schedules:</p>
+            <p class="text-slate-600 leading-relaxed mb-4">To ensure full transparency under the Australian Consumer Law (ACL), the National AI Centre (NAIC) 2026 transparency guidelines, and EU AI Act Article 50, B2BComparison.com ({abn_line}) discloses how our matrices, calculators, and summaries are produced:</p>
             <ul class="list-disc pl-6 space-y-2.5 text-slate-600 mb-6">
                 <li><strong>REST &amp; GraphQL API Documentation Review:</strong> We inspect official vendor developer documentation to record published request-per-minute (RPM) rate limits, burst concurrency buckets, and webhook payload retry mechanics.</li>
                 <li><strong>ERP &amp; Accounting Integration Verification:</strong> We review official app marketplace listings (Xero App Store, QuickBooks Apps, NetSuite SuiteApps) to verify whether integrations support bi-directional general ledger syncing, multi-currency FX reconciliation, and Australian BAS/GST tax codes.</li>
                 <li><strong>Security &amp; Regional Governance Attestations:</strong> We check public vendor trust centers for active SOC2 Type II attestations, ISO 27001 certification, SAML 2.0 / SCIM provisioning tiers, and Australian Privacy Act (APP) / ATO DSP status where applicable.</li>
-                <li><strong>Deterministic 36-Month TCO Modeling:</strong> We extract published base platform fees and per-seat licensing tiers in USD and indicative AUD (exclusive of 10% GST) to model how software costs scale from 5 to 250 active seats.</li>
-                <li><strong>Composite Index Scoring:</strong> Page scores (e.g., 9.0/10) are calculated deterministically from the number of category specification advantages in our 8-point matrix.</li>
+                <li><strong>Deterministic 36-Month TCO Modeling:</strong> All monthly, annual, and 36-month cost figures are calculated deterministically using client-side JavaScript formulas based on published base platform fees and per-seat licensing tiers in USD and indicative AUD (exclusive of 10% GST).</li>
+                <li><strong>AI-Assisted Specification Synthesis &amp; Editorial Responsibility:</strong> We utilize automated web retrieval and large language model (LLM) structured schema extraction to synthesize raw vendor documentation into standardized comparison tables. All published matrices and scoring frameworks operate under the direct editorial control and legal responsibility of B2BComparison.com ({abn_line}).</li>
             </ul>
+            <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Vendor Verification &amp; Correction Policy</h3>
+            <p class="text-slate-600 leading-relaxed">SaaS vendors update commercial tiers and API rate ceilings regularly. If you are a vendor representative and wish to submit updated documentation or request a specification correction, email <span class="mono text-slate-900 font-semibold">admin@b2bcomparison.com</span> and we will review and update the dataset promptly.</p>
         """,
       ),
       "disclosure.html": (
@@ -1518,24 +1523,29 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
             <p class="text-slate-600 leading-relaxed mb-4">In full compliance with the Australian Competition and Consumer Commission (ACCC) / Australian Consumer Law (Schedule 2 of the <em>Competition and Consumer Act 2010</em>) and the United States Federal Trade Commission (FTC) 16 CFR Part 255 guidelines, B2BComparison.com ({abn_line}) makes the following commercial disclosure:</p>
             <p class="text-slate-600 leading-relaxed mb-4">B2BComparison.com is a reader-supported commercial publication. We participate in B2B software referral and affiliate partner programs (including Impact.com, PartnerStack, and direct SaaS vendor affiliate programs). When you click on outbound vendor links on our site, request a software demo, or sign up for a trial or subscription, we may receive a referral commission from the software vendor at <strong>zero additional cost</strong> to you or your organization.</p>
             <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Scope of Market Coverage &amp; Editorial Firewall</h3>
-            <p class="text-slate-600 leading-relaxed">B2BComparison.com does not compare every software product available in the market; we focus on widely adopted B2B operational platforms. Commercial referral partnerships never alter our documented API rate-limit tables, compliance badges, or mathematical TCO calculator outputs.</p>
+            <p class="text-slate-600 leading-relaxed mb-4">B2BComparison.com does not compare every software product available in the market; we focus on widely adopted B2B operational platforms. Commercial referral partnerships never alter our documented API rate-limit tables, compliance badges, or mathematical TCO calculator outputs.</p>
+            <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">AI Transparency Statement</h3>
+            <p class="text-slate-600 leading-relaxed">Our comparison summaries combine deterministic JavaScript pricing calculators with AI-assisted synthesis of publicly available vendor documentation, published under the human editorial responsibility of our Brisbane-based entity.</p>
         """,
       ),
       "privacy.html": (
           "Privacy Policy & Terms of Service",
           f"""
             <h2 class="text-xl font-bold text-slate-900 mt-4 mb-2">Privacy Policy &amp; Data Governance</h2>
-            <p class="text-slate-600 leading-relaxed mb-4">B2BComparison.com ({abn_line}) respects your privacy and handles information in accordance with the Australian Privacy Principles (APPs) under the <em>Privacy Act 1988 (Cth)</em> as well as international data protection standards (GDPR/CCPA). We do not sell personal data or require user account registration to use our interactive TCO calculators.</p>
+            <p class="text-slate-600 leading-relaxed mb-4">B2BComparison.com ({abn_line}) respects your privacy and handles information in accordance with the Australian Privacy Principles (APPs) under the <em>Privacy Act 1988 (Cth)</em> as well as international data protection standards (GDPR/CCPA). We do not sell personal data or require user account registration. All interactive TCO calculator inputs (such as seat counts) execute locally in your browser and are never transmitted to or stored on our servers.</p>
             <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Analytics &amp; Outbound Affiliate Attribution Cookies</h3>
             <p class="text-slate-600 leading-relaxed mb-4">Our site is hosted on Cloudflare's global edge network, which logs anonymized technical request metadata for security and performance. When you click an outbound vendor link (marked with <span class="mono">rel="nofollow sponsored"</span>), our affiliate attribution partners (such as Impact.com, PartnerStack, or the vendor's affiliate platform) may place a referral tracking cookie in your browser solely to attribute commercial signups. For privacy inquiries, contact <span class="mono">admin@b2bcomparison.com</span>.</p>
-            <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Terms of Use, GST Disclaimer &amp; Governing Law</h3>
-            <p class="text-slate-600 leading-relaxed">All comparisons, specifications, and TCO calculators are provided for general informational and procurement estimation purposes only and do not constitute financial, tax, or legal advice. Unless explicitly stated otherwise, all USD and indicative AUD prices are shown <strong>exclusive of 10% Australian Goods and Services Tax (ex. GST)</strong> and local sales taxes. Software vendors change pricing and API limits frequently; always verify final commercial terms directly on the vendor's official website. These terms are governed by the laws of Queensland, Australia.</p>
+            <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Third-Party Trademarks &amp; Nominative Fair Use</h3>
+            <p class="text-slate-600 leading-relaxed mb-4">All third-party product names, logos, and brands mentioned on this website (including but not limited to Xero, MYOB, Rippling, Deel, Gusto, OnPay, monday.com, ClickUp, HubSpot, Pipedrive, FreshBooks, Notion, Coda, ActiveCampaign, Klaviyo, Zendesk, Intercom, Shopify, BigCommerce, Asana, Smartsheet, Employment Hero, ServiceM8, Tradify, Remote, Deputy, and Tanda) are trademarks or registered trademarks of their respective holders. Use of these names is strictly for comparative identification under nominative fair use (<em>Trade Marks Act 1995 (Cth)</em> s 122) and does not imply vendor endorsement or affiliation.</p>
+            <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">No Financial, Tax Agent, or Legal Advice &amp; Governing Law</h3>
+            <p class="text-slate-600 leading-relaxed">All comparisons, specifications, and TCO calculators are provided for general informational and software estimation purposes only and do not constitute financial product advice, registered Tax Agent / BAS advice, or legal/Fair Work compliance advice. Unless explicitly stated otherwise, all USD and indicative AUD prices are shown <strong>exclusive of 10% Australian Goods and Services Tax (ex. GST)</strong> and local sales taxes. Software vendors change pricing and API limits frequently; always verify final commercial terms directly on the vendor's official website. These terms are governed by the laws of Queensland, Australia.</p>
         """,
       ),
   }
 
   for filename, (title, body) in legal_pages.items():
-    page = f"""{get_header(f"{title} | B2BComparison.com", title, len(topics), filename)}
+    clean_slug = filename.removesuffix(".html")
+    page = f"""{get_header(f"{title} | B2BComparison.com", title, len(topics), clean_slug)}
     <main class="flex-grow max-w-3xl w-full mx-auto px-4 sm:px-6 py-12">
         <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
             <h1 class="text-3xl font-extrabold text-slate-900 mb-4">{title}</h1>
@@ -1547,16 +1557,17 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
       out.write(page)
 
   today = datetime.date.today().isoformat()
+  # Use clean, redirect-free canonical URLs for both sitemap.xml and sitemap.txt
   urls = [
       f"{SITE_URL}/",
-      f"{SITE_URL}/about.html",
-      f"{SITE_URL}/methodology.html",
-      f"{SITE_URL}/disclosure.html",
-      f"{SITE_URL}/privacy.html",
+      f"{SITE_URL}/about",
+      f"{SITE_URL}/methodology",
+      f"{SITE_URL}/disclosure",
+      f"{SITE_URL}/privacy",
   ]
   for raw_t in topics:
     nt = normalize_topic(raw_t)
-    urls.append(f"{SITE_URL}/{nt['id']}.html")
+    urls.append(f"{SITE_URL}/{nt['id']}")
 
   sitemap_items = "\n".join(
       f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>" for u in urls
@@ -1570,12 +1581,19 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
   ) as f:
     f.write(sitemap_xml)
 
+  # Also output plain-text sitemap.txt (100% immune to XML header issues in Google Search Console)
+  with open(
+      os.path.join(PUBLIC_DIR, "sitemap.txt"), "w", encoding="utf-8"
+  ) as f:
+    f.write("\n".join(urls) + "\n")
+
   with open(os.path.join(PUBLIC_DIR, "llms.txt"), "w", encoding="utf-8") as f:
     f.write("\n".join(llms_lines) + "\n")
 
   robots_txt = (
-      f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n# AI Answer"
-      f" Engine Index: {SITE_URL}/llms.txt\n"
+      f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\nSitemap:"
+      f" {SITE_URL}/sitemap.txt\n# AI Answer Engine Index:"
+      f" {SITE_URL}/llms.txt\n"
   )
   with open(
       os.path.join(PUBLIC_DIR, "robots.txt"), "w", encoding="utf-8"
@@ -1622,8 +1640,8 @@ def main():
   rebuild_index_legal_and_sitemap(topics)
   print(
       f"Run complete. Built {len(topics)} pages ({generated_ai_count} newly"
-      " synthesized via live AI pool) + sitemap.xml + llms.txt + IndexNow"
-      " ping."
+      " synthesized via live AI pool) + sitemap.xml + sitemap.txt + llms.txt +"
+      " IndexNow ping."
   )
 
 
