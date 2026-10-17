@@ -1,42 +1,36 @@
 {
-  "seo_title": "Deputy vs Tanda: Australian Payroll & Rostering Audit (2026)",
+  "seo_title": "Deputy vs Tanda: Australian Payroll & Compliance Audit (2026)",
   "meta_description": "Technical comparison of Deputy and Tanda for Australian Fair Work compliance, Xero integration, and workforce management architecture.",
-  "direct_verdict": "Deputy is the superior choice for mid-market firms requiring deep API extensibility and global scalability. Tanda is the optimal choice for Australian-centric SMBs needing a unified, low-friction payroll and rostering stack.",
+  "direct_verdict": "Deputy is the superior choice for high-growth businesses requiring robust API extensibility and global scalability. Tanda offers a more cohesive, single-stack experience for Australian-only SMBs prioritizing tight payroll-to-roster integration.",
   "comparison_matrix": [
     {
-      "feature_name": "Base Pricing (Per User/Month)",
-      "product_a_spec": "$13.95 (Core + Payroll + HR)",
-      "product_b_spec": "$12.80 (All-in-One Bundle)",
+      "feature_name": "Base Pricing (Per User)",
+      "product_a_spec": "$8.75 AUD (Core Plan)",
+      "product_b_spec": "$12.80 AUD (All-in-One)",
+      "winner": "Deputy"
+    },
+    {
+      "feature_name": "Fair Work Award Automation",
+      "product_a_spec": "Pay Rate Builder & Template Library",
+      "product_b_spec": "Native Modern Award Templates",
       "winner": "Tanda"
     },
     {
-      "feature_name": "Fair Work Award Interpretation",
-      "product_a_spec": "Advanced Pay Rate Builder & Templates",
-      "product_b_spec": "Automated Modern Award Templates",
-      "winner": "Tie"
+      "feature_name": "Xero Integration",
+      "product_a_spec": "Bi-directional sync with API",
+      "product_b_spec": "Native single-system payroll",
+      "winner": "Tanda"
     },
     {
-      "feature_name": "Xero Integration",
-      "product_a_spec": "Deep API sync with multi-entity support",
-      "product_b_spec": "Native single-system payroll sync",
+      "feature_name": "API Rate Limits",
+      "product_a_spec": "High-throughput REST API",
+      "product_b_spec": "Limited public documentation",
       "winner": "Deputy"
     },
     {
       "feature_name": "Minimum Monthly Spend",
-      "product_a_spec": "AUD $30.00",
+      "product_a_spec": "$30 AUD",
       "product_b_spec": "Not publicly disclosed",
-      "winner": "Deputy"
-    },
-    {
-      "feature_name": "SMS Messaging Costs",
-      "product_a_spec": "AUD $0.05 per 160 characters",
-      "product_b_spec": "Included in platform",
-      "winner": "Tanda"
-    },
-    {
-      "feature_name": "API Access",
-      "product_a_spec": "Robust REST API for custom integrations",
-      "product_b_spec": "Limited public documentation",
       "winner": "Deputy"
     },
     {
@@ -46,29 +40,35 @@
       "winner": "Deputy"
     },
     {
-      "feature_name": "User Billing Logic",
-      "product_a_spec": "Full month charge for any activity",
-      "product_b_spec": "Variable based on active status",
+      "feature_name": "SMS Messaging Fees",
+      "product_a_spec": "$0.05 AUD per 160 chars",
+      "product_b_spec": "Included in subscription",
       "winner": "Tanda"
+    },
+    {
+      "feature_name": "Global Compliance",
+      "product_a_spec": "Multi-country support",
+      "product_b_spec": "Australia-focused",
+      "winner": "Deputy"
     }
   ],
   "product_a_pros": [
-    "Superior API documentation for custom ERP/BI workflows",
-    "Advanced biometric kiosk prevents buddy punching",
-    "Granular location hierarchy and multi-entity management"
+    "Extensive REST API for custom enterprise integrations",
+    "Superior biometric Kiosk hardware support",
+    "Transparent pricing with clear minimums and add-on costs"
   ],
   "product_a_cons": [
-    "Aggressive billing policy charges full month for any user activity",
-    "Hidden SMS costs can escalate for high-turnover shift environments"
+    "SMS costs can scale rapidly for large, mobile-first teams",
+    "Complex configuration required for advanced Award interpretation"
   ],
   "product_b_pros": [
-    "Lower per-user cost for all-in-one bundle",
-    "Simplified UX for Australian-specific compliance",
-    "Eliminates third-party integration friction via native payroll"
+    "True all-in-one payroll and rostering reduces sync errors",
+    "Simplified UI for Australian-specific compliance",
+    "No per-message SMS fees"
   ],
   "product_b_cons": [
-    "Opaque pricing structure requires manual quote requests",
-    "Limited developer ecosystem compared to market competitors"
+    "Opaque pricing structure requires sales contact",
+    "Limited ecosystem flexibility compared to Deputy"
   ],
-  "hidden_gotchas": "Deputy enforces a strict $30 AUD minimum monthly spend regardless of user count, which penalizes very small teams. Furthermore, Deputy's billing logic is punitive: archiving a user mid-month still triggers a full month's charge. Tanda's reliance on 'Request Pricing' models often masks implementation fees and setup costs that are not transparent until the contract stage, potentially leading to higher total cost of ownership than the advertised per-user rate."
+  "hidden_gotchas": "Deputy enforces a $30 AUD minimum monthly spend regardless of user count, which penalizes very small teams. Furthermore, Deputy charges for every user in the system, including archived users if they are not managed correctly, leading to billing bloat. Tanda's all-in-one pricing appears competitive but lacks the granular API documentation needed for custom ERP middleware, potentially forcing a total platform migration if your business requirements outgrow their native feature set."
 }

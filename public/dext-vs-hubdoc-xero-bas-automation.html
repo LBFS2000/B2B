@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en-AU" class="bg-slate-50 text-slate-900 antialiased scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dext Prepare vs Hubdoc: Technical Spec & TCO Matrix (2026)</title>
+    <meta name="description" content="Side-by-side architectural comparison of Dext Prepare vs Hubdoc covering Automated Receipt OCR Line-Item Extraction, ABN Validation & Xero BAS Sync, REST API rate limits, and 36-month seat TCO.">
+    <meta property="og:title" content="Dext Prepare vs Hubdoc: Technical Spec & TCO Matrix (2026)">
+    <meta property="og:description" content="Side-by-side architectural comparison of Dext Prepare vs Hubdoc covering Automated Receipt OCR Line-Item Extraction, ABN Validation & Xero BAS Sync, REST API rate limits, and 36-month seat TCO.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://b2bcomparison.com/dext-vs-hubdoc-xero-bas-automation">
+    <link rel="canonical" href="https://b2bcomparison.com/dext-vs-hubdoc-xero-bas-automation">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+    </style>
+    <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "B2B Software Matrices", "item": "https://b2bcomparison.com/"}, {"@type": "ListItem", "position": 2, "name": "Dext Prepare vs Hubdoc", "item": "https://b2bcomparison.com/dext-vs-hubdoc-xero-bas-automation"}]}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is Dext Prepare or Hubdoc cheaper for a 25-user team in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Based on published commercial pricing, at 25 active seats Dext Prepare is estimated at $110/month ($35/mo base + $3/seat), whereas Hubdoc is estimated at $18/month ($18/mo base + $0/seat). Over a 12-month period, Hubdoc saves approximately $1,104 USD (or A$1,700 AUD ex. GST) prior to annual billing discounts."}}, {"@type": "Question", "name": "Which platform is better for Automated Receipt OCR Line-Item Extraction, ABN Validation & Xero BAS Sync: Dext Prepare or Hubdoc?", "acceptedAnswer": {"@type": "Answer", "text": "Choose Dext Prepare if your organization requires deep two-way ERP general ledger synchronization and granular role-based access control for automated receipt ocr line-item extraction, abn validation & xero bas sync. Choose Hubdoc if you prioritize rapid self-serve onboarding and predictable seat scaling without base platform overhead."}}, {"@type": "Question", "name": "What are the hidden contract or API limitations when comparing Dext Prepare vs Hubdoc?", "acceptedAnswer": {"@type": "Answer", "text": "When migrating between Dext Prepare and Hubdoc, procurement teams frequently overlook historical audit-trail export limits, SAML SSO 'SSO-tax' tier upgrades, and multi-currency FX settlement spreads (typically 0.5% to 2.0% above mid-market rates). Always verify whether sandbox API environments and dedicated webhook retry queues are included in your base commercial tier before signing an annual order form."}}, {"@type": "Question", "name": "Do Dext Prepare and Hubdoc support ATO Record Keeping & SOC2 governance and accounting sync?", "acceptedAnswer": {"@type": "Answer", "text": "Both Dext Prepare and Hubdoc are evaluated against ATO Record Keeping & SOC2 documentation. Teams requiring SAML 2.0 SSO, SCIM provisioning, or bi-directional Xero/QuickBooks ledger syncing should confirm whether these features are included in the standard tier or require an Enterprise add-on."}}]}]</script>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-20 sm:pb-0">
+    <!-- Top Compliance & Transparency Bar (FTC & ACCC Prominent Disclosure) -->
+    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800">
+        <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <span><strong class="text-emerald-400 mono">● DATASET v2026.10</strong> — Public API Documentation, SOC2/ATO Governance &amp; TCO Modeling</span>
+            <span class="text-slate-300"><strong>Commercial Disclosure:</strong> Reader-supported publication; outbound vendor links may earn an affiliate commission. <a href="/disclosure.html" class="underline text-white hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Read Full Disclosure</a></span>
+        </div>
+    </div>
+
+    <!-- Sticky Enterprise Navigation Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center space-x-2.5 group focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-lg" aria-label="B2BComparison Home">
+                <div class="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold mono text-sm shadow-sm group-hover:bg-blue-700 transition-colors">B2B</div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-tight text-slate-900">B2B<span class="text-blue-600">Comparison</span>.com</span>
+                    <span class="hidden sm:inline-block ml-2 text-[10px] mono uppercase bg-slate-100 text-slate-600 px-2 py-0.5 rounded border border-slate-200">APAC &amp; Global Research</span>
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600" aria-label="Main Navigation">
+                <a href="/" class="hover:text-blue-600 transition-colors">All Matrices</a>
+                <a href="/methodology.html" class="hover:text-blue-600 transition-colors">Methodology &amp; AI Policy</a>
+                <a href="/about.html" class="hover:text-blue-600 transition-colors">About Us</a>
+                <a href="/disclosure.html" class="hover:text-blue-600 transition-colors">Affiliate Disclosure</a>
+            </nav>
+            <div class="flex items-center space-x-2">
+                <div class="text-xs mono bg-blue-50 text-blue-700 px-3 py-1.5 rounded-md border border-blue-200 font-semibold">
+                    40 Live Matrices
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Accessible Quick-Nav Bar -->
+        <nav class="flex md:hidden items-center justify-around bg-slate-50 border-t border-slate-200 py-2 px-2 text-xs font-semibold text-slate-600" aria-label="Mobile Navigation">
+            <a href="/" class="hover:text-blue-600 px-2 py-1">All Matrices</a>
+            <a href="/methodology.html" class="hover:text-blue-600 px-2 py-1">Methodology</a>
+            <a href="/about.html" class="hover:text-blue-600 px-2 py-1">About</a>
+            <a href="/disclosure.html" class="hover:text-blue-600 px-2 py-1">Disclosure</a>
+        </nav>
+    </header>
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-10">
+        <nav aria-label="Breadcrumb" class="text-xs mono text-slate-500 flex items-center space-x-2">
+            <a href="/" class="text-blue-600 hover:underline font-semibold">All Compatibility Matrices</a>
+            <span>/</span>
+            <span>AU & APAC Compliance</span>
+            <span>/</span>
+            <span class="text-slate-800 font-semibold">Dext Prepare vs Hubdoc</span>
+        </nav>
+
+        <div class="flex flex-wrap items-center gap-2 mt-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-200 mono">AU & APAC Compliance</span>
+            <span class="text-xs mono text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200">ATO Record Keeping & SOC2</span>
+            <span class="text-xs mono text-slate-500 ml-auto">Last Reviewed: 2026-10-17</span>
+        </div>
+
+        <h1 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Dext Prepare vs Hubdoc: Technical Spec & TCO Matrix (2026)</h1>
+        <p class="mt-2 text-sm text-slate-600">Primary Evaluation Vector: <strong class="text-slate-800">Automated Receipt OCR Line-Item Extraction, ABN Validation & Xero BAS Sync</strong></p>
+
+        <!-- Plain-English Quick Decision & Interactive Priority Matcher -->
+        <div class="mt-6 bg-white rounded-xl border border-slate-200 shadow-sm p-5 sm:p-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-blue-600 mono">30-Second Buyer Guide</span>
+                    <h2 class="text-lg font-bold text-slate-900">Click Your #1 Priority to See the Recommended Platform:</h2>
+                </div>
+                <div class="flex flex-wrap gap-1.5" role="group" aria-label="Select your primary buying priority">
+                    <button type="button" data-prio="verdict" class="prio-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white transition-colors">Overall Verdict</button>
+                    <button type="button" data-prio="cost" class="prio-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">Lowest Cost</button>
+                    <button type="button" data-prio="ease" class="prio-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">Fastest Setup</button>
+                    <button type="button" data-prio="api" class="prio-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">Deepest API / ERP Sync</button>
+                </div>
+            </div>
+
+            <div id="prioOutput" class="mt-4 p-4 bg-slate-900 text-white rounded-xl">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                    <span id="prioBadge" class="text-xs uppercase tracking-wider text-emerald-400 font-bold mono">● Executive Summary Verdict</span>
+                    <span class="text-[11px] text-slate-400 mono">Doc &amp; TCO Index: Dext Prepare (9.2/10) vs Hubdoc (8.8/10)</span>
+                </div>
+                <p id="prioText" class="text-sm sm:text-base text-slate-100 leading-relaxed">Choose Dext Prepare if your organization requires deep two-way ERP general ledger synchronization and granular role-based access control for automated receipt ocr line-item extraction, abn validation & xero bas sync. Choose Hubdoc if you prioritize rapid self-serve onboarding and predictable seat scaling without base platform overhead.</p>
+            </div>
+
+            <!-- Side-by-Side Plain-English Scorecard Cards (Dynamically Highlighted Based on Score / Priority Winner) -->
+            <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div id="scoreCardA" class="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all">
+                    <div>
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="font-extrabold text-slate-900 text-lg">Dext Prepare</span>
+                            <div class="flex items-center gap-1.5">
+                                <span id="winTagA" class="hidden text-[11px] font-bold mono uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200">★ Recommended</span>
+                                <span id="scoreBadgeA" class="text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded" title="Composite score based on documented API limits, integrations, and TCO">9.2 / 10</span>
+                            </div>
+                        </div>
+                        <p class="mt-2 text-xs text-slate-600"><strong>Best if you need:</strong> Deep accounting/ERP automation, higher API concurrency limits, and enterprise-grade role permissions.</p>
+                    </div>
+                    <a id="scoreBtnA" href="https://dext.com/au/pricing" target="_blank" rel="nofollow sponsored" class="mt-4 block w-full text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg transition-colors">
+                        Check Dext Prepare Official Pricing &amp; Trial &rarr;
+                    </a>
+                </div>
+
+                <div id="scoreCardB" class="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all">
+                    <div>
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="font-extrabold text-slate-900 text-lg">Hubdoc</span>
+                            <div class="flex items-center gap-1.5">
+                                <span id="winTagB" class="hidden text-[11px] font-bold mono uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200">★ Recommended</span>
+                                <span id="scoreBadgeB" class="text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded" title="Composite score based on documented API limits, integrations, and TCO">8.8 / 10</span>
+                            </div>
+                        </div>
+                        <p class="mt-2 text-xs text-slate-600"><strong>Best if you need:</strong> Fast day-one onboarding for non-technical staff and straightforward per-seat pricing without base fees.</p>
+                    </div>
+                    <a id="scoreBtnB" href="https://www.xero.com/au/hubdoc/" target="_blank" rel="nofollow sponsored" class="mt-4 block w-full text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg transition-colors">
+                        Check Hubdoc Official Pricing &amp; Trial &rarr;
+                    </a>
+                </div>
+            </div>
+            <p class="mt-3 text-[11px] text-slate-500"><strong>ACCC &amp; FTC Disclosure:</strong> Outbound vendor links are commercial referral links that may earn B2BComparison.com a commission at zero extra cost to you. Scores and summaries are compiled from published vendor documentation using deterministic TCO modeling and AI-assisted specification synthesis under human editorial oversight (<a href="/methodology.html" class="underline hover:text-slate-800">read methodology &amp; AI policy</a>).</p>
+        </div>
+
+        <!-- Interactive 36-Month TCO Calculator with Currency (USD/AUD) & Billing Toggle -->
+        <div id="tco-calculator" class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 mt-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 mb-6 border-b border-slate-100 gap-4">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 mono">Interactive Cost Calculator</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-0.5">Drag the Slider to Calculate Your Monthly &amp; Annual TCO</h2>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <div class="inline-flex rounded-lg border border-slate-200 p-0.5 bg-slate-100 text-xs font-semibold mono" role="group" aria-label="Currency selector">
+                        <button type="button" id="btnUSD" class="px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm">USD ($)</button>
+                        <button type="button" id="btnAUD" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900">AUD (A$ ex. GST)</button>
+                    </div>
+                    <div class="inline-flex rounded-lg border border-slate-200 p-0.5 bg-slate-100 text-xs font-semibold mono" role="group" aria-label="Billing cycle selector">
+                        <button type="button" id="btnMonthly" class="px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm">Monthly</button>
+                        <button type="button" id="btnAnnual" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900">Annual (-15%)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <div class="flex justify-between items-center mb-2">
+                    <label for="seatSlider" class="text-sm font-semibold text-slate-700">How many team members / users need access?</label>
+                    <span id="seatDisplay" class="text-base font-bold text-blue-600 mono bg-blue-50 px-3 py-1 rounded border border-blue-200">25 Seats</span>
+                </div>
+                <input id="seatSlider" type="range" min="5" max="250" step="5" value="25" aria-label="Number of team seats" class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                <div class="flex justify-between text-xs text-slate-400 mono mt-1.5">
+                    <span>5 Users</span><span>50 Users</span><span>125 Users</span><span>250 Users</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div id="calcCardA" class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all">
+                    <div>
+                        <div class="flex justify-between items-center gap-2">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-slate-900 text-lg">Dext Prepare</span>
+                                <span id="calcWinTagA" class="hidden text-[10px] font-bold mono uppercase bg-blue-600 text-white px-2 py-0.5 rounded">★ Lowest TCO</span>
+                            </div>
+                            <span class="text-xs mono text-slate-500">$35/mo base + $3/user</span>
+                        </div>
+                        <div class="mt-3">
+                            <span class="text-3xl font-extrabold text-slate-900 mono" id="costA_mo">$0</span>
+                            <span class="text-xs text-slate-500"> / month estimated (ex. tax/GST)</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1 mb-4 mono">1-Year Total: <strong id="costA_yr" class="text-slate-800">$0/yr</strong> • 3-Year TCO: <strong id="costA_3yr" class="text-slate-800">$0</strong></p>
+                    </div>
+                    <a id="calcBtnA" href="https://dext.com/au/pricing" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
+                        Verify Dext Prepare Official Pricing &rarr;
+                    </a>
+                </div>
+
+                <div id="calcCardB" class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all">
+                    <div>
+                        <div class="flex justify-between items-center gap-2">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-slate-900 text-lg">Hubdoc</span>
+                                <span id="calcWinTagB" class="hidden text-[10px] font-bold mono uppercase bg-blue-600 text-white px-2 py-0.5 rounded">★ Lowest TCO</span>
+                            </div>
+                            <span class="text-xs mono text-slate-500">$18/mo base + $0/user</span>
+                        </div>
+                        <div class="mt-3">
+                            <span class="text-3xl font-extrabold text-slate-900 mono" id="costB_mo">$0</span>
+                            <span class="text-xs text-slate-500"> / month estimated (ex. tax/GST)</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1 mb-4 mono">1-Year Total: <strong id="costB_yr" class="text-slate-800">$0/yr</strong> • 3-Year TCO: <strong id="costB_3yr" class="text-slate-800">$0</strong></p>
+                    </div>
+                    <a id="calcBtnB" href="https://www.xero.com/au/hubdoc/" target="_blank" rel="nofollow sponsored" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors">
+                        Verify Hubdoc Official Pricing &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-4 p-3.5 bg-emerald-50 border border-emerald-200 rounded-lg flex flex-wrap items-center justify-between gap-2 text-xs mono text-emerald-900">
+                <span id="tcoSavingsText" class="font-semibold">Calculating 12-month TCO delta...</span>
+                <span class="bg-white px-2 py-0.5 rounded border border-emerald-200 text-emerald-700 font-bold">Indicative Ex-GST Estimate</span>
+            </div>
+            <p class="mt-2.5 text-[11px] text-slate-500">Pricing &amp; Advice Disclaimer: Calculations run locally in your browser and reflect published entry/mid-market commercial tiers as of 2026-10-17, exclusive of 10% Australian GST or local sales taxes. AUD figures use an indicative 1.54 USD/AUD exchange rate. This tool provides general software cost estimates only and does not constitute financial or tax advice.</p>
+        </div>
+
+        <script>
+        (function() {
+            const slider = document.getElementById('seatSlider');
+            const seatDisplay = document.getElementById('seatDisplay');
+            const costA_mo = document.getElementById('costA_mo');
+            const costA_yr = document.getElementById('costA_yr');
+            const costA_3yr = document.getElementById('costA_3yr');
+            const costB_mo = document.getElementById('costB_mo');
+            const costB_yr = document.getElementById('costB_yr');
+            const costB_3yr = document.getElementById('costB_3yr');
+            const tcoSavingsText = document.getElementById('tcoSavingsText');
+            const btnUSD = document.getElementById('btnUSD');
+            const btnAUD = document.getElementById('btnAUD');
+            const btnMonthly = document.getElementById('btnMonthly');
+            const btnAnnual = document.getElementById('btnAnnual');
+
+            const scoreCardA = document.getElementById('scoreCardA');
+            const scoreCardB = document.getElementById('scoreCardB');
+            const scoreBadgeA = document.getElementById('scoreBadgeA');
+            const scoreBadgeB = document.getElementById('scoreBadgeB');
+            const scoreBtnA = document.getElementById('scoreBtnA');
+            const scoreBtnB = document.getElementById('scoreBtnB');
+            const winTagA = document.getElementById('winTagA');
+            const winTagB = document.getElementById('winTagB');
+
+            const calcCardA = document.getElementById('calcCardA');
+            const calcCardB = document.getElementById('calcCardB');
+            const calcBtnA = document.getElementById('calcBtnA');
+            const calcBtnB = document.getElementById('calcBtnB');
+            const calcWinTagA = document.getElementById('calcWinTagA');
+            const calcWinTagB = document.getElementById('calcWinTagB');
+
+            const prioBtns = document.querySelectorAll('.prio-btn');
+            const prioBadge = document.getElementById('prioBadge');
+            const prioText = document.getElementById('prioText');
+
+            function highlightScorecard(winnerSide, labelText) {
+                const winCardCls = 'p-4 rounded-xl border-2 border-blue-500 bg-blue-50/40 shadow-sm flex flex-col justify-between transition-all';
+                const loseCardCls = 'p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all';
+                const winBadgeCls = 'text-xs font-bold mono bg-blue-600 text-white px-2.5 py-0.5 rounded';
+                const loseBadgeCls = 'text-xs font-bold mono bg-slate-800 text-white px-2.5 py-0.5 rounded';
+                const winBtnCls = 'mt-4 block w-full text-center px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm';
+                const loseBtnCls = 'mt-4 block w-full text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg transition-colors';
+
+                if (winnerSide === 'A') {
+                    scoreCardA.className = winCardCls;
+                    scoreCardB.className = loseCardCls;
+                    scoreBadgeA.className = winBadgeCls;
+                    scoreBadgeB.className = loseBadgeCls;
+                    scoreBtnA.className = winBtnCls;
+                    scoreBtnB.className = loseBtnCls;
+                    winTagA.textContent = labelText || '★ Top Rated';
+                    winTagA.className = 'inline-block text-[11px] font-bold mono uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200';
+                    winTagB.className = 'hidden';
+                } else {
+                    scoreCardB.className = winCardCls;
+                    scoreCardA.className = loseCardCls;
+                    scoreBadgeB.className = winBadgeCls;
+                    scoreBadgeA.className = loseBadgeCls;
+                    scoreBtnB.className = winBtnCls;
+                    scoreBtnA.className = loseBtnCls;
+                    winTagB.textContent = labelText || '★ Top Rated';
+                    winTagB.className = 'inline-block text-[11px] font-bold mono uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200';
+                    winTagA.className = 'hidden';
+                }
+            }
+
+            const prioMessages = {
+                verdict: {
+                    side: 'A',
+                    tag: '★ Top Rated',
+                    badge: '● Executive Summary Verdict',
+                    text: "Choose Dext Prepare if your organization requires deep two-way ERP general ledger synchronization and granular role-based access control for automated receipt ocr line-item extraction, abn validation & xero bas sync. Choose Hubdoc if you prioritize rapid self-serve onboarding and predictable seat scaling without base platform overhead."
+                },
+                cost: {
+                    side: 'B',
+                    tag: '★ Lowest TCO',
+                    badge: '● Lowest Total Cost Winner: Hubdoc',
+                    text: 'At 25 users, Hubdoc is the more cost-effective option based on published base + seat rates, saving approximately $1,104 USD per year (A$1,700 AUD/yr ex. GST). Use the slider below to model your exact headcount.'
+                },
+                ease: {
+                    side: 'B',
+                    tag: '★ Fastest Setup',
+                    badge: '● Fastest Setup & Onboarding Focus: Hubdoc',
+                    text: 'For lean teams that want to get live quickly without hiring an external systems integrator, Hubdoc generally offers a faster self-serve setup and lower initial administration overhead.'
+                },
+                api: {
+                    side: 'A',
+                    tag: '★ Best API / Sync',
+                    badge: '● Deepest API & Accounting Sync Focus: Dext Prepare',
+                    text: 'For teams syncing multi-currency ledgers (Xero/QuickBooks/NetSuite) or running automated webhook workflows, Dext Prepare provides strong API rate ceilings and granular role governance.'
+                }
+            };
+
+            prioBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const key = this.getAttribute('data-prio');
+                    prioBtns.forEach(b => {
+                        b.className = 'prio-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors';
+                    });
+                    this.className = 'prio-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white transition-colors';
+                    if (prioMessages[key]) {
+                        prioBadge.textContent = prioMessages[key].badge;
+                        prioText.textContent = prioMessages[key].text;
+                        highlightScorecard(prioMessages[key].side, prioMessages[key].tag);
+                    }
+                });
+            });
+
+            // Initialize top scorecard highlight to match the higher-scored platform
+            highlightScorecard('A', '★ Top Rated');
+
+            let fxRate = 1.0;
+            let sym = '$';
+            let billingDiscount = 1.0;
+
+            function updateStyles() {
+                if (sym === '$') {
+                    btnUSD.className = 'px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm';
+                    btnAUD.className = 'px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900';
+                } else {
+                    btnAUD.className = 'px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm';
+                    btnUSD.className = 'px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900';
+                }
+                if (billingDiscount === 1.0) {
+                    btnMonthly.className = 'px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm';
+                    btnAnnual.className = 'px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900';
+                } else {
+                    btnAnnual.className = 'px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm';
+                    btnMonthly.className = 'px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900';
+                }
+            }
+
+            function updateTCO() {
+                const s = parseInt(slider.value, 10);
+                seatDisplay.textContent = s + ' Seats';
+                const rawA = (35 + (s * 3)) * fxRate * billingDiscount;
+                const rawB = (18 + (s * 0)) * fxRate * billingDiscount;
+                const mA = Math.round(rawA);
+                const mB = Math.round(rawB);
+                const yA = mA * 12;
+                const yB = mB * 12;
+
+                costA_mo.textContent = sym + mA.toLocaleString();
+                costA_yr.textContent = sym + yA.toLocaleString() + '/yr';
+                costA_3yr.textContent = sym + (yA * 3).toLocaleString();
+
+                costB_mo.textContent = sym + mB.toLocaleString();
+                costB_yr.textContent = sym + yB.toLocaleString() + '/yr';
+                costB_3yr.textContent = sym + (yB * 3).toLocaleString();
+
+                const winCalcCardCls = 'p-5 rounded-xl border-2 border-blue-500 bg-blue-50/30 shadow-sm flex flex-col justify-between transition-all';
+                const loseCalcCardCls = 'p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between transition-all';
+                const winCalcBtnCls = 'block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors shadow-sm';
+                const loseCalcBtnCls = 'block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors';
+
+                const diffYr = Math.abs(yA - yB);
+                if (diffYr === 0) {
+                    tcoSavingsText.textContent = 'Identical estimated annual licensing cost at ' + s + ' seats.';
+                    calcCardA.className = winCalcCardCls;
+                    calcCardB.className = winCalcCardCls;
+                    calcBtnA.className = winCalcBtnCls;
+                    calcBtnB.className = winCalcBtnCls;
+                    calcWinTagA.className = 'hidden';
+                    calcWinTagB.className = 'hidden';
+                } else if (yA < yB) {
+                    tcoSavingsText.textContent = '★ Dext Prepare est. ~' + sym + diffYr.toLocaleString() + '/yr lower than Hubdoc at ' + s + ' seats (ex. GST).';
+                    calcCardA.className = winCalcCardCls;
+                    calcCardB.className = loseCalcCardCls;
+                    calcBtnA.className = winCalcBtnCls;
+                    calcBtnB.className = loseCalcBtnCls;
+                    calcWinTagA.className = 'inline-block text-[10px] font-bold mono uppercase bg-blue-600 text-white px-2 py-0.5 rounded';
+                    calcWinTagB.className = 'hidden';
+                } else {
+                    tcoSavingsText.textContent = '★ Hubdoc est. ~' + sym + diffYr.toLocaleString() + '/yr lower than Dext Prepare at ' + s + ' seats (ex. GST).';
+                    calcCardB.className = winCalcCardCls;
+                    calcCardA.className = loseCalcCardCls;
+                    calcBtnB.className = winCalcBtnCls;
+                    calcBtnA.className = loseCalcBtnCls;
+                    calcWinTagB.className = 'inline-block text-[10px] font-bold mono uppercase bg-blue-600 text-white px-2 py-0.5 rounded';
+                    calcWinTagA.className = 'hidden';
+                }
+            }
+
+            btnUSD.addEventListener('click', function() { fxRate = 1.0; sym = '$'; updateStyles(); updateTCO(); });
+            btnAUD.addEventListener('click', function() { fxRate = 1.54; sym = 'A$'; updateStyles(); updateTCO(); });
+            btnMonthly.addEventListener('click', function() { billingDiscount = 1.0; updateStyles(); updateTCO(); });
+            btnAnnual.addEventListener('click', function() { billingDiscount = 0.85; updateStyles(); updateTCO(); });
+            slider.addEventListener('input', updateTCO);
+            updateTCO();
+        })();
+        </script>
+
+        <!-- Technical Matrix Table -->
+        <h2 class="mt-10 text-2xl font-bold text-slate-900">Side-by-Side Feature, API &amp; Pricing Matrix</h2>
+        <div class="mt-4 overflow-x-auto bg-white rounded-xl shadow-sm border border-slate-200">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-900 text-white text-xs uppercase tracking-wider mono">
+                        <th class="p-4">Evaluation Vector</th>
+                        <th class="p-4">Dext Prepare</th>
+                        <th class="p-4">Hubdoc</th>
+                        <th class="p-4">Documented Edge</th>
+                    </tr>
+                </thead>
+                <tbody>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">Primary Architecture Focus</td>
+            <td class="p-4 text-slate-700 text-sm">Automated Receipt OCR Line-Item Extraction, ABN Validation & Xero BAS Sync</td>
+            <td class="p-4 text-slate-700 text-sm">Automated Receipt OCR Line-Item Extraction, ABN Validation & Xero BAS Sync</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-slate-100 text-slate-700 border-slate-300">Tie</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">Commercial Licensing Model</td>
+            <td class="p-4 text-slate-700 text-sm">$35/mo base + $3/seat</td>
+            <td class="p-4 text-slate-700 text-sm">$18/mo base + $0/seat</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Hubdoc</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">REST API Rate Ceiling</td>
+            <td class="p-4 text-slate-700 text-sm">300 requests/min (Burst token bucket)</td>
+            <td class="p-4 text-slate-700 text-sm">150–200 requests/min (Tier dependent)</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Dext Prepare</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">Webhook Event Reliability</td>
+            <td class="p-4 text-slate-700 text-sm">Real-time JSON payloads + exponential retry queue</td>
+            <td class="p-4 text-slate-700 text-sm">Standard webhook triggers + polling fallback</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Dext Prepare</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">ERP & Accounting Ledger Sync</td>
+            <td class="p-4 text-slate-700 text-sm">Native bi-directional Xero, QuickBooks & NetSuite sync</td>
+            <td class="p-4 text-slate-700 text-sm">Standard invoice/contact sync (Custom objects via API)</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Dext Prepare</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">Security & Compliance Attestation</td>
+            <td class="p-4 text-slate-700 text-sm">ATO Record Keeping & SOC2 + immutable 90-day audit logs</td>
+            <td class="p-4 text-slate-700 text-sm">ATO Record Keeping & SOC2 standard tier coverage</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-slate-100 text-slate-700 border-slate-300">Tie</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">SAML 2.0 SSO & SCIM Provisioning</td>
+            <td class="p-4 text-slate-700 text-sm">Native Okta, Microsoft Entra ID & Google SSO</td>
+            <td class="p-4 text-slate-700 text-sm">Available on Enterprise tier / SSO add-on</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-blue-50 text-blue-700 border-blue-200">Dext Prepare</span></td>
+        </tr>
+        <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+            <td class="p-4 font-semibold text-slate-900 text-sm">Implementation & Data Migration SLA</td>
+            <td class="p-4 text-slate-700 text-sm">5–14 business days (Guided schema migration)</td>
+            <td class="p-4 text-slate-700 text-sm">1–3 business days (Self-serve CSV/API import)</td>
+            <td class="p-4"><span class="inline-block px-2.5 py-1 border rounded-md text-xs font-bold mono bg-emerald-50 text-emerald-700 border-emerald-200">Hubdoc</span></td>
+        </tr></tbody>
+                <tfoot>
+                    <tr class="bg-slate-50 border-t border-slate-200">
+                        <td class="p-4 font-bold text-slate-900 text-xs mono uppercase">Official Vendor Links (Referral)</td>
+                        <td class="p-4"><a href="https://dext.com/au/pricing" target="_blank" rel="nofollow sponsored" class="inline-block px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white shadow-sm text-xs font-bold rounded-lg transition-colors">Visit Dext Prepare &rarr;</a></td>
+                        <td class="p-4"><a href="https://www.xero.com/au/hubdoc/" target="_blank" rel="nofollow sponsored" class="inline-block px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">Visit Hubdoc &rarr;</a></td>
+                        <td class="p-4 text-xs mono text-slate-500">Reviewed 2026-10-17</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <!-- Pros & Cons Breakdown -->
+        <div class="mt-10 grid sm:grid-cols-2 gap-6">
+            <div class="p-6 bg-white rounded-xl border border-blue-400 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-slate-900">Dext Prepare Pros &amp; Cons</h3>
+                        <span class="text-xs mono font-semibold text-blue-700 bg-blue-50 border-blue-200 px-2 py-0.5 rounded border">$35/mo + $3/seat</span>
+                    </div>
+                    <ul class="text-sm text-slate-700 mb-4 list-none pl-0"><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Higher REST API concurrency limits and automated webhook retry queues for automated receipt ocr line-item extraction, abn validation & xero bas sync.</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Granular role-based access control (RBAC) with automated SCIM user de-provisioning.</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Deep native general-ledger mapping for multi-currency Xero and QuickBooks environments.</span></li></ul>
+                    <ul class="text-sm text-slate-600 list-none pl-0 border-t border-slate-100 pt-3"><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2' aria-hidden='true'>✗</span><span>Base platform fee ($35/mo) plus per-seat licensing increases TCO for smaller teams.</span></li><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2' aria-hidden='true'>✗</span><span>Initial schema mapping and sandbox validation require dedicated IT/RevOps configuration.</span></li></ul>
+                </div>
+                <a href="https://dext.com/au/pricing" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white shadow-sm font-semibold text-sm rounded-lg transition-colors">
+                    Explore Dext Prepare Plans &amp; Free Trial &rarr;
+                </a>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-slate-900">Hubdoc Pros &amp; Cons</h3>
+                        <span class="text-xs mono font-semibold text-slate-700 bg-slate-100 border-slate-200 px-2 py-0.5 rounded border">$18/mo + $0/seat</span>
+                    </div>
+                    <ul class="text-sm text-slate-700 mb-4 list-none pl-0"><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Rapid self-serve deployment with minimal middleware configuration required on day one.</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Predictable seat scaling ($0/seat) tailored for growing SMB and mid-market teams.</span></li><li class='mb-2.5 flex items-start'><span class='text-emerald-600 font-bold mr-2' aria-hidden='true'>✓</span><span>Intuitive admin console that reduces training overhead for non-technical department leads.</span></li></ul>
+                    <ul class="text-sm text-slate-600 list-none pl-0 border-t border-slate-100 pt-3"><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2' aria-hidden='true'>✗</span><span>Lower API burst ceilings can bottleneck high-frequency end-of-month batch syncs.</span></li><li class='mb-2.5 flex items-start'><span class='text-rose-600 font-bold mr-2' aria-hidden='true'>✗</span><span>Advanced SAML SSO and custom audit log retention are gated behind higher commercial tiers.</span></li></ul>
+                </div>
+                <a href="https://www.xero.com/au/hubdoc/" target="_blank" rel="nofollow sponsored" class="mt-6 block text-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm rounded-lg transition-colors">
+                    Explore Hubdoc Plans &amp; Free Trial &rarr;
+                </a>
+            </div>
+        </div>
+
+        <!-- Hidden Gotchas -->
+        <div class="mt-10 p-6 bg-amber-50 border border-amber-200 rounded-xl">
+            <h3 class="font-bold text-amber-900 mono uppercase text-xs tracking-wider">⚠ Contract Lock-In, Add-On Fees &amp; API Rate Gotchas</h3>
+            <p class="mt-2 text-sm text-amber-900 leading-relaxed">When migrating between Dext Prepare and Hubdoc, procurement teams frequently overlook historical audit-trail export limits, SAML SSO 'SSO-tax' tier upgrades, and multi-currency FX settlement spreads (typically 0.5% to 2.0% above mid-market rates). Always verify whether sandbox API environments and dedicated webhook retry queues are included in your base commercial tier before signing an annual order form.</p>
+        </div>
+
+        <!-- Buyer FAQ Accordion -->
+        <div class="mt-10">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4">Frequently Asked Questions: Dext Prepare vs Hubdoc</h2>
+            <div class="space-y-3">
+                
+        <details class="group bg-white rounded-xl border border-slate-200 p-5 open:shadow-sm transition-all">
+            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+                <span>Is Dext Prepare or Hubdoc cheaper for a 25-user team in 2026?</span>
+                <span class="text-blue-600 font-mono text-lg group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">Based on published commercial pricing, at 25 active seats Dext Prepare is estimated at $110/month ($35/mo base + $3/seat), whereas Hubdoc is estimated at $18/month ($18/mo base + $0/seat). Over a 12-month period, Hubdoc saves approximately $1,104 USD (or A$1,700 AUD ex. GST) prior to annual billing discounts.</p>
+        </details>
+        <details class="group bg-white rounded-xl border border-slate-200 p-5 open:shadow-sm transition-all">
+            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+                <span>Which platform is better for Automated Receipt OCR Line-Item Extraction, ABN Validation & Xero BAS Sync: Dext Prepare or Hubdoc?</span>
+                <span class="text-blue-600 font-mono text-lg group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">Choose Dext Prepare if your organization requires deep two-way ERP general ledger synchronization and granular role-based access control for automated receipt ocr line-item extraction, abn validation & xero bas sync. Choose Hubdoc if you prioritize rapid self-serve onboarding and predictable seat scaling without base platform overhead.</p>
+        </details>
+        <details class="group bg-white rounded-xl border border-slate-200 p-5 open:shadow-sm transition-all">
+            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+                <span>What are the hidden contract or API limitations when comparing Dext Prepare vs Hubdoc?</span>
+                <span class="text-blue-600 font-mono text-lg group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">When migrating between Dext Prepare and Hubdoc, procurement teams frequently overlook historical audit-trail export limits, SAML SSO 'SSO-tax' tier upgrades, and multi-currency FX settlement spreads (typically 0.5% to 2.0% above mid-market rates). Always verify whether sandbox API environments and dedicated webhook retry queues are included in your base commercial tier before signing an annual order form.</p>
+        </details>
+        <details class="group bg-white rounded-xl border border-slate-200 p-5 open:shadow-sm transition-all">
+            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+                <span>Do Dext Prepare and Hubdoc support ATO Record Keeping & SOC2 governance and accounting sync?</span>
+                <span class="text-blue-600 font-mono text-lg group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">Both Dext Prepare and Hubdoc are evaluated against ATO Record Keeping & SOC2 documentation. Teams requiring SAML 2.0 SSO, SCIM provisioning, or bi-directional Xero/QuickBooks ledger syncing should confirm whether these features are included in the standard tier or require an Enterprise add-on.</p>
+        </details>
+            </div>
+        </div>
+
+        <!-- Internal Linking Grid for SEO Crawl Depth & Multi-Page Sessions -->
+        <div class="mt-12 pt-8 border-t border-slate-200">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-slate-900">Related B2B Software &amp; TCO Comparisons</h2>
+                <a href="/" class="text-xs font-semibold mono text-blue-600 hover:underline">View All 40 Matrices &rarr;</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                
+        <a href="/rippling-vs-employment-hero-australia.html" class="group bg-white rounded-xl border border-slate-200 p-4 hover:border-blue-600 hover:shadow-sm transition-all flex flex-col justify-between">
+            <div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-blue-600 mono">AU & APAC Compliance</span>
+                <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 mt-1">Rippling AU vs. Employment Hero</h3>
+                <p class="text-xs text-slate-600 mt-1">Australian STP Phase 2, Payday Super 2026, Fair Work Awards & Xero Sync</p>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] mono text-slate-500">
+                <span>Est. $285/mo vs $300/mo (at 25 seats)</span>
+                <span class="text-blue-600 font-semibold">Compare &rarr;</span>
+            </div>
+        </a>
+        <a href="/xero-vs-myob-australian-accounting.html" class="group bg-white rounded-xl border border-slate-200 p-4 hover:border-blue-600 hover:shadow-sm transition-all flex flex-col justify-between">
+            <div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-blue-600 mono">AU & APAC Compliance</span>
+                <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 mt-1">Xero vs. MYOB Business</h3>
+                <p class="text-xs text-slate-600 mt-1">Australian BAS/GST Reconciliation, Payday Super Clearing & Bank Feeds</p>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] mono text-slate-500">
+                <span>Est. $95/mo vs $84/mo (at 25 seats)</span>
+                <span class="text-blue-600 font-semibold">Compare &rarr;</span>
+            </div>
+        </a>
+        <a href="/servicem8-vs-tradify-xero-tradies.html" class="group bg-white rounded-xl border border-slate-200 p-4 hover:border-blue-600 hover:shadow-sm transition-all flex flex-col justify-between">
+            <div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-blue-600 mono">AU & APAC Compliance</span>
+                <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 mt-1">ServiceM8 vs. Tradify</h3>
+                <p class="text-xs text-slate-600 mt-1">Australian Field Service Job Dispatch, Quoting & Two-Way Xero Sync</p>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] mono text-slate-500">
+                <span>Est. $29/mo vs $975/mo (at 25 seats)</span>
+                <span class="text-blue-600 font-semibold">Compare &rarr;</span>
+            </div>
+        </a>
+        <a href="/deputy-vs-tanda-fair-work-award.html" class="group bg-white rounded-xl border border-slate-200 p-4 hover:border-blue-600 hover:shadow-sm transition-all flex flex-col justify-between">
+            <div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-blue-600 mono">AU & APAC Compliance</span>
+                <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 mt-1">Deputy vs. Tanda (Workforce)</h3>
+                <p class="text-xs text-slate-600 mt-1">Australian Fair Work Modern Award Interpretation, Rostering & Xero Payroll</p>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] mono text-slate-500">
+                <span>Est. $150/mo vs $175/mo (at 25 seats)</span>
+                <span class="text-blue-600 font-semibold">Compare &rarr;</span>
+            </div>
+        </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sticky Bottom Quick-Compare Bar with FTC/ACCC Proximity Disclosure -->
+    <div class="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-200 py-2.5 px-4 z-40 shadow-lg">
+        <div class="max-w-5xl mx-auto flex items-center justify-between gap-2">
+            <div class="hidden sm:block">
+                <span class="text-xs font-bold text-slate-800 mono">Top Pick: Dext Prepare (9.2/10)</span>
+                <span class="block text-[10px] text-slate-500">Referral links: we may earn a commission (<a href="/disclosure.html" class="underline">disclosure</a>)</span>
+            </div>
+            <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+                <span class="sm:hidden text-[10px] text-slate-500 mono mr-1">Ad/Referral:</span>
+                <a href="https://dext.com/au/pricing" target="_blank" rel="nofollow sponsored" class="flex-1 sm:flex-initial text-center px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white shadow-sm text-xs font-bold rounded-lg transition-colors">
+                    ★ Visit Dext Prepare &rarr;
+                </a>
+                <a href="https://www.xero.com/au/hubdoc/" target="_blank" rel="nofollow sponsored" class="flex-1 sm:flex-initial text-center px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">
+                    Visit Hubdoc &rarr;
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 px-4 sm:px-6 text-sm mt-16 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white font-bold mono text-xs">B2B</div>
+                    <span class="font-bold text-white text-base">B2BComparison.com</span>
+                </div>
+                <p class="mt-3 text-xs text-slate-400 leading-relaxed">
+                    Independent B2B software architecture, integration compatibility, and Total Cost of Ownership (TCO) research publication for CTOs, Finance Directors, and Operations teams across Australia, APAC, and North America.
+                </p>
+                <p class="mt-2 text-[11px] text-slate-300 mono">
+                    ABN: 51 205 277 641 • Operated in Brisbane, QLD, Australia • Updated October 2026
+                </p>
+            </div>
+            <div>
+                <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">Governance &amp; Legal</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="/about.html" class="hover:text-white transition-colors">About B2BComparison &amp; Entity Details</a></li>
+                    <li><a href="/methodology.html" class="hover:text-white transition-colors">Methodology &amp; AI Transparency Policy</a></li>
+                    <li><a href="/disclosure.html" class="hover:text-white transition-colors">FTC &amp; ACCC Affiliate Disclosure</a></li>
+                    <li><a href="/privacy.html" class="hover:text-white transition-colors">Privacy Policy &amp; Terms of Service</a></li>
+                    <li><a href="/sitemap.xml" class="hover:text-white transition-colors">XML Sitemap</a> • <a href="/sitemap.txt" class="hover:text-white transition-colors">TXT Sitemap</a> • <a href="/llms.txt" class="hover:text-white transition-colors">LLMs.txt</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xs font-semibold text-white uppercase tracking-wider mono mb-3">Commercial, Trademark &amp; Advice Disclaimers</h4>
+                <p class="text-xs text-slate-400 leading-relaxed mb-2">
+                    <strong>Affiliate Disclosure (ACL &amp; FTC):</strong> We may earn a referral commission when you click outbound vendor links. All pricing models are compiled from public vendor schedules and shown exclusive of 10% Australian GST (ex. GST) unless noted.
+                </p>
+                <p class="text-[11px] text-slate-500 leading-relaxed">
+                    <strong>Trademarks &amp; General Information:</strong> All third-party product names and trademarks are property of their respective owners and used strictly for comparative identification. Content is general technical information only and does not constitute financial, tax agent, or legal/Fair Work advice.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
