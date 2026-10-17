@@ -1,0 +1,74 @@
+{
+  "seo_title": "Airwallex vs Wise Business: 2026 FX & Xero Sync Audit",
+  "meta_description": "Airwallex wins for high-volume ERP-integrated workflows; Wise Business is superior for lean teams needing mid-market rates and simple Xero sync.",
+  "direct_verdict": "Airwallex is the optimal choice for mid-market firms requiring deep NetSuite/Xero integration and automated bill pay. Wise Business is the superior architecture for lean startups prioritizing transparent mid-market FX rates and low-overhead account management.",
+  "comparison_matrix": [
+    {
+      "feature_name": "FX Spread Model",
+      "product_a_spec": "0.5% to 1% above interbank",
+      "product_b_spec": "Mid-market rate (0% markup)",
+      "winner": "Wise Business"
+    },
+    {
+      "feature_name": "Xero Bank Feed Sync",
+      "product_a_spec": "Full bill/expense sync (Grow/Accelerate)",
+      "product_b_spec": "Transaction feed sync only",
+      "winner": "Airwallex"
+    },
+    {
+      "feature_name": "Corporate Card Issuing",
+      "product_a_spec": "Up to 50 free cards (Grow plan)",
+      "product_b_spec": "6 AUD per additional physical card",
+      "winner": "Airwallex"
+    },
+    {
+      "feature_name": "Monthly Subscription",
+      "product_a_spec": "0 AUD to 999 AUD",
+      "product_b_spec": "0 AUD (65 AUD setup for Advanced)",
+      "winner": "Wise Business"
+    },
+    {
+      "feature_name": "Batch Payment Capability",
+      "product_a_spec": "Native API & UI batching",
+      "product_b_spec": "Up to 1,000 payments per batch",
+      "winner": "Tie"
+    },
+    {
+      "feature_name": "Yield/Interest Product",
+      "product_a_spec": "4.02% AUD / 3.07% USD",
+      "product_b_spec": "3.76% AUD / 3.02% USD",
+      "winner": "Airwallex"
+    },
+    {
+      "feature_name": "Multi-Entity Management",
+      "product_a_spec": "Global Entity Management (Accelerate)",
+      "product_b_spec": "Single login for multiple entities",
+      "winner": "Airwallex"
+    },
+    {
+      "feature_name": "API Access",
+      "product_a_spec": "Full embedded finance/ERP API",
+      "product_b_spec": "Standard transaction/account API",
+      "winner": "Airwallex"
+    }
+  ],
+  "product_a_pros": [
+    "Advanced AI-driven expense policy enforcement and receipt matching",
+    "Native NetSuite and Dynamics 365 integration for enterprise scale",
+    "High-volume bill pay automation with multi-layer approval workflows"
+  ],
+  "product_a_cons": [
+    "FX spreads are consistently higher than the mid-market rate",
+    "Monthly subscription fees scale aggressively with user count and features"
+  ],
+  "product_b_pros": [
+    "Transparent mid-market exchange rates with no hidden markups",
+    "Zero monthly subscription fees for standard business accounts",
+    "Extremely fast account opening and onboarding for global entities"
+  ],
+  "product_b_cons": [
+    "Lacks native bill pay and complex expense management workflows",
+    "Limited ERP integration depth compared to Airwallex's suite"
+  ],
+  "hidden_gotchas": "Airwallex enforces a 15 AUD per month fee for every additional active spend user beyond the plan limit, which can lead to significant cost creep for scaling teams. Wise Business charges a 65 AUD one-time setup fee for the Advanced account, and while they offer mid-market rates, their per-transfer fees for specific corridors can fluctuate based on volume. Both platforms have strict anti-money laundering (AML) triggers; Airwallex's API rate limits are not publicly documented and are often throttled based on the specific tier of the service agreement, potentially breaking automated reconciliation scripts during high-volume periods."
+}

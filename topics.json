@@ -320,7 +320,7 @@
     "priceB_base": 129,
     "priceB_seat": 50,
     "compliance": "SOC2 Type II & GDPR",
-    "processed": false
+    "processed": true
   },
   {
     "id": "airwallex-vs-wise-business-xero-au",
@@ -337,7 +337,7 @@
     "priceB_base": 0,
     "priceB_seat": 5,
     "compliance": "ASIC AFSL & PCI-DSS Level 1",
-    "processed": false
+    "processed": true
   },
   {
     "id": "brevo-vs-mailchimp-transactional-api",
@@ -354,7 +354,7 @@
     "priceB_base": 45,
     "priceB_seat": 15,
     "compliance": "ISO 27001 & GDPR",
-    "processed": false
+    "processed": true
   },
   {
     "id": "webflow-vs-framer-enterprise-cms",
