@@ -607,18 +607,18 @@ def build_client_js(enriched_topics: list[dict]):
         const homeCurToggle = document.getElementById('homeCurToggle');
         const matrixCalc = document.getElementById('tco-calculator');
 
-        if (homeCurToggle && homeCurToggle.parentElement) {{
-            const controlRow = homeCurToggle.parentElement.parentElement;
+      const heroActionRow = document.getElementById('heroActionRow');
+        if (heroActionRow) {{
             const triggerBtn = document.createElement('button');
             triggerBtn.type = 'button';
             triggerBtn.id = 'openDiagBtn';
-            triggerBtn.className = 'px-4 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs mono shadow-sm transition-colors whitespace-nowrap flex items-center justify-center gap-1.5';
-            triggerBtn.innerHTML = ' Run 36-Month TCO &amp; API Compatibility Diagnostic';
-            controlRow.appendChild(triggerBtn);
+            triggerBtn.className = 'px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-sm transition-colors whitespace-nowrap';
+            triggerBtn.textContent = 'Find Best Software Match (60s Tool)';
+            heroActionRow.appendChild(triggerBtn);
 
             const drawerWrapper = document.createElement('div');
             drawerWrapper.innerHTML = createDiagnosticDrawerHTML();
-            controlRow.parentElement.appendChild(drawerWrapper);
+            heroActionRow.parentElement.appendChild(drawerWrapper);
         }} else if (matrixCalc) {{
             const triggerBar = document.createElement('div');
             triggerBar.className = 'mt-6 flex flex-wrap items-center justify-between gap-3 bg-white p-4 rounded-xl border border-slate-200 shadow-xs no-print';
