@@ -9,6 +9,7 @@
     <meta property="og:description" content="Side-by-side architectural comparison of Dext Prepare vs Hubdoc covering Automated Receipt OCR Line-Item Extraction, ABN Validation & Xero BAS Sync, REST API rate limits, and 36-month seat TCO.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://b2bcomparison.com/dext-vs-hubdoc-xero-bas-automation">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232563EB'/><text x='50' y='64' font-family='monospace' font-weight='900' font-size='42' fill='white' text-anchor='middle'>B2B</text></svg>">
     <link rel="canonical" href="https://b2bcomparison.com/dext-vs-hubdoc-xero-bas-automation">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,12 +18,16 @@
     <style>
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         .mono { font-family: 'JetBrains Mono', monospace; }
+        @media print {
+            header, footer, .no-print { display: none !important; }
+            body { background: white !important; padding-bottom: 0 !important; }
+        }
     </style>
     <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "B2B Software Matrices", "item": "https://b2bcomparison.com/"}, {"@type": "ListItem", "position": 2, "name": "Dext Prepare vs Hubdoc", "item": "https://b2bcomparison.com/dext-vs-hubdoc-xero-bas-automation"}]}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is Dext Prepare or Hubdoc cheaper for a 25-user team in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Based on published commercial pricing, at 25 active seats Dext Prepare is estimated at $110/month ($35/mo base + $3/seat), whereas Hubdoc is estimated at $18/month ($18/mo base + $0/seat). Over a 12-month period, Hubdoc saves approximately $1,104 USD (or A$1,700 AUD ex. GST) prior to annual billing discounts."}}, {"@type": "Question", "name": "Which platform is better for Automated Receipt OCR Line-Item Extraction, ABN Validation & Xero BAS Sync: Dext Prepare or Hubdoc?", "acceptedAnswer": {"@type": "Answer", "text": "Choose Dext Prepare if your organization requires deep two-way ERP general ledger synchronization and granular role-based access control for automated receipt ocr line-item extraction, abn validation & xero bas sync. Choose Hubdoc if you prioritize rapid self-serve onboarding and predictable seat scaling without base platform overhead."}}, {"@type": "Question", "name": "What are the hidden contract or API limitations when comparing Dext Prepare vs Hubdoc?", "acceptedAnswer": {"@type": "Answer", "text": "When migrating between Dext Prepare and Hubdoc, procurement teams frequently overlook historical audit-trail export limits, SAML SSO 'SSO-tax' tier upgrades, and multi-currency FX settlement spreads (typically 0.5% to 2.0% above mid-market rates). Always verify whether sandbox API environments and dedicated webhook retry queues are included in your base commercial tier before signing an annual order form."}}, {"@type": "Question", "name": "Do Dext Prepare and Hubdoc support ATO Record Keeping & SOC2 governance and accounting sync?", "acceptedAnswer": {"@type": "Answer", "text": "Both Dext Prepare and Hubdoc are evaluated against ATO Record Keeping & SOC2 documentation. Teams requiring SAML 2.0 SSO, SCIM provisioning, or bi-directional Xero/QuickBooks ledger syncing should confirm whether these features are included in the standard tier or require an Enterprise add-on."}}]}]</script>
 </head>
 <body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-20 sm:pb-0">
     <!-- Top Compliance & Transparency Bar (FTC & ACCC Prominent Disclosure) -->
-    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800">
+    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800 no-print">
         <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
             <span><strong class="text-emerald-400 mono">● DATASET v2026.10</strong> — Public API Documentation, SOC2/ATO Governance &amp; TCO Modeling</span>
             <span class="text-slate-300"><strong>Commercial Disclosure:</strong> Reader-supported publication; outbound vendor links may earn an affiliate commission. <a href="/disclosure.html" class="underline text-white hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Read Full Disclosure</a></span>
@@ -84,7 +89,7 @@
                     <span class="text-xs font-bold uppercase tracking-wider text-blue-600 mono">30-Second Buyer Guide</span>
                     <h2 class="text-lg font-bold text-slate-900">Click Your #1 Priority to See the Recommended Platform:</h2>
                 </div>
-                <div class="flex flex-wrap gap-1.5" role="group" aria-label="Select your primary buying priority">
+                <div class="flex flex-wrap gap-1.5 no-print" role="group" aria-label="Select your primary buying priority">
                     <button type="button" data-prio="verdict" class="prio-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white transition-colors">Overall Verdict</button>
                     <button type="button" data-prio="cost" class="prio-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">Lowest Cost</button>
                     <button type="button" data-prio="ease" class="prio-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">Fastest Setup</button>
@@ -137,14 +142,14 @@
             <p class="mt-3 text-[11px] text-slate-500"><strong>ACCC &amp; FTC Disclosure:</strong> Outbound vendor links are commercial referral links that may earn B2BComparison.com a commission at zero extra cost to you. Scores and summaries are compiled from published vendor documentation using deterministic TCO modeling and AI-assisted specification synthesis under human editorial oversight (<a href="/methodology.html" class="underline hover:text-slate-800">read methodology &amp; AI policy</a>).</p>
         </div>
 
-        <!-- Interactive 36-Month TCO Calculator with Currency (USD/AUD) & Billing Toggle -->
+        <!-- Interactive 36-Month TCO Calculator with Shareable Custom Quote URL & PDF Export -->
         <div id="tco-calculator" class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 mt-8">
             <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 mb-6 border-b border-slate-100 gap-4">
                 <div>
                     <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 mono">Interactive Cost Calculator</span>
                     <h2 class="text-xl font-bold text-slate-900 mt-0.5">Drag the Slider to Calculate Your Monthly &amp; Annual TCO</h2>
                 </div>
-                <div class="flex flex-wrap items-center gap-2">
+                <div class="flex flex-wrap items-center gap-2 no-print">
                     <div class="inline-flex rounded-lg border border-slate-200 p-0.5 bg-slate-100 text-xs font-semibold mono" role="group" aria-label="Currency selector">
                         <button type="button" id="btnUSD" class="px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm">USD ($)</button>
                         <button type="button" id="btnAUD" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900">AUD (A$ ex. GST)</button>
@@ -161,8 +166,8 @@
                     <label for="seatSlider" class="text-sm font-semibold text-slate-700">How many team members / users need access?</label>
                     <span id="seatDisplay" class="text-base font-bold text-blue-600 mono bg-blue-50 px-3 py-1 rounded border border-blue-200">25 Seats</span>
                 </div>
-                <input id="seatSlider" type="range" min="5" max="250" step="5" value="25" aria-label="Number of team seats" class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
-                <div class="flex justify-between text-xs text-slate-400 mono mt-1.5">
+                <input id="seatSlider" type="range" min="5" max="250" step="5" value="25" aria-label="Number of team seats" class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600 no-print">
+                <div class="flex justify-between text-xs text-slate-400 mono mt-1.5 no-print">
                     <span>5 Users</span><span>50 Users</span><span>125 Users</span><span>250 Users</span>
                 </div>
             </div>
@@ -211,7 +216,14 @@
 
             <div class="mt-4 p-3.5 bg-emerald-50 border border-emerald-200 rounded-lg flex flex-wrap items-center justify-between gap-2 text-xs mono text-emerald-900">
                 <span id="tcoSavingsText" class="font-semibold">Calculating 12-month TCO delta...</span>
-                <span class="bg-white px-2 py-0.5 rounded border border-emerald-200 text-emerald-700 font-bold">Indicative Ex-GST Estimate</span>
+                <div class="flex items-center gap-2 no-print">
+                    <button type="button" id="btnCopyQuote" class="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-800 rounded border border-emerald-300 font-bold transition-colors shadow-xs">
+                        🔗 Copy Custom Quote Link
+                    </button>
+                    <button type="button" id="btnPrintQuote" class="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-800 rounded border border-emerald-300 font-bold transition-colors shadow-xs">
+                        🖨️ Print / PDF Brief
+                    </button>
+                </div>
             </div>
             <p class="mt-2.5 text-[11px] text-slate-500">Pricing &amp; Advice Disclaimer: Calculations run locally in your browser and reflect published entry/mid-market commercial tiers as of 2026-10-17, exclusive of 10% Australian GST or local sales taxes. AUD figures use an indicative 1.54 USD/AUD exchange rate. This tool provides general software cost estimates only and does not constitute financial or tax advice.</p>
         </div>
@@ -231,6 +243,8 @@
             const btnAUD = document.getElementById('btnAUD');
             const btnMonthly = document.getElementById('btnMonthly');
             const btnAnnual = document.getElementById('btnAnnual');
+            const btnCopyQuote = document.getElementById('btnCopyQuote');
+            const btnPrintQuote = document.getElementById('btnPrintQuote');
 
             const scoreCardA = document.getElementById('scoreCardA');
             const scoreCardB = document.getElementById('scoreCardB');
@@ -325,12 +339,27 @@
                 });
             });
 
-            // Initialize top scorecard highlight to match the higher-scored platform
             highlightScorecard('A', '★ Top Rated');
 
             let fxRate = 1.0;
             let sym = '$';
             let billingDiscount = 1.0;
+
+            // Load URL query parameters if someone shared a custom quote link (?seats=45&cur=AUD&bill=annual)
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const qSeats = parseInt(params.get('seats'), 10);
+                if (qSeats && qSeats >= 5 && qSeats <= 250) {
+                    slider.value = qSeats;
+                }
+                if (params.get('cur') === 'AUD') {
+                    fxRate = 1.54;
+                    sym = 'A$';
+                }
+                if (params.get('bill') === 'annual') {
+                    billingDiscount = 0.85;
+                }
+            } catch (e) {}
 
             function updateStyles() {
                 if (sym === '$') {
@@ -405,6 +434,22 @@
             btnMonthly.addEventListener('click', function() { billingDiscount = 1.0; updateStyles(); updateTCO(); });
             btnAnnual.addEventListener('click', function() { billingDiscount = 0.85; updateStyles(); updateTCO(); });
             slider.addEventListener('input', updateTCO);
+
+            btnCopyQuote.addEventListener('click', function() {
+                const curCode = (sym === 'A$') ? 'AUD' : 'USD';
+                const billCode = (billingDiscount < 1.0) ? 'annual' : 'monthly';
+                const shareUrl = window.location.origin + window.location.pathname + '?seats=' + slider.value + '&cur=' + curCode + '&bill=' + billCode + '#tco-calculator';
+                navigator.clipboard.writeText(shareUrl).then(function() {
+                    btnCopyQuote.textContent = '✓ Quote Link Copied!';
+                    setTimeout(function() { btnCopyQuote.textContent = '🔗 Copy Custom Quote Link'; }, 2500);
+                });
+            });
+
+            btnPrintQuote.addEventListener('click', function() {
+                window.print();
+            });
+
+            updateStyles();
             updateTCO();
         })();
         </script>
@@ -555,7 +600,7 @@
         </div>
 
         <!-- Internal Linking Grid for SEO Crawl Depth & Multi-Page Sessions -->
-        <div class="mt-12 pt-8 border-t border-slate-200">
+        <div class="mt-12 pt-8 border-t border-slate-200 no-print">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-xl font-bold text-slate-900">Related B2B Software &amp; TCO Comparisons</h2>
                 <a href="/" class="text-xs font-semibold mono text-blue-600 hover:underline">View All 40 Matrices &rarr;</a>
@@ -611,7 +656,7 @@
     </main>
 
     <!-- Sticky Bottom Quick-Compare Bar with FTC/ACCC Proximity Disclosure -->
-    <div class="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-200 py-2.5 px-4 z-40 shadow-lg">
+    <div class="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-200 py-2.5 px-4 z-40 shadow-lg no-print">
         <div class="max-w-5xl mx-auto flex items-center justify-between gap-2">
             <div class="hidden sm:block">
                 <span class="text-xs font-bold text-slate-800 mono">Top Pick: Dext Prepare (9.2/10)</span>

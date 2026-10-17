@@ -9,6 +9,7 @@
     <meta property="og:description" content="Methodology & AI Transparency Policy">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://b2bcomparison.com/methodology">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232563EB'/><text x='50' y='64' font-family='monospace' font-weight='900' font-size='42' fill='white' text-anchor='middle'>B2B</text></svg>">
     <link rel="canonical" href="https://b2bcomparison.com/methodology">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,12 +18,16 @@
     <style>
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         .mono { font-family: 'JetBrains Mono', monospace; }
+        @media print {
+            header, footer, .no-print { display: none !important; }
+            body { background: white !important; padding-bottom: 0 !important; }
+        }
     </style>
     
 </head>
 <body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-20 sm:pb-0">
     <!-- Top Compliance & Transparency Bar (FTC & ACCC Prominent Disclosure) -->
-    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800">
+    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800 no-print">
         <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
             <span><strong class="text-emerald-400 mono">● DATASET v2026.10</strong> — Public API Documentation, SOC2/ATO Governance &amp; TCO Modeling</span>
             <span class="text-slate-300"><strong>Commercial Disclosure:</strong> Reader-supported publication; outbound vendor links may earn an affiliate commission. <a href="/disclosure.html" class="underline text-white hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Read Full Disclosure</a></span>

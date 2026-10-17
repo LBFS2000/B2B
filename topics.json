@@ -269,7 +269,7 @@
     "priceB_base": 250,
     "priceB_seat": 60,
     "compliance": "SOC2 Type II & ISO 27001",
-    "processed": false
+    "processed": true
   },
   {
     "id": "pandadoc-vs-docusign-crm-cpq",
@@ -286,7 +286,7 @@
     "priceB_base": 0,
     "priceB_seat": 40,
     "compliance": "SOC2 Type II & HIPAA / eIDAS",
-    "processed": false
+    "processed": true
   },
   {
     "id": "make-vs-zapier-webhook-pricing",
@@ -303,7 +303,7 @@
     "priceB_base": 69,
     "priceB_seat": 5,
     "compliance": "SOC2 Type II & GDPR",
-    "processed": false
+    "processed": true
   },
   {
     "id": "semrush-vs-ahrefs-enterprise-seo-api",

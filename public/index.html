@@ -9,6 +9,7 @@
     <meta property="og:description" content="Unbiased, spec-level comparisons of enterprise SaaS integrations, REST API rate limits, Australian/Global compliance, and interactive TCO calculators.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://b2bcomparison.com/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232563EB'/><text x='50' y='64' font-family='monospace' font-weight='900' font-size='42' fill='white' text-anchor='middle'>B2B</text></svg>">
     <link rel="canonical" href="https://b2bcomparison.com/">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,12 +18,16 @@
     <style>
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         .mono { font-family: 'JetBrains Mono', monospace; }
+        @media print {
+            header, footer, .no-print { display: none !important; }
+            body { background: white !important; padding-bottom: 0 !important; }
+        }
     </style>
     
 </head>
 <body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-20 sm:pb-0">
     <!-- Top Compliance & Transparency Bar (FTC & ACCC Prominent Disclosure) -->
-    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800">
+    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800 no-print">
         <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
             <span><strong class="text-emerald-400 mono">● DATASET v2026.10</strong> — Public API Documentation, SOC2/ATO Governance &amp; TCO Modeling</span>
             <span class="text-slate-300"><strong>Commercial Disclosure:</strong> Reader-supported publication; outbound vendor links may earn an affiliate commission. <a href="/disclosure.html" class="underline text-white hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Read Full Disclosure</a></span>
@@ -70,9 +75,19 @@
             <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
                 Plain-English verdicts and documentation-verified comparisons of B2B SaaS integrations, REST API rate ceilings, Australian STP Phase 2 / Xero BAS compliance, and interactive 36-month seat-scaling calculators.
             </p>
-            <div class="mt-6 max-w-xl">
-                <label for="matrixSearch" class="sr-only">Search software comparisons</label>
-                <input id="matrixSearch" type="search" placeholder="Search by software, integration, or compliance (e.g., Xero, Rippling, Tradify, SOC2)..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 shadow-sm">
+            <div class="mt-6 flex flex-col md:flex-row md:items-center gap-3 max-w-4xl">
+                <div class="flex-grow">
+                    <label for="matrixSearch" class="sr-only">Search software comparisons</label>
+                    <input id="matrixSearch" type="search" placeholder="Search by software, integration, or compliance (e.g., Xero, Rippling, Tradify, SOC2)..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 shadow-sm">
+                </div>
+                <div class="flex items-center gap-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200 text-xs font-semibold mono">
+                    <span class="text-slate-500 px-2">Preview Size:</span>
+                    <button type="button" data-seats="10" class="seat-preset px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900">10</button>
+                    <button type="button" data-seats="25" class="seat-preset px-2.5 py-1.5 rounded-lg bg-white text-slate-900 shadow-sm">25</button>
+                    <button type="button" data-seats="50" class="seat-preset px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900">50</button>
+                    <button type="button" data-seats="100" class="seat-preset px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900">100</button>
+                    <button type="button" id="homeCurToggle" class="ml-1 px-2.5 py-1.5 rounded-lg bg-blue-600 text-white shadow-sm">USD ($)</button>
+                </div>
             </div>
         </div>
     </section>
@@ -87,11 +102,11 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="matrixGrid">
             
-        <a href="/rippling-vs-deel-global-payroll.html" data-category="Global Payroll & EOR" data-search="rippling deel global contractor compliance, eor statutory fees & multi-currency payroll global payroll & eor soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/rippling-vs-deel-global-payroll.html" data-category="Global Payroll & EOR" data-base-a="35" data-seat-a="8" data-base-b="0" data-seat-b="49" data-search="rippling deel global contractor compliance, eor statutory fees & multi-currency payroll global payroll & eor soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Global Payroll & EOR</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $235/mo vs $1225/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $235/mo vs $1225/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Rippling vs. Deel
@@ -105,11 +120,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/gusto-vs-onpay-xero-integration.html" data-category="Payroll & Accounting" data-search="gusto onpay two-way xero accounting sync & automated tax filing payroll & accounting soc2 & hipaa ready" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/gusto-vs-onpay-xero-integration.html" data-category="Payroll & Accounting" data-base-a="49" data-seat-a="6" data-base-b="40" data-seat-b="6" data-search="gusto onpay two-way xero accounting sync & automated tax filing payroll & accounting soc2 & hipaa ready" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Payroll & Accounting</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $199/mo vs $190/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $199/mo vs $190/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Gusto vs. OnPay
@@ -123,11 +138,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/monday-vs-clickup-soc2-enterprise.html" data-category="Project & Enterprise Ops" data-search="monday.com clickup soc2 compliance, hipaa readiness & rest api rate limits project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/monday-vs-clickup-soc2-enterprise.html" data-category="Project & Enterprise Ops" data-base-a="0" data-seat-a="12" data-base-b="0" data-seat-b="10" data-search="monday.com clickup soc2 compliance, hipaa readiness & rest api rate limits project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Project & Enterprise Ops</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $300/mo vs $250/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $300/mo vs $250/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     monday.com vs. ClickUp
@@ -141,11 +156,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/hubspot-vs-pipedrive-quickbooks-sync.html" data-category="CRM & RevOps" data-search="hubspot crm pipedrive native quickbooks & xero invoicing sync & two-way deal automation crm & revops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/hubspot-vs-pipedrive-quickbooks-sync.html" data-category="CRM & RevOps" data-base-a="20" data-seat-a="20" data-base-b="0" data-seat-b="24" data-search="hubspot crm pipedrive native quickbooks & xero invoicing sync & two-way deal automation crm & revops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">CRM & RevOps</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $520/mo vs $600/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $520/mo vs $600/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     HubSpot CRM vs. Pipedrive
@@ -159,11 +174,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/freshbooks-vs-xero-multi-entity.html" data-category="Payroll & Accounting" data-search="freshbooks xero multi-currency invoicing, bas/gst tax & automated bank reconciliation payroll & accounting iso 27001 & pci-dss" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/freshbooks-vs-xero-multi-entity.html" data-category="Payroll & Accounting" data-base-a="19" data-seat-a="11" data-base-b="42" data-seat-b="0" data-search="freshbooks xero multi-currency invoicing, bas/gst tax & automated bank reconciliation payroll & accounting iso 27001 & pci-dss" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Payroll & Accounting</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $294/mo vs $42/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $294/mo vs $42/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     FreshBooks vs. Xero
@@ -177,11 +192,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/notion-vs-coda-enterprise-wiki.html" data-category="Project & Enterprise Ops" data-search="notion coda enterprise wiki permissions, saml sso & rest api payload limits project & enterprise ops soc2 type ii & saml sso" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/notion-vs-coda-enterprise-wiki.html" data-category="Project & Enterprise Ops" data-base-a="0" data-seat-a="15" data-base-b="0" data-seat-b="12" data-search="notion coda enterprise wiki permissions, saml sso & rest api payload limits project & enterprise ops soc2 type ii & saml sso" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Project & Enterprise Ops</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $375/mo vs $300/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $375/mo vs $300/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Notion vs. Coda
@@ -195,11 +210,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/activecampaign-vs-klaviyo-webhooks.html" data-category="CRM & RevOps" data-search="activecampaign klaviyo webhook automation latency, api throughput & e-commerce crm sync crm & revops soc2 & gdpr compliant" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/activecampaign-vs-klaviyo-webhooks.html" data-category="CRM & RevOps" data-base-a="49" data-seat-a="5" data-base-b="60" data-seat-b="0" data-search="activecampaign klaviyo webhook automation latency, api throughput & e-commerce crm sync crm & revops soc2 & gdpr compliant" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">CRM & RevOps</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $174/mo vs $60/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $174/mo vs $60/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     ActiveCampaign vs. Klaviyo
@@ -213,11 +228,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/zendesk-vs-intercom-sla-routing.html" data-category="CRM & RevOps" data-search="zendesk intercom omnichannel ticketing sla routing, ai agent costs & custom webhooks crm & revops soc2 type ii & hipaa" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/zendesk-vs-intercom-sla-routing.html" data-category="CRM & RevOps" data-base-a="0" data-seat-a="55" data-base-b="0" data-seat-b="39" data-search="zendesk intercom omnichannel ticketing sla routing, ai agent costs & custom webhooks crm & revops soc2 type ii & hipaa" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">CRM & RevOps</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $1375/mo vs $975/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $1375/mo vs $975/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Zendesk vs. Intercom
@@ -231,11 +246,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/shopify-vs-bigcommerce-b2b-api.html" data-category="Project & Enterprise Ops" data-search="shopify bigcommerce headless storefront graphql api rate limits & b2b wholesale checkout project & enterprise ops pci-dss level 1 & soc2" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/shopify-vs-bigcommerce-b2b-api.html" data-category="Project & Enterprise Ops" data-base-a="105" data-seat-a="0" data-base-b="105" data-seat-b="0" data-search="shopify bigcommerce headless storefront graphql api rate limits & b2b wholesale checkout project & enterprise ops pci-dss level 1 & soc2" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Project & Enterprise Ops</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $105/mo vs $105/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $105/mo vs $105/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Shopify vs. BigCommerce
@@ -249,11 +264,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/asana-vs-smartsheet-resource-audit.html" data-category="Project & Enterprise Ops" data-search="asana smartsheet portfolio resource allocation, saml sso & immutable audit log export project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/asana-vs-smartsheet-resource-audit.html" data-category="Project & Enterprise Ops" data-base-a="0" data-seat-a="24" data-base-b="0" data-seat-b="19" data-search="asana smartsheet portfolio resource allocation, saml sso & immutable audit log export project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Project & Enterprise Ops</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $600/mo vs $475/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $600/mo vs $475/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Asana vs. Smartsheet
@@ -267,11 +282,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/rippling-vs-employment-hero-australia.html" data-category="AU & APAC Compliance" data-search="rippling au employment hero australian stp phase 2, payday super 2026, fair work awards & xero sync au & apac compliance ato stp phase 2 & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/rippling-vs-employment-hero-australia.html" data-category="AU & APAC Compliance" data-base-a="35" data-seat-a="10" data-base-b="0" data-seat-b="12" data-search="rippling au employment hero australian stp phase 2, payday super 2026, fair work awards & xero sync au & apac compliance ato stp phase 2 & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">AU & APAC Compliance</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $285/mo vs $300/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $285/mo vs $300/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Rippling AU vs. Employment Hero
@@ -285,11 +300,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/xero-vs-myob-australian-accounting.html" data-category="AU & APAC Compliance" data-search="xero myob business australian bas/gst reconciliation, payday super clearing & bank feeds au & apac compliance ato dsp certified & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/xero-vs-myob-australian-accounting.html" data-category="AU & APAC Compliance" data-base-a="45" data-seat-a="2" data-base-b="34" data-seat-b="2" data-search="xero myob business australian bas/gst reconciliation, payday super clearing & bank feeds au & apac compliance ato dsp certified & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">AU & APAC Compliance</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $95/mo vs $84/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $95/mo vs $84/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Xero vs. MYOB Business
@@ -303,11 +318,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/servicem8-vs-tradify-xero-tradies.html" data-category="AU & APAC Compliance" data-search="servicem8 tradify australian field service job dispatch, quoting & two-way xero sync au & apac compliance xero certified & au privacy act" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/servicem8-vs-tradify-xero-tradies.html" data-category="AU & APAC Compliance" data-base-a="29" data-seat-a="0" data-base-b="0" data-seat-b="39" data-search="servicem8 tradify australian field service job dispatch, quoting & two-way xero sync au & apac compliance xero certified & au privacy act" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">AU & APAC Compliance</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $29/mo vs $975/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $29/mo vs $975/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     ServiceM8 vs. Tradify
@@ -321,11 +336,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/deel-vs-remote-apac-eor.html" data-category="Global Payroll & EOR" data-search="deel remote.com employer of record (eor) statutory onboarding in australia, nz & apac global payroll & eor soc2 type ii & gdpr / app" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/deel-vs-remote-apac-eor.html" data-category="Global Payroll & EOR" data-base-a="0" data-seat-a="49" data-base-b="0" data-seat-b="29" data-search="deel remote.com employer of record (eor) statutory onboarding in australia, nz & apac global payroll & eor soc2 type ii & gdpr / app" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Global Payroll & EOR</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $1225/mo vs $725/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $1225/mo vs $725/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Deel vs. Remote.com
@@ -339,11 +354,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/deputy-vs-tanda-fair-work-award.html" data-category="AU & APAC Compliance" data-search="deputy tanda (workforce) australian fair work modern award interpretation, rostering & xero payroll au & apac compliance fair work award engine & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/deputy-vs-tanda-fair-work-award.html" data-category="AU & APAC Compliance" data-base-a="0" data-seat-a="6" data-base-b="0" data-seat-b="7" data-search="deputy tanda (workforce) australian fair work modern award interpretation, rostering & xero payroll au & apac compliance fair work award engine & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">AU & APAC Compliance</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $150/mo vs $175/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $150/mo vs $175/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Deputy vs. Tanda (Workforce)
@@ -357,11 +372,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/apollo-vs-zoominfo-b2b-sales-data.html" data-category="CRM & RevOps" data-search="apollo.io zoominfo b2b contact enrichment api credits, crm bi-directional sync & gdpr crm & revops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/apollo-vs-zoominfo-b2b-sales-data.html" data-category="CRM & RevOps" data-base-a="0" data-seat-a="49" data-base-b="250" data-seat-b="60" data-search="apollo.io zoominfo b2b contact enrichment api credits, crm bi-directional sync & gdpr crm & revops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">CRM & RevOps</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $1225/mo vs $1750/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $1225/mo vs $1750/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Apollo.io vs. ZoomInfo
@@ -375,11 +390,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/pandadoc-vs-docusign-crm-cpq.html" data-category="CRM & RevOps" data-search="pandadoc docusign automated cpq quote generation, hubspot/pipedrive sync & esignature api crm & revops soc2 type ii & hipaa / eidas" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/pandadoc-vs-docusign-crm-cpq.html" data-category="CRM & RevOps" data-base-a="0" data-seat-a="35" data-base-b="0" data-seat-b="40" data-search="pandadoc docusign automated cpq quote generation, hubspot/pipedrive sync & esignature api crm & revops soc2 type ii & hipaa / eidas" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">CRM & RevOps</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $875/mo vs $1000/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $875/mo vs $1000/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     PandaDoc vs. DocuSign
@@ -393,11 +408,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/make-vs-zapier-webhook-pricing.html" data-category="Project & Enterprise Ops" data-search="make.com zapier high-volume webhook operations, multi-step json parsing & enterprise rbac project & enterprise ops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/make-vs-zapier-webhook-pricing.html" data-category="Project & Enterprise Ops" data-base-a="16" data-seat-a="2" data-base-b="69" data-seat-b="5" data-search="make.com zapier high-volume webhook operations, multi-step json parsing & enterprise rbac project & enterprise ops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Project & Enterprise Ops</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $66/mo vs $194/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $66/mo vs $194/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Make.com vs. Zapier
@@ -411,11 +426,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/semrush-vs-ahrefs-enterprise-seo-api.html" data-category="CRM & RevOps" data-search="semrush ahrefs search intelligence api units, multi-seat agency licensing & looker studio crm & revops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/semrush-vs-ahrefs-enterprise-seo-api.html" data-category="CRM & RevOps" data-base-a="139" data-seat-a="45" data-base-b="129" data-seat-b="50" data-search="semrush ahrefs search intelligence api units, multi-seat agency licensing & looker studio crm & revops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">CRM & RevOps</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $1264/mo vs $1379/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $1264/mo vs $1379/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Semrush vs. Ahrefs
@@ -429,11 +444,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/airwallex-vs-wise-business-xero-au.html" data-category="AU & APAC Compliance" data-search="airwallex wise business multi-currency corporate cards, fx spreads & live xero bank feed sync (au) au & apac compliance asic afsl & pci-dss level 1" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/airwallex-vs-wise-business-xero-au.html" data-category="AU & APAC Compliance" data-base-a="0" data-seat-a="10" data-base-b="0" data-seat-b="5" data-search="airwallex wise business multi-currency corporate cards, fx spreads & live xero bank feed sync (au) au & apac compliance asic afsl & pci-dss level 1" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">AU & APAC Compliance</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $250/mo vs $125/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $250/mo vs $125/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Airwallex vs. Wise Business
@@ -447,11 +462,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/brevo-vs-mailchimp-transactional-api.html" data-category="CRM & RevOps" data-search="brevo mailchimp transactional smtp relay throughput, dedicated ips & marketing automation crm & revops iso 27001 & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/brevo-vs-mailchimp-transactional-api.html" data-category="CRM & RevOps" data-base-a="25" data-seat-a="12" data-base-b="45" data-seat-b="15" data-search="brevo mailchimp transactional smtp relay throughput, dedicated ips & marketing automation crm & revops iso 27001 & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">CRM & RevOps</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $325/mo vs $420/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $325/mo vs $420/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Brevo vs. Mailchimp
@@ -465,11 +480,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/webflow-vs-framer-enterprise-cms.html" data-category="Project & Enterprise Ops" data-search="webflow framer headless cms api limits, saml sso seat governance & edge hosting sla project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/webflow-vs-framer-enterprise-cms.html" data-category="Project & Enterprise Ops" data-base-a="29" data-seat-a="19" data-base-b="30" data-seat-b="20" data-search="webflow framer headless cms api limits, saml sso seat governance & edge hosting sla project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Project & Enterprise Ops</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $504/mo vs $530/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $504/mo vs $530/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Webflow vs. Framer
@@ -483,11 +498,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/cliniko-vs-halaxy-allied-health-au.html" data-category="AU & APAC Compliance" data-search="cliniko halaxy australian allied health ndis/medicare claiming, xero sync & app privacy au & apac compliance au privacy act (app) & hipaa" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/cliniko-vs-halaxy-allied-health-au.html" data-category="AU & APAC Compliance" data-base-a="45" data-seat-a="15" data-base-b="0" data-seat-b="29" data-search="cliniko halaxy australian allied health ndis/medicare claiming, xero sync & app privacy au & apac compliance au privacy act (app) & hipaa" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">AU & APAC Compliance</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $420/mo vs $725/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $420/mo vs $725/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Cliniko vs. Halaxy
@@ -501,11 +516,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/simpro-vs-aroflo-commercial-tradies-au.html" data-category="AU & APAC Compliance" data-search="simpro aroflo commercial trade project estimating, inventory & xero/myob ledger sync au & apac compliance xero/myob certified & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/simpro-vs-aroflo-commercial-tradies-au.html" data-category="AU & APAC Compliance" data-base-a="99" data-seat-a="45" data-base-b="50" data-seat-b="35" data-search="simpro aroflo commercial trade project estimating, inventory & xero/myob ledger sync au & apac compliance xero/myob certified & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">AU & APAC Compliance</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $1224/mo vs $925/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $1224/mo vs $925/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Simpro vs. AroFlo
@@ -519,11 +534,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/dext-vs-hubdoc-xero-bas-automation.html" data-category="AU & APAC Compliance" data-search="dext prepare hubdoc automated receipt ocr line-item extraction, abn validation & xero bas sync au & apac compliance ato record keeping & soc2" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/dext-vs-hubdoc-xero-bas-automation.html" data-category="AU & APAC Compliance" data-base-a="35" data-seat-a="3" data-base-b="18" data-seat-b="0" data-search="dext prepare hubdoc automated receipt ocr line-item extraction, abn validation & xero bas sync au & apac compliance ato record keeping & soc2" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">AU & APAC Compliance</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $110/mo vs $18/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $110/mo vs $18/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Dext Prepare vs. Hubdoc
@@ -537,11 +552,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/cin7-vs-unleashed-xero-inventory-erp.html" data-category="Payroll & Accounting" data-search="cin7 core unleashed multi-warehouse b2b inventory, bill of materials (bom) & xero cogs sync payroll & accounting xero platinum partner & soc2" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/cin7-vs-unleashed-xero-inventory-erp.html" data-category="Payroll & Accounting" data-base-a="349" data-seat-a="15" data-base-b="380" data-seat-b="20" data-search="cin7 core unleashed multi-warehouse b2b inventory, bill of materials (bom) & xero cogs sync payroll & accounting xero platinum partner & soc2" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Payroll & Accounting</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $724/mo vs $880/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $724/mo vs $880/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Cin7 Core vs. Unleashed
@@ -555,11 +570,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/intercom-vs-freshdesk-ai-ticketing.html" data-category="CRM & RevOps" data-search="intercom freshdesk ai resolution bot pricing, omnichannel sla routing & crm webhook sync crm & revops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/intercom-vs-freshdesk-ai-ticketing.html" data-category="CRM & RevOps" data-base-a="0" data-seat-a="39" data-base-b="0" data-seat-b="18" data-search="intercom freshdesk ai resolution bot pricing, omnichannel sla routing & crm webhook sync crm & revops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">CRM & RevOps</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $975/mo vs $450/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $975/mo vs $450/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Intercom vs. Freshdesk
@@ -573,11 +588,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/pipedrive-vs-monday-sales-crm.html" data-category="CRM & RevOps" data-search="pipedrive monday sales crm b2b deal pipeline automation, email sequence tracking & rest api limits crm & revops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/pipedrive-vs-monday-sales-crm.html" data-category="CRM & RevOps" data-base-a="0" data-seat-a="24" data-base-b="0" data-seat-b="15" data-search="pipedrive monday sales crm b2b deal pipeline automation, email sequence tracking & rest api limits crm & revops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">CRM & RevOps</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $600/mo vs $375/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $600/mo vs $375/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Pipedrive vs. monday sales CRM
@@ -591,11 +606,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/clickup-vs-notion-ai-workspace.html" data-category="Project & Enterprise Ops" data-search="clickup notion unified engineering sprint tracking, ai add-on seat cost & saml sso project & enterprise ops soc2 type ii & saml sso" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/clickup-vs-notion-ai-workspace.html" data-category="Project & Enterprise Ops" data-base-a="0" data-seat-a="10" data-base-b="0" data-seat-b="15" data-search="clickup notion unified engineering sprint tracking, ai add-on seat cost & saml sso project & enterprise ops soc2 type ii & saml sso" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Project & Enterprise Ops</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $250/mo vs $375/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $250/mo vs $375/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     ClickUp vs. Notion
@@ -609,11 +624,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/freshbooks-vs-quickbooks-online-au.html" data-category="Payroll & Accounting" data-search="freshbooks quickbooks online automated client invoicing, bas/gst tax tracking & multi-user seat limits payroll & accounting pci-dss & ato stp compliant" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/freshbooks-vs-quickbooks-online-au.html" data-category="Payroll & Accounting" data-base-a="19" data-seat-a="11" data-base-b="35" data-seat-b="5" data-search="freshbooks quickbooks online automated client invoicing, bas/gst tax tracking & multi-user seat limits payroll & accounting pci-dss & ato stp compliant" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Payroll & Accounting</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $294/mo vs $160/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $294/mo vs $160/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     FreshBooks vs. QuickBooks Online
@@ -627,11 +642,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/activecampaign-vs-hubspot-marketing.html" data-category="CRM & RevOps" data-search="activecampaign hubspot marketing multi-branch lead scoring, contact tier scaling & crm bi-directional sync crm & revops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/activecampaign-vs-hubspot-marketing.html" data-category="CRM & RevOps" data-base-a="49" data-seat-a="5" data-base-b="20" data-seat-b="20" data-search="activecampaign hubspot marketing multi-branch lead scoring, contact tier scaling & crm bi-directional sync crm & revops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">CRM & RevOps</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $174/mo vs $520/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $174/mo vs $520/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     ActiveCampaign vs. HubSpot Marketing
@@ -645,11 +660,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/folk-vs-attio-modern-b2b-crm.html" data-category="CRM & RevOps" data-search="folk crm attio custom object data modeling, linkedin/email enrichment & rest api sync crm & revops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/folk-vs-attio-modern-b2b-crm.html" data-category="CRM & RevOps" data-base-a="0" data-seat-a="20" data-base-b="0" data-seat-b="29" data-search="folk crm attio custom object data modeling, linkedin/email enrichment & rest api sync crm & revops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">CRM & RevOps</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $500/mo vs $725/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $500/mo vs $725/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     folk CRM vs. Attio
@@ -663,11 +678,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/linear-vs-jira-engineering-api.html" data-category="Project & Enterprise Ops" data-search="linear jira software github/gitlab pr automation, graphql api sync & saml sso governance project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/linear-vs-jira-engineering-api.html" data-category="Project & Enterprise Ops" data-base-a="0" data-seat-a="10" data-base-b="0" data-seat-b="9" data-search="linear jira software github/gitlab pr automation, graphql api sync & saml sso governance project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Project & Enterprise Ops</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $250/mo vs $225/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $250/mo vs $225/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Linear vs. Jira Software
@@ -681,11 +696,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/miro-vs-lucidchart-enterprise-sso.html" data-category="Project & Enterprise Ops" data-search="miro lucidchart aws/azure cloud architecture diagramming, scim provisioning & guest licensing project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/miro-vs-lucidchart-enterprise-sso.html" data-category="Project & Enterprise Ops" data-base-a="0" data-seat-a="16" data-base-b="0" data-seat-b="12" data-search="miro lucidchart aws/azure cloud architecture diagramming, scim provisioning & guest licensing project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Project & Enterprise Ops</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $400/mo vs $300/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $400/mo vs $300/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Miro vs. Lucidchart
@@ -699,11 +714,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/1password-vs-bitwarden-enterprise-scim.html" data-category="Project & Enterprise Ops" data-search="1password business bitwarden enterprise okta/entra id scim bridge, cli secrets automation & zero-knowledge audit logs project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/1password-vs-bitwarden-enterprise-scim.html" data-category="Project & Enterprise Ops" data-base-a="0" data-seat-a="8" data-base-b="0" data-seat-b="6" data-search="1password business bitwarden enterprise okta/entra id scim bridge, cli secrets automation & zero-knowledge audit logs project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Project & Enterprise Ops</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $200/mo vs $150/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $200/mo vs $150/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     1Password Business vs. Bitwarden Enterprise
@@ -717,11 +732,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/nordlayer-vs-perimeter81-zero-trust.html" data-category="Project & Enterprise Ops" data-search="nordlayer perimeter 81 zero-trust network access (ztna), dedicated static ips & saml sso project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/nordlayer-vs-perimeter81-zero-trust.html" data-category="Project & Enterprise Ops" data-base-a="0" data-seat-a="11" data-base-b="0" data-seat-b="12" data-search="nordlayer perimeter 81 zero-trust network access (ztna), dedicated static ips & saml sso project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Project & Enterprise Ops</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $275/mo vs $300/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $275/mo vs $300/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     NordLayer vs. Perimeter 81
@@ -735,11 +750,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/unbounce-vs-instapage-b2b-conversion.html" data-category="CRM & RevOps" data-search="unbounce instapage dynamic text replacement, a/b traffic routing & hubspot/marketo webhook sync crm & revops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/unbounce-vs-instapage-b2b-conversion.html" data-category="CRM & RevOps" data-base-a="99" data-seat-a="5" data-base-b="199" data-seat-b="5" data-search="unbounce instapage dynamic text replacement, a/b traffic routing & hubspot/marketo webhook sync crm & revops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">CRM & RevOps</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $224/mo vs $324/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $224/mo vs $324/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Unbounce vs. Instapage
@@ -753,11 +768,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/learnworlds-vs-thinkific-b2b-lms.html" data-category="Project & Enterprise Ops" data-search="learnworlds thinkific plus customer academy scorm compliance, saml sso & white-label api webhooks project & enterprise ops soc2 & gdpr compliant" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/learnworlds-vs-thinkific-b2b-lms.html" data-category="Project & Enterprise Ops" data-base-a="99" data-seat-a="2" data-base-b="99" data-seat-b="2" data-search="learnworlds thinkific plus customer academy scorm compliance, saml sso & white-label api webhooks project & enterprise ops soc2 & gdpr compliant" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Project & Enterprise Ops</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $149/mo vs $149/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $149/mo vs $149/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     LearnWorlds vs. Thinkific Plus
@@ -771,11 +786,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/toggl-track-vs-harvest-xero-billing.html" data-category="Payroll & Accounting" data-search="toggl track harvest agency billable utilization tracking, jira/asana sync & xero invoice export payroll & accounting gdpr & xero certified" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/toggl-track-vs-harvest-xero-billing.html" data-category="Payroll & Accounting" data-base-a="0" data-seat-a="10" data-base-b="0" data-seat-b="12" data-search="toggl track harvest agency billable utilization tracking, jira/asana sync & xero invoice export payroll & accounting gdpr & xero certified" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">Payroll & Accounting</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $250/mo vs $300/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $250/mo vs $300/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Toggl Track vs. Harvest
@@ -789,11 +804,11 @@
                 <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
             </div>
         </a>
-        <a href="/employment-hero-vs-elmo-hr-australia.html" data-category="AU & APAC Compliance" data-search="employment hero elmo software australian mid-market hris, ato stp phase 2, payday super & award payroll au & apac compliance ato stp phase 2 & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/employment-hero-vs-elmo-hr-australia.html" data-category="AU & APAC Compliance" data-base-a="0" data-seat-a="12" data-base-b="150" data-seat-b="14" data-search="employment hero elmo software australian mid-market hris, ato stp phase 2, payday super & award payroll au & apac compliance ato stp phase 2 & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">AU & APAC Compliance</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">Est. $300/mo vs $500/mo (at 25 seats)</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">Est. $300/mo vs $500/mo (at 25 seats)</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     Employment Hero vs. ELMO Software
@@ -814,8 +829,46 @@
     (function() {
         const searchInput = document.getElementById('matrixSearch');
         const filterBtns = document.querySelectorAll('.filter-btn');
+        const seatBtns = document.querySelectorAll('.seat-preset');
+        const curToggle = document.getElementById('homeCurToggle');
         const cards = document.querySelectorAll('.matrix-card');
         let activeCategory = 'ALL';
+        let previewSeats = 25;
+        let isAUD = false;
+
+        function updateCardPrices() {
+            const fx = isAUD ? 1.54 : 1.0;
+            const sym = isAUD ? 'A$' : '$';
+            cards.forEach(card => {
+                const bA = parseFloat(card.getAttribute('data-base-a')) || 0;
+                const sA = parseFloat(card.getAttribute('data-seat-a')) || 0;
+                const bB = parseFloat(card.getAttribute('data-base-b')) || 0;
+                const sB = parseFloat(card.getAttribute('data-seat-b')) || 0;
+                const estA = Math.round((bA + (previewSeats * sA)) * fx);
+                const estB = Math.round((bB + (previewSeats * sB)) * fx);
+                const badge = card.querySelector('.card-price-badge');
+                if (badge) {
+                    badge.textContent = 'Est. ' + sym + estA.toLocaleString() + '/mo vs ' + sym + estB.toLocaleString() + '/mo (' + previewSeats + ' seats)';
+                }
+            });
+        }
+
+        seatBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                previewSeats = parseInt(this.getAttribute('data-seats'), 10);
+                seatBtns.forEach(b => {
+                    b.className = 'seat-preset px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900';
+                });
+                this.className = 'seat-preset px-2.5 py-1.5 rounded-lg bg-white text-slate-900 shadow-sm';
+                updateCardPrices();
+            });
+        });
+
+        curToggle.addEventListener('click', function() {
+            isAUD = !isAUD;
+            this.textContent = isAUD ? 'AUD (A$)' : 'USD ($)';
+            updateCardPrices();
+        });
 
         function filterCards() {
             const q = (searchInput.value || '').toLowerCase().trim();
