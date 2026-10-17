@@ -14,7 +14,7 @@ INDEXNOW_KEY = hashlib.md5(SITE_URL.encode("utf-8")).hexdigest()
 # MONETIZATION & LEAD ROUTER CONFIGURATION (WIRING READY FOR PHASE 3)
 # ==============================================================================
 # 1. Web3Forms Access Key (Get free key in 30s at https://web3forms.com)
-WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY"
+WEB3FORMS_ACCESS_KEY = "78b9c4f0-c4db-482f-9068-31b7299f5961"
 
 # 2. Lemon Squeezy $19 CFO 36-Month TCO & RFP Excel Model Checkout URL
 # Format: https://yourstore.lemonsqueezy.com/checkout/buy/YOUR_VARIANT_ID
@@ -124,7 +124,7 @@ def infer_technical_metadata(nt: dict) -> dict:
 def build_client_js(enriched_topics: list[dict]):
   """Generates public/tco-engine.js:
 
-  - Mounts '⚡ Run 36-Month TCO & API Compatibility Diagnostic' in Homepage &
+  - Mounts ' Run 36-Month TCO & API Compatibility Diagnostic' in Homepage &
   Matrix Pages
   - Syncs two-way with Preview Size (10/25/50/100) and Currency (USD/AUD ex.
   GST)
@@ -294,7 +294,7 @@ def build_client_js(enriched_topics: list[dict]):
                         </p>
                     </div>
                     <a href="${{checkoutHref}}" data-item-id="${{item ? item.id : ''}}" class="${{lsClass}}cfo-export-btn mt-4 block w-full text-center px-3 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-lg transition-colors">
-                        📥 Download 36-Month CFO Boardroom CSV/Excel Model ($19)
+                         Download 36-Month CFO Boardroom CSV/Excel Model ($19)
                     </a>
                 </div>
             </div>
@@ -435,7 +435,7 @@ def build_client_js(enriched_topics: list[dict]):
         let cardsHtml = top2.map((entry, idx) => {{
             const it = entry.item;
             const tierNotice = entry.bestTCO.tierJumpTriggered
-                ? `<span class="text-[11px] mono bg-amber-50 text-amber-800 border border-amber-200 px-2 py-0.5 rounded">⚠ Includes >50 Seat Enterprise Tier Jump</span>`
+                ? `<span class="text-[11px] mono bg-amber-50 text-amber-800 border border-amber-200 px-2 py-0.5 rounded"> Includes >50 Seat Enterprise Tier Jump</span>`
                 : `<span class="text-[11px] mono bg-slate-100 text-slate-700 border border-slate-200 px-2 py-0.5 rounded">✓ Linear Seat Scaling (No Tier Penalty)</span>`;
 
             const apiNotice = entry.bestTCO.apiPenalty > 0
@@ -613,7 +613,7 @@ def build_client_js(enriched_topics: list[dict]):
             triggerBtn.type = 'button';
             triggerBtn.id = 'openDiagBtn';
             triggerBtn.className = 'px-4 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs mono shadow-sm transition-colors whitespace-nowrap flex items-center justify-center gap-1.5';
-            triggerBtn.innerHTML = '⚡ Run 36-Month TCO &amp; API Compatibility Diagnostic';
+            triggerBtn.innerHTML = ' Run 36-Month TCO &amp; API Compatibility Diagnostic';
             controlRow.appendChild(triggerBtn);
 
             const drawerWrapper = document.createElement('div');
@@ -628,7 +628,7 @@ def build_client_js(enriched_topics: list[dict]):
                     <span class="text-xs sm:text-sm font-semibold text-slate-800">Need to model 36-month seat growth, API burst limits, or compare across all 40 matrices?</span>
                 </div>
                 <button type="button" id="openDiagBtn" class="px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs mono shadow-xs transition-colors">
-                    ⚡ Run 36-Month TCO &amp; API Compatibility Diagnostic
+                     Run 36-Month TCO &amp; API Compatibility Diagnostic
                 </button>
             `;
             matrixCalc.parentElement.insertBefore(triggerBar, matrixCalc);
