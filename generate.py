@@ -1921,7 +1921,7 @@ def main():
       with open(out_path, "w", encoding="utf-8") as out_f:
         out_f.write(html_out)
 
-with open("topics.json", "w", encoding="utf-8") as f:
+  with open("topics.json", "w", encoding="utf-8") as f:
     json.dump(topics, f, indent=2)
 
   rebuild_index_legal_and_sitemap(topics)
