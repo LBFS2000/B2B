@@ -1223,10 +1223,10 @@ def render_html(
                 <span id="tcoSavingsText" class="font-semibold">Calculating 12-month TCO delta...</span>
                 <div class="flex items-center gap-2 no-print">
                     <button type="button" id="btnCopyQuote" class="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-800 rounded border border-emerald-300 font-bold transition-colors shadow-xs">
-                        🔗 Copy Custom Quote Link
+                         Copy Custom Quote Link
                     </button>
                     <button type="button" id="btnPrintQuote" class="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-800 rounded border border-emerald-300 font-bold transition-colors shadow-xs">
-                        🖨️ Print / PDF Brief
+                         Print / PDF Brief
                     </button>
                 </div>
             </div>
@@ -1446,7 +1446,7 @@ def render_html(
                 const shareUrl = window.location.origin + window.location.pathname + '?seats=' + slider.value + '&cur=' + curCode + '&bill=' + billCode + '#tco-calculator';
                 navigator.clipboard.writeText(shareUrl).then(function() {{
                     btnCopyQuote.textContent = '✓ Quote Link Copied!';
-                    setTimeout(function() {{ btnCopyQuote.textContent = '🔗 Copy Custom Quote Link'; }}, 2500);
+                    setTimeout(function() {{ btnCopyQuote.textContent = ' Copy Custom Quote Link'; }}, 2500);
                 }});
             }});
 
@@ -1516,7 +1516,7 @@ def render_html(
 
         <!-- Hidden Gotchas -->
         <div class="mt-10 p-6 bg-amber-50 border border-amber-200 rounded-xl">
-            <h3 class="font-bold text-amber-900 mono uppercase text-xs tracking-wider">⚠ Contract Lock-In, Add-On Fees &amp; API Rate Gotchas</h3>
+            <h3 class="font-bold text-amber-900 mono uppercase text-xs tracking-wider"> Contract Lock-In, Add-On Fees &amp; API Rate Gotchas</h3>
             <p class="mt-2 text-sm text-amber-900 leading-relaxed">{data.hidden_gotchas}</p>
         </div>
 
