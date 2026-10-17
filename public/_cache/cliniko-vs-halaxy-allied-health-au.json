@@ -1,0 +1,74 @@
+{
+  "seo_title": "Cliniko vs Halaxy: Australian Allied Health Software Audit (2026)",
+  "meta_description": "Technical comparison of Cliniko and Halaxy for NDIS, Medicare, and Xero integration. Cliniko wins on UI/API stability; Halaxy wins on native claiming.",
+  "direct_verdict": "Cliniko is the superior choice for clinics prioritizing API stability and clean UX for general practice. Halaxy is the functional winner for high-volume NDIS and Medicare providers requiring native, integrated claiming workflows.",
+  "comparison_matrix": [
+    {
+      "feature_name": "Medicare/NDIS Claiming",
+      "product_a_spec": "Requires 3rd party integration (e.g., Tyro/Medipass)",
+      "product_b_spec": "Native, built-in claiming engine",
+      "winner": "Halaxy"
+    },
+    {
+      "feature_name": "Xero Sync Architecture",
+      "product_a_spec": "Robust, bi-directional API sync",
+      "product_b_spec": "Standardized ledger export/sync",
+      "winner": "Cliniko"
+    },
+    {
+      "feature_name": "Pricing Model",
+      "product_a_spec": "Tiered per practitioner ($45-$395/mo)",
+      "product_b_spec": "Freemium model with transaction-based fees",
+      "winner": "Cliniko"
+    },
+    {
+      "feature_name": "API Rate Limits",
+      "product_a_spec": "High throughput, well-documented REST API",
+      "product_b_spec": "Restricted, lower-tier access for 3rd parties",
+      "winner": "Cliniko"
+    },
+    {
+      "feature_name": "Data Privacy Compliance",
+      "product_a_spec": "ISO 27001 compliant, Australian-owned",
+      "product_b_spec": "GDPR/HIPAA/Australian Privacy Act compliant",
+      "winner": "Tie"
+    },
+    {
+      "feature_name": "SMS Messaging Cost",
+      "product_a_spec": "$0.10 per message",
+      "product_b_spec": "Variable based on volume/plan",
+      "winner": "Cliniko"
+    },
+    {
+      "feature_name": "Contract Lock-in",
+      "product_a_spec": "No contracts, month-to-month",
+      "product_b_spec": "No contracts, but complex fee structures",
+      "winner": "Cliniko"
+    },
+    {
+      "feature_name": "System Uptime/Reliability",
+      "product_a_spec": "High-availability infrastructure",
+      "product_b_spec": "Occasional latency during peak claim hours",
+      "winner": "Cliniko"
+    }
+  ],
+  "product_a_pros": [
+    "Superior API documentation and developer support",
+    "Transparent, predictable flat-fee pricing per practitioner",
+    "Highly stable, low-latency interface for high-volume clinics"
+  ],
+  "product_a_cons": [
+    "Lacks native Medicare/NDIS claiming, increasing reliance on 3rd party middleware",
+    "No free tier for small startups or solo practitioners"
+  ],
+  "product_b_pros": [
+    "Native, end-to-end Australian government claiming integration",
+    "Freemium entry point reduces initial capital expenditure",
+    "Deep feature set specifically tailored for NDIS reporting"
+  ],
+  "product_b_cons": [
+    "Complex fee structure can lead to unpredictable monthly costs",
+    "UI/UX is significantly more cluttered and slower than competitors"
+  ],
+  "hidden_gotchas": "Cliniko's reliance on 3rd party integrations for Medicare means you must account for the additional subscription costs of services like Medipass or Tyro, which can negate the savings of their base plan. Halaxy's 'free' model often hides costs within transaction fees and premium add-ons that are required for professional-grade reporting, leading to a higher total cost of ownership as your patient volume scales."
+}

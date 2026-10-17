@@ -371,7 +371,7 @@
     "priceB_base": 30,
     "priceB_seat": 20,
     "compliance": "SOC2 Type II & ISO 27001",
-    "processed": false
+    "processed": true
   },
   {
     "id": "cliniko-vs-halaxy-allied-health-au",
@@ -388,7 +388,7 @@
     "priceB_base": 0,
     "priceB_seat": 29,
     "compliance": "AU Privacy Act (APP) & HIPAA",
-    "processed": false
+    "processed": true
   },
   {
     "id": "simpro-vs-aroflo-commercial-tradies-au",
@@ -405,7 +405,7 @@
     "priceB_base": 50,
     "priceB_seat": 35,
     "compliance": "Xero/MYOB Certified & ISO 27001",
-    "processed": false
+    "processed": true
   },
   {
     "id": "dext-vs-hubdoc-xero-bas-automation",
