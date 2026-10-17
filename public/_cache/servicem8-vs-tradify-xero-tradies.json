@@ -1,0 +1,74 @@
+{
+  "seo_title": "ServiceM8 vs Tradify: Field Service & Xero Sync Audit (2026)",
+  "meta_description": "Technical comparison of ServiceM8 and Tradify for Australian trade businesses. Evaluate job dispatch, Xero integration, and pricing models.",
+  "direct_verdict": "ServiceM8 is the superior choice for high-volume, mobile-first field teams requiring deep automation and GPS tracking. Tradify wins for mid-sized firms prioritizing per-user predictable pricing and simplified administrative workflows.",
+  "comparison_matrix": [
+    {
+      "feature_name": "Pricing Model",
+      "product_a_spec": "Tiered by job volume ($0-$349/mo)",
+      "product_b_spec": "Flat per-user ($48-$62/mo)",
+      "winner": "Tie"
+    },
+    {
+      "feature_name": "Xero Sync Architecture",
+      "product_a_spec": "Two-way sync (Clients, Items, Invoices, Payments)",
+      "product_b_spec": "Two-way sync (Clients, Items, Invoices, Payments)",
+      "winner": "Tie"
+    },
+    {
+      "feature_name": "Field Dispatch Capabilities",
+      "product_a_spec": "Live GPS, Auto-routing, ETA tracking",
+      "product_b_spec": "Basic scheduling, Google Calendar sync",
+      "winner": "ServiceM8"
+    },
+    {
+      "feature_name": "SMS/Communication",
+      "product_a_spec": "Integrated (100-3000/mo included)",
+      "product_b_spec": "Add-on ($0.20 per message)",
+      "winner": "ServiceM8"
+    },
+    {
+      "feature_name": "AI Features",
+      "product_a_spec": "Smart Helpers, Report Builder, Transcription",
+      "product_b_spec": "SmartRead (Bills), SmartWrite (Descriptions)",
+      "winner": "Tie"
+    },
+    {
+      "feature_name": "User Limits",
+      "product_a_spec": "Unlimited users on all paid plans",
+      "product_b_spec": "Per-user licensing",
+      "winner": "ServiceM8"
+    },
+    {
+      "feature_name": "Offline Functionality",
+      "product_a_spec": "Full offline app support with sync",
+      "product_b_spec": "Limited offline capability",
+      "winner": "ServiceM8"
+    },
+    {
+      "feature_name": "Compliance/Forms",
+      "product_a_spec": "Custom electronic forms/certificates",
+      "product_b_spec": "Standard H&S and compliance forms",
+      "winner": "ServiceM8"
+    }
+  ],
+  "product_a_pros": [
+    "Unlimited user access allows for scaling field teams without license cost spikes",
+    "Advanced GPS-based dispatch and automated routing significantly reduces fuel and travel overhead",
+    "Superior offline-first mobile architecture ensures data integrity in remote areas"
+  ],
+  "product_a_cons": [
+    "Job-based pricing tiers can become expensive for high-volume businesses exceeding 1500 jobs",
+    "Steeper learning curve due to the depth of automation and configuration options"
+  ],
+  "product_b_pros": [
+    "Predictable per-user pricing model simplifies budgeting for growing teams",
+    "Highly intuitive interface reduces onboarding time for non-technical staff",
+    "Strong focus on administrative simplicity for quoting and bill tracking"
+  ],
+  "product_b_cons": [
+    "SMS costs are variable and can add significant monthly overhead for high-communication businesses",
+    "Lacks the granular field-tracking and automated dispatch logic found in ServiceM8"
+  ],
+  "hidden_gotchas": "ServiceM8 users must monitor job volume closely, as exceeding plan limits triggers a per-job overage fee of 20c, which can erode margins on low-value service calls. Tradify users often overlook the cumulative cost of the $0.20 per SMS add-on, which, for a business sending automated appointment and payment reminders, can easily exceed the base subscription cost. Both platforms maintain proprietary API structures that limit deep custom data extraction without third-party middleware like Zapier or Make, creating a potential vendor lock-in for businesses relying on custom reporting."
+}
