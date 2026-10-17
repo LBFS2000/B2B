@@ -1,0 +1,74 @@
+{
+  "seo_title": "Cin7 Core vs Unleashed: Inventory & Xero Sync Audit (2026)",
+  "meta_description": "Architectural breakdown of Cin7 Core vs Unleashed for multi-warehouse B2B inventory, BOM management, and Xero COGS synchronization.",
+  "direct_verdict": "Cin7 Core is the superior choice for high-volume manufacturers requiring integrated MRP and advanced warehouse management. Unleashed is better suited for mid-market B2B firms prioritizing a modular, clean UI and granular Xero accounting control.",
+  "comparison_matrix": [
+    {
+      "feature_name": "Base Monthly Pricing",
+      "product_a_spec": "$349 (Standard)",
+      "product_b_spec": "$99 (Lite)",
+      "winner": "Unleashed"
+    },
+    {
+      "feature_name": "Multi-Warehouse Support",
+      "product_a_spec": "Included in all plans",
+      "product_b_spec": "Core & Pro plans only",
+      "winner": "Cin7 Core"
+    },
+    {
+      "feature_name": "API Call Limits",
+      "product_a_spec": "Not explicitly capped",
+      "product_b_spec": "125k-500k/month",
+      "winner": "Cin7 Core"
+    },
+    {
+      "feature_name": "BOM & Manufacturing",
+      "product_a_spec": "Advanced MRP included",
+      "product_b_spec": "Module add-on ($69/mo)",
+      "winner": "Cin7 Core"
+    },
+    {
+      "feature_name": "Xero COGS Sync",
+      "product_a_spec": "Native, high-frequency",
+      "product_b_spec": "Native, batch-based",
+      "winner": "Tie"
+    },
+    {
+      "feature_name": "Included Users",
+      "product_a_spec": "5 (Standard)",
+      "product_b_spec": "3 (Lite/Core)",
+      "winner": "Cin7 Core"
+    },
+    {
+      "feature_name": "Warehouse Management",
+      "product_a_spec": "Advanced WMS included",
+      "product_b_spec": "AIM add-on ($149/mo)",
+      "winner": "Cin7 Core"
+    },
+    {
+      "feature_name": "Order Volume Limits",
+      "product_a_spec": "6,000/year (Standard)",
+      "product_b_spec": "100/month (Lite)",
+      "winner": "Cin7 Core"
+    }
+  ],
+  "product_a_pros": [
+    "Native MRP and advanced manufacturing capabilities included in base tiers",
+    "Unlimited inventory locations across all pricing plans",
+    "Robust API architecture with no restrictive monthly call volume caps"
+  ],
+  "product_a_cons": [
+    "Steeper learning curve due to complex UI and deep feature set",
+    "Higher entry-level cost for small businesses not needing full MRP"
+  ],
+  "product_b_pros": [
+    "Modular pricing allows for lower initial overhead for smaller operations",
+    "Highly intuitive interface for warehouse staff and sales teams",
+    "Granular control over individual module add-ons like CRM and B2B stores"
+  ],
+  "product_b_cons": [
+    "Hidden costs accumulate quickly when adding essential modules like WMS or MRP",
+    "Strict API call limits can throttle automated integrations for high-volume sellers"
+  ],
+  "hidden_gotchas": "Buyers often overlook the 'hidden' cost of modularity in Unleashed; while the $99 entry price is attractive, adding WMS, MRP, and B2B portals quickly exceeds the cost of a Cin7 Core Advanced subscription. Conversely, Cin7 Core users frequently underestimate the complexity of configuring their Advanced Warehouse Management settings, which can lead to significant implementation delays. Both platforms enforce strict order volume caps that trigger expensive overage fees or forced plan upgrades, making accurate forecasting of annual transaction volume mandatory before signing."
+}

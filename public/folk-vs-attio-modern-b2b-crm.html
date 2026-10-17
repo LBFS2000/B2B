@@ -29,10 +29,10 @@
 </head>
 <body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-20 sm:pb-0">
     <!-- Top Compliance & Transparency Bar (FTC & ACCC Prominent Disclosure) -->
-    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800 no-print">
-        <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
-            <span><strong class="text-emerald-400 mono">● DATASET v2026.10</strong> — Public API Documentation, SOC2/ATO Governance &amp; TCO Modeling</span>
-            <span class="text-slate-300"><strong>Commercial Disclosure:</strong> Reader-supported publication; outbound vendor links may earn an affiliate commission. <a href="/disclosure.html" class="underline text-white hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Read Full Disclosure</a></span>
+    <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800 no-print">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <span><strong class="text-emerald-400 mono">● UPDATED OCT 2026</strong> — Independent B2B Software Pricing &amp; Integration Benchmarks</span>
+            <span class="text-slate-400">Reader-supported — partner links may earn a commission (<a href="/disclosure.html" class="underline text-slate-200 hover:text-white">Disclosure</a>)</span>
         </div>
     </div>
 
@@ -220,10 +220,10 @@
                 <span id="tcoSavingsText" class="font-semibold">Calculating 12-month TCO delta...</span>
                 <div class="flex items-center gap-2 no-print">
                     <button type="button" id="btnCopyQuote" class="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-800 rounded border border-emerald-300 font-bold transition-colors shadow-xs">
-                        🔗 Copy Custom Quote Link
+                         Copy Custom Quote Link
                     </button>
                     <button type="button" id="btnPrintQuote" class="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-800 rounded border border-emerald-300 font-bold transition-colors shadow-xs">
-                        🖨️ Print / PDF Brief
+                         Print / PDF Brief
                     </button>
                 </div>
             </div>
@@ -443,7 +443,7 @@
                 const shareUrl = window.location.origin + window.location.pathname + '?seats=' + slider.value + '&cur=' + curCode + '&bill=' + billCode + '#tco-calculator';
                 navigator.clipboard.writeText(shareUrl).then(function() {
                     btnCopyQuote.textContent = '✓ Quote Link Copied!';
-                    setTimeout(function() { btnCopyQuote.textContent = '🔗 Copy Custom Quote Link'; }, 2500);
+                    setTimeout(function() { btnCopyQuote.textContent = ' Copy Custom Quote Link'; }, 2500);
                 });
             });
 
@@ -561,7 +561,7 @@
 
         <!-- Hidden Gotchas -->
         <div class="mt-10 p-6 bg-amber-50 border border-amber-200 rounded-xl">
-            <h3 class="font-bold text-amber-900 mono uppercase text-xs tracking-wider">⚠ Contract Lock-In, Add-On Fees &amp; API Rate Gotchas</h3>
+            <h3 class="font-bold text-amber-900 mono uppercase text-xs tracking-wider"> Contract Lock-In, Add-On Fees &amp; API Rate Gotchas</h3>
             <p class="mt-2 text-sm text-amber-900 leading-relaxed">When migrating between folk CRM and Attio, procurement teams frequently overlook historical audit-trail export limits, SAML SSO 'SSO-tax' tier upgrades, and multi-currency FX settlement spreads (typically 0.5% to 2.0% above mid-market rates). Always verify whether sandbox API environments and dedicated webhook retry queues are included in your base commercial tier before signing an annual order form.</p>
         </div>
 

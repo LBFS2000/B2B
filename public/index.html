@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B2BComparison.com | B2B Software Compatibility, API & TCO Pricing Benchmarks</title>
-    <meta name="description" content="Unbiased, spec-level comparisons of enterprise SaaS integrations, REST API rate limits, Australian/Global compliance, and interactive TCO calculators.">
-    <meta property="og:title" content="B2BComparison.com | B2B Software Compatibility, API & TCO Pricing Benchmarks">
-    <meta property="og:description" content="Unbiased, spec-level comparisons of enterprise SaaS integrations, REST API rate limits, Australian/Global compliance, and interactive TCO calculators.">
+    <title>B2BComparison.com | Compare B2B Software Pricing, Integrations & TCO</title>
+    <meta name="description" content="Side-by-side B2B software comparisons, Xero/ERP integration checks, and live USD/AUD team pricing calculators.">
+    <meta property="og:title" content="B2BComparison.com | Compare B2B Software Pricing, Integrations & TCO">
+    <meta property="og:description" content="Side-by-side B2B software comparisons, Xero/ERP integration checks, and live USD/AUD team pricing calculators.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://b2bcomparison.com/">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232563EB'/><text x='50' y='64' font-family='monospace' font-weight='900' font-size='42' fill='white' text-anchor='middle'>B2B</text></svg>">
@@ -29,10 +29,10 @@
 </head>
 <body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-20 sm:pb-0">
     <!-- Top Compliance & Transparency Bar (FTC & ACCC Prominent Disclosure) -->
-    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800 no-print">
-        <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
-            <span><strong class="text-emerald-400 mono">● DATASET v2026.10</strong> — Public API Documentation, SOC2/ATO Governance &amp; TCO Modeling</span>
-            <span class="text-slate-300"><strong>Commercial Disclosure:</strong> Reader-supported publication; outbound vendor links may earn an affiliate commission. <a href="/disclosure.html" class="underline text-white hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Read Full Disclosure</a></span>
+    <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800 no-print">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <span><strong class="text-emerald-400 mono">● UPDATED OCT 2026</strong> — Independent B2B Software Pricing &amp; Integration Benchmarks</span>
+            <span class="text-slate-400">Reader-supported — partner links may earn a commission (<a href="/disclosure.html" class="underline text-slate-200 hover:text-white">Disclosure</a>)</span>
         </div>
     </div>
 
@@ -66,40 +66,36 @@
             <a href="/disclosure.html" class="hover:text-blue-600 px-2 py-1">Disclosure</a>
         </nav>
     </header>
-    <section class="bg-white border-b border-slate-200 py-12 sm:py-16 px-4 sm:px-6">
+    <section class="bg-white border-b border-slate-200 py-10 sm:py-14 px-4 sm:px-6">
         <div class="max-w-6xl mx-auto">
-            <div class="inline-flex items-center space-x-2 bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-200 mb-4 mono">
-                <span>INDEPENDENT SAAS ARCHITECTURE &amp; TCO RESEARCH PUBLICATION</span>
-            </div>
             <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 max-w-3xl leading-tight">
-                B2B Software Compatibility &amp; TCO Pricing Benchmarks
+                Compare B2B Software Pricing &amp; Integrations
             </h1>
-            <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
-                Plain-English verdicts and documentation-verified comparisons of B2B SaaS integrations, REST API rate ceilings, Australian STP Phase 2 / Xero BAS compliance, and interactive 36-month seat-scaling calculators.
+            <p class="mt-3 text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
+                See real monthly and 3-year costs for your exact team size in USD or AUD—plus Xero/QuickBooks sync, Australian STP Phase 2 compliance, and API limits.
             </p>
-            <div class="mt-6 flex flex-col md:flex-row md:items-center gap-3 max-w-4xl">
+            <div id="heroActionRow" class="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 max-w-3xl">
                 <div class="flex-grow">
                     <label for="matrixSearch" class="sr-only">Search software comparisons</label>
-                    <input id="matrixSearch" type="search" placeholder="Search by software, integration, or compliance (e.g., Xero, Rippling, Tradify, SOC2)..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 shadow-sm">
-                </div>
-                <div class="flex items-center gap-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200 text-xs font-semibold mono">
-                    <span class="text-slate-500 px-2">Preview Size:</span>
-                    <button type="button" data-seats="10" class="seat-preset px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900">10</button>
-                    <button type="button" data-seats="25" class="seat-preset px-2.5 py-1.5 rounded-lg bg-white text-slate-900 shadow-sm">25</button>
-                    <button type="button" data-seats="50" class="seat-preset px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900">50</button>
-                    <button type="button" data-seats="100" class="seat-preset px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900">100</button>
-                    <button type="button" id="homeCurToggle" class="ml-1 px-2.5 py-1.5 rounded-lg bg-blue-600 text-white shadow-sm">USD ($)</button>
+                    <input id="matrixSearch" type="search" placeholder="Search 40+ comparisons (e.g., Xero, Rippling, ClickUp, Tradify, HubSpot)..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 shadow-sm">
                 </div>
             </div>
         </div>
     </section>
 
-    <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 py-10">
-        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-            <div class="flex flex-wrap gap-2" id="filterBar" role="group" aria-label="Filter comparisons by category">
-                <button type="button" data-filter="ALL" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-slate-900 text-white transition-colors">All Matrices (40)</button><button type="button" data-filter="AU & APAC Compliance" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">AU & APAC Compliance</button><button type="button" data-filter="CRM & RevOps" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">CRM & RevOps</button><button type="button" data-filter="Global Payroll & EOR" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">Global Payroll & EOR</button><button type="button" data-filter="Payroll & Accounting" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">Payroll & Accounting</button><button type="button" data-filter="Project & Enterprise Ops" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">Project & Enterprise Ops</button>
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 py-8">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-200">
+            <div class="flex flex-wrap gap-1.5" id="filterBar" role="group" aria-label="Filter comparisons by category">
+                <button type="button" data-filter="ALL" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-slate-900 text-white transition-colors">All (40)</button><button type="button" data-filter="AU & APAC Compliance" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">AU & APAC Compliance</button><button type="button" data-filter="CRM & RevOps" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">CRM & RevOps</button><button type="button" data-filter="Global Payroll & EOR" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">Global Payroll & EOR</button><button type="button" data-filter="Payroll & Accounting" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">Payroll & Accounting</button><button type="button" data-filter="Project & Enterprise Ops" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-white text-slate-600 border border-slate-200 hover:border-slate-400 transition-colors">Project & Enterprise Ops</button>
             </div>
-            <span class="text-xs text-slate-500 mono">Dataset Updated: October 2026</span>
+            <div class="flex items-center self-start lg:self-auto gap-1.5 bg-white p-1.5 rounded-xl border border-slate-200 shadow-xs text-xs font-semibold mono whitespace-nowrap">
+                <span class="text-slate-500 px-2">Team Size:</span>
+                <button type="button" data-seats="10" class="seat-preset px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900">10</button>
+                <button type="button" data-seats="25" class="seat-preset px-2.5 py-1 rounded-lg bg-slate-900 text-white shadow-xs">25</button>
+                <button type="button" data-seats="50" class="seat-preset px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900">50</button>
+                <button type="button" data-seats="100" class="seat-preset px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900">100</button>
+                <button type="button" id="homeCurToggle" class="ml-1 px-2.5 py-1 rounded-lg bg-blue-600 text-white shadow-xs">USD ($)</button>
+            </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="matrixGrid">
@@ -114,12 +110,12 @@
                     Rippling vs. Deel
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Global Contractor Compliance, EOR Statutory Fees & Multi-Currency Payroll. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Global Contractor Compliance, EOR Statutory Fees & Multi-Currency Payroll
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & ISO 27001</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/gusto-vs-onpay-xero-integration.html" data-category="Payroll & Accounting" data-base-a="49" data-seat-a="6" data-base-b="40" data-seat-b="6" data-search="gusto onpay two-way xero accounting sync & automated tax filing payroll & accounting soc2 & hipaa ready" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -132,12 +128,12 @@
                     Gusto vs. OnPay
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Two-Way Xero Accounting Sync & Automated Tax Filing. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Two-Way Xero Accounting Sync & Automated Tax Filing
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 & HIPAA Ready</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/monday-vs-clickup-soc2-enterprise.html" data-category="Project & Enterprise Ops" data-base-a="0" data-seat-a="12" data-base-b="0" data-seat-b="10" data-search="monday.com clickup soc2 compliance, hipaa readiness & rest api rate limits project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -150,12 +146,12 @@
                     monday.com vs. ClickUp
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> SOC2 Compliance, HIPAA Readiness & REST API Rate Limits. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    SOC2 Compliance, HIPAA Readiness & REST API Rate Limits
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & ISO 27001</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/hubspot-vs-pipedrive-quickbooks-sync.html" data-category="CRM & RevOps" data-base-a="20" data-seat-a="20" data-base-b="0" data-seat-b="24" data-search="hubspot crm pipedrive native quickbooks & xero invoicing sync & two-way deal automation crm & revops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -168,12 +164,12 @@
                     HubSpot CRM vs. Pipedrive
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Native QuickBooks & Xero Invoicing Sync & Two-Way Deal Automation. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Native QuickBooks & Xero Invoicing Sync & Two-Way Deal Automation
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & GDPR</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/freshbooks-vs-xero-multi-entity.html" data-category="Payroll & Accounting" data-base-a="19" data-seat-a="11" data-base-b="42" data-seat-b="0" data-search="freshbooks xero multi-currency invoicing, bas/gst tax & automated bank reconciliation payroll & accounting iso 27001 & pci-dss" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -186,12 +182,12 @@
                     FreshBooks vs. Xero
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Multi-Currency Invoicing, BAS/GST Tax & Automated Bank Reconciliation. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Multi-Currency Invoicing, BAS/GST Tax & Automated Bank Reconciliation
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">ISO 27001 & PCI-DSS</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/notion-vs-coda-enterprise-wiki.html" data-category="Project & Enterprise Ops" data-base-a="0" data-seat-a="15" data-base-b="0" data-seat-b="12" data-search="notion coda enterprise wiki permissions, saml sso & rest api payload limits project & enterprise ops soc2 type ii & saml sso" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -204,12 +200,12 @@
                     Notion vs. Coda
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Enterprise Wiki Permissions, SAML SSO & REST API Payload Limits. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Enterprise Wiki Permissions, SAML SSO & REST API Payload Limits
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & SAML SSO</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/activecampaign-vs-klaviyo-webhooks.html" data-category="CRM & RevOps" data-base-a="49" data-seat-a="5" data-base-b="60" data-seat-b="0" data-search="activecampaign klaviyo webhook automation latency, api throughput & e-commerce crm sync crm & revops soc2 & gdpr compliant" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -222,12 +218,12 @@
                     ActiveCampaign vs. Klaviyo
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Webhook Automation Latency, API Throughput & E-Commerce CRM Sync. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Webhook Automation Latency, API Throughput & E-Commerce CRM Sync
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 & GDPR Compliant</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/zendesk-vs-intercom-sla-routing.html" data-category="CRM & RevOps" data-base-a="0" data-seat-a="55" data-base-b="0" data-seat-b="39" data-search="zendesk intercom omnichannel ticketing sla routing, ai agent costs & custom webhooks crm & revops soc2 type ii & hipaa" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -240,12 +236,12 @@
                     Zendesk vs. Intercom
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Omnichannel Ticketing SLA Routing, AI Agent Costs & Custom Webhooks. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Omnichannel Ticketing SLA Routing, AI Agent Costs & Custom Webhooks
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & HIPAA</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/shopify-vs-bigcommerce-b2b-api.html" data-category="Project & Enterprise Ops" data-base-a="105" data-seat-a="0" data-base-b="105" data-seat-b="0" data-search="shopify bigcommerce headless storefront graphql api rate limits & b2b wholesale checkout project & enterprise ops pci-dss level 1 & soc2" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -258,12 +254,12 @@
                     Shopify vs. BigCommerce
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Headless Storefront GraphQL API Rate Limits & B2B Wholesale Checkout. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Headless Storefront GraphQL API Rate Limits & B2B Wholesale Checkout
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">PCI-DSS Level 1 & SOC2</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/asana-vs-smartsheet-resource-audit.html" data-category="Project & Enterprise Ops" data-base-a="0" data-seat-a="24" data-base-b="0" data-seat-b="19" data-search="asana smartsheet portfolio resource allocation, saml sso & immutable audit log export project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -276,12 +272,12 @@
                     Asana vs. Smartsheet
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Portfolio Resource Allocation, SAML SSO & Immutable Audit Log Export. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Portfolio Resource Allocation, SAML SSO & Immutable Audit Log Export
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & ISO 27001</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/rippling-vs-employment-hero-australia.html" data-category="AU & APAC Compliance" data-base-a="35" data-seat-a="10" data-base-b="0" data-seat-b="12" data-search="rippling au employment hero australian stp phase 2, payday super 2026, fair work awards & xero sync au & apac compliance ato stp phase 2 & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -294,12 +290,12 @@
                     Rippling AU vs. Employment Hero
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Australian STP Phase 2, Payday Super 2026, Fair Work Awards & Xero Sync. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Australian STP Phase 2, Payday Super 2026, Fair Work Awards & Xero Sync
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">ATO STP Phase 2 & ISO 27001</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/xero-vs-myob-australian-accounting.html" data-category="AU & APAC Compliance" data-base-a="45" data-seat-a="2" data-base-b="34" data-seat-b="2" data-search="xero myob business australian bas/gst reconciliation, payday super clearing & bank feeds au & apac compliance ato dsp certified & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -312,12 +308,12 @@
                     Xero vs. MYOB Business
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Australian BAS/GST Reconciliation, Payday Super Clearing & Bank Feeds. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Australian BAS/GST Reconciliation, Payday Super Clearing & Bank Feeds
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">ATO DSP Certified & ISO 27001</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/servicem8-vs-tradify-xero-tradies.html" data-category="AU & APAC Compliance" data-base-a="29" data-seat-a="0" data-base-b="0" data-seat-b="39" data-search="servicem8 tradify australian field service job dispatch, quoting & two-way xero sync au & apac compliance xero certified & au privacy act" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -330,12 +326,12 @@
                     ServiceM8 vs. Tradify
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Australian Field Service Job Dispatch, Quoting & Two-Way Xero Sync. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Australian Field Service Job Dispatch, Quoting & Two-Way Xero Sync
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">Xero Certified & AU Privacy Act</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/deel-vs-remote-apac-eor.html" data-category="Global Payroll & EOR" data-base-a="0" data-seat-a="49" data-base-b="0" data-seat-b="29" data-search="deel remote.com employer of record (eor) statutory onboarding in australia, nz & apac global payroll & eor soc2 type ii & gdpr / app" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -348,12 +344,12 @@
                     Deel vs. Remote.com
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Employer of Record (EOR) Statutory Onboarding in Australia, NZ & APAC. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Employer of Record (EOR) Statutory Onboarding in Australia, NZ & APAC
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & GDPR / APP</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/deputy-vs-tanda-fair-work-award.html" data-category="AU & APAC Compliance" data-base-a="0" data-seat-a="6" data-base-b="0" data-seat-b="7" data-search="deputy tanda (workforce) australian fair work modern award interpretation, rostering & xero payroll au & apac compliance fair work award engine & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -366,12 +362,12 @@
                     Deputy vs. Tanda (Workforce)
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Australian Fair Work Modern Award Interpretation, Rostering & Xero Payroll. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Australian Fair Work Modern Award Interpretation, Rostering & Xero Payroll
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">Fair Work Award Engine & ISO 27001</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/apollo-vs-zoominfo-b2b-sales-data.html" data-category="CRM & RevOps" data-base-a="0" data-seat-a="49" data-base-b="250" data-seat-b="60" data-search="apollo.io zoominfo b2b contact enrichment api credits, crm bi-directional sync & gdpr crm & revops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -384,12 +380,12 @@
                     Apollo.io vs. ZoomInfo
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> B2B Contact Enrichment API Credits, CRM Bi-Directional Sync & GDPR. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    B2B Contact Enrichment API Credits, CRM Bi-Directional Sync & GDPR
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & ISO 27001</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/pandadoc-vs-docusign-crm-cpq.html" data-category="CRM & RevOps" data-base-a="0" data-seat-a="35" data-base-b="0" data-seat-b="40" data-search="pandadoc docusign automated cpq quote generation, hubspot/pipedrive sync & esignature api crm & revops soc2 type ii & hipaa / eidas" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -402,12 +398,12 @@
                     PandaDoc vs. DocuSign
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Automated CPQ Quote Generation, HubSpot/Pipedrive Sync & eSignature API. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Automated CPQ Quote Generation, HubSpot/Pipedrive Sync & eSignature API
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & HIPAA / eIDAS</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/make-vs-zapier-webhook-pricing.html" data-category="Project & Enterprise Ops" data-base-a="16" data-seat-a="2" data-base-b="69" data-seat-b="5" data-search="make.com zapier high-volume webhook operations, multi-step json parsing & enterprise rbac project & enterprise ops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -420,12 +416,12 @@
                     Make.com vs. Zapier
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> High-Volume Webhook Operations, Multi-Step JSON Parsing & Enterprise RBAC. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    High-Volume Webhook Operations, Multi-Step JSON Parsing & Enterprise RBAC
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & GDPR</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/semrush-vs-ahrefs-enterprise-seo-api.html" data-category="CRM & RevOps" data-base-a="139" data-seat-a="45" data-base-b="129" data-seat-b="50" data-search="semrush ahrefs search intelligence api units, multi-seat agency licensing & looker studio crm & revops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -438,12 +434,12 @@
                     Semrush vs. Ahrefs
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Search Intelligence API Units, Multi-Seat Agency Licensing & Looker Studio. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Search Intelligence API Units, Multi-Seat Agency Licensing & Looker Studio
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & GDPR</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/airwallex-vs-wise-business-xero-au.html" data-category="AU & APAC Compliance" data-base-a="0" data-seat-a="10" data-base-b="0" data-seat-b="5" data-search="airwallex wise business multi-currency corporate cards, fx spreads & live xero bank feed sync (au) au & apac compliance asic afsl & pci-dss level 1" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -456,12 +452,12 @@
                     Airwallex vs. Wise Business
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Multi-Currency Corporate Cards, FX Spreads & Live Xero Bank Feed Sync (AU). Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Multi-Currency Corporate Cards, FX Spreads & Live Xero Bank Feed Sync (AU)
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">ASIC AFSL & PCI-DSS Level 1</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/brevo-vs-mailchimp-transactional-api.html" data-category="CRM & RevOps" data-base-a="25" data-seat-a="12" data-base-b="45" data-seat-b="15" data-search="brevo mailchimp transactional smtp relay throughput, dedicated ips & marketing automation crm & revops iso 27001 & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -474,12 +470,12 @@
                     Brevo vs. Mailchimp
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Transactional SMTP Relay Throughput, Dedicated IPs & Marketing Automation. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Transactional SMTP Relay Throughput, Dedicated IPs & Marketing Automation
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">ISO 27001 & GDPR</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/webflow-vs-framer-enterprise-cms.html" data-category="Project & Enterprise Ops" data-base-a="29" data-seat-a="19" data-base-b="30" data-seat-b="20" data-search="webflow framer headless cms api limits, saml sso seat governance & edge hosting sla project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -492,12 +488,12 @@
                     Webflow vs. Framer
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Headless CMS API Limits, SAML SSO Seat Governance & Edge Hosting SLA. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Headless CMS API Limits, SAML SSO Seat Governance & Edge Hosting SLA
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & ISO 27001</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/cliniko-vs-halaxy-allied-health-au.html" data-category="AU & APAC Compliance" data-base-a="45" data-seat-a="15" data-base-b="0" data-seat-b="29" data-search="cliniko halaxy australian allied health ndis/medicare claiming, xero sync & app privacy au & apac compliance au privacy act (app) & hipaa" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -510,12 +506,12 @@
                     Cliniko vs. Halaxy
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Australian Allied Health NDIS/Medicare Claiming, Xero Sync & APP Privacy. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Australian Allied Health NDIS/Medicare Claiming, Xero Sync & APP Privacy
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">AU Privacy Act (APP) & HIPAA</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/simpro-vs-aroflo-commercial-tradies-au.html" data-category="AU & APAC Compliance" data-base-a="99" data-seat-a="45" data-base-b="50" data-seat-b="35" data-search="simpro aroflo commercial trade project estimating, inventory & xero/myob ledger sync au & apac compliance xero/myob certified & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -528,12 +524,12 @@
                     Simpro vs. AroFlo
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Commercial Trade Project Estimating, Inventory & Xero/MYOB Ledger Sync. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Commercial Trade Project Estimating, Inventory & Xero/MYOB Ledger Sync
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">Xero/MYOB Certified & ISO 27001</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/dext-vs-hubdoc-xero-bas-automation.html" data-category="AU & APAC Compliance" data-base-a="35" data-seat-a="3" data-base-b="18" data-seat-b="0" data-search="dext prepare hubdoc automated receipt ocr line-item extraction, abn validation & xero bas sync au & apac compliance ato record keeping & soc2" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -546,12 +542,12 @@
                     Dext Prepare vs. Hubdoc
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Automated Receipt OCR Line-Item Extraction, ABN Validation & Xero BAS Sync. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Automated Receipt OCR Line-Item Extraction, ABN Validation & Xero BAS Sync
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">ATO Record Keeping & SOC2</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/cin7-vs-unleashed-xero-inventory-erp.html" data-category="Payroll & Accounting" data-base-a="349" data-seat-a="15" data-base-b="380" data-seat-b="20" data-search="cin7 core unleashed multi-warehouse b2b inventory, bill of materials (bom) & xero cogs sync payroll & accounting xero platinum partner & soc2" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -564,12 +560,12 @@
                     Cin7 Core vs. Unleashed
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Multi-Warehouse B2B Inventory, Bill of Materials (BOM) & Xero COGS Sync. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Multi-Warehouse B2B Inventory, Bill of Materials (BOM) & Xero COGS Sync
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">Xero Platinum Partner & SOC2</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/intercom-vs-freshdesk-ai-ticketing.html" data-category="CRM & RevOps" data-base-a="0" data-seat-a="39" data-base-b="0" data-seat-b="18" data-search="intercom freshdesk ai resolution bot pricing, omnichannel sla routing & crm webhook sync crm & revops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -582,12 +578,12 @@
                     Intercom vs. Freshdesk
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> AI Resolution Bot Pricing, Omnichannel SLA Routing & CRM Webhook Sync. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    AI Resolution Bot Pricing, Omnichannel SLA Routing & CRM Webhook Sync
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & ISO 27001</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/pipedrive-vs-monday-sales-crm.html" data-category="CRM & RevOps" data-base-a="0" data-seat-a="24" data-base-b="0" data-seat-b="15" data-search="pipedrive monday sales crm b2b deal pipeline automation, email sequence tracking & rest api limits crm & revops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -600,12 +596,12 @@
                     Pipedrive vs. monday sales CRM
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> B2B Deal Pipeline Automation, Email Sequence Tracking & REST API Limits. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    B2B Deal Pipeline Automation, Email Sequence Tracking & REST API Limits
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & ISO 27001</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/clickup-vs-notion-ai-workspace.html" data-category="Project & Enterprise Ops" data-base-a="0" data-seat-a="10" data-base-b="0" data-seat-b="15" data-search="clickup notion unified engineering sprint tracking, ai add-on seat cost & saml sso project & enterprise ops soc2 type ii & saml sso" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -618,12 +614,12 @@
                     ClickUp vs. Notion
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Unified Engineering Sprint Tracking, AI Add-On Seat Cost & SAML SSO. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Unified Engineering Sprint Tracking, AI Add-On Seat Cost & SAML SSO
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & SAML SSO</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/freshbooks-vs-quickbooks-online-au.html" data-category="Payroll & Accounting" data-base-a="19" data-seat-a="11" data-base-b="35" data-seat-b="5" data-search="freshbooks quickbooks online automated client invoicing, bas/gst tax tracking & multi-user seat limits payroll & accounting pci-dss & ato stp compliant" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -636,12 +632,12 @@
                     FreshBooks vs. QuickBooks Online
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Automated Client Invoicing, BAS/GST Tax Tracking & Multi-User Seat Limits. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Automated Client Invoicing, BAS/GST Tax Tracking & Multi-User Seat Limits
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">PCI-DSS & ATO STP Compliant</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/activecampaign-vs-hubspot-marketing.html" data-category="CRM & RevOps" data-base-a="49" data-seat-a="5" data-base-b="20" data-seat-b="20" data-search="activecampaign hubspot marketing multi-branch lead scoring, contact tier scaling & crm bi-directional sync crm & revops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -654,12 +650,12 @@
                     ActiveCampaign vs. HubSpot Marketing
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Multi-Branch Lead Scoring, Contact Tier Scaling & CRM Bi-Directional Sync. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Multi-Branch Lead Scoring, Contact Tier Scaling & CRM Bi-Directional Sync
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & GDPR</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/folk-vs-attio-modern-b2b-crm.html" data-category="CRM & RevOps" data-base-a="0" data-seat-a="20" data-base-b="0" data-seat-b="29" data-search="folk crm attio custom object data modeling, linkedin/email enrichment & rest api sync crm & revops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -672,12 +668,12 @@
                     folk CRM vs. Attio
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Custom Object Data Modeling, LinkedIn/Email Enrichment & REST API Sync. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Custom Object Data Modeling, LinkedIn/Email Enrichment & REST API Sync
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & GDPR</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/linear-vs-jira-engineering-api.html" data-category="Project & Enterprise Ops" data-base-a="0" data-seat-a="10" data-base-b="0" data-seat-b="9" data-search="linear jira software github/gitlab pr automation, graphql api sync & saml sso governance project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -690,12 +686,12 @@
                     Linear vs. Jira Software
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> GitHub/GitLab PR Automation, GraphQL API Sync & SAML SSO Governance. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    GitHub/GitLab PR Automation, GraphQL API Sync & SAML SSO Governance
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & ISO 27001</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/miro-vs-lucidchart-enterprise-sso.html" data-category="Project & Enterprise Ops" data-base-a="0" data-seat-a="16" data-base-b="0" data-seat-b="12" data-search="miro lucidchart aws/azure cloud architecture diagramming, scim provisioning & guest licensing project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -708,12 +704,12 @@
                     Miro vs. Lucidchart
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> AWS/Azure Cloud Architecture Diagramming, SCIM Provisioning & Guest Licensing. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    AWS/Azure Cloud Architecture Diagramming, SCIM Provisioning & Guest Licensing
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & ISO 27001</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/1password-vs-bitwarden-enterprise-scim.html" data-category="Project & Enterprise Ops" data-base-a="0" data-seat-a="8" data-base-b="0" data-seat-b="6" data-search="1password business bitwarden enterprise okta/entra id scim bridge, cli secrets automation & zero-knowledge audit logs project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -726,12 +722,12 @@
                     1Password Business vs. Bitwarden Enterprise
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Okta/Entra ID SCIM Bridge, CLI Secrets Automation & Zero-Knowledge Audit Logs. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Okta/Entra ID SCIM Bridge, CLI Secrets Automation & Zero-Knowledge Audit Logs
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & ISO 27001</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/nordlayer-vs-perimeter81-zero-trust.html" data-category="Project & Enterprise Ops" data-base-a="0" data-seat-a="11" data-base-b="0" data-seat-b="12" data-search="nordlayer perimeter 81 zero-trust network access (ztna), dedicated static ips & saml sso project & enterprise ops soc2 type ii & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -744,12 +740,12 @@
                     NordLayer vs. Perimeter 81
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Zero-Trust Network Access (ZTNA), Dedicated Static IPs & SAML SSO. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Zero-Trust Network Access (ZTNA), Dedicated Static IPs & SAML SSO
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & ISO 27001</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/unbounce-vs-instapage-b2b-conversion.html" data-category="CRM & RevOps" data-base-a="99" data-seat-a="5" data-base-b="199" data-seat-b="5" data-search="unbounce instapage dynamic text replacement, a/b traffic routing & hubspot/marketo webhook sync crm & revops soc2 type ii & gdpr" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -762,12 +758,12 @@
                     Unbounce vs. Instapage
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Dynamic Text Replacement, A/B Traffic Routing & HubSpot/Marketo Webhook Sync. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Dynamic Text Replacement, A/B Traffic Routing & HubSpot/Marketo Webhook Sync
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 Type II & GDPR</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/learnworlds-vs-thinkific-b2b-lms.html" data-category="Project & Enterprise Ops" data-base-a="99" data-seat-a="2" data-base-b="99" data-seat-b="2" data-search="learnworlds thinkific plus customer academy scorm compliance, saml sso & white-label api webhooks project & enterprise ops soc2 & gdpr compliant" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -780,12 +776,12 @@
                     LearnWorlds vs. Thinkific Plus
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Customer Academy SCORM Compliance, SAML SSO & White-Label API Webhooks. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Customer Academy SCORM Compliance, SAML SSO & White-Label API Webhooks
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">SOC2 & GDPR Compliant</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/toggl-track-vs-harvest-xero-billing.html" data-category="Payroll & Accounting" data-base-a="0" data-seat-a="10" data-base-b="0" data-seat-b="12" data-search="toggl track harvest agency billable utilization tracking, jira/asana sync & xero invoice export payroll & accounting gdpr & xero certified" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -798,12 +794,12 @@
                     Toggl Track vs. Harvest
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Agency Billable Utilization Tracking, Jira/Asana Sync & Xero Invoice Export. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Agency Billable Utilization Tracking, Jira/Asana Sync & Xero Invoice Export
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">GDPR & Xero Certified</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         <a href="/employment-hero-vs-elmo-hr-australia.html" data-category="AU & APAC Compliance" data-base-a="0" data-seat-a="12" data-base-b="150" data-seat-b="14" data-search="employment hero elmo software australian mid-market hris, ato stp phase 2, payday super & award payroll au & apac compliance ato stp phase 2 & iso 27001" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
@@ -816,12 +812,12 @@
                     Employment Hero vs. ELMO Software
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> Australian Mid-Market HRIS, ATO STP Phase 2, Payday Super & Award Payroll. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    Australian Mid-Market HRIS, ATO STP Phase 2, Payday Super & Award Payroll
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">ATO STP Phase 2 & ISO 27001</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>
         </div>

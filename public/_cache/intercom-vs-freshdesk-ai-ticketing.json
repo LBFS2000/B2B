@@ -1,0 +1,74 @@
+{
+  "seo_title": "Intercom vs Freshdesk: AI Bot & API Integration Audit (2026)",
+  "meta_description": "Technical comparison of Intercom and Freshdesk focusing on AI resolution pricing, SLA routing, and CRM webhook synchronization for enterprise stacks.",
+  "direct_verdict": "Intercom is superior for high-velocity, product-led growth teams requiring seamless in-app AI resolution. Freshdesk is the optimal choice for traditional support organizations needing robust, multi-tier SLA management and structured ticketing workflows.",
+  "comparison_matrix": [
+    {
+      "feature_name": "AI Bot Pricing Model",
+      "product_a_spec": "$0.99 per resolved outcome",
+      "product_b_spec": "$49 per 100 sessions (post-limit)",
+      "winner": "Intercom"
+    },
+    {
+      "feature_name": "SLA Routing Architecture",
+      "product_a_spec": "Expert plan required for SLA features",
+      "product_b_spec": "Native multi-policy SLA in Pro/Enterprise",
+      "winner": "Freshdesk"
+    },
+    {
+      "feature_name": "CRM Webhook Sync",
+      "product_a_spec": "Event-driven via Webhooks/API",
+      "product_b_spec": "Connector app tasks ($80/5k)",
+      "winner": "Intercom"
+    },
+    {
+      "feature_name": "Base Seat Pricing",
+      "product_a_spec": "$19 - $132 per seat/mo",
+      "product_b_spec": "$19 - $89 per seat/mo",
+      "winner": "Freshdesk"
+    },
+    {
+      "feature_name": "Compliance Support",
+      "product_a_spec": "HIPAA support (Expert plan)",
+      "product_b_spec": "IP whitelisting/Audit logs",
+      "winner": "Tie"
+    },
+    {
+      "feature_name": "Agent Efficiency Tools",
+      "product_a_spec": "Copilot ($29/agent/mo)",
+      "product_b_spec": "Freddy Copilot ($29/agent/mo)",
+      "winner": "Tie"
+    },
+    {
+      "feature_name": "Collaboration Model",
+      "product_a_spec": "Lite seats (Free on high tiers)",
+      "product_b_spec": "5,000 external collaborators",
+      "winner": "Freshdesk"
+    },
+    {
+      "feature_name": "Setup/Onboarding",
+      "product_a_spec": "Self-serve/No platform fee",
+      "product_b_spec": "Day passes for spikes",
+      "winner": "Intercom"
+    }
+  ],
+  "product_a_pros": [
+    "Predictable per-outcome AI pricing model",
+    "Superior in-app messenger UX for product-led growth",
+    "No mandatory platform fees or complex seat-based tiers"
+  ],
+  "product_a_cons": [
+    "SLA and multibrand features locked behind expensive Expert tier",
+    "High cost-at-scale for heavy support volume"
+  ],
+  "product_b_pros": [
+    "Robust native SLA and ticket routing capabilities",
+    "Cost-effective for large teams with high agent counts",
+    "Extensive audit logs and security controls for enterprise"
+  ],
+  "product_b_cons": [
+    "Complex add-on pricing for API tasks and AI sessions",
+    "Less intuitive interface for modern in-app customer engagement"
+  ],
+  "hidden_gotchas": "Intercom's 'outcome' definition can lead to unpredictable billing if workflows are not strictly optimized, as any completed procedure triggers a charge. Freshdesk hides significant costs in 'Connector app tasks' and 'MCP actions' which are required for advanced CRM integrations; these are billed as separate consumption units rather than included in the seat price. Both platforms enforce strict API rate limits that require architectural planning for high-volume webhook synchronization, often necessitating middleware to prevent data loss during peak traffic."
+}

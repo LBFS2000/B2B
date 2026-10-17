@@ -1,0 +1,74 @@
+{
+  "seo_title": "Dext Prepare vs Hubdoc: Automated OCR & Xero Sync Audit (2026)",
+  "meta_description": "Technical comparison of Dext Prepare and Hubdoc for OCR extraction, ABN validation, and Xero BAS integration workflows.",
+  "direct_verdict": "Dext Prepare is the superior choice for high-volume enterprises requiring granular line-item extraction and complex approval workflows. Hubdoc is the optimal, cost-effective solution for small businesses already embedded in the Xero ecosystem.",
+  "comparison_matrix": [
+    {
+      "feature_name": "Line-Item Extraction",
+      "product_a_spec": "Full multi-line extraction with GL coding",
+      "product_b_spec": "Basic header-level data capture only",
+      "winner": "Dext Prepare"
+    },
+    {
+      "feature_name": "ABN Validation",
+      "product_a_spec": "Native real-time ATO ABN lookup",
+      "product_b_spec": "Manual verification required",
+      "winner": "Dext Prepare"
+    },
+    {
+      "feature_name": "Xero BAS Sync",
+      "product_a_spec": "Direct API mapping to BAS labels",
+      "product_b_spec": "Standard document attachment sync",
+      "winner": "Dext Prepare"
+    },
+    {
+      "feature_name": "Pricing Model",
+      "product_a_spec": "Tiered subscription per user/volume",
+      "product_b_spec": "Bundled within Xero subscription",
+      "winner": "Hubdoc"
+    },
+    {
+      "feature_name": "OCR Latency",
+      "product_a_spec": "Under 60 seconds",
+      "product_b_spec": "Under 30 seconds",
+      "winner": "Hubdoc"
+    },
+    {
+      "feature_name": "API Access",
+      "product_a_spec": "Open API for custom integrations",
+      "product_b_spec": "Restricted to Xero ecosystem",
+      "winner": "Dext Prepare"
+    },
+    {
+      "feature_name": "Approval Workflows",
+      "product_a_spec": "Multi-stage custom logic",
+      "product_b_spec": "None",
+      "winner": "Dext Prepare"
+    },
+    {
+      "feature_name": "Duplicate Detection",
+      "product_a_spec": "Advanced fuzzy logic matching",
+      "product_b_spec": "Basic file-hash matching",
+      "winner": "Dext Prepare"
+    }
+  ],
+  "product_a_pros": [
+    "Granular line-item data extraction for complex invoices",
+    "Robust API for custom ERP and workflow automation",
+    "Advanced multi-stage approval routing for spend control"
+  ],
+  "product_a_cons": [
+    "Higher monthly cost compared to native Xero tools",
+    "Steeper learning curve for non-accounting staff"
+  ],
+  "product_b_pros": [
+    "Zero additional cost for existing Xero subscribers",
+    "Seamless native integration with Xero bank feeds",
+    "Minimalist UI reduces training time for small teams"
+  ],
+  "product_b_cons": [
+    "Lacks line-item extraction capability",
+    "No support for custom approval workflows or external API hooks"
+  ],
+  "hidden_gotchas": "Dext Prepare often requires higher-tier plans to unlock full API access and multi-user approval workflows, leading to significant cost scaling as transaction volume grows. Conversely, Hubdoc's reliance on Xero means that if you migrate away from Xero, you lose your entire document repository and automation pipeline, creating a vendor lock-in scenario that is difficult to reverse without manual data export."
+}
