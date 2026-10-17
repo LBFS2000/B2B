@@ -772,10 +772,10 @@ def get_header(
 </head>
 <body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-20 sm:pb-0">
     <!-- Top Compliance & Transparency Bar (FTC & ACCC Prominent Disclosure) -->
-    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800 no-print">
-        <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
-            <span><strong class="text-emerald-400 mono">● DATASET v2026.10</strong> — Public API Documentation, SOC2/ATO Governance &amp; TCO Modeling</span>
-            <span class="text-slate-300"><strong>Commercial Disclosure:</strong> Reader-supported publication; outbound vendor links may earn an affiliate commission. <a href="/disclosure.html" class="underline text-white hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Read Full Disclosure</a></span>
+    <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800 no-print">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <span><strong class="text-emerald-400 mono">● UPDATED OCT 2026</strong> — Independent B2B Software Pricing &amp; Integration Benchmarks</span>
+            <span class="text-slate-400">Reader-supported — partner links may earn a commission (<a href="/disclosure.html" class="underline text-slate-200 hover:text-white">Disclosure</a>)</span>
         </div>
     </div>
 
@@ -1634,19 +1634,19 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
                     {nt['product_a']} vs. {nt['product_b']}
                 </h3>
                 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                    <strong>Focus:</strong> {nt['use_case']}. Compare USD/AUD (ex. GST) seat scaling, API rate limits, and contract terms.
+    {nt[' use_case']}
                 </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 mono">
                 <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">{nt['compliance']}</span>
-                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare TCO &amp; Specs &rarr;</span>
+                <span class="text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">Compare Pricing &rarr;</span>
             </div>
         </a>"""
 
   cat_buttons = (
       '<button type="button" data-filter="ALL" class="filter-btn px-3 py-1.5'
       " rounded-lg text-xs font-semibold mono bg-slate-900 text-white"
-      f' transition-colors">All Matrices ({len(topics)})</button>'
+      f' transition-colors">All ({len(topics)})</button>'
   )
   for cat in sorted(categories):
     cat_buttons += (
@@ -1656,41 +1656,37 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
         f' transition-colors">{cat}</button>'
     )
 
-  index_html = f"""{get_header("B2BComparison.com | B2B Software Compatibility, API & TCO Pricing Benchmarks", "Unbiased, spec-level comparisons of enterprise SaaS integrations, REST API rate limits, Australian/Global compliance, and interactive TCO calculators.", len(topics), "")}
-    <section class="bg-white border-b border-slate-200 py-12 sm:py-16 px-4 sm:px-6">
+  index_html = f"""{get_header("B2BComparison.com | Compare B2B Software Pricing, Integrations & TCO", "Side-by-side B2B software comparisons, Xero/ERP integration checks, and live USD/AUD team pricing calculators.", len(topics), "")}
+    <section class="bg-white border-b border-slate-200 py-10 sm:py-14 px-4 sm:px-6">
         <div class="max-w-6xl mx-auto">
-            <div class="inline-flex items-center space-x-2 bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-200 mb-4 mono">
-                <span>INDEPENDENT SAAS ARCHITECTURE &amp; TCO RESEARCH PUBLICATION</span>
-            </div>
             <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 max-w-3xl leading-tight">
-                B2B Software Compatibility &amp; TCO Pricing Benchmarks
+                Compare B2B Software Pricing &amp; Integrations
             </h1>
-            <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
-                Plain-English verdicts and documentation-verified comparisons of B2B SaaS integrations, REST API rate ceilings, Australian STP Phase 2 / Xero BAS compliance, and interactive 36-month seat-scaling calculators.
+            <p class="mt-3 text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
+                See real monthly and 3-year costs for your exact team size in USD or AUD—plus Xero/QuickBooks sync, Australian STP Phase 2 compliance, and API limits.
             </p>
-            <div class="mt-6 flex flex-col md:flex-row md:items-center gap-3 max-w-4xl">
+            <div id="heroActionRow" class="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 max-w-3xl">
                 <div class="flex-grow">
                     <label for="matrixSearch" class="sr-only">Search software comparisons</label>
-                    <input id="matrixSearch" type="search" placeholder="Search by software, integration, or compliance (e.g., Xero, Rippling, Tradify, SOC2)..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 shadow-sm">
-                </div>
-                <div class="flex items-center gap-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200 text-xs font-semibold mono">
-                    <span class="text-slate-500 px-2">Preview Size:</span>
-                    <button type="button" data-seats="10" class="seat-preset px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900">10</button>
-                    <button type="button" data-seats="25" class="seat-preset px-2.5 py-1.5 rounded-lg bg-white text-slate-900 shadow-sm">25</button>
-                    <button type="button" data-seats="50" class="seat-preset px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900">50</button>
-                    <button type="button" data-seats="100" class="seat-preset px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900">100</button>
-                    <button type="button" id="homeCurToggle" class="ml-1 px-2.5 py-1.5 rounded-lg bg-blue-600 text-white shadow-sm">USD ($)</button>
+                    <input id="matrixSearch" type="search" placeholder="Search 40+ comparisons (e.g., Xero, Rippling, ClickUp, Tradify, HubSpot)..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 shadow-sm">
                 </div>
             </div>
         </div>
     </section>
 
-    <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 py-10">
-        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-            <div class="flex flex-wrap gap-2" id="filterBar" role="group" aria-label="Filter comparisons by category">
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 py-8">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-200">
+            <div class="flex flex-wrap gap-1.5" id="filterBar" role="group" aria-label="Filter comparisons by category">
                 {cat_buttons}
             </div>
-            <span class="text-xs text-slate-500 mono">Dataset Updated: October 2026</span>
+            <div class="flex items-center self-start lg:self-auto gap-1.5 bg-white p-1.5 rounded-xl border border-slate-200 shadow-xs text-xs font-semibold mono whitespace-nowrap">
+                <span class="text-slate-500 px-2">Team Size:</span>
+                <button type="button" data-seats="10" class="seat-preset px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900">10</button>
+                <button type="button" data-seats="25" class="seat-preset px-2.5 py-1 rounded-lg bg-slate-900 text-white shadow-xs">25</button>
+                <button type="button" data-seats="50" class="seat-preset px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900">50</button>
+                <button type="button" data-seats="100" class="seat-preset px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900">100</button>
+                <button type="button" id="homeCurToggle" class="ml-1 px-2.5 py-1 rounded-lg bg-blue-600 text-white shadow-xs">USD ($)</button>
+            </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="matrixGrid">
