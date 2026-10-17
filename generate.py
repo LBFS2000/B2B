@@ -14,7 +14,7 @@ SITE_HOST = "b2bcomparison.com"
 BRAND_NAME = "B2BComparison"
 
 # ---> PASTE YOUR 11-DIGIT AUSTRALIAN BUSINESS NUMBER (ABN) BELOW <---
-ABN_NUMBER = "XX XXX XXX XXX"
+ABN_NUMBER = "51 205 277 641"
 
 PUBLIC_DIR = "public"
 CACHE_DIR = os.path.join(PUBLIC_DIR, "_cache")
