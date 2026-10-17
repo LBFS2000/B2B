@@ -1,3 +1,4 @@
+```python
 import datetime
 import hashlib
 import json
@@ -13,14 +14,76 @@ SITE_URL = "https://b2bcomparison.com"
 SITE_HOST = "b2bcomparison.com"
 BRAND_NAME = "B2BComparison"
 
-# ---> PASTE YOUR 11-DIGIT AUSTRALIAN BUSINESS NUMBER (ABN) BELOW <---
+# ---> 1. PASTE YOUR 11-DIGIT AUSTRALIAN BUSINESS NUMBER (ABN) BELOW <---
 ABN_NUMBER = "51 205 277 641"
+
+# ---> 2. MASTER AFFILIATE LINK CONTROL PANEL <---
+# Leave as "" until approved. The moment you paste a real affiliate link inside the quotes
+# for any vendor below, every comparison page featuring that vendor updates automatically!
+MASTER_AFFILIATE_LINKS = {
+    "rippling": "",
+    "deel": "",
+    "gusto": "",
+    "onpay": "",
+    "monday": "",
+    "clickup": "",
+    "hubspot": "",
+    "pipedrive": "",
+    "freshbooks": "",
+    "xero": "",
+    "notion": "",
+    "coda": "",
+    "activecampaign": "",
+    "klaviyo": "",
+    "zendesk": "",
+    "intercom": "",
+    "shopify": "",
+    "bigcommerce": "",
+    "asana": "",
+    "smartsheet": "",
+    "employment": "",
+    "myob": "",
+    "servicem8": "",
+    "tradify": "",
+    "remote": "",
+    "deputy": "",
+    "tanda": "",
+    "apollo": "",
+    "pandadoc": "",
+    "make": "",
+    "zapier": "",
+    "semrush": "",
+    "airwallex": "",
+    "wise": "",
+    "brevo": "",
+    "webflow": "",
+    "framer": "",
+    "freshdesk": "",
+    "quickbooks": "",
+    "folk": "",
+    "attio": "",
+    "miro": "",
+    "1password": "",
+    "nordlayer": "",
+    "unbounce": "",
+    "learnworlds": "",
+    "thinkific": "",
+    "toggl": "",
+}
 
 PUBLIC_DIR = "public"
 CACHE_DIR = os.path.join(PUBLIC_DIR, "_cache")
 
 # Deterministic 32-char hexadecimal key for IndexNow instant search engine pinging
 INDEXNOW_KEY = hashlib.md5(SITE_URL.encode("utf-8")).hexdigest()
+
+# Embedded SVG Favicon (Royal Blue B2B Square for Browser Tabs & Google Search Results)
+FAVICON_DATA_URI = (
+    "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0"
+    " 100 100'><rect width='100' height='100' rx='22' fill='%232563EB'/><text"
+    " x='50' y='64' font-family='monospace' font-weight='900' font-size='42'"
+    " fill='white' text-anchor='middle'>B2B</text></svg>"
+)
 
 
 # ---------------------------------------------------------
@@ -293,6 +356,10 @@ def clean_url(u: str) -> str:
   return u
 
 
+def brand_token(name: str) -> str:
+  return name.lower().split()[0].replace(".com", "").replace(".io", "").strip()
+
+
 def format_pricing_summary(
     base_a: int, seat_a: int, base_b: int, seat_b: int
 ) -> str:
@@ -306,8 +373,8 @@ def normalize_topic(t: dict) -> dict:
   pa = t.get("product_a") or t.get("toolA") or "Vendor A"
   pb = t.get("product_b") or t.get("toolB") or "Vendor B"
 
-  key_a = pa.lower().split()[0].replace(".com", "")
-  key_b = pb.lower().split()[0].replace(".com", "")
+  key_a = brand_token(pa)
+  key_b = brand_token(pb)
   def_a = PRICING_DATABASE.get(
       key_a,
       (
@@ -339,8 +406,16 @@ def normalize_topic(t: dict) -> dict:
   url_a = clean_url(t.get("url_a") or t.get("linkA") or def_a[3])
   url_b = clean_url(t.get("url_b") or t.get("linkB") or def_b[3])
 
-  raw_aff_a = clean_url(t.get("aff_link_a") or t.get("linkA") or url_a)
-  raw_aff_b = clean_url(t.get("aff_link_b") or t.get("linkB") or url_b)
+  # Check MASTER_AFFILIATE_LINKS first so user can manage all links in one place!
+  master_a = clean_url(MASTER_AFFILIATE_LINKS.get(key_a, ""))
+  master_b = clean_url(MASTER_AFFILIATE_LINKS.get(key_b, ""))
+
+  raw_aff_a = (
+      master_a or clean_url(t.get("aff_link_a") or t.get("linkA") or url_a)
+  )
+  raw_aff_b = (
+      master_b or clean_url(t.get("aff_link_b") or t.get("linkB") or url_b)
+  )
 
   aff_a = url_a if "your-affiliate-link.com" in raw_aff_a else raw_aff_a
   aff_b = url_b if "your-affiliate-link.com" in raw_aff_b else raw_aff_b
@@ -634,7 +709,7 @@ Return ONLY a valid JSON object matching this exact JSON schema (no markdown fen
 
 
 # ---------------------------------------------------------
-# 5. ACCESSIBLE, LEGALLY HARDENED UI + DYNAMIC WINNER HIGHLIGHTING
+# 5. ACCESSIBLE, LEGALLY HARDENED UI + SHAREABLE TCO QUOTES
 # ---------------------------------------------------------
 def get_abn_badge() -> str:
   if ABN_NUMBER and "XX" not in ABN_NUMBER:
@@ -675,6 +750,7 @@ def get_header(
     <meta property="og:description" content="{description}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{canonical_url}">
+    <link rel="icon" type="image/svg+xml" href="{FAVICON_DATA_URI}">
     <link rel="canonical" href="{canonical_url}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -683,12 +759,16 @@ def get_header(
     <style>
         body {{ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }}
         .mono {{ font-family: 'JetBrains Mono', monospace; }}
+        @media print {{
+            header, footer, .no-print {{ display: none !important; }}
+            body {{ background: white !important; padding-bottom: 0 !important; }}
+        }}
     </style>
     {ld_block}
 </head>
 <body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-20 sm:pb-0">
     <!-- Top Compliance & Transparency Bar (FTC & ACCC Prominent Disclosure) -->
-    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800">
+    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800 no-print">
         <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
             <span><strong class="text-emerald-400 mono">● DATASET v2026.10</strong> — Public API Documentation, SOC2/ATO Governance &amp; TCO Modeling</span>
             <span class="text-slate-300"><strong>Commercial Disclosure:</strong> Reader-supported publication; outbound vendor links may earn an affiliate commission. <a href="/disclosure.html" class="underline text-white hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Read Full Disclosure</a></span>
@@ -775,6 +855,7 @@ def render_html(
 ) -> str:
   total_count = len(all_topics)
   pa, pb = nt["product_a"], nt["product_b"]
+  tok_a, tok_b = brand_token(pa), brand_token(pb)
   pA_base, pA_seat = nt["priceA_base"], nt["priceA_seat"]
   pB_base, pB_seat = nt["priceB_base"], nt["priceB_seat"]
 
@@ -784,16 +865,17 @@ def render_html(
   cost_winner_side = "A" if est25_a <= est25_b else "B"
   annual_diff_25 = abs(est25_a - est25_b) * 12
 
+  # Fixed token matching so multi-word names (e.g. "HubSpot CRM", "Rippling AU") count all wins accurately
   a_wins = sum(
       1
       for r in data.comparison_matrix
-      if pa.lower() in r.winner.lower()
+      if tok_a in r.winner.lower()
       and r.winner.lower() != "tie"
   )
   b_wins = sum(
       1
       for r in data.comparison_matrix
-      if pb.lower() in r.winner.lower()
+      if tok_b in r.winner.lower()
       and r.winner.lower() != "tie"
   )
   score_a = round(min(9.8, 8.6 + (a_wins * 0.15)), 1)
@@ -807,7 +889,6 @@ def render_html(
   a_wins_overall = score_a >= score_b
   overall_winner_side = "A" if a_wins_overall else "B"
 
-  # Dynamic button & card classes so the higher-scored product ALWAYS gets the bright blue highlight
   btn_a_cls = (
       "bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
       if a_wins_overall
@@ -824,8 +905,8 @@ def render_html(
     w_lower = row.winner.lower()
     if w_lower == "tie":
       badge_cls = "bg-slate-100 text-slate-700 border-slate-300"
-    elif (pa.lower() in w_lower and a_wins_overall) or (
-        pb.lower() in w_lower and not a_wins_overall
+    elif (tok_a in w_lower and a_wins_overall) or (
+        tok_b in w_lower and not a_wins_overall
     ):
       badge_cls = "bg-blue-50 text-blue-700 border-blue-200"
     else:
@@ -1009,7 +1090,7 @@ def render_html(
                     <span class="text-xs font-bold uppercase tracking-wider text-blue-600 mono">30-Second Buyer Guide</span>
                     <h2 class="text-lg font-bold text-slate-900">Click Your #1 Priority to See the Recommended Platform:</h2>
                 </div>
-                <div class="flex flex-wrap gap-1.5" role="group" aria-label="Select your primary buying priority">
+                <div class="flex flex-wrap gap-1.5 no-print" role="group" aria-label="Select your primary buying priority">
                     <button type="button" data-prio="verdict" class="prio-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white transition-colors">Overall Verdict</button>
                     <button type="button" data-prio="cost" class="prio-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">Lowest Cost</button>
                     <button type="button" data-prio="ease" class="prio-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">Fastest Setup</button>
@@ -1062,14 +1143,14 @@ def render_html(
             <p class="mt-3 text-[11px] text-slate-500"><strong>ACCC &amp; FTC Disclosure:</strong> Outbound vendor links are commercial referral links that may earn B2BComparison.com a commission at zero extra cost to you. Scores and summaries are compiled from published vendor documentation using deterministic TCO modeling and AI-assisted specification synthesis under human editorial oversight (<a href="/methodology.html" class="underline hover:text-slate-800">read methodology &amp; AI policy</a>).</p>
         </div>
 
-        <!-- Interactive 36-Month TCO Calculator with Currency (USD/AUD) & Billing Toggle -->
+        <!-- Interactive 36-Month TCO Calculator with Shareable Custom Quote URL & PDF Export -->
         <div id="tco-calculator" class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 mt-8">
             <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 mb-6 border-b border-slate-100 gap-4">
                 <div>
                     <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 mono">Interactive Cost Calculator</span>
                     <h2 class="text-xl font-bold text-slate-900 mt-0.5">Drag the Slider to Calculate Your Monthly &amp; Annual TCO</h2>
                 </div>
-                <div class="flex flex-wrap items-center gap-2">
+                <div class="flex flex-wrap items-center gap-2 no-print">
                     <div class="inline-flex rounded-lg border border-slate-200 p-0.5 bg-slate-100 text-xs font-semibold mono" role="group" aria-label="Currency selector">
                         <button type="button" id="btnUSD" class="px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm">USD ($)</button>
                         <button type="button" id="btnAUD" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900">AUD (A$ ex. GST)</button>
@@ -1086,8 +1167,8 @@ def render_html(
                     <label for="seatSlider" class="text-sm font-semibold text-slate-700">How many team members / users need access?</label>
                     <span id="seatDisplay" class="text-base font-bold text-blue-600 mono bg-blue-50 px-3 py-1 rounded border border-blue-200">25 Seats</span>
                 </div>
-                <input id="seatSlider" type="range" min="5" max="250" step="5" value="25" aria-label="Number of team seats" class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
-                <div class="flex justify-between text-xs text-slate-400 mono mt-1.5">
+                <input id="seatSlider" type="range" min="5" max="250" step="5" value="25" aria-label="Number of team seats" class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600 no-print">
+                <div class="flex justify-between text-xs text-slate-400 mono mt-1.5 no-print">
                     <span>5 Users</span><span>50 Users</span><span>125 Users</span><span>250 Users</span>
                 </div>
             </div>
@@ -1136,7 +1217,14 @@ def render_html(
 
             <div class="mt-4 p-3.5 bg-emerald-50 border border-emerald-200 rounded-lg flex flex-wrap items-center justify-between gap-2 text-xs mono text-emerald-900">
                 <span id="tcoSavingsText" class="font-semibold">Calculating 12-month TCO delta...</span>
-                <span class="bg-white px-2 py-0.5 rounded border border-emerald-200 text-emerald-700 font-bold">Indicative Ex-GST Estimate</span>
+                <div class="flex items-center gap-2 no-print">
+                    <button type="button" id="btnCopyQuote" class="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-800 rounded border border-emerald-300 font-bold transition-colors shadow-xs">
+                        🔗 Copy Custom Quote Link
+                    </button>
+                    <button type="button" id="btnPrintQuote" class="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-800 rounded border border-emerald-300 font-bold transition-colors shadow-xs">
+                        🖨️ Print / PDF Brief
+                    </button>
+                </div>
             </div>
             <p class="mt-2.5 text-[11px] text-slate-500">Pricing &amp; Advice Disclaimer: Calculations run locally in your browser and reflect published entry/mid-market commercial tiers as of {today}, exclusive of 10% Australian GST or local sales taxes. AUD figures use an indicative 1.54 USD/AUD exchange rate. This tool provides general software cost estimates only and does not constitute financial or tax advice.</p>
         </div>
@@ -1156,6 +1244,8 @@ def render_html(
             const btnAUD = document.getElementById('btnAUD');
             const btnMonthly = document.getElementById('btnMonthly');
             const btnAnnual = document.getElementById('btnAnnual');
+            const btnCopyQuote = document.getElementById('btnCopyQuote');
+            const btnPrintQuote = document.getElementById('btnPrintQuote');
 
             const scoreCardA = document.getElementById('scoreCardA');
             const scoreCardB = document.getElementById('scoreCardB');
@@ -1250,12 +1340,27 @@ def render_html(
                 }});
             }});
 
-            // Initialize top scorecard highlight to match the higher-scored platform
             highlightScorecard('{overall_winner_side}', '★ Top Rated');
 
             let fxRate = 1.0;
             let sym = '$';
             let billingDiscount = 1.0;
+
+            // Load URL query parameters if someone shared a custom quote link (?seats=45&cur=AUD&bill=annual)
+            try {{
+                const params = new URLSearchParams(window.location.search);
+                const qSeats = parseInt(params.get('seats'), 10);
+                if (qSeats && qSeats >= 5 && qSeats <= 250) {{
+                    slider.value = qSeats;
+                }}
+                if (params.get('cur') === 'AUD') {{
+                    fxRate = 1.54;
+                    sym = 'A$';
+                }}
+                if (params.get('bill') === 'annual') {{
+                    billingDiscount = 0.85;
+                }}
+            }} catch (e) {{}}
 
             function updateStyles() {{
                 if (sym === '$') {{
@@ -1330,6 +1435,22 @@ def render_html(
             btnMonthly.addEventListener('click', function() {{ billingDiscount = 1.0; updateStyles(); updateTCO(); }});
             btnAnnual.addEventListener('click', function() {{ billingDiscount = 0.85; updateStyles(); updateTCO(); }});
             slider.addEventListener('input', updateTCO);
+
+            btnCopyQuote.addEventListener('click', function() {{
+                const curCode = (sym === 'A$') ? 'AUD' : 'USD';
+                const billCode = (billingDiscount < 1.0) ? 'annual' : 'monthly';
+                const shareUrl = window.location.origin + window.location.pathname + '?seats=' + slider.value + '&cur=' + curCode + '&bill=' + billCode + '#tco-calculator';
+                navigator.clipboard.writeText(shareUrl).then(function() {{
+                    btnCopyQuote.textContent = '✓ Quote Link Copied!';
+                    setTimeout(function() {{ btnCopyQuote.textContent = '🔗 Copy Custom Quote Link'; }}, 2500);
+                }});
+            }});
+
+            btnPrintQuote.addEventListener('click', function() {{
+                window.print();
+            }});
+
+            updateStyles();
             updateTCO();
         }})();
         </script>
@@ -1404,7 +1525,7 @@ def render_html(
         </div>
 
         <!-- Internal Linking Grid for SEO Crawl Depth & Multi-Page Sessions -->
-        <div class="mt-12 pt-8 border-t border-slate-200">
+        <div class="mt-12 pt-8 border-t border-slate-200 no-print">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-xl font-bold text-slate-900">Related B2B Software &amp; TCO Comparisons</h2>
                 <a href="/" class="text-xs font-semibold mono text-blue-600 hover:underline">View All {total_count} Matrices &rarr;</a>
@@ -1416,7 +1537,7 @@ def render_html(
     </main>
 
     <!-- Sticky Bottom Quick-Compare Bar with FTC/ACCC Proximity Disclosure -->
-    <div class="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-200 py-2.5 px-4 z-40 shadow-lg">
+    <div class="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-200 py-2.5 px-4 z-40 shadow-lg no-print">
         <div class="max-w-5xl mx-auto flex items-center justify-between gap-2">
             <div class="hidden sm:block">
                 <span class="text-xs font-bold text-slate-800 mono">Top Pick: {pa if a_wins_overall else pb} ({max(score_a, score_b)}/10)</span>
@@ -1500,11 +1621,11 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
     )
 
     cards_html += f"""
-        <a href="/{nt['id']}.html" data-category="{nt['category']}" data-search="{nt['product_a'].lower()} {nt['product_b'].lower()} {nt['use_case'].lower()} {nt['category'].lower()} {nt['compliance'].lower()}" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+        <a href="/{nt['id']}.html" data-category="{nt['category']}" data-base-a="{nt['priceA_base']}" data-seat-a="{nt['priceA_seat']}" data-base-b="{nt['priceB_base']}" data-seat-b="{nt['priceB_seat']}" data-search="{nt['product_a'].lower()} {nt['product_b'].lower()} {nt['use_case'].lower()} {nt['category'].lower()} {nt['compliance'].lower()}" class="matrix-card group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs mono mb-2.5">
+                <div class="flex items-center justify-between text-xs mono mb-2.5 gap-2">
                     <span class="text-blue-600 font-semibold uppercase tracking-wider">{nt['category']}</span>
-                    <span class="bg-slate-100 text-slate-700 font-medium px-2 py-0.5 rounded text-[11px]">{price_summary}</span>
+                    <span class="card-price-badge bg-slate-100 text-slate-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-slate-200">{price_summary}</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     {nt['product_a']} vs. {nt['product_b']}
@@ -1544,9 +1665,19 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
             <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
                 Plain-English verdicts and documentation-verified comparisons of B2B SaaS integrations, REST API rate ceilings, Australian STP Phase 2 / Xero BAS compliance, and interactive 36-month seat-scaling calculators.
             </p>
-            <div class="mt-6 max-w-xl">
-                <label for="matrixSearch" class="sr-only">Search software comparisons</label>
-                <input id="matrixSearch" type="search" placeholder="Search by software, integration, or compliance (e.g., Xero, Rippling, Tradify, SOC2)..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 shadow-sm">
+            <div class="mt-6 flex flex-col md:flex-row md:items-center gap-3 max-w-4xl">
+                <div class="flex-grow">
+                    <label for="matrixSearch" class="sr-only">Search software comparisons</label>
+                    <input id="matrixSearch" type="search" placeholder="Search by software, integration, or compliance (e.g., Xero, Rippling, Tradify, SOC2)..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 shadow-sm">
+                </div>
+                <div class="flex items-center gap-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200 text-xs font-semibold mono">
+                    <span class="text-slate-500 px-2">Preview Size:</span>
+                    <button type="button" data-seats="10" class="seat-preset px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900">10</button>
+                    <button type="button" data-seats="25" class="seat-preset px-2.5 py-1.5 rounded-lg bg-white text-slate-900 shadow-sm">25</button>
+                    <button type="button" data-seats="50" class="seat-preset px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900">50</button>
+                    <button type="button" data-seats="100" class="seat-preset px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900">100</button>
+                    <button type="button" id="homeCurToggle" class="ml-1 px-2.5 py-1.5 rounded-lg bg-blue-600 text-white shadow-sm">USD ($)</button>
+                </div>
             </div>
         </div>
     </section>
@@ -1568,8 +1699,46 @@ def rebuild_index_legal_and_sitemap(topics: list[dict]):
     (function() {{
         const searchInput = document.getElementById('matrixSearch');
         const filterBtns = document.querySelectorAll('.filter-btn');
+        const seatBtns = document.querySelectorAll('.seat-preset');
+        const curToggle = document.getElementById('homeCurToggle');
         const cards = document.querySelectorAll('.matrix-card');
         let activeCategory = 'ALL';
+        let previewSeats = 25;
+        let isAUD = false;
+
+        function updateCardPrices() {{
+            const fx = isAUD ? 1.54 : 1.0;
+            const sym = isAUD ? 'A$' : '$';
+            cards.forEach(card => {{
+                const bA = parseFloat(card.getAttribute('data-base-a')) || 0;
+                const sA = parseFloat(card.getAttribute('data-seat-a')) || 0;
+                const bB = parseFloat(card.getAttribute('data-base-b')) || 0;
+                const sB = parseFloat(card.getAttribute('data-seat-b')) || 0;
+                const estA = Math.round((bA + (previewSeats * sA)) * fx);
+                const estB = Math.round((bB + (previewSeats * sB)) * fx);
+                const badge = card.querySelector('.card-price-badge');
+                if (badge) {{
+                    badge.textContent = 'Est. ' + sym + estA.toLocaleString() + '/mo vs ' + sym + estB.toLocaleString() + '/mo (' + previewSeats + ' seats)';
+                }}
+            }});
+        }}
+
+        seatBtns.forEach(btn => {{
+            btn.addEventListener('click', function() {{
+                previewSeats = parseInt(this.getAttribute('data-seats'), 10);
+                seatBtns.forEach(b => {{
+                    b.className = 'seat-preset px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900';
+                }});
+                this.className = 'seat-preset px-2.5 py-1.5 rounded-lg bg-white text-slate-900 shadow-sm';
+                updateCardPrices();
+            }});
+        }});
+
+        curToggle.addEventListener('click', function() {{
+            isAUD = !isAUD;
+            this.textContent = isAUD ? 'AUD (A$)' : 'USD ($)';
+            updateCardPrices();
+        }});
 
         function filterCards() {{
             const q = (searchInput.value || '').toLowerCase().trim();
@@ -1762,3 +1931,4 @@ def main():
 
 if __name__ == "__main__":
   main()
+```
